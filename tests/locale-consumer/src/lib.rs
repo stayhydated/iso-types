@@ -1,0 +1,81 @@
+//! Real consumer coverage for renamed dependencies and configured locale enums.
+#[codes::iso_locale]
+pub enum Languages {}
+
+#[codes::iso_locale(custom)]
+pub enum CustomLabels {}
+
+#[codes::iso_enum(standard = "639-1")]
+pub enum AllLanguages {}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use es_fluent::FluentMessage;
+    use es_fluent_manager_core::I18nModuleRegistration;
+
+    #[test]
+    fn renamed_facade_supports_both_macros_and_locale_conversions() {
+        assert_eq!(Languages::default(), Languages::EnUs);
+        assert_eq!(Languages::ALL.len(), 4);
+        assert_eq!("fr-fr".parse::<Languages>().unwrap(), Languages::FrFr);
+        assert_eq!(
+            codes::LanguageIdentifier::from(&Languages::ZhHantTw),
+            codes::langid!("zh-Hant-TW")
+        );
+        assert_eq!(
+            Languages::try_from(codes::langid!("en-US")).unwrap(),
+            Languages::EnUs
+        );
+        assert_eq!(
+            Languages::try_from(&codes::langid!("fr-FR")).unwrap(),
+            Languages::FrFr
+        );
+        assert!(matches!(
+            "invalid!".parse::<Languages>(),
+            Err(codes::LocaleConversionError::Invalid { .. })
+        ));
+        assert!(matches!(
+            "de".parse::<Languages>(),
+            Err(codes::LocaleConversionError::Unsupported(_))
+        ));
+        assert_eq!(AllLanguages::ALL.len(), 183);
+        assert_eq!("eng".parse::<AllLanguages>().unwrap(), AllLanguages::En);
+        assert_eq!(
+            Languages::ZhHantTw.to_string(),
+            "Chinese (Han (Traditional variant), Taiwan, Province of China)"
+        );
+    }
+
+    #[test]
+    fn builtin_locale_fluent_and_display_agree_for_every_configured_locale() {
+        let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
+            .find(|m| m.data().owner == "iso-types")
+            .unwrap();
+        let localizer = module.create_localizer().unwrap();
+        localizer.select_language(&codes::langid!("fr-FR")).unwrap();
+        for locale in Languages::ALL {
+            let actual =
+                locale.to_fluent_string_with(&mut |key, _| localizer.localize(key, None).unwrap());
+            assert_eq!(actual, locale.to_string());
+        }
+    }
+
+    #[test]
+    fn custom_locale_inventory_belongs_to_the_consumer_and_uses_exact_locale_keys() {
+        let info = inventory::iter::<es_fluent::registry::RegisteredFtlType>()
+            .find(|entry| entry.0.type_name() == "CustomLabels")
+            .unwrap()
+            .0;
+        assert_eq!(info.variants().len(), 4);
+        let mut key = None;
+        CustomLabels::FrFr.to_fluent_string_with(&mut |actual, _| {
+            key = Some(actual);
+            "French label".to_owned()
+        });
+        let key = key.unwrap();
+        assert_eq!(key.owner(), "iso-types-locale-consumer");
+        assert_eq!(key.domain(), "iso-types-locale-consumer");
+        assert_eq!(key.id(), "fr-FR");
+    }
+}

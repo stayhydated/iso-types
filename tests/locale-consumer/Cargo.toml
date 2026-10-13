@@ -1,0 +1,11 @@
+[package]
+name = "iso-types-locale-consumer"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+codes = { package = "iso-types", path = "../../crates/iso-types", features = ["locales", "fluent"] }
+es-fluent = { workspace = true }
+es-fluent-manager-core = { workspace = true }
+inventory = { workspace = true }

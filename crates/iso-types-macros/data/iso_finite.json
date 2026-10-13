@@ -1,0 +1,125 @@
+{
+  "finite": {
+    "5218": [
+      {
+        "code": "0",
+        "name": "Not known",
+        "variant": "NotKnown"
+      },
+      {
+        "code": "1",
+        "name": "Male",
+        "variant": "Male"
+      },
+      {
+        "code": "2",
+        "name": "Female",
+        "variant": "Female"
+      },
+      {
+        "code": "9",
+        "name": "Not applicable",
+        "variant": "NotApplicable"
+      }
+    ],
+    "8601-weekday": [
+      {
+        "code": "1",
+        "name": "Monday",
+        "variant": "Monday"
+      },
+      {
+        "code": "2",
+        "name": "Tuesday",
+        "variant": "Tuesday"
+      },
+      {
+        "code": "3",
+        "name": "Wednesday",
+        "variant": "Wednesday"
+      },
+      {
+        "code": "4",
+        "name": "Thursday",
+        "variant": "Thursday"
+      },
+      {
+        "code": "5",
+        "name": "Friday",
+        "variant": "Friday"
+      },
+      {
+        "code": "6",
+        "name": "Saturday",
+        "variant": "Saturday"
+      },
+      {
+        "code": "7",
+        "name": "Sunday",
+        "variant": "Sunday"
+      }
+    ],
+    "8601-month": [
+      {
+        "code": "01",
+        "name": "January",
+        "variant": "January"
+      },
+      {
+        "code": "02",
+        "name": "February",
+        "variant": "February"
+      },
+      {
+        "code": "03",
+        "name": "March",
+        "variant": "March"
+      },
+      {
+        "code": "04",
+        "name": "April",
+        "variant": "April"
+      },
+      {
+        "code": "05",
+        "name": "May",
+        "variant": "May"
+      },
+      {
+        "code": "06",
+        "name": "June",
+        "variant": "June"
+      },
+      {
+        "code": "07",
+        "name": "July",
+        "variant": "July"
+      },
+      {
+        "code": "08",
+        "name": "August",
+        "variant": "August"
+      },
+      {
+        "code": "09",
+        "name": "September",
+        "variant": "September"
+      },
+      {
+        "code": "10",
+        "name": "October",
+        "variant": "October"
+      },
+      {
+        "code": "11",
+        "name": "November",
+        "variant": "November"
+      },
+      {
+        "code": "12",
+        "name": "December",
+        "variant": "December"
+      }
+    ]
+  }
+}

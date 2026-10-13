@@ -1,0 +1,15 @@
+The ISO source snapshots in crates/iso-types-macros/data/iso_*.json (except
+iso_finite.json), their catalog records in catalogs.json, generated ISO tables,
+and corresponding English Fluent catalog names derive from iso-codes:
+https://salsa.debian.org/iso-codes-team/iso-codes
+
+Copyright 2016 Dr. Tobias Quathamer <toddy@debian.org>
+SPDX-License-Identifier: LGPL-2.1-or-later
+
+The source revision and SHA-256 checksums are recorded in data/provenance.json.
+The original source data, editable FTL, and generator are provided in this
+repository. The LGPL license text accompanies both Cargo packages.
+
+Original Rust implementation and generator code:
+Copyright 2026 Mark (stayhydated)
+SPDX-License-Identifier: MIT OR Apache-2.0

@@ -1,0 +1,41 @@
+[package]
+name = "iso-types"
+description = "Typed ISO code enums, English labels, and optional es-fluent integration"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[features]
+default = ["fmt", "macros", "639-1", "3166-1", "4217", "15924", "5218", "8601"]
+full = ["639-1", "639-2", "639-3", "639-5", "3166-1", "3166-2", "3166-3", "4217", "15924", "5218", "8601"]
+fmt = []
+macros = ["dep:iso-types-macros"]
+fluent = ["dep:es-fluent", "dep:es-fluent-manager-core", "dep:fluent-bundle", "dep:inventory", "iso-types-macros?/fluent"]
+locales = ["macros", "iso-types-macros/locales", "dep:unic-langid", "639-1", "639-2", "639-3", "3166-1", "15924"]
+639-1 = []
+639-2 = []
+639-3 = []
+639-5 = []
+3166-1 = []
+3166-2 = ["3166-1"]
+3166-3 = []
+4217 = []
+15924 = []
+5218 = []
+8601 = []
+
+[dependencies]
+iso-types-macros = { workspace = true, optional = true }
+es-fluent = { workspace = true, optional = true }
+es-fluent-manager-core = { workspace = true, optional = true }
+fluent-bundle = { workspace = true, optional = true }
+inventory = { workspace = true, optional = true }
+unic-langid = { workspace = true, optional = true }
+
+[dev-dependencies]
+fluent-syntax = { workspace = true }
+
+[lints]
+workspace = true
