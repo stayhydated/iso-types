@@ -6,11 +6,19 @@ Use the fff MCP tools for all file search operations.
 `crates/iso-types-macros` owns catalog subset and configured locale expansion.
 `crates/iso-types-macros/data` contains pinned upstream source snapshots.
 
-English FTL under `crates/iso-types/i18n/en/iso-types` owns display labels, following
-koruma-collection's FTL-to-Display convention. Run `python3 scripts/generate.py`
-after editing a label. Check reproducibility with
-`python3 scripts/generate.py --check`. Generated Rust files identify their source;
-change the generator and source data before regenerating them.
+ICU4X owns English names for languages, countries, scripts, currencies, months,
+and weekdays. `tools/icu-data` extracts pinned compiled provider data into
+`crates/iso-types-macros/data/icu_english.json`. Exclude codes whose ICU English
+name is absent; do not substitute ISO names or codes. English FTL under
+`crates/iso-types/i18n/en/iso-types` owns language-family, subdivision,
+former-country, and sex-code labels, following koruma-collection's FTL-to-Display
+convention.
+
+Run `python3 scripts/generate.py` after changing source data or an owned FTL label.
+It runs the ICU extractor and regenerates Rust tables, macro records, and resource
+registration. `python3 scripts/generate.py --check` checks the ICU snapshot against
+the locked providers before verifying generated output. Generated Rust files
+identify their source; change the generator and authoritative data first.
 
 Validate default, minimal, and full Fluent configurations:
 

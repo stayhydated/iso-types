@@ -8,12 +8,13 @@ license.workspace = true
 repository.workspace = true
 
 [features]
-default = ["fmt", "macros", "639-1", "3166-1", "4217", "15924", "5218", "8601"]
+default = ["fmt", "macros", "icu", "639-1", "3166-1", "4217", "15924", "5218", "8601"]
 full = ["639-1", "639-2", "639-3", "639-5", "3166-1", "3166-2", "3166-3", "4217", "15924", "5218", "8601"]
 fmt = []
 macros = ["dep:iso-types-macros"]
 fluent = ["dep:es-fluent", "dep:es-fluent-manager-core", "dep:fluent-bundle", "dep:inventory", "iso-types-macros?/fluent"]
-locales = ["macros", "iso-types-macros/locales", "dep:unic-langid", "639-1", "639-2", "639-3", "3166-1", "15924"]
+icu = ["dep:icu_locale", "dep:icu_calendar"]
+locales = ["macros", "icu", "iso-types-macros/locales", "dep:unic-langid", "dep:writeable", "dep:icu_provider"]
 639-1 = []
 639-2 = []
 639-3 = []
@@ -33,6 +34,10 @@ es-fluent-manager-core = { workspace = true, optional = true }
 fluent-bundle = { workspace = true, optional = true }
 inventory = { workspace = true, optional = true }
 unic-langid = { workspace = true, optional = true }
+icu_locale = { workspace = true, optional = true }
+icu_calendar = { workspace = true, optional = true }
+writeable = { workspace = true, optional = true }
+icu_provider = { workspace = true, optional = true }
 
 [dev-dependencies]
 fluent-syntax = { workspace = true }

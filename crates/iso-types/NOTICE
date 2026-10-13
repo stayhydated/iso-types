@@ -13,3 +13,11 @@ repository. The LGPL license text accompanies both Cargo packages.
 Original Rust implementation and generator code:
 Copyright 2026 Mark (stayhydated)
 SPDX-License-Identifier: MIT OR Apache-2.0
+
+English ICU-owned names in icu_english.json and generated catalog tables derive
+from ICU4X compiled data. Provider versions and the English display locale are
+recorded in icu_english.json; Cargo.lock pins provider data packages and checksums.
+https://github.com/unicode-org/icu4x
+Copyright Unicode, Inc.
+SPDX-License-Identifier: Unicode-3.0
+The Unicode license text accompanies both Cargo packages.

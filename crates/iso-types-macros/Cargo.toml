@@ -12,7 +12,7 @@ proc-macro = true
 
 [features]
 fluent = []
-locales = ["dep:es-fluent-toml", "dep:unic-langid"]
+locales = ["dep:es-fluent-toml", "dep:unic-langid", "dep:icu_locale", "dep:writeable"]
 
 [dependencies]
 es-fluent-toml = { workspace = true, optional = true }
@@ -23,6 +23,8 @@ quote = { workspace = true }
 serde_json = { workspace = true }
 syn = { workspace = true }
 unic-langid = { workspace = true, optional = true }
+icu_locale = { workspace = true, optional = true }
+writeable = { workspace = true, optional = true }
 
 [lints]
 workspace = true

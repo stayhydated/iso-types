@@ -1,12 +1,12 @@
 [workspace]
-members = ["crates/iso-types", "crates/iso-types-macros", "tests/locale-consumer"]
+members = ["crates/iso-types", "crates/iso-types-macros", "tests/locale-consumer", "tools/icu-data"]
 resolver = "3"
 
 [workspace.package]
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.99"
-license = "(MIT OR Apache-2.0) AND LGPL-2.1-or-later"
+license = "(MIT OR Apache-2.0) AND LGPL-2.1-or-later AND Unicode-3.0"
 repository = "https://github.com/stayhydated/iso-types"
 
 [workspace.dependencies]
@@ -19,6 +19,13 @@ fluent-bundle = "0.16"
 fluent-syntax = "0.12"
 heck = "0.5"
 inventory = "0.3"
+icu_locale = { version = "=2.3.1", features = ["unstable"] }
+icu_calendar = "=2.3.0"
+icu_datetime = "=2.3.0"
+icu_experimental = "=0.6.0"
+icu_provider = "=2.3.1"
+icu_plurals = "=2.3.0"
+writeable = "0.6"
 proc-macro-crate = "3.5"
 proc-macro2 = "1.0"
 quote = "1.0"

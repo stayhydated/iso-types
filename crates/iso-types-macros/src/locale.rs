@@ -2,6 +2,37 @@ use super::catalog::{facade, locale_variant, prepare};
 use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
 use syn::{ItemEnum, parse_quote};
+use writeable::TryWriteable;
+
+fn canonical_locale(code: &str) -> syn::Result<icu_locale::Locale> {
+    let mut locale: icu_locale::Locale = code.parse().map_err(|error| {
+        syn::Error::new(
+            proc_macro2::Span::call_site(),
+            format!("invalid ICU locale {code}: {error}"),
+        )
+    })?;
+    icu_locale::LocaleCanonicalizer::new_extended().canonicalize(&mut locale);
+    Ok(locale)
+}
+
+fn english_label(code: &str) -> syn::Result<String> {
+    let target = canonical_locale(code)?.id;
+    let name = icu_locale::names::LanguageIdentifierDisplayName::try_new_heavy(
+        icu_locale::locale!("en").into(),
+        target,
+        icu_locale::names::LanguageIdentifierDisplayNameOptions::default(),
+    )
+    .map_err(|error| syn::Error::new(proc_macro2::Span::call_site(), error))?;
+    name.as_borrowed()
+        .try_write_to_string()
+        .map(|text| text.into_owned())
+        .map_err(|_| {
+            syn::Error::new(
+                proc_macro2::Span::call_site(),
+                format!("ICU English name unavailable for configured locale {code}"),
+            )
+        })
+}
 
 pub(crate) fn expand(attr: TokenStream, item: TokenStream) -> syn::Result<TokenStream> {
     let custom = if attr.is_empty() {
@@ -36,6 +67,14 @@ pub(crate) fn expand(attr: TokenStream, item: TokenStream) -> syn::Result<TokenS
     locales.sort_by_key(|l| l.to_string());
     locales.dedup();
     let codes = locales.iter().map(ToString::to_string).collect::<Vec<_>>();
+    let labels = codes.iter().map(|code| {
+        let canonical = canonical_locale(code)?.to_string();
+        if &canonical != code {
+            return Err(syn::Error::new_spanned(&input.ident,
+                format!("use ICU canonical locale {canonical} in i18n.toml and locale directories instead of {code}")));
+        }
+        english_label(code)
+    }).collect::<syn::Result<Vec<_>>>()?;
     let variants = codes.iter().map(|l| locale_variant(l)).collect::<Vec<_>>();
     let mut seen = std::collections::HashSet::new();
     for variant in &variants {
@@ -111,16 +150,32 @@ pub(crate) fn expand(attr: TokenStream, item: TokenStream) -> syn::Result<TokenS
         impl #name {
             pub const ALL: &'static [Self] = &[#(Self::#variants),*];
             pub const fn code(self) -> &'static str { match self { #(Self::#variants => #codes),* } }
+            pub const fn english_name(self) -> &'static str { match self { #(Self::#variants => #labels),* } }
         }
         impl Default for #name { fn default() -> Self { Self::#fallback } }
         impl From<#name> for #root::LanguageIdentifier {
             fn from(value: #name) -> Self { match value { #(#name::#variants => #root::langid!(#codes)),* } }
         }
         impl From<&#name> for #root::LanguageIdentifier { fn from(value: &#name) -> Self { (*value).into() } }
+        impl From<#name> for #root::icu_locale::LanguageIdentifier {
+            fn from(value: #name) -> Self { value.code().parse().expect("validated ICU locale") }
+        }
+        impl From<&#name> for #root::icu_locale::LanguageIdentifier { fn from(value: &#name) -> Self { (*value).into() } }
+        impl std::convert::TryFrom<&#root::icu_locale::LanguageIdentifier> for #name {
+            type Error = #root::LocaleConversionError;
+            fn try_from(value: &#root::icu_locale::LanguageIdentifier) -> Result<Self, Self::Error> {
+                Self::try_from(#root::parse_language_identifier(&value.to_string())?)
+            }
+        }
+        impl std::convert::TryFrom<#root::icu_locale::LanguageIdentifier> for #name {
+            type Error = #root::LocaleConversionError;
+            fn try_from(value: #root::icu_locale::LanguageIdentifier) -> Result<Self, Self::Error> { Self::try_from(&value) }
+        }
         impl std::convert::TryFrom<&#root::LanguageIdentifier> for #name {
             type Error = #root::LocaleConversionError;
             fn try_from(value: &#root::LanguageIdentifier) -> Result<Self, Self::Error> {
-                match value.to_string().as_str() { #(#codes => Ok(Self::#variants),)* _ => Err(#root::LocaleConversionError::Unsupported(value.clone())) }
+                let canonical = #root::canonicalize_language_identifier(value);
+                match canonical.to_string().as_str() { #(#codes => Ok(Self::#variants),)* _ => Err(#root::LocaleConversionError::Unsupported(canonical)) }
             }
         }
         impl std::convert::TryFrom<#root::LanguageIdentifier> for #name {
@@ -130,13 +185,29 @@ pub(crate) fn expand(attr: TokenStream, item: TokenStream) -> syn::Result<TokenS
         impl std::str::FromStr for #name {
             type Err = #root::LocaleConversionError;
             fn from_str(input: &str) -> Result<Self, Self::Err> {
-                let locale = input.parse::<#root::LanguageIdentifier>().map_err(|source| #root::LocaleConversionError::Invalid { input: input.to_owned(), source })?;
+                let locale = #root::parse_language_identifier(input)?;
                 Self::try_from(&locale)
             }
         }
         impl std::fmt::Display for #name {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result { f.write_str(&#root::locale_english_name(&self.into())) }
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result { f.write_str(self.english_name()) }
         }
         #fluent
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::english_label;
+
+    #[test]
+    fn configured_locale_names_require_complete_icu_data() {
+        assert_eq!(
+            english_label("zh-Hant-TW").unwrap(),
+            "Traditional Chinese (Taiwan)"
+        );
+        assert!(english_label("aaa").is_err());
+        assert!(english_label("en-fonipa").is_ok());
+        assert!(english_label("en-abcde").is_err());
+    }
 }

@@ -1,12 +1,20 @@
 # iso-types
 
-Typed ISO enums for Rust applications, with English labels and optional
-es-fluent messages. Choose complete catalogs or declare an application-specific
+[![CI][ci-image]][ci]
+
+Typed ISO enums for Rust applications, with ICU4X English names and optional
+es-fluent messages. Choose maintained catalogs or declare an application-specific
 subset with `#[iso_enum]`. Use `#[iso_locale]` to generate a language picker from
 an es-fluent package's configured locales.
 
 Both public packages require Rust 1.99 or newer. Fluent integration uses the
 es-fluent 0.21 API.
+
+ICU4X owns language, country, script, currency, month, weekday, and composite
+locale names. ICU-owned catalogs include assigned codes with an ICU4X English
+name. Every included variant has English `Display`; codes without ICU names are
+excluded. Language families, subdivisions, former countries, and sex codes
+use authoritative English Fluent catalogs.
 
 ## Crates
 
@@ -39,3 +47,5 @@ code spelling and applicable alternate representations.
 
 [types]: crates/iso-types/README.md
 [macros]: crates/iso-types-macros/README.md
+[ci-image]: https://github.com/stayhydated/iso-types/actions/workflows/ci.yml/badge.svg?branch=master
+[ci]: https://github.com/stayhydated/iso-types/actions/workflows/ci.yml

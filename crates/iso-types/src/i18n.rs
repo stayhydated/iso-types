@@ -71,7 +71,10 @@ impl Localizer for EnglishLocalizer {
             return locale
                 .parse()
                 .ok()
-                .map(|locale| crate::locale_english_name(&locale));
+                .and_then(|locale| crate::locale_english_name(&locale).ok());
+        }
+        if let Some(label) = icu_english_name(key.id().as_str()) {
+            return Some(label.to_owned());
         }
         let bundle = bundle();
         let pattern = bundle.get_message(key.id().as_str())?.value()?;

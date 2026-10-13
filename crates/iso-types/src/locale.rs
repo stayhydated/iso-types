@@ -1,37 +1,87 @@
-use crate::{Iso3166_1, Iso6391, Iso6392, Iso6393, Iso15924, LanguageIdentifier};
+use crate::LanguageIdentifier;
+use icu_locale::names::{LanguageIdentifierDisplayName, LanguageIdentifierDisplayNameOptions};
+use icu_locale::{
+    LanguageIdentifier as IcuLanguageIdentifier, Locale, LocaleCanonicalizer, locale,
+};
+use writeable::TryWriteable;
 
-/// Convert an ISO-based language identifier to an English locale label.
-/// Unassigned or private components retain their canonical code.
-pub fn locale_english_name(locale: &LanguageIdentifier) -> String {
-    let code = locale.language.to_string();
-    let language = code
-        .parse::<Iso6391>()
-        .map(|v| v.english_name())
-        .or_else(|_| code.parse::<Iso6392>().map(|v| v.english_name()))
-        .or_else(|_| code.parse::<Iso6393>().map(|v| v.english_name()));
-    let mut name = language.unwrap_or(&code).to_owned();
-    let mut qualifiers = Vec::new();
-    if let Some(script) = locale.script {
-        let code = script.to_string();
-        qualifiers.push(
-            code.parse::<Iso15924>()
-                .map_or(code, |v| v.english_name().to_owned()),
-        );
+/// Parse and canonicalize aliases using ICU4X's locale data.
+pub fn parse_language_identifier(input: &str) -> Result<LanguageIdentifier, LocaleConversionError> {
+    let id = input.parse::<IcuLanguageIdentifier>().map_err(|source| {
+        LocaleConversionError::Invalid {
+            input: input.to_owned(),
+            source,
+        }
+    })?;
+    Ok(to_fluent_identifier(canonicalize(id)))
+}
+
+fn canonicalize(id: IcuLanguageIdentifier) -> IcuLanguageIdentifier {
+    let mut locale: Locale = id.into();
+    LocaleCanonicalizer::new_extended().canonicalize(&mut locale);
+    locale.id
+}
+
+fn to_fluent_identifier(id: IcuLanguageIdentifier) -> LanguageIdentifier {
+    id.to_string()
+        .parse()
+        .expect("ICU language identifiers are valid Fluent identifiers")
+}
+
+/// Canonicalize deprecated language, script, region, and variant aliases with ICU4X.
+pub fn canonicalize_language_identifier(locale: &LanguageIdentifier) -> LanguageIdentifier {
+    let id = locale
+        .to_string()
+        .parse()
+        .expect("Fluent identifier has valid ICU syntax");
+    to_fluent_identifier(canonicalize(id))
+}
+
+/// Format an English locale name from ICU4X, requiring names for every component.
+pub fn icu_locale_english_name(locale: &IcuLanguageIdentifier) -> Result<String, LocaleNameError> {
+    let target = canonicalize(locale.clone());
+    let name = LanguageIdentifierDisplayName::try_new_heavy(
+        locale!("en").into(),
+        target.clone(),
+        LanguageIdentifierDisplayNameOptions::default(),
+    )
+    .map_err(LocaleNameError::Data)?;
+    name.as_borrowed()
+        .try_write_to_string()
+        .map(|text| text.into_owned())
+        .map_err(|_| LocaleNameError::Unavailable(target))
+}
+
+/// Format a Fluent-facing language identifier with ICU4X's English name data.
+pub fn locale_english_name(locale: &LanguageIdentifier) -> Result<String, LocaleNameError> {
+    let id = locale
+        .to_string()
+        .parse()
+        .expect("Fluent identifier has valid ICU syntax");
+    icu_locale_english_name(&id)
+}
+
+/// Name data failures and incomplete component names remain explicit.
+#[derive(Debug)]
+pub enum LocaleNameError {
+    Data(icu_provider::DataError),
+    Unavailable(IcuLanguageIdentifier),
+}
+impl std::fmt::Display for LocaleNameError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Data(error) => error.fmt(f),
+            Self::Unavailable(locale) => write!(f, "ICU English name unavailable for {locale}"),
+        }
     }
-    if let Some(region) = locale.region {
-        let code = region.to_string();
-        qualifiers.push(
-            code.parse::<Iso3166_1>()
-                .map_or(code, |v| v.english_name().to_owned()),
-        );
+}
+impl std::error::Error for LocaleNameError {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        match self {
+            Self::Data(error) => Some(error),
+            Self::Unavailable(_) => None,
+        }
     }
-    qualifiers.extend(locale.variants().map(|v| v.to_string()));
-    if !qualifiers.is_empty() {
-        name.push_str(" (");
-        name.push_str(&qualifiers.join(", "));
-        name.push(')');
-    }
-    name
 }
 
 /// Invalid syntax and valid but unselected locale identifiers remain distinct.
@@ -39,7 +89,7 @@ pub fn locale_english_name(locale: &LanguageIdentifier) -> String {
 pub enum LocaleConversionError {
     Invalid {
         input: String,
-        source: unic_langid::LanguageIdentifierError,
+        source: icu_locale::ParseError,
     },
     Unsupported(LanguageIdentifier),
 }

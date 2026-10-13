@@ -37,14 +37,14 @@ macro_rules! catalog_test {
     };
 }
 catalog_test!("639-1", languages_1, Iso6391, 183);
-catalog_test!("639-2", languages_2, Iso6392, 487);
-catalog_test!("639-3", languages_3, Iso6393, 7923);
+catalog_test!("639-2", languages_2, Iso6392, 420);
+catalog_test!("639-3", languages_3, Iso6393, 699);
 catalog_test!("639-5", families, Iso6395, 115);
 catalog_test!("3166-1", countries, Iso3166_1, 249);
 catalog_test!("3166-2", subdivisions, Iso3166_2, 5046);
 catalog_test!("3166-3", former_countries, Iso3166_3, 31);
-catalog_test!("4217", currencies, Iso4217, 178);
-catalog_test!("15924", scripts, Iso15924, 226);
+catalog_test!("4217", currencies, Iso4217, 177);
+catalog_test!("15924", scripts, Iso15924, 212);
 catalog_test!("5218", sex_codes, Iso5218, 4);
 catalog_test!("8601", weekdays, Iso8601Weekday, 7);
 catalog_test!("8601", months, Iso8601Month, 12);
@@ -113,10 +113,17 @@ fn fluent_catalogs_match_every_english_display_label_and_keep_owner_scoping() {
         ($feature:literal, $kind:ident) => {
             #[cfg(feature = $feature)]
             for value in iso_types::$kind::ALL {
+                assert_eq!(
+                    localizer.localize(value.fluent_key(), None).as_deref(),
+                    Some(value.english_name()),
+                    "{}",
+                    value.code()
+                );
+                let label = value.english_name();
                 let actual = value.to_fluent_string_with(&mut |key, _args| {
                     localizer.localize(key, None).unwrap()
                 });
-                assert_eq!(actual, value.english_name(), "{}", value.code());
+                assert_eq!(actual, label, "{}", value.code());
                 #[cfg(feature = "fmt")]
                 assert_eq!(actual, value.to_string());
             }

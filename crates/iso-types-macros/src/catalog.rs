@@ -92,7 +92,7 @@ pub(crate) fn expand(attr: TokenStream, item: TokenStream) -> syn::Result<TokenS
                 .ok_or_else(|| {
                     syn::Error::new_spanned(
                         &code,
-                        "expected a canonical assigned code for this catalog",
+                        "expected a canonical code in this maintained catalog",
                     )
                 })?;
             if !seen.insert(value) {
@@ -152,6 +152,7 @@ pub(crate) fn expand(attr: TokenStream, item: TokenStream) -> syn::Result<TokenS
             pub const STANDARD: &'static str = #standard;
             pub const fn catalog_value(self) -> #root::#typename { match self { #(#conversion_arms),* } }
             pub const fn code(self) -> &'static str { match self { #(Self::#variants => #codes),* } }
+            pub const LABEL_SOURCE: #root::LabelSource = #root::#typename::LABEL_SOURCE;
             pub const fn english_name(self) -> &'static str { self.catalog_value().english_name() }
         }
         impl From<#name> for #root::#typename { fn from(value: #name) -> Self { value.catalog_value() } }
@@ -167,6 +168,7 @@ pub(crate) fn expand(attr: TokenStream, item: TokenStream) -> syn::Result<TokenS
         }
         impl #root::IsoCode for #name {
             const STANDARD: &'static str = Self::STANDARD;
+            const LABEL_SOURCE: #root::LabelSource = Self::LABEL_SOURCE;
             const ALL: &'static [Self] = Self::ALL;
             fn code(self) -> &'static str { self.code() }
             fn english_name(self) -> &'static str { self.english_name() }
@@ -208,7 +210,14 @@ mod tests {
                 quote!(
                     enum Codes {}
                 ),
-                "canonical assigned code",
+                "canonical code",
+            ),
+            (
+                quote!(standard = "639-3", codes = ["aaa"]),
+                quote!(
+                    enum Codes {}
+                ),
+                "canonical code",
             ),
             (
                 quote!(standard = "3166-1", codes = ["US", "US"]),

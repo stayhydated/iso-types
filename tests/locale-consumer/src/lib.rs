@@ -19,6 +19,15 @@ mod tests {
         assert_eq!(Languages::default(), Languages::EnUs);
         assert_eq!(Languages::ALL.len(), 4);
         assert_eq!("fr-fr".parse::<Languages>().unwrap(), Languages::FrFr);
+        assert_eq!("eng-US".parse::<Languages>().unwrap(), Languages::EnUs);
+        assert_eq!(
+            codes::icu_locale::LanguageIdentifier::from(Languages::FrFr),
+            codes::icu_locale::langid!("fr-FR")
+        );
+        assert_eq!(
+            Languages::try_from(codes::icu_locale::langid!("eng-US")).unwrap(),
+            Languages::EnUs
+        );
         assert_eq!(
             codes::LanguageIdentifier::from(&Languages::ZhHantTw),
             codes::langid!("zh-Hant-TW")
@@ -43,7 +52,7 @@ mod tests {
         assert_eq!("eng".parse::<AllLanguages>().unwrap(), AllLanguages::En);
         assert_eq!(
             Languages::ZhHantTw.to_string(),
-            "Chinese (Han (Traditional variant), Taiwan, Province of China)"
+            "Traditional Chinese (Taiwan)"
         );
     }
 
