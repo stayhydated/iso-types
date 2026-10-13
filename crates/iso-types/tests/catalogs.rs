@@ -10,12 +10,12 @@
     feature = "8601"
 ))]
 
-use iso_types::IsoCode;
+use iso_types::{IsoCode, VariantArray as _};
 
 fn verify<C: IsoCode + std::fmt::Debug>() {
-    assert!(!C::ALL.is_empty());
+    assert!(!C::VARIANTS.is_empty());
     let mut codes = std::collections::HashSet::new();
-    for &value in C::ALL {
+    for &value in C::VARIANTS {
         assert!(codes.insert(value.code()));
         assert_eq!(value.code().parse::<C>().unwrap(), value);
         assert!(!value.english_name().is_empty());
@@ -29,7 +29,7 @@ macro_rules! catalog_test {
         #[cfg(feature = $feature)]
         #[test]
         fn $name() {
-            assert_eq!(iso_types::$kind::ALL.len(), $count);
+            assert_eq!(iso_types::$kind::VARIANTS.len(), $count);
             verify::<iso_types::$kind>();
         }
     };
@@ -70,10 +70,13 @@ fn alternate_codes_and_metadata_preserve_standard_representations() {
 enum Markets {}
 
 #[cfg(all(feature = "3166-1", feature = "macros"))]
+const MARKETS: &[Markets] = Markets::VARIANTS;
+
+#[cfg(all(feature = "3166-1", feature = "macros"))]
 #[test]
 fn declared_subset_preserves_selection_and_rejects_other_valid_codes() {
     use iso_types::Iso3166_1;
-    assert_eq!(Markets::ALL, &[Markets::Us, Markets::Ca]);
+    assert_eq!(MARKETS, &[Markets::Us, Markets::Ca]);
     assert_eq!("USA".parse::<Markets>().unwrap(), Markets::Us);
     assert!("FR".parse::<Markets>().is_err());
     assert_eq!(Markets::Ca.catalog_value(), Iso3166_1::Ca);
@@ -96,7 +99,7 @@ fn fluent_catalogs_match_every_english_display_label_and_keep_owner_scoping() {
     macro_rules! check {
         ($feature:literal, $kind:ident) => {
             #[cfg(feature = $feature)]
-            for value in iso_types::$kind::ALL {
+            for value in iso_types::$kind::VARIANTS {
                 assert_eq!(
                     localizer.localize(value.fluent_key(), None).as_deref(),
                     Some(value.english_name()),

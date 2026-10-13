@@ -1,6 +1,6 @@
 use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
-use syn::{ItemEnum, Path, Token, parse_quote, punctuated::Punctuated};
+use syn::{ItemEnum, LitStr, Meta, Path, Token, parse_quote, punctuated::Punctuated};
 
 pub(crate) fn facade() -> TokenStream {
     use proc_macro_crate::{FoundCrate, crate_name};
@@ -34,6 +34,17 @@ pub(crate) fn prepare(input: &mut ItemEnum) -> syn::Result<()> {
             }
         }
     }
+    // Helper attributes follow the derives that register them with the compiler.
+    let mut strum_attrs = Vec::new();
+    input.attrs.retain(|attr| {
+        if attr.path().is_ident("strum") {
+            strum_attrs.push(attr.clone());
+            false
+        } else {
+            true
+        }
+    });
+    let root = facade();
     let derives: Vec<Path> = [
         ("Clone", parse_quote!(::core::clone::Clone)),
         ("Copy", parse_quote!(::core::marker::Copy)),
@@ -41,6 +52,7 @@ pub(crate) fn prepare(input: &mut ItemEnum) -> syn::Result<()> {
         ("Eq", parse_quote!(::core::cmp::Eq)),
         ("Hash", parse_quote!(::core::hash::Hash)),
         ("PartialEq", parse_quote!(::core::cmp::PartialEq)),
+        ("VariantArray", parse_quote!(#root::strum::VariantArray)),
     ]
     .into_iter()
     .filter(|(name, _)| !seen.contains(*name))
@@ -48,6 +60,16 @@ pub(crate) fn prepare(input: &mut ItemEnum) -> syn::Result<()> {
     .collect();
     if !derives.is_empty() {
         input.attrs.push(parse_quote!(#[derive(#(#derives),*)]));
+    }
+    let mut has_strum_path = false;
+    for attr in &strum_attrs {
+        let options = attr.parse_args_with(Punctuated::<Meta, Token![,]>::parse_terminated)?;
+        has_strum_path |= options.iter().any(|option| option.path().is_ident("crate"));
+    }
+    input.attrs.extend(strum_attrs);
+    if !has_strum_path {
+        let path = LitStr::new(&quote!(#root::strum).to_string(), input.ident.span());
+        input.attrs.push(parse_quote!(#[strum(crate = #path)]));
     }
     Ok(())
 }

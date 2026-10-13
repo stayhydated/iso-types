@@ -28,6 +28,10 @@ public packages. The macro crate's `src/catalog/data.json` is a generated select
 index; labels and metadata remain owned by the facade's catalog tables.
 `src/i18n/resources.rs` is generated registration glue.
 
+Catalogs and macro-generated enums derive Strum's `VariantArray`. The facade
+re-exports the trait and Strum; use `VARIANTS` for constant enumeration. Macro
+derives resolve their Strum path through the caller's facade dependency name.
+
 ## Data and labels
 
 Pinned ISO snapshots and their checksums live in `data/iso`. CLDR/SIX selection

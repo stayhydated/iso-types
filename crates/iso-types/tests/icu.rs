@@ -1,5 +1,17 @@
 #![cfg(feature = "icu")]
 
+#[cfg(any(
+    feature = "639-1",
+    feature = "639-2",
+    feature = "639-3",
+    feature = "3166-1",
+    feature = "3166-2",
+    feature = "15924",
+    feature = "4217",
+    feature = "8601"
+))]
+use iso_types::VariantArray as _;
+
 #[cfg(feature = "8601")]
 use iso_types::icu_calendar;
 #[cfg(any(
@@ -18,7 +30,7 @@ fn subtags_round_trip_assigned_codes_and_reject_unassigned_codes() {
     macro_rules! round_trip {
         ($feature:literal, $catalog:ident, $type:path) => {
             #[cfg(feature = $feature)]
-            for &value in iso_types::$catalog::ALL {
+            for &value in iso_types::$catalog::VARIANTS {
                 let subtag: $type = value.into();
                 assert_eq!(iso_types::$catalog::try_from(subtag).unwrap(), value);
             }
@@ -58,12 +70,12 @@ fn subtags_round_trip_assigned_codes_and_reject_unassigned_codes() {
 #[cfg(feature = "8601")]
 #[test]
 fn iso_calendar_conversions_preserve_numbers_and_reject_leap_months() {
-    for &value in iso_types::Iso8601Weekday::ALL {
+    for &value in iso_types::Iso8601Weekday::VARIANTS {
         let day: icu_calendar::types::Weekday = value.into();
         assert_eq!((day as u8).to_string(), value.code());
         assert_eq!(iso_types::Iso8601Weekday::from(day), value);
     }
-    for &value in iso_types::Iso8601Month::ALL {
+    for &value in iso_types::Iso8601Month::VARIANTS {
         let month: icu_calendar::types::Month = value.into();
         assert_eq!(format!("{:02}", month.number()), value.code());
         assert_eq!(iso_types::Iso8601Month::try_from(month).unwrap(), value);

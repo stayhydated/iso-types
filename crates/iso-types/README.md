@@ -1,7 +1,8 @@
 # iso-types
 
 Use `iso-types` for typed ISO code enums, application-specific subsets,
-and configured locale enums. Every catalog supplies `ALL`, canonical `code()`,
+and configured locale enums. Every catalog supplies Strum's `VariantArray`,
+canonical `code()`,
 `english_name()`, parsing, and applicable metadata. ICU4X owns English names for
 languages, countries, scripts, currencies, months, weekdays, and locales.
 Current subdivisions and sex codes use English FTL. Fluent output and English
@@ -53,13 +54,14 @@ With default features:
 
 ```rust
 # #[cfg(all(feature = "macros", feature = "3166-1", feature = "4217"))] {
-use iso_types::{iso_enum, Iso3166_1, Iso4217};
+use iso_types::{iso_enum, Iso3166_1, Iso4217, VariantArray as _};
 
 #[iso_enum(standard = "3166-1", codes = ["US", "CA"])]
 pub enum Markets {}
 
 assert_eq!("USA".parse::<Markets>()?, Markets::Us);
 assert_eq!(Markets::Ca.catalog_value(), Iso3166_1::Ca);
+assert_eq!(Markets::VARIANTS, &[Markets::Us, Markets::Ca]);
 assert_eq!(Iso4217::Usd.numeric(), Some("840"));
 assert_eq!(Markets::Us.to_string(), "United States");
 # }
@@ -68,11 +70,13 @@ assert_eq!(Markets::Us.to_string(), "United States");
 
 Enable the corresponding catalog feature before declaring a subset. Omit
 `codes` to generate all catalog variants. Macros add `Clone`, `Copy`, `Debug`,
-`Eq`, `Hash`, and `PartialEq`; additional derives remain caller-owned.
+`Eq`, `Hash`, `PartialEq`, and Strum's `VariantArray`; additional derives remain
+caller-owned. Import `iso_types::VariantArray` to access `Enum::VARIANTS` as a
+constant slice. Catalogs use canonical code order; subsets use declaration order.
 
 With `locales` and `fluent`, use `#[iso_locale]` on an empty enum in a package
 with `i18n.toml` and canonical locale directories. The fallback locale becomes
-`Default`. `Languages::ALL` lists supported locales; variants convert into
+`Default`. `Languages::VARIANTS` lists supported locales; variants convert into
 `LanguageIdentifier` for manager selection. `Display` and built-in Fluent
 labels remain English, including script and region qualifiers.
 

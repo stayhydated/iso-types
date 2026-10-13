@@ -33,13 +33,14 @@ uncommon entries are excluded from catalogs and locale lookup.
 The default features include country and currency catalogs and the subset macro:
 
 ```rust
-use iso_types::{iso_enum, Iso3166_1, Iso4217};
+use iso_types::{iso_enum, Iso3166_1, Iso4217, VariantArray as _};
 
 #[iso_enum(standard = "3166-1", codes = ["US", "CA"])]
 enum Market {}
 
 assert_eq!("USA".parse::<Market>()?, Market::Us);
 assert_eq!(Market::Ca.catalog_value(), Iso3166_1::Ca);
+assert_eq!(Market::VARIANTS, &[Market::Us, Market::Ca]);
 assert_eq!(Iso4217::Usd.numeric(), Some("840"));
 assert_eq!(Market::Us.to_string(), "United States");
 # Ok::<(), iso_types::ParseIsoCodeError>(())

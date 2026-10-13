@@ -5,6 +5,8 @@ extern crate self as iso_types;
 mod catalogs;
 mod code;
 pub use code::{IsoCode, LabelSource, ParseIsoCodeError};
+pub use strum;
+pub use strum::VariantArray;
 // The catalog glob is empty when every catalog feature is disabled.
 #[allow(unused_imports)]
 pub use catalogs::*;

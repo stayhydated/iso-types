@@ -30,7 +30,6 @@ def catalog_rust(catalog: Catalog) -> str:
         f"    /// {markdown(entry.name)} (`{entry.code}`).\n    {entry.variant},\n"
         for entry in entries
     )
-    all_values = ", ".join(f"Self::{entry.variant}" for entry in entries)
     methods = []
     fields = sorted({field for entry in entries for field in entry.metadata})
     for field in fields:
@@ -51,7 +50,7 @@ def catalog_rust(catalog: Catalog) -> str:
                        for alias, variant in sorted(aliases.items()))
         parse_aliases = f"        match input {{\n{arms}            _ => {{}}\n        }}\n"
     return GENERATED + f"""/// Assigned codes in ISO {spec.standard}; English labels are owned by {spec.authority}.
-#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd, strum::VariantArray)]
 #[repr(u16)]
 pub enum {name} {{
 {variants}}}
@@ -59,15 +58,15 @@ pub enum {name} {{
 impl {name} {{
     pub const STANDARD: &'static str = {literal(spec.standard)};
     pub const LABEL_SOURCE: crate::LabelSource = crate::LabelSource::{spec.authority};
-    pub const ALL: &'static [Self] = &[{all_values}];
 {''.join(methods)}}}
 
 impl std::str::FromStr for {name} {{
     type Err = crate::ParseIsoCodeError;
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {{
-        if let Ok(index) = Self::ALL.binary_search_by(|entry| entry.code().cmp(input)) {{
-            return Ok(Self::ALL[index]);
+        let variants = <Self as strum::VariantArray>::VARIANTS;
+        if let Ok(index) = variants.binary_search_by(|entry| entry.code().cmp(input)) {{
+            return Ok(variants[index]);
         }}
 {parse_aliases}        Err(crate::ParseIsoCodeError {{ standard: Self::STANDARD, input: input.to_owned() }})
     }}
@@ -76,7 +75,6 @@ impl std::str::FromStr for {name} {{
 impl crate::IsoCode for {name} {{
     const STANDARD: &'static str = Self::STANDARD;
     const LABEL_SOURCE: crate::LabelSource = Self::LABEL_SOURCE;
-    const ALL: &'static [Self] = Self::ALL;
     fn code(self) -> &'static str {{ self.code() }}
     fn english_name(self) -> &'static str {{ self.english_name() }}
 }}

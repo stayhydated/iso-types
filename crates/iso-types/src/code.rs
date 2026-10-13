@@ -14,13 +14,13 @@ impl std::fmt::Display for ParseIsoCodeError {
 impl std::error::Error for ParseIsoCodeError {}
 
 /// Shared code and label contract for maintained catalogs and declared subsets.
-pub trait IsoCode: 'static + Copy + Eq + std::str::FromStr<Err = ParseIsoCodeError> {
+pub trait IsoCode:
+    strum::VariantArray + Copy + Eq + std::str::FromStr<Err = ParseIsoCodeError>
+{
     /// The ISO standard or finite catalog identifier.
     const STANDARD: &'static str;
     /// The authority responsible for the English labels.
     const LABEL_SOURCE: LabelSource;
-    /// Every value in catalog order, or declaration order for a subset.
-    const ALL: &'static [Self];
     /// The canonical, case-sensitive ISO representation.
     fn code(self) -> &'static str;
     /// The authoritative English label.

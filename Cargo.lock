@@ -984,6 +984,7 @@ dependencies = [
  "icu_provider",
  "inventory",
  "iso-types-macros",
+ "strum",
  "unic-langid",
  "writeable",
 ]

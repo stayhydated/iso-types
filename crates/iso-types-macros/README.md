@@ -20,6 +20,10 @@ the invoking package's
 `i18n.toml`; its optional `custom` mode assigns label ownership to that package.
 Both require an empty enum without generics.
 
+Both macros derive Strum's `VariantArray`. Import `iso_types::VariantArray`
+to access the generated enum's `VARIANTS` constant slice. Strum paths resolve
+through the facade, including when the dependency is renamed.
+
 Configured locales use current ICU canonical tags and must have complete ICU English
 name data. Both Fluent and ICU language-identifier conversions are generated.
 

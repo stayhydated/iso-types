@@ -86,7 +86,6 @@ pub(super) fn emit(model: &Model) -> TokenStream {
     quote! {
         #input
         impl #name {
-            pub const ALL: &'static [Self] = &[#(Self::#variants),*];
             pub const fn code(self) -> &'static str { match self { #(Self::#variants => #codes),* } }
             pub const fn english_name(self) -> &'static str { match self { #(Self::#variants => #labels),* } }
             fn __iso_locale_from_canonical(value: #root::LanguageIdentifier) -> ::core::result::Result<Self, #root::LocaleConversionError> {

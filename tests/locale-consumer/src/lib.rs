@@ -9,15 +9,19 @@ pub enum CustomLabels {}
 pub enum AllLanguages {}
 
 #[cfg(test)]
+const CONFIGURED_LOCALES: &[Languages] = <Languages as codes::VariantArray>::VARIANTS;
+
+#[cfg(test)]
 mod tests {
     use super::*;
+    use codes::VariantArray as _;
     use es_fluent::FluentMessage;
     use es_fluent_manager_core::I18nModuleRegistration;
 
     #[test]
     fn renamed_facade_supports_both_macros_and_locale_conversions() {
         assert_eq!(Languages::default(), Languages::EnUs);
-        assert_eq!(Languages::ALL.len(), 4);
+        assert_eq!(CONFIGURED_LOCALES.len(), 4);
         assert_eq!("fr-fr".parse::<Languages>().unwrap(), Languages::FrFr);
         assert_eq!("eng-US".parse::<Languages>().unwrap(), Languages::EnUs);
         assert_eq!(
@@ -57,7 +61,7 @@ mod tests {
                 "{code}"
             );
         }
-        assert_eq!(AllLanguages::ALL.len(), 93);
+        assert_eq!(AllLanguages::VARIANTS.len(), 93);
         assert_eq!("eng".parse::<AllLanguages>().unwrap(), AllLanguages::En);
         assert_eq!(
             Languages::ZhHantTw.to_string(),
@@ -72,7 +76,7 @@ mod tests {
             .unwrap();
         let localizer = module.create_localizer().unwrap();
         localizer.select_language(&codes::langid!("fr-FR")).unwrap();
-        for locale in Languages::ALL {
+        for locale in Languages::VARIANTS {
             let actual =
                 locale.to_fluent_string_with(&mut |key, _| localizer.localize(key, None).unwrap());
             assert_eq!(actual, locale.to_string());
@@ -107,9 +111,12 @@ mod hygiene {
     type Result = ();
 
     #[codes::iso_enum(standard = "639-1", codes = ["en", "fr"])]
+    #[derive(codes::strum::VariantArray, codes::strum::EnumIter)]
+    #[strum(crate = "::codes::strum")]
     pub enum PickerLanguages {}
 
     #[codes::iso_locale]
+    #[strum(crate = "::codes::strum")]
     pub enum ConfiguredLanguages {}
 
     #[codes::iso_enum(standard = "639-1", codes = ["en"])]
@@ -118,7 +125,17 @@ mod hygiene {
 
     #[test]
     fn application_names_do_not_capture_generated_traits_or_types() {
+        use codes::{VariantArray as _, strum::IntoEnumIterator as _};
         let _: (String, Result) = ((), ());
+        assert_eq!(
+            PickerLanguages::VARIANTS,
+            &[PickerLanguages::En, PickerLanguages::Fr]
+        );
+        assert_eq!(
+            PickerLanguages::iter().collect::<::std::vec::Vec<_>>(),
+            PickerLanguages::VARIANTS
+        );
+        assert_eq!(ConfiguredLanguages::VARIANTS.len(), 4);
         assert_eq!(
             "en".parse::<PickerLanguages>().unwrap(),
             PickerLanguages::En

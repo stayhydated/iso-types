@@ -45,7 +45,6 @@ pub(super) fn emit(model: &Model) -> TokenStream {
     quote! {
         #input
         impl #name {
-            pub const ALL: &'static [Self] = &[#(Self::#variants),*];
             pub const STANDARD: &'static str = #standard;
             pub const fn catalog_value(self) -> #root::#typename { match self { #(#conversion_arms),* } }
             pub const fn code(self) -> &'static str { match self { #(Self::#variants => #codes),* } }
@@ -68,7 +67,6 @@ pub(super) fn emit(model: &Model) -> TokenStream {
         impl #root::IsoCode for #name {
             const STANDARD: &'static str = Self::STANDARD;
             const LABEL_SOURCE: #root::LabelSource = Self::LABEL_SOURCE;
-            const ALL: &'static [Self] = Self::ALL;
             fn code(self) -> &'static str { self.code() }
             fn english_name(self) -> &'static str { self.english_name() }
         }
