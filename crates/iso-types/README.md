@@ -82,9 +82,9 @@ Catalog and locale macros support renamed dependencies.
 
 Configured locale directories and the fallback identifier must use ICU canonical
 tags. The macro checks current data scope and English name availability at
-compile time. Locale enums
-convert into both Fluent and ICU language identifiers; parsing also accepts
-aliases such as `eng-US` for `en-US`. `locale_english_name()` returns a `Result`
+compile time. Locale enums convert into both Fluent and ICU language identifiers;
+parsing normalizes current ISO forms such as `eng-US` to `en-US`.
+`locale_english_name()` returns a `Result`
 when naming arbitrary Fluent identifiers.
 
 Locale identifiers use current languages, scripts, and regions without variants.

@@ -97,3 +97,52 @@ mod tests {
         assert_eq!(key.id(), "fr-FR");
     }
 }
+
+#[cfg(test)]
+mod hygiene {
+    // Application names must not capture paths emitted by either macro.
+    mod core {}
+    mod std {}
+    type String = ();
+    type Result = ();
+
+    #[codes::iso_enum(standard = "639-1", codes = ["en", "fr"])]
+    pub enum PickerLanguages {}
+
+    #[codes::iso_locale]
+    pub enum ConfiguredLanguages {}
+
+    #[codes::iso_enum(standard = "639-1", codes = ["en"])]
+    #[cfg(any())]
+    pub enum DisabledLanguages {}
+
+    #[test]
+    fn application_names_do_not_capture_generated_traits_or_types() {
+        let _: (String, Result) = ((), ());
+        assert_eq!(
+            "en".parse::<PickerLanguages>().unwrap(),
+            PickerLanguages::En
+        );
+        assert_eq!(PickerLanguages::Fr.to_string(), "French");
+        assert_eq!(ConfiguredLanguages::default(), ConfiguredLanguages::EnUs);
+        assert_eq!(
+            "eng-US".parse::<ConfiguredLanguages>().unwrap(),
+            ConfiguredLanguages::EnUs
+        );
+        assert_eq!(
+            codes::LanguageIdentifier::from(ConfiguredLanguages::EnUs),
+            codes::langid!("en-US")
+        );
+        let module =
+            inventory::iter::<&'static dyn es_fluent_manager_core::I18nModuleRegistration>()
+                .find(|entry| entry.data().owner == "iso-types")
+                .unwrap();
+        let localizer = module.create_localizer().unwrap();
+        assert_eq!(
+            es_fluent::FluentMessage::to_fluent_string_with(&PickerLanguages::En, &mut |key, _| {
+                localizer.localize(key, None).unwrap()
+            }),
+            "English"
+        );
+    }
+}

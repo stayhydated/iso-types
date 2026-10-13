@@ -38,9 +38,28 @@ fn name_or_missing<T: std::fmt::Display>(
     }
 }
 
+enum Output {
+    Snapshot,
+    Check,
+    Stdout,
+}
+
 fn main() -> Result<(), Box<dyn Error>> {
+    let arguments = std::env::args().skip(1).collect::<Vec<_>>();
+    let mode = match arguments.as_slice() {
+        [] => Output::Snapshot,
+        [argument] if argument == "--check" => Output::Check,
+        [argument] if argument == "--stdout" => Output::Stdout,
+        [argument] if argument == "--help" || argument == "-h" => {
+            println!(
+                "Extract pinned ICU4X English names\nUsage: iso-types-icu-data [--check | --stdout]"
+            );
+            return Ok(());
+        }
+        _ => return Err("expected --check, --stdout, or no arguments; use --help".into()),
+    };
     let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../");
-    let source = root.join("crates/iso-types-macros/data");
+    let source = root.join("data/iso");
     let english = data_locale!("en");
     let canonicalizer = LocaleCanonicalizer::new_extended();
     let currency_plurals = PluralRules::try_new_cardinal(locale!("en").into())?;
@@ -156,15 +175,15 @@ fn main() -> Result<(), Box<dyn Error>> {
         "catalogs": catalogs,
     });
     let output = serde_json::to_string_pretty(&result)? + "\n";
-    let path = source.join("icu_english.json");
-    if std::env::args().skip(1).any(|arg| arg == "--check") {
-        if std::fs::read_to_string(&path)? != output {
-            return Err(
-                "ICU English snapshot differs; run cargo run -p iso-types-icu-data --locked".into(),
-            );
+    let path = root.join("data/icu/english.json");
+    match mode {
+        Output::Stdout => print!("{output}"),
+        Output::Check => {
+            if std::fs::read_to_string(&path)? != output {
+                return Err("ICU English snapshot differs; run python3 -m tools.codegen".into());
+            }
         }
-    } else {
-        std::fs::write(path, output)?;
+        Output::Snapshot => std::fs::write(path, output)?,
     }
     Ok(())
 }

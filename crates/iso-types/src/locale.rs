@@ -1,3 +1,5 @@
+mod scope;
+
 use crate::LanguageIdentifier;
 use icu_locale::names::{LanguageIdentifierDisplayName, LanguageIdentifierDisplayNameOptions};
 use icu_locale::{
@@ -20,11 +22,11 @@ pub fn parse_language_identifier(input: &str) -> Result<LanguageIdentifier, Loca
 fn current_identifier(
     id: IcuLanguageIdentifier,
 ) -> Result<IcuLanguageIdentifier, LocaleConversionError> {
-    if !crate::current::current_locale(&id) {
+    if !scope::includes(&id) {
         return Err(LocaleConversionError::OutOfScope(to_fluent_identifier(id)));
     }
     let canonical = canonicalize(id);
-    if !crate::current::current_locale(&canonical) {
+    if !scope::includes(&canonical) {
         return Err(LocaleConversionError::OutOfScope(to_fluent_identifier(
             canonical,
         )));

@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Provenance hashes describe exact upstream snapshot bytes.
+data/** -text

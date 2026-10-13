@@ -21,19 +21,10 @@ macro_rules! subtag_conversion {
     };
 }
 subtag_conversion!("639-1", Iso6391, icu_locale::subtags::Language);
+subtag_conversion!("639-2", Iso6392, icu_locale::subtags::Language);
 subtag_conversion!("639-3", Iso6393, icu_locale::subtags::Language);
 subtag_conversion!("3166-1", Iso3166_1, icu_locale::subtags::Region);
 subtag_conversion!("15924", Iso15924, icu_locale::subtags::Script);
-
-#[cfg(feature = "639-2")]
-impl From<crate::Iso6392> for icu_locale::subtags::Language {
-    fn from(value: crate::Iso6392) -> Self {
-        value
-            .code()
-            .parse()
-            .expect("assigned ISO language has ICU subtag syntax")
-    }
-}
 
 #[cfg(feature = "3166-2")]
 impl From<crate::Iso3166_2> for icu_locale::extensions::unicode::SubdivisionId {
@@ -60,14 +51,6 @@ impl TryFrom<icu_locale::extensions::unicode::SubdivisionId> for crate::Iso3166_
         .parse()
     }
 }
-#[cfg(feature = "639-2")]
-impl TryFrom<icu_locale::subtags::Language> for crate::Iso6392 {
-    type Error = crate::ParseIsoCodeError;
-    fn try_from(value: icu_locale::subtags::Language) -> Result<Self, Self::Error> {
-        value.as_str().parse()
-    }
-}
-
 #[cfg(feature = "4217")]
 impl From<crate::Iso4217> for icu_locale::preferences::extensions::unicode::keywords::CurrencyType {
     fn from(value: crate::Iso4217) -> Self {

@@ -15,7 +15,8 @@ jobs:
         with:
           components: clippy, rustfmt
       - uses: Swatinem/rust-cache@v2
-      - run: python3 scripts/generate.py --check
+      - run: python3 -m unittest discover -s tools/codegen/tests -v
+      - run: python3 -m tools.codegen --check
       - run: cargo fmt --all --check
       - run: cargo test -p iso-types --locked
       - run: cargo test -p iso-types --no-default-features --locked

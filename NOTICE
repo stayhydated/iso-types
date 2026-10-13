@@ -1,12 +1,12 @@
-The ISO source snapshots in crates/iso-types-macros/data/iso_*.json (except
-iso_finite.json), their catalog records in catalogs.json, generated ISO tables,
+The ISO source snapshots in data/iso/iso_*.json (except
+iso_finite.json), the generated ISO tables and macro selection index,
 and corresponding English Fluent catalog names derive from iso-codes:
 https://salsa.debian.org/iso-codes-team/iso-codes
 
 Copyright 2016 Dr. Tobias Quathamer <toddy@debian.org>
 SPDX-License-Identifier: LGPL-2.1-or-later
 
-The source revision and SHA-256 checksums are recorded in data/provenance.json.
+The source revision and SHA-256 checksums are recorded in data/iso/provenance.json.
 The original source data, editable FTL, and generator are provided in this
 repository. The LGPL license text accompanies both Cargo packages.
 
@@ -14,9 +14,9 @@ Original Rust implementation and generator code:
 Copyright 2026 Mark (stayhydated)
 SPDX-License-Identifier: MIT OR Apache-2.0
 
-English ICU-owned names in icu_english.json and generated catalog tables derive
+English ICU-owned names in data/icu/english.json and generated catalog tables derive
 from ICU4X compiled data. Provider versions and the English display locale are
-recorded in icu_english.json; Cargo.lock pins provider data packages and checksums.
+recorded in data/icu/english.json; Cargo.lock pins provider data packages and checksums.
 https://github.com/unicode-org/icu4x
 Copyright Unicode, Inc.
 SPDX-License-Identifier: Unicode-3.0
@@ -25,4 +25,4 @@ The Unicode license text accompanies both Cargo packages.
 Current-data selection uses CLDR coverage, script, validity, alias, and currency
 metadata under the Unicode license, plus current ISO 4217 code facts published
 by SIX. Retrieval dates, releases, URLs, and checksums are recorded in
-crates/iso-types-macros/data/current/provenance.json in the repository.
+data/current/provenance.json in the repository.

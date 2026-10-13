@@ -1,8 +1,7 @@
 //! Attribute macros re-exported by `iso-types`.
 use proc_macro::TokenStream;
 mod catalog;
-#[cfg(feature = "locales")]
-mod current;
+mod enum_input;
 #[cfg(feature = "locales")]
 mod locale;
 

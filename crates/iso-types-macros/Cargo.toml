@@ -6,7 +6,6 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-exclude = ["data/iso_*.json", "data/icu_english.json", "data/current/**"]
 
 [lib]
 proc-macro = true

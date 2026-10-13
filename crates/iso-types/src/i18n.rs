@@ -6,7 +6,8 @@ use es_fluent_manager_core::{
 use fluent_bundle::{FluentResource, concurrent::FluentBundle};
 use std::sync::OnceLock;
 
-include!("resources.rs");
+mod resources;
+use resources::{ENGLISH_RESOURCES, icu_english_name};
 
 static DATA: ModuleData = ModuleData {
     name: "iso-types",
