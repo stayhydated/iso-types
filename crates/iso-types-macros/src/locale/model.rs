@@ -5,10 +5,10 @@ use std::collections::HashSet;
 use heck::ToUpperCamelCase as _;
 use icu_locale::{LanguageIdentifier, Locale, LocaleCanonicalizer};
 use proc_macro2::{Span, TokenStream};
-use syn::{Ident, ItemEnum, LitStr, parse_quote};
+use syn::{Ident, ItemEnum, LitStr};
 use writeable::TryWriteable as _;
 
-use crate::enum_input::prepare;
+use crate::enum_input::{prepare, set_variants};
 
 pub(super) struct Model {
     pub input: ItemEnum,
@@ -142,10 +142,7 @@ impl Model {
             codes.push(LitStr::new(&code, span));
             labels.push(LitStr::new(&english_label(canonical, span)?, span));
         }
-        input.variants = variants
-            .iter()
-            .map(|ident| -> syn::Variant { parse_quote!(#ident) })
-            .collect();
+        set_variants(&mut input, &variants, &codes);
         Ok(Self {
             input,
             custom,
@@ -160,6 +157,7 @@ impl Model {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use syn::parse_quote;
 
     #[test]
     fn configured_locales_require_current_canonical_identifiers_with_icu_names() {

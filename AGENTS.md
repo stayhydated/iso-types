@@ -28,9 +28,14 @@ public packages. The macro crate's `src/catalog/data.json` is a generated select
 index; labels and metadata remain owned by the facade's catalog tables.
 `src/i18n/resources.rs` is generated registration glue.
 
-Catalogs and macro-generated enums derive Strum's `VariantArray`. The facade
-re-exports the trait and Strum; use `VARIANTS` for constant enumeration. Macro
-derives resolve their Strum path through the caller's facade dependency name.
+Catalogs and macro-generated enums derive Strum's `VariantArray`, `EnumIter`,
+`EnumCount`, `FromRepr`, and `IntoStaticStr`. The facade re-exports Strum and
+the enumeration traits; use `VARIANTS`, `iter()`, and `COUNT`. Canonical codes
+use `const_into_str`; `from_repr()` follows zero-based declaration ordinals.
+Macro derives resolve their Strum path through the caller's facade dependency
+name. Maintained catalogs derive `EnumString` with explicit canonical codes,
+unique aliases, and `ParseIsoCodeError`. The `3166-2` feature enables Strum PHF
+parsing after benchmarking it against binary search.
 
 ## Data and labels
 

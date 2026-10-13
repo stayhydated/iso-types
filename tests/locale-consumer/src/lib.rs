@@ -12,9 +12,12 @@ pub enum AllLanguages {}
 const CONFIGURED_LOCALES: &[Languages] = <Languages as codes::VariantArray>::VARIANTS;
 
 #[cfg(test)]
+const CONFIGURED_DEFAULT_CODE: &str = Languages::EnUs.into_str();
+
+#[cfg(test)]
 mod tests {
     use super::*;
-    use codes::VariantArray as _;
+    use codes::{EnumCount as _, IntoEnumIterator as _, VariantArray as _};
     use es_fluent::FluentMessage;
     use es_fluent_manager_core::I18nModuleRegistration;
 
@@ -22,6 +25,14 @@ mod tests {
     fn renamed_facade_supports_both_macros_and_locale_conversions() {
         assert_eq!(Languages::default(), Languages::EnUs);
         assert_eq!(CONFIGURED_LOCALES.len(), 4);
+        assert_eq!(Languages::COUNT, 4);
+        assert_eq!(Languages::iter().collect::<Vec<_>>(), CONFIGURED_LOCALES);
+        assert_eq!(Languages::from_repr(0), Some(Languages::En));
+        assert_eq!(Languages::from_repr(4), None);
+        assert_eq!(CONFIGURED_DEFAULT_CODE, "en-US");
+        for &locale in CONFIGURED_LOCALES {
+            assert_eq!(Into::<&'static str>::into(locale), locale.code());
+        }
         assert_eq!("fr-fr".parse::<Languages>().unwrap(), Languages::FrFr);
         assert_eq!("eng-US".parse::<Languages>().unwrap(), Languages::EnUs);
         assert_eq!(
@@ -111,8 +122,14 @@ mod hygiene {
     type Result = ();
 
     #[codes::iso_enum(standard = "639-1", codes = ["en", "fr"])]
-    #[derive(codes::strum::VariantArray, codes::strum::EnumIter)]
-    #[strum(crate = "::codes::strum")]
+    #[derive(
+        codes::strum::VariantArray,
+        codes::strum::EnumIter,
+        codes::strum::EnumCount,
+        codes::strum::FromRepr,
+        codes::strum::IntoStaticStr,
+    )]
+    #[strum(crate = "::codes::strum", const_into_str)]
     pub enum PickerLanguages {}
 
     #[codes::iso_locale]
@@ -125,7 +142,7 @@ mod hygiene {
 
     #[test]
     fn application_names_do_not_capture_generated_traits_or_types() {
-        use codes::{VariantArray as _, strum::IntoEnumIterator as _};
+        use codes::{EnumCount as _, IntoEnumIterator as _, VariantArray as _};
         let _: (String, Result) = ((), ());
         assert_eq!(
             PickerLanguages::VARIANTS,
@@ -136,6 +153,11 @@ mod hygiene {
             PickerLanguages::VARIANTS
         );
         assert_eq!(ConfiguredLanguages::VARIANTS.len(), 4);
+        assert_eq!(PickerLanguages::COUNT, 2);
+        assert_eq!(PickerLanguages::from_repr(1), Some(PickerLanguages::Fr));
+        assert_eq!(PickerLanguages::Fr.into_str(), "fr");
+        assert_eq!(ConfiguredLanguages::COUNT, 4);
+        assert_eq!(ConfiguredLanguages::EnUs.into_str(), "en-US");
         assert_eq!(
             "en".parse::<PickerLanguages>().unwrap(),
             PickerLanguages::En

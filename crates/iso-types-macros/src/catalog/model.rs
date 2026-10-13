@@ -7,7 +7,7 @@ use syn::{
     Ident, ItemEnum, LitStr, Token, parse::Parser as _, parse_quote, punctuated::Punctuated,
 };
 
-use crate::enum_input::prepare;
+use crate::enum_input::{prepare, set_variants};
 
 use super::data;
 
@@ -16,7 +16,6 @@ pub(super) struct Model {
     pub standard: LitStr,
     pub type_name: Ident,
     pub variants: Vec<Ident>,
-    pub codes: Vec<LitStr>,
     pub complete: bool,
 }
 
@@ -80,20 +79,16 @@ impl Model {
             .iter()
             .map(|entry| syn::parse_str::<Ident>(&entry.variant))
             .collect::<syn::Result<Vec<_>>>()?;
-        input.variants = variants
-            .iter()
-            .map(|variant| -> syn::Variant { parse_quote!(#variant) })
-            .collect();
-        let codes = selected
+        let codes: Vec<_> = selected
             .iter()
             .map(|entry| LitStr::new(&entry.code, standard.span()))
             .collect();
+        set_variants(&mut input, &variants, &codes);
         Ok(Self {
             input,
             standard,
             type_name: syn::parse_str(&catalog.type_name)?,
             variants,
-            codes,
             complete: selected.len() == catalog.entries.len(),
         })
     }

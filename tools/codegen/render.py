@@ -26,16 +26,12 @@ def string_table(method: str, values: list[str | None], *, optional: bool = Fals
 def catalog_rust(catalog: Catalog) -> str:
     spec, entries = catalog.spec, catalog.entries
     name = spec.type_name
-    variants = "".join(
-        f"    /// {markdown(entry.name)} (`{entry.code}`).\n    {entry.variant},\n"
-        for entry in entries
-    )
     methods = []
     fields = sorted({field for entry in entries for field in entry.metadata})
     for field in fields:
         method = "kind" if field == "type" else field
         methods.append(string_table(method, [entry.metadata.get(field) for entry in entries], optional=True))
-    for method, field in (("code", "code"), ("english_name", "name"), ("message_id", "message_id")):
+    for method, field in (("english_name", "name"), ("message_id", "message_id")):
         methods.append(string_table(method, [getattr(entry, field) for entry in entries]))
     candidates = defaultdict(set)
     for entry in entries:
@@ -44,13 +40,25 @@ def catalog_rust(catalog: Catalog) -> str:
     codes = {entry.code for entry in entries}
     aliases = {alias: next(iter(variants)) for alias, variants in candidates.items()
                if alias not in codes and len(variants) == 1}
-    parse_aliases = ""
-    if aliases:
-        arms = "".join(f"            {literal(alias)} => return Ok(Self::{variant}),\n"
-                       for alias, variant in sorted(aliases.items()))
-        parse_aliases = f"        match input {{\n{arms}            _ => {{}}\n        }}\n"
+    variant_aliases = defaultdict(list)
+    for alias, variant in sorted(aliases.items()):
+        variant_aliases[variant].append(alias)
+    variants = "".join(
+        f"    /// {markdown(entry.name)} (`{entry.code}`).\n"
+        f"    #[strum(to_string = {literal(entry.code)}"
+        + "".join(f", serialize = {literal(alias)}" for alias in variant_aliases[entry.variant])
+        + f")]\n    {entry.variant},\n"
+        for entry in entries
+    )
+    # The subdivision catalog's PHF path is measured against the binary-search baseline.
+    parser = "#[strum(use_phf)]\n" if spec.standard == "3166-2" else ""
     return GENERATED + f"""/// Assigned codes in ISO {spec.standard}; English labels are owned by {spec.authority}.
-#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd, strum::VariantArray)]
+/// `from_repr()` accepts a zero-based catalog ordinal; parse ISO numeric codes as strings.
+#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd,
+    strum::VariantArray, strum::EnumIter, strum::EnumCount, strum::FromRepr,
+    strum::EnumString, strum::IntoStaticStr)]
+#[strum(const_into_str, parse_err_ty = crate::ParseIsoCodeError, parse_err_fn = Self::parse_error)]
+{parser}\
 #[repr(u16)]
 pub enum {name} {{
 {variants}}}
@@ -58,19 +66,11 @@ pub enum {name} {{
 impl {name} {{
     pub const STANDARD: &'static str = {literal(spec.standard)};
     pub const LABEL_SOURCE: crate::LabelSource = crate::LabelSource::{spec.authority};
-{''.join(methods)}}}
-
-impl std::str::FromStr for {name} {{
-    type Err = crate::ParseIsoCodeError;
-
-    fn from_str(input: &str) -> Result<Self, Self::Err> {{
-        let variants = <Self as strum::VariantArray>::VARIANTS;
-        if let Ok(index) = variants.binary_search_by(|entry| entry.code().cmp(input)) {{
-            return Ok(variants[index]);
-        }}
-{parse_aliases}        Err(crate::ParseIsoCodeError {{ standard: Self::STANDARD, input: input.to_owned() }})
+    pub const fn code(self) -> &'static str {{ self.into_str() }}
+    fn parse_error(input: &str) -> crate::ParseIsoCodeError {{
+        crate::ParseIsoCodeError {{ standard: Self::STANDARD, input: input.to_owned() }}
     }}
-}}
+{''.join(methods)}}}
 
 impl crate::IsoCode for {name} {{
     const STANDARD: &'static str = Self::STANDARD;

@@ -1,6 +1,19 @@
 use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
-use syn::{ItemEnum, LitStr, Meta, Path, Token, parse_quote, punctuated::Punctuated};
+use syn::{Ident, ItemEnum, LitStr, Meta, Path, Token, parse_quote, punctuated::Punctuated};
+
+pub(crate) fn set_variants(input: &mut ItemEnum, variants: &[Ident], codes: &[LitStr]) {
+    input.variants = variants
+        .iter()
+        .zip(codes)
+        .map(|(variant, code)| -> syn::Variant {
+            parse_quote!(#[strum(to_string = #code)] #variant)
+        })
+        .collect();
+    input.attrs.push(parse_quote!(
+        #[doc = "`from_repr()` accepts a zero-based declaration ordinal. Use parsing for ISO codes and locale tags."]
+    ));
+}
 
 pub(crate) fn facade() -> TokenStream {
     use proc_macro_crate::{FoundCrate, crate_name};
@@ -53,6 +66,10 @@ pub(crate) fn prepare(input: &mut ItemEnum) -> syn::Result<()> {
         ("Hash", parse_quote!(::core::hash::Hash)),
         ("PartialEq", parse_quote!(::core::cmp::PartialEq)),
         ("VariantArray", parse_quote!(#root::strum::VariantArray)),
+        ("EnumIter", parse_quote!(#root::strum::EnumIter)),
+        ("EnumCount", parse_quote!(#root::strum::EnumCount)),
+        ("FromRepr", parse_quote!(#root::strum::FromRepr)),
+        ("IntoStaticStr", parse_quote!(#root::strum::IntoStaticStr)),
     ]
     .into_iter()
     .filter(|(name, _)| !seen.contains(*name))
@@ -62,14 +79,29 @@ pub(crate) fn prepare(input: &mut ItemEnum) -> syn::Result<()> {
         input.attrs.push(parse_quote!(#[derive(#(#derives),*)]));
     }
     let mut has_strum_path = false;
+    let mut has_const_into_str = false;
     for attr in &strum_attrs {
         let options = attr.parse_args_with(Punctuated::<Meta, Token![,]>::parse_terminated)?;
+        for option in &options {
+            if option.path().is_ident("prefix") || option.path().is_ident("suffix") {
+                return Err(syn::Error::new_spanned(
+                    option,
+                    "ISO macros own canonical codes; remove Strum prefix or suffix",
+                ));
+            }
+        }
         has_strum_path |= options.iter().any(|option| option.path().is_ident("crate"));
+        has_const_into_str |= options
+            .iter()
+            .any(|option| option.path().is_ident("const_into_str"));
     }
     input.attrs.extend(strum_attrs);
     if !has_strum_path {
         let path = LitStr::new(&quote!(#root::strum).to_string(), input.ident.span());
         input.attrs.push(parse_quote!(#[strum(crate = #path)]));
+    }
+    if !has_const_into_str {
+        input.attrs.push(parse_quote!(#[strum(const_into_str)]));
     }
     Ok(())
 }

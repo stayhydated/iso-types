@@ -13,7 +13,6 @@ pub(super) fn emit(model: &Model) -> TokenStream {
         standard,
         type_name: typename,
         variants,
-        codes,
         complete,
     } = model;
     let name = &input.ident;
@@ -47,7 +46,7 @@ pub(super) fn emit(model: &Model) -> TokenStream {
         impl #name {
             pub const STANDARD: &'static str = #standard;
             pub const fn catalog_value(self) -> #root::#typename { match self { #(#conversion_arms),* } }
-            pub const fn code(self) -> &'static str { match self { #(Self::#variants => #codes),* } }
+            pub const fn code(self) -> &'static str { self.into_str() }
             pub const LABEL_SOURCE: #root::LabelSource = #root::#typename::LABEL_SOURCE;
             pub const fn english_name(self) -> &'static str { self.catalog_value().english_name() }
         }

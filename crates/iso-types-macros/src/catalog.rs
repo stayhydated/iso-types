@@ -19,6 +19,22 @@ mod tests {
     fn invalid_declarations_report_the_input_error() {
         let cases = [
             (
+                quote!(standard = "3166-1"),
+                quote!(
+                    #[strum(prefix = "market-")]
+                    enum Codes {}
+                ),
+                "own canonical codes",
+            ),
+            (
+                quote!(standard = "3166-1"),
+                quote!(
+                    #[strum(suffix = "-market")]
+                    enum Codes {}
+                ),
+                "own canonical codes",
+            ),
+            (
                 quote!(),
                 quote!(
                     enum Codes {}

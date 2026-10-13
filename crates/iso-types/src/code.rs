@@ -15,7 +15,12 @@ impl std::error::Error for ParseIsoCodeError {}
 
 /// Shared code and label contract for maintained catalogs and declared subsets.
 pub trait IsoCode:
-    strum::VariantArray + Copy + Eq + std::str::FromStr<Err = ParseIsoCodeError>
+    strum::VariantArray
+    + strum::IntoEnumIterator
+    + strum::EnumCount
+    + Copy
+    + Eq
+    + std::str::FromStr<Err = ParseIsoCodeError>
 {
     /// The ISO standard or finite catalog identifier.
     const STANDARD: &'static str;
