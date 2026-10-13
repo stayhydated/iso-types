@@ -1,3 +1,4 @@
+#[cfg(feature = "locales")]
 use heck::ToUpperCamelCase as _;
 use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
@@ -177,6 +178,7 @@ pub(crate) fn expand(attr: TokenStream, item: TokenStream) -> syn::Result<TokenS
     })
 }
 
+#[cfg(feature = "locales")]
 pub(crate) fn locale_variant(code: &str) -> syn::Ident {
     format_ident!("{}", code.replace('-', "_").to_upper_camel_case())
 }
