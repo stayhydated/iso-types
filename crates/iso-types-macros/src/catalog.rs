@@ -19,6 +19,34 @@ mod tests {
     fn invalid_declarations_report_the_input_error() {
         let cases = [
             (
+                quote!(standard = "3166-2", country = "ZZ"),
+                quote!(
+                    enum Codes {}
+                ),
+                "unavailable country filter",
+            ),
+            (
+                quote!(standard = "3166-1", country = "US"),
+                quote!(
+                    enum Codes {}
+                ),
+                "unavailable country filter",
+            ),
+            (
+                quote!(standard = "units", category = "Length"),
+                quote!(
+                    enum Codes {}
+                ),
+                "unavailable category filter",
+            ),
+            (
+                quote!(standard = "units", category = "mass", codes = ["meter"]),
+                quote!(
+                    enum Codes {}
+                ),
+                "select no codes",
+            ),
+            (
                 quote!(standard = "3166-1"),
                 quote!(
                     #[strum(prefix = "market-")]
@@ -95,7 +123,7 @@ mod tests {
                 quote!(
                     enum Codes {}
                 ),
-                "duplicate ISO code",
+                "duplicate catalog code",
             ),
             (
                 quote!(standard = "3166-1", codes = []),

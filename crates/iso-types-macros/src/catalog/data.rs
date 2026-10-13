@@ -9,6 +9,8 @@ use syn::LitStr;
 pub(super) struct Entry {
     pub code: String,
     pub variant: String,
+    pub country: Option<String>,
+    pub category: Option<String>,
 }
 
 pub(super) struct Catalog {
@@ -39,6 +41,8 @@ fn load() -> Result<BTreeMap<String, Catalog>, String> {
                     Ok(Entry {
                         code: string(entry, "code")?,
                         variant: string(entry, "variant")?,
+                        country: entry["country"].as_str().map(str::to_owned),
+                        category: entry["category"].as_str().map(str::to_owned),
                     })
                 })
                 .collect::<Result<Vec<_>, String>>()?;

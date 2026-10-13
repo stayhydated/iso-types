@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 from .catalog import Catalog, CatalogSpec, Entry
 from .policy import CurrentData
 from .relations import variant_name
+from .unit_preferences import required_units
 
 
 COMMON_UNITS = tuple("""
@@ -30,7 +31,7 @@ def build_units(data: Path, policy: CurrentData) -> Catalog:
     entries = []
     if len(set(COMMON_UNITS)) != len(COMMON_UNITS):
         raise ValueError("duplicate selected measurement unit")
-    for code in sorted(COMMON_UNITS):
+    for code in sorted(set(COMMON_UNITS) | (required_units(data) & regular.keys())):
         long_id = regular.get(code)
         if long_id is None:
             raise ValueError(f"selected unit is outside CLDR regular validity: {code}")

@@ -2,7 +2,7 @@
 
 [![CI][ci-image]][ci]
 
-Typed ISO and measurement catalogs for Rust applications, with authoritative
+Typed ISO, geographic, and measurement catalogs for Rust applications, with authoritative
 English names and optional es-fluent messages. Choose maintained catalogs or
 declare an application-specific subset with `#[iso_enum]`. Use `#[iso_locale]`
 to generate a language picker from
@@ -59,9 +59,19 @@ provinces, territories, parents, and children. Country/currency relationships
 support shared tender and countries using several currencies. Currency metadata
 includes ICU4X formatting precision and cash rounding.
 
-Enable `units` for 87 common CLDR measurement identifiers across 16 categories.
+Enable `units` for 103 common CLDR measurement identifiers across 16 categories.
 `unit-conversion` delegates metric/customary conversions, temperature offsets,
 and reciprocal fuel economy to ICU4X. CLDR owns the unit display names.
+
+Optional country metadata covers time zones, regional defaults, language/script
+relationships, UN M49 regions, telephone calling codes, and postal address schemas.
+Jiff supplies bundled IANA transition rules; ICU4X supplies time-zone mappings and
+localized names. CLDR unit preferences retain usage-specific choices, thresholds,
+mixed units, and formatting skeletons. Phone parsing integrates with `phonenumber`.
+
+Use `#[iso_enum(standard = "3166-2", country = "US")]` to select a country's
+subdivisions, or `#[iso_enum(standard = "units", category = "length")]` to select
+a measurement category. The facade's feature table describes each optional area.
 
 [types]: crates/iso-types/README.md
 [macros]: crates/iso-types-macros/README.md

@@ -1,0 +1,37 @@
+## unit-preferences catalog
+
+iso-unit-preferences-area-default = Default area
+iso-unit-preferences-area-floor = Floor area
+iso-unit-preferences-area-geograph = Geographic area
+iso-unit-preferences-area-land = Land area
+iso-unit-preferences-consumption-default = Default consumption
+iso-unit-preferences-consumption-vehicle-fuel = Vehicle fuel consumption
+iso-unit-preferences-duration-default = Default duration
+iso-unit-preferences-duration-media = Media duration
+iso-unit-preferences-energy-default = Default energy
+iso-unit-preferences-energy-food = Food energy
+iso-unit-preferences-length-default = Default length
+iso-unit-preferences-length-focal-length = Focal length length
+iso-unit-preferences-length-person = Person length
+iso-unit-preferences-length-person-height = Person height length
+iso-unit-preferences-length-rainfall = Rainfall length
+iso-unit-preferences-length-road = Road length
+iso-unit-preferences-length-snowfall = Snowfall length
+iso-unit-preferences-length-vehicle = Vehicle length
+iso-unit-preferences-length-visiblty = Visibility length
+iso-unit-preferences-mass-default = Default mass
+iso-unit-preferences-mass-person = Person mass
+iso-unit-preferences-power-default = Default power
+iso-unit-preferences-power-engine = Engine power
+iso-unit-preferences-pressure-baromtrc = Barometric pressure
+iso-unit-preferences-pressure-default = Default pressure
+iso-unit-preferences-speed-default = Default speed
+iso-unit-preferences-speed-rainfall = Rainfall speed
+iso-unit-preferences-speed-snowfall = Snowfall speed
+iso-unit-preferences-speed-wind = Wind speed
+iso-unit-preferences-temperature-default = Default temperature
+iso-unit-preferences-temperature-weather = Weather temperature
+iso-unit-preferences-volume-default = Default volume
+iso-unit-preferences-volume-fluid = Fluid volume
+iso-unit-preferences-volume-oil = Oil volume
+iso-unit-preferences-volume-vehicle = Vehicle volume

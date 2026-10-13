@@ -10,6 +10,12 @@ from tools.codegen.policy import CurrentData, expand_range
 from tools.codegen.rust import literal
 from tools.codegen.relations import build_relations
 from tools.codegen.units import build_units
+from tools.codegen.contacts import address_rows, format_fields, phone_rows
+from tools.codegen.preferences import regional_rows
+from tools.codegen.supplemental import region_records, zone_records, build_supplemental
+from tools.codegen.unit_preferences import groups, preference_rows
+from tools.codegen.catalog import build_catalogs
+import json
 
 
 class RangeTests(unittest.TestCase):
@@ -45,7 +51,7 @@ class SelectionTests(unittest.TestCase):
         policy = CurrentData(ROOT / "data")
         units = build_units(ROOT / "data", policy)
         entries = {entry.code: entry for entry in units.entries}
-        self.assertEqual(len(entries), 87)
+        self.assertEqual(len(entries), 103)
         self.assertEqual(entries["meter"].name, "meters")
         self.assertEqual(entries["celsius"].metadata["category"], "temperature")
         self.assertNotIn("light-year", entries)
@@ -53,6 +59,7 @@ class SelectionTests(unittest.TestCase):
             root = Path(temporary)
             (root / "current").mkdir()
             (root / "current/units-en.xml").write_text("<ldml><units/></ldml>")
+            (root / "current/unitPreferences.xml").write_bytes((ROOT / "data/current/unitPreferences.xml").read_bytes())
             with self.assertRaisesRegex(ValueError, "CLDR English unit name is unavailable"):
                 build_units(root, policy)
 
@@ -92,7 +99,52 @@ class RelationshipTests(unittest.TestCase):
         ]
         for entries in cases:
             with self.subTest(codes=[entry.code for entry in entries]), self.assertRaises(ValueError):
-                build_relations(self.catalogs(entries), policy)
+                    build_relations(self.catalogs(entries), policy)
+
+
+class SupplementalTests(unittest.TestCase):
+    def test_sources_preserve_complete_relationships_and_country_defaults(self):
+        data = ROOT / "data"
+        policy = CurrentData(data)
+        snapshot = json.loads((data / "icu/english.json").read_text())
+        catalogs = build_catalogs(data, ROOT / "crates/iso-types/i18n/en/iso-types", policy, snapshot["catalogs"])
+        countries = next(c for c in catalogs if c.spec.standard == "3166-1")
+        preferences = dict(zip((e.code for e in countries.entries), regional_rows(data, countries)))
+        self.assertEqual(preferences["US"]["firstDay"], "sun")
+        self.assertEqual(preferences["GB"]["minDays"], "4")
+        self.assertEqual(preferences["MM"]["temperature"], "metric")
+        records = region_records(data)
+        self.assertEqual(records["014"]["parent"], "202")
+        self.assertEqual(records["202"]["parent"], "002")
+        self.assertEqual(records["001"]["parent"], None)
+        zones = zone_records(data)
+        self.assertIn("US", zones["America/New_York"])
+        self.assertEqual(zones["Etc/UTC"], ())
+        for catalog in build_supplemental(data, snapshot):
+            for field in ("code", "variant", "message_id"):
+                self.assertEqual(len(catalog.entries), len({getattr(e, field) for e in catalog.entries}))
+
+    def test_address_template_literals_and_new_landmark_fields_are_preserved(self):
+        self.assertEqual(format_fields("%N%n%A%n%C %S %Z"), ["N", "A", "C", "S", "Z"])
+        self.assertEqual(format_fields("%N%n%A%n%X%n%C%nGUERNSEY%n%Z"), ["N", "A", "X", "C", "Z"])
+        with self.assertRaisesRegex(ValueError, "unknown address placeholder"):
+            format_fields("%?")
+        rows = address_rows(ROOT / "data")
+        self.assertEqual(len(rows), 249)
+        self.assertEqual(rows["MY"]["sublocality_name_type"], "village_township")
+        self.assertTrue({"T", "F", "L"} <= set(rows["IN"]["fields"]))
+        self.assertEqual(rows["SY"]["require"], "AC")
+
+    def test_preference_rows_retain_order_mixed_units_and_world_defaults(self):
+        data = ROOT / "data"
+        height = next(g for g in groups(data) if g.get("usage") == "person-height")
+        rows = preference_rows(height)
+        self.assertEqual(rows["US"][0], (("foot", "inch"), 3.0, None))
+        self.assertEqual(rows["001"][0][0], ("centimeter",))
+        phone = phone_rows(data)
+        regions = {r.get("id"): r.get("countryCode") for r in phone if r.get("id") != "001"}
+        self.assertEqual(regions["US"], regions["CA"])
+        self.assertEqual(regions["KZ"], regions["RU"])
 
 
 class OutputTests(unittest.TestCase):

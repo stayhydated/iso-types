@@ -17,6 +17,21 @@ pub enum DeliveryAreas {}
 #[codes::iso_enum(standard = "units", codes = ["meter", "foot"])]
 pub enum Distances {}
 
+#[codes::iso_enum(standard = "3166-2", country = "US")]
+pub enum UsSubdivisions {}
+
+#[codes::iso_enum(standard = "units", category = "length")]
+pub enum LengthUnits {}
+
+#[codes::iso_enum(standard = "unit-preferences", category = "temperature")]
+pub enum TemperatureUsages {}
+
+#[codes::iso_enum(standard = "time-zones", codes = ["America/New_York", "Etc/UTC"])]
+pub enum Zones {}
+
+#[codes::iso_enum(standard = "calling-codes", codes = ["+1", "+44"])]
+pub enum PhonePrefixes {}
+
 #[cfg(test)]
 const CONFIGURED_LOCALES: &[Languages] = <Languages as codes::VariantArray>::VARIANTS;
 
@@ -29,6 +44,35 @@ mod tests {
     use codes::{EnumCount as _, IntoEnumIterator as _, VariantArray as _};
     use es_fluent::FluentMessage;
     use es_fluent_manager_core::I18nModuleRegistration;
+
+    #[test]
+    fn country_and_category_filters_work_through_the_renamed_facade() {
+        assert_eq!(UsSubdivisions::COUNT, 51);
+        assert!(
+            UsSubdivisions::VARIANTS
+                .iter()
+                .all(|v| v.catalog_value().country() == codes::Iso3166_1::Us)
+        );
+        assert!("CA-QC".parse::<UsSubdivisions>().is_err());
+        assert!(
+            LengthUnits::VARIANTS
+                .iter()
+                .all(|v| v.catalog_value().category() == codes::UnitCategory::Length)
+        );
+        assert!("kilogram".parse::<LengthUnits>().is_err());
+        assert_eq!(TemperatureUsages::COUNT, 2);
+        assert_eq!(PhonePrefixes::C1.catalog_value().number(), 1);
+        assert_eq!(Zones::AmericaNewYork.catalog_value().bcp47(), Some("usnyc"));
+        let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
+            .find(|entry| entry.data().owner == "iso-types")
+            .unwrap();
+        let localizer = module.create_localizer().unwrap();
+        assert_eq!(
+            Zones::AmericaNewYork
+                .to_fluent_string_with(&mut |key, _| localizer.localize(key, None).unwrap()),
+            Zones::AmericaNewYork.english_name()
+        );
+    }
 
     #[test]
     fn renamed_facade_supports_currency_geography_and_measurement_subsets() {

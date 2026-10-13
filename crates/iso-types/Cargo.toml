@@ -1,6 +1,6 @@
 [package]
 name = "iso-types"
-description = "Typed ISO and measurement catalogs, English labels, and optional es-fluent integration"
+description = "Typed ISO, geographic, and regional catalogs with optional ICU4X, Jiff, and es-fluent integration"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
@@ -30,6 +30,13 @@ full = [
   "5218",
   "8601",
   "units",
+  "regions",
+  "regional-preferences",
+  "unit-preferences",
+  "language-relations",
+  "time-zones",
+  "calling-codes",
+  "addresses",
 ]
 fmt = []
 macros = ["dep:iso-types-macros"]
@@ -60,6 +67,21 @@ locales = [
 8601 = []
 units = []
 unit-conversion = ["units", "dep:icu_experimental"]
+regions = ["3166-1"]
+regional-preferences = ["3166-1", "8601", "icu"]
+unit-preferences = ["units", "3166-1"]
+language-relations = ["639-1", "3166-1", "15924", "icu"]
+time-zones = ["3166-1", "dep:jiff"]
+time-zone-localization = [
+  "time-zones",
+  "icu",
+  "dep:icu_time",
+  "dep:icu_datetime",
+  "dep:writeable",
+]
+calling-codes = ["3166-1"]
+phone-numbers = ["calling-codes", "dep:phonenumber"]
+addresses = ["3166-1"]
 
 [dependencies]
 strum = { workspace = true }
@@ -74,6 +96,10 @@ icu_calendar = { workspace = true, optional = true }
 writeable = { workspace = true, optional = true }
 icu_provider = { workspace = true, optional = true }
 icu_experimental = { workspace = true, optional = true }
+icu_time = { workspace = true, optional = true }
+icu_datetime = { workspace = true, optional = true }
+jiff = { workspace = true, optional = true }
+phonenumber = { workspace = true, optional = true }
 
 [dev-dependencies]
 fluent-syntax = { workspace = true }

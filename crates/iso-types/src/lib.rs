@@ -12,6 +12,36 @@ pub use strum::{EnumCount, IntoEnumIterator, VariantArray};
 pub use catalogs::*;
 
 mod geography;
+mod supplemental;
+#[cfg(feature = "time-zones")]
+mod time_zone;
+#[cfg(feature = "time-zones")]
+pub use jiff;
+#[cfg(feature = "time-zone-localization")]
+pub use {icu_datetime, icu_time};
+#[cfg(feature = "regional-preferences")]
+mod regional;
+#[cfg(feature = "regional-preferences")]
+pub use regional::{
+    CalendarAlgorithm, HijriCalendarAlgorithm, HourCycle, MeasurementSystem, PaperSize,
+    RegionalPreferences, WeekPreferences,
+};
+#[cfg(feature = "unit-preferences")]
+mod unit_preferences;
+#[cfg(feature = "unit-preferences")]
+pub use unit_preferences::{PreferredUnit, UnitPreference};
+#[cfg(feature = "language-relations")]
+mod language_relations;
+#[cfg(feature = "language-relations")]
+pub use language_relations::{LanguageStatus, LanguageUsage};
+#[cfg(feature = "calling-codes")]
+mod telephone;
+#[cfg(feature = "phone-numbers")]
+pub use phonenumber;
+#[cfg(feature = "addresses")]
+mod address;
+#[cfg(feature = "addresses")]
+pub use address::{AddressLabelOverride, AddressMetadata};
 #[cfg(feature = "3166-2")]
 pub use geography::SubdivisionKind;
 

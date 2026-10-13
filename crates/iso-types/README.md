@@ -1,6 +1,6 @@
 # iso-types
 
-Use `iso-types` for typed ISO and measurement catalogs, application-specific
+Use `iso-types` for typed ISO, geographic, and measurement catalogs, application-specific
 subsets, and configured locale enums. Every catalog supplies constant enumeration,
 iteration, variant counts, canonical `code()`,
 `english_name()`, parsing, and applicable metadata. ICU4X owns English names for
@@ -21,7 +21,7 @@ The ICU integration pins ICU4X 2.3; its locale-name APIs are upstream unstable.
 | `icu` | Yes | ICU locale/calendar re-exports and typed ISO conversions. |
 | `locales` | No | ICU locale parsing and naming; re-export `iso_locale` and Fluent-facing `LanguageIdentifier`/`langid`. |
 | `fluent` | No | `FluentMessage` and English utility registration using ICU names or owned FTL. |
-| `full` | No | Enable every catalog below. |
+| `full` | No | Enable all catalogs and regional relationships, including Jiff zone rules. |
 | `639-1` | Yes | `Iso6391`: current languages with two-letter identifiers. |
 | `639-2` | No | `Iso6392`: current languages with three-letter identifiers. |
 | `639-3` | No | `Iso6393`: current living languages, scope, and kind. |
@@ -31,8 +31,17 @@ The ICU integration pins ICU4X 2.3; its locale-name APIs are upstream unstable.
 | `15924` | Yes | `Iso15924`: recommended modern scripts and numeric representations. |
 | `5218` | Yes | `Iso5218`: human sex interchange codes. |
 | `8601` | Yes | `Iso8601Weekday` and `Iso8601Month`: numbered weekdays and months. |
-| `units` | No | `MeasurementUnit` and `UnitCategory`: 87 common CLDR measurement identifiers and English names; included by `full`. |
+| `units` | No | `MeasurementUnit` and `UnitCategory`: 103 common CLDR measurement identifiers and English names. |
 | `unit-conversion` | No | Enable `units` and ICU4X unit conversion, including temperature offsets and reciprocal fuel economy. |
+| `regions` | No | `GeographicRegion`: 30 UN M49 regions, hierarchy, and country associations; enable `3166-1`. |
+| `regional-preferences` | No | Week, calendar, hour-cycle, measurement-system, and paper-size defaults; enable `3166-1`, `8601`, and `icu`. |
+| `unit-preferences` | No | `UnitUsage`: 35 CLDR usage categories with ranked and mixed-unit choices; enable `units` and `3166-1`. |
+| `language-relations` | No | Language/country/script associations, population metadata, and ICU directionality; enable `639-1`, `3166-1`, `15924`, and `icu`. |
+| `time-zones` | No | `TimeZoneId`: 419 IANA location zones and UTC, country associations, and Jiff's bundled rules; enable `3166-1`. |
+| `time-zone-localization` | No | ICU time-zone conversions and localized location names; enable `time-zones` and `icu`. |
+| `calling-codes` | No | `CallingCode`: 215 telephone prefixes, country associations, and global service prefixes; enable `3166-1`. |
+| `phone-numbers` | No | Re-export `phonenumber` and convert country identifiers for parsing and validation; enable `calling-codes`. |
+| `addresses` | No | Address templates, required fields, postal data, typed Fluent labels, and language overrides; enable `3166-1`. |
 
 Parsing is case-sensitive for ISO catalogs and accepts unique alternate codes,
 including numeric and current alpha-code representations. ICU conversions
@@ -137,8 +146,66 @@ Incompatible conversions return `UnitConversionError` with the source and target
 Unit categories group the catalog; compatibility follows ICU's physical
 dimensions. ICU4X's unit APIs use the pinned experimental 0.6 release.
 
+With `full`, query regional data using the same country identifiers:
+
+```rust
+# #[cfg(feature = "full")] {
+use iso_types::{AddressField, AddressFieldLabel, CallingCode, GeographicRegion,
+    Iso3166_1, Iso6391, Iso15924, Iso8601Weekday, TimeZoneId, UnitUsage};
+
+assert_eq!(Iso3166_1::Us.regional_preferences().week.first_weekday, Iso8601Weekday::Sunday);
+assert_eq!(Iso3166_1::Us.geographic_region(), Some(GeographicRegion::NorthernAmerica));
+assert!(Iso3166_1::Ca.languages().contains(&Iso6391::Fr));
+assert!(Iso6391::Sr.scripts().contains(&Iso15924::Latn));
+assert!(CallingCode::C1.countries().contains(&Iso3166_1::Ca));
+let address = Iso3166_1::Us.address_metadata().expect("pinned US address schema");
+assert_eq!(address.field_label(AddressField::AdministrativeArea), AddressFieldLabel::State);
+let weather = Iso3166_1::Us.unit_preferences(UnitUsage::TemperatureWeather);
+assert_eq!(weather[0].units[0].code(), "fahrenheit");
+let instant = "2026-07-15T12:00Z".parse()?;
+assert_eq!(TimeZoneId::AmericaNewYork.at(instant)?.offset().seconds(), -4 * 3600);
+# }
+# Ok::<(), Box<dyn std::error::Error>>(())
+```
+
+`TimeZoneId::time_zone()` exposes Jiff's transition and ambiguity-resolution APIs.
+Use `to_ambiguous_zoned()` to resolve DST gaps and overlaps explicitly.
+`time-zone-localization` adds ICU identity conversions and
+`localized_name(&locale)`. English catalog names use ICU location formatting.
+
+`regional_preferences()` returns CLDR country defaults using ICU calendar,
+hour-cycle, and measurement-system types. Explicit user preferences take precedence.
+`geographic_regions()` returns the UN M49 chain from World to the most specific
+recorded region; `geographic_region()` returns an `Option`. Regions supply
+`parent()`, `children()`, and `countries()`.
+
+Language `scripts()`/`countries()` and script `languages()` navigate associations
+within the common scope. Country `language_usage()` preserves estimated functional
+population, including second-language users, and CLDR's practical government-use
+status. Features `639-2`/`639-3` add country `languages_6392()`/`languages_6393()`
+and reverse lookups. Script `direction()` delegates to ICU4X.
+
+`unit_preferences(usage)` returns ranked choices with ordered mixed-unit
+components, thresholds in the largest component, and formatting skeletons. The
+final choice handles smaller quantities. `PreferredUnit::catalog_unit()` identifies
+named catalog units; `icu_unit()` parses every component with `unit-conversion`.
+Apply the skeleton's rounding when choosing units for display.
+
+Country `calling_codes()` and prefix `countries()` preserve shared prefixes and
+global services. With `phone-numbers`, convert a country to
+`phonenumber::country::Id` using `TryFrom`, then use `parse()` and `is_valid()`.
+
+`address_metadata()` provides native/Latin templates, required fields, and postal
+data. `fields` preserves native field order; `uses_postal_code()` reports usage.
+`field_label()` returns a typed Fluent label such as State, Province, or Eircode.
+`label_override(field, language)` retrieves exact upstream language overrides and
+structured field labels. Postal patterns use Java-compatible regular expressions.
+
 Enable the corresponding catalog feature before declaring a subset. Omit
-`codes` to generate all catalog variants. Macros add `Clone`, `Copy`, `Debug`,
+`codes` to generate all catalog variants. `country = "US"` filters `3166-2`;
+`category = "length"` filters `units` and `unit-preferences`. Filters intersect
+with explicit `codes`; an empty result is an error. Macros add `Clone`, `Copy`,
+`Debug`,
 `Eq`, `Hash`, `PartialEq`, and Strum's `VariantArray`, `EnumIter`, `EnumCount`,
 `FromRepr`, and `IntoStaticStr`; additional derives remain caller-owned.
 Import `iso_types::{VariantArray, IntoEnumIterator, EnumCount}` for `VARIANTS`,

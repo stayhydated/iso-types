@@ -25,6 +25,7 @@ subtag_conversion!("639-2", Iso6392, icu_locale::subtags::Language);
 subtag_conversion!("639-3", Iso6393, icu_locale::subtags::Language);
 subtag_conversion!("3166-1", Iso3166_1, icu_locale::subtags::Region);
 subtag_conversion!("15924", Iso15924, icu_locale::subtags::Script);
+subtag_conversion!("regions", GeographicRegion, icu_locale::subtags::Region);
 
 #[cfg(feature = "3166-2")]
 impl From<crate::Iso3166_2> for icu_locale::extensions::unicode::SubdivisionId {

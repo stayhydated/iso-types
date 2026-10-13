@@ -19,12 +19,16 @@ class CatalogSpec:
 
     @property
     def feature(self) -> str:
+        if self.standard in {"address-fields", "address-labels"}:
+            return "addresses"
         return "8601" if self.standard.startswith("8601-") else self.standard
 
     @property
     def module(self) -> str:
         if self.standard == "units":
             return "measurement_unit"
+        if self.standard in {"regions", "time-zones", "unit-preferences", "calling-codes", "address-fields", "address-labels"}:
+            return self.standard.replace("-", "_")
         return "iso_" + self.standard.replace("-", "_")
 
     @property

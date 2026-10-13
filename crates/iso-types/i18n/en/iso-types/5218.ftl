@@ -1,4 +1,4 @@
-## ISO 5218
+## 5218 catalog
 
 iso-5218-0 = Not known
 iso-5218-1 = Male

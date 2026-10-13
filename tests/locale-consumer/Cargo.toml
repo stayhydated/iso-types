@@ -11,6 +11,9 @@ codes = { package = "iso-types", path = "../../crates/iso-types", features = [
   "3166-2",
   "units",
   "unit-conversion",
+  "full",
+  "time-zone-localization",
+  "phone-numbers",
 ] }
 es-fluent = { workspace = true }
 es-fluent-manager-core = { workspace = true }

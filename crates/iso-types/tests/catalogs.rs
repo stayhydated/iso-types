@@ -66,7 +66,13 @@ catalog_test!("15924", scripts, Iso15924, 34);
 catalog_test!("5218", sex_codes, Iso5218, 4);
 catalog_test!("8601", weekdays, Iso8601Weekday, 7);
 catalog_test!("8601", months, Iso8601Month, 12);
-catalog_test!("units", measurement_units, MeasurementUnit, 87);
+catalog_test!("units", measurement_units, MeasurementUnit, 103);
+catalog_test!("regions", geographic_regions, GeographicRegion, 30);
+catalog_test!("time-zones", time_zones, TimeZoneId, 419);
+catalog_test!("unit-preferences", unit_usages, UnitUsage, 35);
+catalog_test!("calling-codes", calling_codes, CallingCode, 215);
+catalog_test!("addresses", address_fields, AddressField, 11);
+catalog_test!("addresses", address_labels, AddressFieldLabel, 29);
 
 macro_rules! alias_test {
     ($feature:literal, $name:ident, $kind:ident, $($getter:ident),+) => {
@@ -194,6 +200,12 @@ fn fluent_catalogs_match_every_english_display_label_and_keep_owner_scoping() {
     check!("8601", Iso8601Weekday);
     check!("8601", Iso8601Month);
     check!("units", MeasurementUnit);
+    check!("regions", GeographicRegion);
+    check!("time-zones", TimeZoneId);
+    check!("unit-preferences", UnitUsage);
+    check!("calling-codes", CallingCode);
+    check!("addresses", AddressField);
+    check!("addresses", AddressFieldLabel);
     let foreign = es_fluent::registry::__macro::static_message_key(
         "other-owner",
         es_fluent::registry::__macro::static_domain("iso-types"),

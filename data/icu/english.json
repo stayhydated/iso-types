@@ -10353,10 +10353,1721 @@
     }
   },
   "display_locale": "en",
+  "regions": {
+    "001": "world",
+    "002": "Africa",
+    "005": "South America",
+    "009": "Oceania",
+    "011": "Western Africa",
+    "013": "Central America",
+    "014": "Eastern Africa",
+    "015": "Northern Africa",
+    "017": "Middle Africa",
+    "018": "Southern Africa",
+    "019": "Americas",
+    "021": "Northern America",
+    "029": "Caribbean",
+    "030": "Eastern Asia",
+    "034": "Southern Asia",
+    "035": "Southeast Asia",
+    "039": "Southern Europe",
+    "053": "Australasia",
+    "054": "Melanesia",
+    "057": "Micronesian Region",
+    "061": "Polynesia",
+    "142": "Asia",
+    "143": "Central Asia",
+    "145": "Western Asia",
+    "150": "Europe",
+    "151": "Eastern Europe",
+    "154": "Northern Europe",
+    "155": "Western Europe",
+    "202": "Sub-Saharan Africa",
+    "419": "Latin America"
+  },
   "source": "https://github.com/unicode-org/icu4x",
+  "time_zones": {
+    "Africa/Abidjan": {
+      "bcp47": "ciabj",
+      "name": "Côte d’Ivoire Time"
+    },
+    "Africa/Accra": {
+      "bcp47": "ghacc",
+      "name": "Ghana Time"
+    },
+    "Africa/Addis_Ababa": {
+      "bcp47": "etadd",
+      "name": "Ethiopia Time"
+    },
+    "Africa/Algiers": {
+      "bcp47": "dzalg",
+      "name": "Algeria Time"
+    },
+    "Africa/Asmara": {
+      "bcp47": "erasm",
+      "name": "Eritrea Time"
+    },
+    "Africa/Bamako": {
+      "bcp47": "mlbko",
+      "name": "Mali Time"
+    },
+    "Africa/Bangui": {
+      "bcp47": "cfbgf",
+      "name": "Central African Republic Time"
+    },
+    "Africa/Banjul": {
+      "bcp47": "gmbjl",
+      "name": "Gambia Time"
+    },
+    "Africa/Bissau": {
+      "bcp47": "gwoxb",
+      "name": "Guinea-Bissau Time"
+    },
+    "Africa/Blantyre": {
+      "bcp47": "mwblz",
+      "name": "Malawi Time"
+    },
+    "Africa/Brazzaville": {
+      "bcp47": "cgbzv",
+      "name": "Congo - Brazzaville Time"
+    },
+    "Africa/Bujumbura": {
+      "bcp47": "bibjm",
+      "name": "Burundi Time"
+    },
+    "Africa/Cairo": {
+      "bcp47": "egcai",
+      "name": "Egypt Time"
+    },
+    "Africa/Casablanca": {
+      "bcp47": "macas",
+      "name": "Morocco Time"
+    },
+    "Africa/Ceuta": {
+      "bcp47": "esceu",
+      "name": "Ceuta Time"
+    },
+    "Africa/Conakry": {
+      "bcp47": "gncky",
+      "name": "Guinea Time"
+    },
+    "Africa/Dakar": {
+      "bcp47": "sndkr",
+      "name": "Senegal Time"
+    },
+    "Africa/Dar_es_Salaam": {
+      "bcp47": "tzdar",
+      "name": "Tanzania Time"
+    },
+    "Africa/Djibouti": {
+      "bcp47": "djjib",
+      "name": "Djibouti Time"
+    },
+    "Africa/Douala": {
+      "bcp47": "cmdla",
+      "name": "Cameroon Time"
+    },
+    "Africa/El_Aaiun": {
+      "bcp47": "eheai",
+      "name": "Western Sahara Time"
+    },
+    "Africa/Freetown": {
+      "bcp47": "slfna",
+      "name": "Sierra Leone Time"
+    },
+    "Africa/Gaborone": {
+      "bcp47": "bwgbe",
+      "name": "Botswana Time"
+    },
+    "Africa/Harare": {
+      "bcp47": "zwhre",
+      "name": "Zimbabwe Time"
+    },
+    "Africa/Johannesburg": {
+      "bcp47": "zajnb",
+      "name": "South Africa Time"
+    },
+    "Africa/Juba": {
+      "bcp47": "ssjub",
+      "name": "South Sudan Time"
+    },
+    "Africa/Kampala": {
+      "bcp47": "ugkla",
+      "name": "Uganda Time"
+    },
+    "Africa/Khartoum": {
+      "bcp47": "sdkrt",
+      "name": "Sudan Time"
+    },
+    "Africa/Kigali": {
+      "bcp47": "rwkgl",
+      "name": "Rwanda Time"
+    },
+    "Africa/Kinshasa": {
+      "bcp47": "cdfih",
+      "name": "Kinshasa Time"
+    },
+    "Africa/Lagos": {
+      "bcp47": "nglos",
+      "name": "Nigeria Time"
+    },
+    "Africa/Libreville": {
+      "bcp47": "galbv",
+      "name": "Gabon Time"
+    },
+    "Africa/Lome": {
+      "bcp47": "tglfw",
+      "name": "Togo Time"
+    },
+    "Africa/Luanda": {
+      "bcp47": "aolad",
+      "name": "Angola Time"
+    },
+    "Africa/Lubumbashi": {
+      "bcp47": "cdfbm",
+      "name": "Lubumbashi Time"
+    },
+    "Africa/Lusaka": {
+      "bcp47": "zmlun",
+      "name": "Zambia Time"
+    },
+    "Africa/Malabo": {
+      "bcp47": "gqssg",
+      "name": "Equatorial Guinea Time"
+    },
+    "Africa/Maputo": {
+      "bcp47": "mzmpm",
+      "name": "Mozambique Time"
+    },
+    "Africa/Maseru": {
+      "bcp47": "lsmsu",
+      "name": "Lesotho Time"
+    },
+    "Africa/Mbabane": {
+      "bcp47": "szqmn",
+      "name": "Eswatini Time"
+    },
+    "Africa/Mogadishu": {
+      "bcp47": "somgq",
+      "name": "Somalia Time"
+    },
+    "Africa/Monrovia": {
+      "bcp47": "lrmlw",
+      "name": "Liberia Time"
+    },
+    "Africa/Nairobi": {
+      "bcp47": "kenbo",
+      "name": "Kenya Time"
+    },
+    "Africa/Ndjamena": {
+      "bcp47": "tdndj",
+      "name": "Chad Time"
+    },
+    "Africa/Niamey": {
+      "bcp47": "nenim",
+      "name": "Niger Time"
+    },
+    "Africa/Nouakchott": {
+      "bcp47": "mrnkc",
+      "name": "Mauritania Time"
+    },
+    "Africa/Ouagadougou": {
+      "bcp47": "bfoua",
+      "name": "Burkina Faso Time"
+    },
+    "Africa/Porto-Novo": {
+      "bcp47": "bjptn",
+      "name": "Benin Time"
+    },
+    "Africa/Sao_Tome": {
+      "bcp47": "sttms",
+      "name": "São Tomé & Príncipe Time"
+    },
+    "Africa/Tripoli": {
+      "bcp47": "lytip",
+      "name": "Libya Time"
+    },
+    "Africa/Tunis": {
+      "bcp47": "tntun",
+      "name": "Tunisia Time"
+    },
+    "Africa/Windhoek": {
+      "bcp47": "nawdh",
+      "name": "Namibia Time"
+    },
+    "America/Adak": {
+      "bcp47": "usadk",
+      "name": "Adak Time"
+    },
+    "America/Anchorage": {
+      "bcp47": "usanc",
+      "name": "Anchorage Time"
+    },
+    "America/Anguilla": {
+      "bcp47": "aiaxa",
+      "name": "Anguilla Time"
+    },
+    "America/Antigua": {
+      "bcp47": "aganu",
+      "name": "Antigua & Barbuda Time"
+    },
+    "America/Araguaina": {
+      "bcp47": "braux",
+      "name": "Araguaína Time"
+    },
+    "America/Argentina/Buenos_Aires": {
+      "bcp47": "arbue",
+      "name": "Buenos Aires Time"
+    },
+    "America/Argentina/Catamarca": {
+      "bcp47": "arctc",
+      "name": "Catamarca Time"
+    },
+    "America/Argentina/Cordoba": {
+      "bcp47": "arcor",
+      "name": "Córdoba Time"
+    },
+    "America/Argentina/Jujuy": {
+      "bcp47": "arjuj",
+      "name": "Jujuy Time"
+    },
+    "America/Argentina/La_Rioja": {
+      "bcp47": "arirj",
+      "name": "La Rioja Time"
+    },
+    "America/Argentina/Mendoza": {
+      "bcp47": "armdz",
+      "name": "Mendoza Time"
+    },
+    "America/Argentina/Rio_Gallegos": {
+      "bcp47": "arrgl",
+      "name": "Río Gallegos Time"
+    },
+    "America/Argentina/Salta": {
+      "bcp47": "arsla",
+      "name": "Salta Time"
+    },
+    "America/Argentina/San_Juan": {
+      "bcp47": "aruaq",
+      "name": "San Juan Time"
+    },
+    "America/Argentina/San_Luis": {
+      "bcp47": "arluq",
+      "name": "San Luis Time"
+    },
+    "America/Argentina/Tucuman": {
+      "bcp47": "artuc",
+      "name": "Tucumán Time"
+    },
+    "America/Argentina/Ushuaia": {
+      "bcp47": "arush",
+      "name": "Ushuaia Time"
+    },
+    "America/Aruba": {
+      "bcp47": "awaua",
+      "name": "Aruba Time"
+    },
+    "America/Asuncion": {
+      "bcp47": "pyasu",
+      "name": "Paraguay Time"
+    },
+    "America/Atikokan": {
+      "bcp47": "cayzs",
+      "name": "Atikokan Time"
+    },
+    "America/Bahia": {
+      "bcp47": "brssa",
+      "name": "Bahia Time"
+    },
+    "America/Bahia_Banderas": {
+      "bcp47": "mxpvr",
+      "name": "Bahía de Banderas Time"
+    },
+    "America/Barbados": {
+      "bcp47": "bbbgi",
+      "name": "Barbados Time"
+    },
+    "America/Belem": {
+      "bcp47": "brbel",
+      "name": "Belém Time"
+    },
+    "America/Belize": {
+      "bcp47": "bzbze",
+      "name": "Belize Time"
+    },
+    "America/Blanc-Sablon": {
+      "bcp47": "caybx",
+      "name": "Blanc-Sablon Time"
+    },
+    "America/Boa_Vista": {
+      "bcp47": "brbvb",
+      "name": "Boa Vista Time"
+    },
+    "America/Bogota": {
+      "bcp47": "cobog",
+      "name": "Colombia Time"
+    },
+    "America/Boise": {
+      "bcp47": "usboi",
+      "name": "Boise Time"
+    },
+    "America/Cambridge_Bay": {
+      "bcp47": "caycb",
+      "name": "Cambridge Bay Time"
+    },
+    "America/Campo_Grande": {
+      "bcp47": "brcgr",
+      "name": "Campo Grande Time"
+    },
+    "America/Cancun": {
+      "bcp47": "mxcun",
+      "name": "Cancún Time"
+    },
+    "America/Caracas": {
+      "bcp47": "veccs",
+      "name": "Venezuela Time"
+    },
+    "America/Cayenne": {
+      "bcp47": "gfcay",
+      "name": "French Guiana Time"
+    },
+    "America/Cayman": {
+      "bcp47": "kygec",
+      "name": "Cayman Islands Time"
+    },
+    "America/Chicago": {
+      "bcp47": "uschi",
+      "name": "Chicago Time"
+    },
+    "America/Chihuahua": {
+      "bcp47": "mxchi",
+      "name": "Chihuahua Time"
+    },
+    "America/Ciudad_Juarez": {
+      "bcp47": "mxcjs",
+      "name": "Ciudad Juárez Time"
+    },
+    "America/Costa_Rica": {
+      "bcp47": "crsjo",
+      "name": "Costa Rica Time"
+    },
+    "America/Coyhaique": {
+      "bcp47": "clcxq",
+      "name": "Coyhaique Time"
+    },
+    "America/Creston": {
+      "bcp47": "cacfq",
+      "name": "Creston Time"
+    },
+    "America/Cuiaba": {
+      "bcp47": "brcgb",
+      "name": "Cuiabá Time"
+    },
+    "America/Curacao": {
+      "bcp47": "ancur",
+      "name": "Curaçao Time"
+    },
+    "America/Danmarkshavn": {
+      "bcp47": "gldkshvn",
+      "name": "Danmarkshavn Time"
+    },
+    "America/Dawson": {
+      "bcp47": "cayda",
+      "name": "Dawson Time"
+    },
+    "America/Dawson_Creek": {
+      "bcp47": "caydq",
+      "name": "Dawson Creek Time"
+    },
+    "America/Denver": {
+      "bcp47": "usden",
+      "name": "Denver Time"
+    },
+    "America/Detroit": {
+      "bcp47": "usdet",
+      "name": "Detroit Time"
+    },
+    "America/Dominica": {
+      "bcp47": "dmdom",
+      "name": "Dominica Time"
+    },
+    "America/Edmonton": {
+      "bcp47": "caedm",
+      "name": "Edmonton Time"
+    },
+    "America/Eirunepe": {
+      "bcp47": "brern",
+      "name": "Eirunepé Time"
+    },
+    "America/El_Salvador": {
+      "bcp47": "svsal",
+      "name": "El Salvador Time"
+    },
+    "America/Fort_Nelson": {
+      "bcp47": "cafne",
+      "name": "Fort Nelson Time"
+    },
+    "America/Fortaleza": {
+      "bcp47": "brfor",
+      "name": "Fortaleza Time"
+    },
+    "America/Glace_Bay": {
+      "bcp47": "caglb",
+      "name": "Glace Bay Time"
+    },
+    "America/Goose_Bay": {
+      "bcp47": "cagoo",
+      "name": "Goose Bay Time"
+    },
+    "America/Grand_Turk": {
+      "bcp47": "tcgdt",
+      "name": "Turks & Caicos Islands Time"
+    },
+    "America/Grenada": {
+      "bcp47": "gdgnd",
+      "name": "Grenada Time"
+    },
+    "America/Guadeloupe": {
+      "bcp47": "gpbbr",
+      "name": "Guadeloupe Time"
+    },
+    "America/Guatemala": {
+      "bcp47": "gtgua",
+      "name": "Guatemala Time"
+    },
+    "America/Guayaquil": {
+      "bcp47": "ecgye",
+      "name": "Ecuador Time"
+    },
+    "America/Guyana": {
+      "bcp47": "gygeo",
+      "name": "Guyana Time"
+    },
+    "America/Halifax": {
+      "bcp47": "cahal",
+      "name": "Halifax Time"
+    },
+    "America/Havana": {
+      "bcp47": "cuhav",
+      "name": "Cuba Time"
+    },
+    "America/Hermosillo": {
+      "bcp47": "mxhmo",
+      "name": "Hermosillo Time"
+    },
+    "America/Indiana/Indianapolis": {
+      "bcp47": "usind",
+      "name": "Indianapolis Time"
+    },
+    "America/Indiana/Knox": {
+      "bcp47": "usknx",
+      "name": "Knox, Indiana Time"
+    },
+    "America/Indiana/Marengo": {
+      "bcp47": "usaeg",
+      "name": "Marengo, Indiana Time"
+    },
+    "America/Indiana/Petersburg": {
+      "bcp47": "uswsq",
+      "name": "Petersburg, Indiana Time"
+    },
+    "America/Indiana/Tell_City": {
+      "bcp47": "ustel",
+      "name": "Tell City, Indiana Time"
+    },
+    "America/Indiana/Vevay": {
+      "bcp47": "usinvev",
+      "name": "Vevay, Indiana Time"
+    },
+    "America/Indiana/Vincennes": {
+      "bcp47": "usoea",
+      "name": "Vincennes, Indiana Time"
+    },
+    "America/Indiana/Winamac": {
+      "bcp47": "uswlz",
+      "name": "Winamac, Indiana Time"
+    },
+    "America/Inuvik": {
+      "bcp47": "cayev",
+      "name": "Inuvik Time"
+    },
+    "America/Iqaluit": {
+      "bcp47": "caiql",
+      "name": "Iqaluit Time"
+    },
+    "America/Jamaica": {
+      "bcp47": "jmkin",
+      "name": "Jamaica Time"
+    },
+    "America/Juneau": {
+      "bcp47": "usjnu",
+      "name": "Juneau Time"
+    },
+    "America/Kentucky/Louisville": {
+      "bcp47": "uslui",
+      "name": "Louisville Time"
+    },
+    "America/Kentucky/Monticello": {
+      "bcp47": "usmoc",
+      "name": "Monticello, Kentucky Time"
+    },
+    "America/Kralendijk": {
+      "bcp47": "bqkra",
+      "name": "Caribbean Netherlands Time"
+    },
+    "America/La_Paz": {
+      "bcp47": "bolpb",
+      "name": "Bolivia Time"
+    },
+    "America/Lima": {
+      "bcp47": "pelim",
+      "name": "Peru Time"
+    },
+    "America/Los_Angeles": {
+      "bcp47": "uslax",
+      "name": "Los Angeles Time"
+    },
+    "America/Lower_Princes": {
+      "bcp47": "sxphi",
+      "name": "Sint Maarten Time"
+    },
+    "America/Maceio": {
+      "bcp47": "brmcz",
+      "name": "Maceió Time"
+    },
+    "America/Managua": {
+      "bcp47": "nimga",
+      "name": "Nicaragua Time"
+    },
+    "America/Manaus": {
+      "bcp47": "brmao",
+      "name": "Manaus Time"
+    },
+    "America/Marigot": {
+      "bcp47": "gpmsb",
+      "name": "St. Martin Time"
+    },
+    "America/Martinique": {
+      "bcp47": "mqfdf",
+      "name": "Martinique Time"
+    },
+    "America/Matamoros": {
+      "bcp47": "mxmam",
+      "name": "Matamoros Time"
+    },
+    "America/Mazatlan": {
+      "bcp47": "mxmzt",
+      "name": "Mazatlán Time"
+    },
+    "America/Menominee": {
+      "bcp47": "usmnm",
+      "name": "Menominee Time"
+    },
+    "America/Merida": {
+      "bcp47": "mxmid",
+      "name": "Mérida Time"
+    },
+    "America/Metlakatla": {
+      "bcp47": "usmtm",
+      "name": "Metlakatla Time"
+    },
+    "America/Mexico_City": {
+      "bcp47": "mxmex",
+      "name": "Mexico City Time"
+    },
+    "America/Miquelon": {
+      "bcp47": "pmmqc",
+      "name": "St. Pierre & Miquelon Time"
+    },
+    "America/Moncton": {
+      "bcp47": "camon",
+      "name": "Moncton Time"
+    },
+    "America/Monterrey": {
+      "bcp47": "mxmty",
+      "name": "Monterrey Time"
+    },
+    "America/Montevideo": {
+      "bcp47": "uymvd",
+      "name": "Uruguay Time"
+    },
+    "America/Montserrat": {
+      "bcp47": "msmni",
+      "name": "Montserrat Time"
+    },
+    "America/Nassau": {
+      "bcp47": "bsnas",
+      "name": "Bahamas Time"
+    },
+    "America/New_York": {
+      "bcp47": "usnyc",
+      "name": "New York Time"
+    },
+    "America/Nome": {
+      "bcp47": "usome",
+      "name": "Nome Time"
+    },
+    "America/Noronha": {
+      "bcp47": "brfen",
+      "name": "Fernando de Noronha Time"
+    },
+    "America/North_Dakota/Beulah": {
+      "bcp47": "usxul",
+      "name": "Beulah, North Dakota Time"
+    },
+    "America/North_Dakota/Center": {
+      "bcp47": "usndcnt",
+      "name": "Center, North Dakota Time"
+    },
+    "America/North_Dakota/New_Salem": {
+      "bcp47": "usndnsl",
+      "name": "New Salem, North Dakota Time"
+    },
+    "America/Nuuk": {
+      "bcp47": "glgoh",
+      "name": "Nuuk Time"
+    },
+    "America/Ojinaga": {
+      "bcp47": "mxoji",
+      "name": "Ojinaga Time"
+    },
+    "America/Panama": {
+      "bcp47": "papty",
+      "name": "Panama Time"
+    },
+    "America/Paramaribo": {
+      "bcp47": "srpbm",
+      "name": "Suriname Time"
+    },
+    "America/Phoenix": {
+      "bcp47": "usphx",
+      "name": "Phoenix Time"
+    },
+    "America/Port-au-Prince": {
+      "bcp47": "htpap",
+      "name": "Haiti Time"
+    },
+    "America/Port_of_Spain": {
+      "bcp47": "ttpos",
+      "name": "Trinidad & Tobago Time"
+    },
+    "America/Porto_Velho": {
+      "bcp47": "brpvh",
+      "name": "Porto Velho Time"
+    },
+    "America/Puerto_Rico": {
+      "bcp47": "prsju",
+      "name": "Puerto Rico Time"
+    },
+    "America/Punta_Arenas": {
+      "bcp47": "clpuq",
+      "name": "Punta Arenas Time"
+    },
+    "America/Rankin_Inlet": {
+      "bcp47": "cayek",
+      "name": "Rankin Inlet Time"
+    },
+    "America/Recife": {
+      "bcp47": "brrec",
+      "name": "Recife Time"
+    },
+    "America/Regina": {
+      "bcp47": "careg",
+      "name": "Regina Time"
+    },
+    "America/Resolute": {
+      "bcp47": "careb",
+      "name": "Resolute Time"
+    },
+    "America/Rio_Branco": {
+      "bcp47": "brrbr",
+      "name": "Rio Branco Time"
+    },
+    "America/Santarem": {
+      "bcp47": "brstm",
+      "name": "Santarém Time"
+    },
+    "America/Santiago": {
+      "bcp47": "clscl",
+      "name": "Chile Time"
+    },
+    "America/Santo_Domingo": {
+      "bcp47": "dosdq",
+      "name": "Dominican Republic Time"
+    },
+    "America/Sao_Paulo": {
+      "bcp47": "brsao",
+      "name": "São Paulo Time"
+    },
+    "America/Scoresbysund": {
+      "bcp47": "globy",
+      "name": "Ittoqqortoormiit Time"
+    },
+    "America/Sitka": {
+      "bcp47": "ussit",
+      "name": "Sitka Time"
+    },
+    "America/St_Barthelemy": {
+      "bcp47": "gpsbh",
+      "name": "St. Barthélemy Time"
+    },
+    "America/St_Johns": {
+      "bcp47": "casjf",
+      "name": "St. John’s Time"
+    },
+    "America/St_Kitts": {
+      "bcp47": "knbas",
+      "name": "St. Kitts & Nevis Time"
+    },
+    "America/St_Lucia": {
+      "bcp47": "lccas",
+      "name": "St. Lucia Time"
+    },
+    "America/St_Thomas": {
+      "bcp47": "vistt",
+      "name": "U.S. Virgin Islands Time"
+    },
+    "America/St_Vincent": {
+      "bcp47": "vcsvd",
+      "name": "St. Vincent & Grenadines Time"
+    },
+    "America/Swift_Current": {
+      "bcp47": "cayyn",
+      "name": "Swift Current Time"
+    },
+    "America/Tegucigalpa": {
+      "bcp47": "hntgu",
+      "name": "Honduras Time"
+    },
+    "America/Thule": {
+      "bcp47": "glthu",
+      "name": "Thule Time"
+    },
+    "America/Tijuana": {
+      "bcp47": "mxtij",
+      "name": "Tijuana Time"
+    },
+    "America/Toronto": {
+      "bcp47": "cator",
+      "name": "Toronto Time"
+    },
+    "America/Tortola": {
+      "bcp47": "vgtov",
+      "name": "British Virgin Islands Time"
+    },
+    "America/Vancouver": {
+      "bcp47": "cavan",
+      "name": "Vancouver Time"
+    },
+    "America/Whitehorse": {
+      "bcp47": "cayxy",
+      "name": "Whitehorse Time"
+    },
+    "America/Winnipeg": {
+      "bcp47": "cawnp",
+      "name": "Winnipeg Time"
+    },
+    "America/Yakutat": {
+      "bcp47": "usyak",
+      "name": "Yakutat Time"
+    },
+    "Antarctica/Casey": {
+      "bcp47": "aqcas",
+      "name": "Casey Station Time"
+    },
+    "Antarctica/Davis": {
+      "bcp47": "aqdav",
+      "name": "Davis Time"
+    },
+    "Antarctica/DumontDUrville": {
+      "bcp47": "aqddu",
+      "name": "Dumont d’Urville Station Time"
+    },
+    "Antarctica/Macquarie": {
+      "bcp47": "aumqi",
+      "name": "Macquarie Island Time"
+    },
+    "Antarctica/Mawson": {
+      "bcp47": "aqmaw",
+      "name": "Mawson Station Time"
+    },
+    "Antarctica/McMurdo": {
+      "bcp47": "aqmcm",
+      "name": "McMurdo Station Time"
+    },
+    "Antarctica/Palmer": {
+      "bcp47": "aqplm",
+      "name": "Palmer Land Time"
+    },
+    "Antarctica/Rothera": {
+      "bcp47": "aqrot",
+      "name": "Rothera Station Time"
+    },
+    "Antarctica/Syowa": {
+      "bcp47": "aqsyw",
+      "name": "Showa Station Time"
+    },
+    "Antarctica/Troll": {
+      "bcp47": "aqtrl",
+      "name": "Troll Station Time"
+    },
+    "Antarctica/Vostok": {
+      "bcp47": "aqvos",
+      "name": "Vostok Station Time"
+    },
+    "Arctic/Longyearbyen": {
+      "bcp47": "sjlyr",
+      "name": "Svalbard & Jan Mayen Time"
+    },
+    "Asia/Aden": {
+      "bcp47": "yeade",
+      "name": "Yemen Time"
+    },
+    "Asia/Almaty": {
+      "bcp47": "kzala",
+      "name": "Almaty Time"
+    },
+    "Asia/Amman": {
+      "bcp47": "joamm",
+      "name": "Jordan Time"
+    },
+    "Asia/Anadyr": {
+      "bcp47": "rudyr",
+      "name": "Anadyr Time"
+    },
+    "Asia/Aqtau": {
+      "bcp47": "kzaau",
+      "name": "Aktau Time"
+    },
+    "Asia/Aqtobe": {
+      "bcp47": "kzakx",
+      "name": "Aqtobe Time"
+    },
+    "Asia/Ashgabat": {
+      "bcp47": "tmasb",
+      "name": "Turkmenistan Time"
+    },
+    "Asia/Atyrau": {
+      "bcp47": "kzguw",
+      "name": "Atyrau Time"
+    },
+    "Asia/Baghdad": {
+      "bcp47": "iqbgw",
+      "name": "Iraq Time"
+    },
+    "Asia/Bahrain": {
+      "bcp47": "bhbah",
+      "name": "Bahrain Time"
+    },
+    "Asia/Baku": {
+      "bcp47": "azbak",
+      "name": "Azerbaijan Time"
+    },
+    "Asia/Bangkok": {
+      "bcp47": "thbkk",
+      "name": "Thailand Time"
+    },
+    "Asia/Barnaul": {
+      "bcp47": "rubax",
+      "name": "Barnaul Time"
+    },
+    "Asia/Beirut": {
+      "bcp47": "lbbey",
+      "name": "Lebanon Time"
+    },
+    "Asia/Bishkek": {
+      "bcp47": "kgfru",
+      "name": "Kyrgyzstan Time"
+    },
+    "Asia/Brunei": {
+      "bcp47": "bnbwn",
+      "name": "Brunei Time"
+    },
+    "Asia/Chita": {
+      "bcp47": "ruchita",
+      "name": "Chita Time"
+    },
+    "Asia/Colombo": {
+      "bcp47": "lkcmb",
+      "name": "Sri Lanka Time"
+    },
+    "Asia/Damascus": {
+      "bcp47": "sydam",
+      "name": "Syria Time"
+    },
+    "Asia/Dhaka": {
+      "bcp47": "bddac",
+      "name": "Bangladesh Time"
+    },
+    "Asia/Dili": {
+      "bcp47": "tldil",
+      "name": "Timor-Leste Time"
+    },
+    "Asia/Dubai": {
+      "bcp47": "aedxb",
+      "name": "United Arab Emirates Time"
+    },
+    "Asia/Dushanbe": {
+      "bcp47": "tjdyu",
+      "name": "Tajikistan Time"
+    },
+    "Asia/Famagusta": {
+      "bcp47": "cyfmg",
+      "name": "Famagusta Time"
+    },
+    "Asia/Gaza": {
+      "bcp47": "gazastrp",
+      "name": "Gaza Time"
+    },
+    "Asia/Hebron": {
+      "bcp47": "hebron",
+      "name": "Hebron Time"
+    },
+    "Asia/Ho_Chi_Minh": {
+      "bcp47": "vnsgn",
+      "name": "Vietnam Time"
+    },
+    "Asia/Hong_Kong": {
+      "bcp47": "hkhkg",
+      "name": "Hong Kong Time"
+    },
+    "Asia/Hovd": {
+      "bcp47": "mnhvd",
+      "name": "Khovd Time"
+    },
+    "Asia/Irkutsk": {
+      "bcp47": "ruikt",
+      "name": "Irkutsk Time"
+    },
+    "Asia/Jakarta": {
+      "bcp47": "idjkt",
+      "name": "Jakarta Time"
+    },
+    "Asia/Jayapura": {
+      "bcp47": "iddjj",
+      "name": "Jayapura Time"
+    },
+    "Asia/Jerusalem": {
+      "bcp47": "jeruslm",
+      "name": "Israel Time"
+    },
+    "Asia/Kabul": {
+      "bcp47": "afkbl",
+      "name": "Afghanistan Time"
+    },
+    "Asia/Kamchatka": {
+      "bcp47": "rupkc",
+      "name": "Kamchatka Time"
+    },
+    "Asia/Karachi": {
+      "bcp47": "pkkhi",
+      "name": "Pakistan Time"
+    },
+    "Asia/Kathmandu": {
+      "bcp47": "npktm",
+      "name": "Nepal Time"
+    },
+    "Asia/Khandyga": {
+      "bcp47": "rukhndg",
+      "name": "Khandyga Time"
+    },
+    "Asia/Kolkata": {
+      "bcp47": "inccu",
+      "name": "India Time"
+    },
+    "Asia/Krasnoyarsk": {
+      "bcp47": "rukra",
+      "name": "Krasnoyarsk Time"
+    },
+    "Asia/Kuala_Lumpur": {
+      "bcp47": "mykul",
+      "name": "Malaysia Time"
+    },
+    "Asia/Kuching": {
+      "bcp47": "mykch",
+      "name": "Kuching Time"
+    },
+    "Asia/Kuwait": {
+      "bcp47": "kwkwi",
+      "name": "Kuwait Time"
+    },
+    "Asia/Macau": {
+      "bcp47": "momfm",
+      "name": "Macao Time"
+    },
+    "Asia/Magadan": {
+      "bcp47": "rugdx",
+      "name": "Magadan Time"
+    },
+    "Asia/Makassar": {
+      "bcp47": "idmak",
+      "name": "Makassar Time"
+    },
+    "Asia/Manila": {
+      "bcp47": "phmnl",
+      "name": "Philippines Time"
+    },
+    "Asia/Muscat": {
+      "bcp47": "ommct",
+      "name": "Oman Time"
+    },
+    "Asia/Nicosia": {
+      "bcp47": "cynic",
+      "name": "Nicosia Time"
+    },
+    "Asia/Novokuznetsk": {
+      "bcp47": "runoz",
+      "name": "Novokuznetsk Time"
+    },
+    "Asia/Novosibirsk": {
+      "bcp47": "ruovb",
+      "name": "Novosibirsk Time"
+    },
+    "Asia/Omsk": {
+      "bcp47": "ruoms",
+      "name": "Omsk Time"
+    },
+    "Asia/Oral": {
+      "bcp47": "kzura",
+      "name": "Oral Time"
+    },
+    "Asia/Phnom_Penh": {
+      "bcp47": "khpnh",
+      "name": "Cambodia Time"
+    },
+    "Asia/Pontianak": {
+      "bcp47": "idpnk",
+      "name": "Pontianak Time"
+    },
+    "Asia/Pyongyang": {
+      "bcp47": "kpfnj",
+      "name": "North Korea Time"
+    },
+    "Asia/Qatar": {
+      "bcp47": "qadoh",
+      "name": "Qatar Time"
+    },
+    "Asia/Qostanay": {
+      "bcp47": "kzksn",
+      "name": "Kostanay Time"
+    },
+    "Asia/Qyzylorda": {
+      "bcp47": "kzkzo",
+      "name": "Kyzylorda Time"
+    },
+    "Asia/Riyadh": {
+      "bcp47": "saruh",
+      "name": "Saudi Arabia Time"
+    },
+    "Asia/Sakhalin": {
+      "bcp47": "ruuus",
+      "name": "Sakhalin Time"
+    },
+    "Asia/Samarkand": {
+      "bcp47": "uzskd",
+      "name": "Samarkand Time"
+    },
+    "Asia/Seoul": {
+      "bcp47": "krsel",
+      "name": "South Korea Time"
+    },
+    "Asia/Shanghai": {
+      "bcp47": "cnsha",
+      "name": "China Time"
+    },
+    "Asia/Singapore": {
+      "bcp47": "sgsin",
+      "name": "Singapore Time"
+    },
+    "Asia/Srednekolymsk": {
+      "bcp47": "rusred",
+      "name": "Srednekolymsk Time"
+    },
+    "Asia/Taipei": {
+      "bcp47": "twtpe",
+      "name": "Taiwan Time"
+    },
+    "Asia/Tashkent": {
+      "bcp47": "uztas",
+      "name": "Uzbekistan Time"
+    },
+    "Asia/Tbilisi": {
+      "bcp47": "getbs",
+      "name": "Georgia Time"
+    },
+    "Asia/Tehran": {
+      "bcp47": "irthr",
+      "name": "Iran Time"
+    },
+    "Asia/Thimphu": {
+      "bcp47": "btthi",
+      "name": "Bhutan Time"
+    },
+    "Asia/Tokyo": {
+      "bcp47": "jptyo",
+      "name": "Japan Time"
+    },
+    "Asia/Tomsk": {
+      "bcp47": "rutof",
+      "name": "Tomsk Time"
+    },
+    "Asia/Ulaanbaatar": {
+      "bcp47": "mnuln",
+      "name": "Ulaanbaatar Time"
+    },
+    "Asia/Urumqi": {
+      "bcp47": "cnurc",
+      "name": "Ürümqi Time"
+    },
+    "Asia/Ust-Nera": {
+      "bcp47": "ruunera",
+      "name": "Ust-Nera Time"
+    },
+    "Asia/Vientiane": {
+      "bcp47": "lavte",
+      "name": "Laos Time"
+    },
+    "Asia/Vladivostok": {
+      "bcp47": "ruvvo",
+      "name": "Vladivostok Time"
+    },
+    "Asia/Yakutsk": {
+      "bcp47": "ruyks",
+      "name": "Yakutsk Time"
+    },
+    "Asia/Yangon": {
+      "bcp47": "mmrgn",
+      "name": "Myanmar Time"
+    },
+    "Asia/Yekaterinburg": {
+      "bcp47": "ruyek",
+      "name": "Yekaterinburg Time"
+    },
+    "Asia/Yerevan": {
+      "bcp47": "amevn",
+      "name": "Armenia Time"
+    },
+    "Atlantic/Azores": {
+      "bcp47": "ptpdl",
+      "name": "Azores Time"
+    },
+    "Atlantic/Bermuda": {
+      "bcp47": "bmbda",
+      "name": "Bermuda Time"
+    },
+    "Atlantic/Canary": {
+      "bcp47": "eslpa",
+      "name": "Canaries Time"
+    },
+    "Atlantic/Cape_Verde": {
+      "bcp47": "cvrai",
+      "name": "Cape Verde Time"
+    },
+    "Atlantic/Faroe": {
+      "bcp47": "fotho",
+      "name": "Faroe Islands Time"
+    },
+    "Atlantic/Madeira": {
+      "bcp47": "ptfnc",
+      "name": "Madeira Time"
+    },
+    "Atlantic/Reykjavik": {
+      "bcp47": "isrey",
+      "name": "Iceland Time"
+    },
+    "Atlantic/South_Georgia": {
+      "bcp47": "gsgrv",
+      "name": "South Georgia & South Sandwich Islands Time"
+    },
+    "Atlantic/St_Helena": {
+      "bcp47": "shshn",
+      "name": "St. Helena Time"
+    },
+    "Atlantic/Stanley": {
+      "bcp47": "fkpsy",
+      "name": "Falkland Islands Time"
+    },
+    "Australia/Adelaide": {
+      "bcp47": "auadl",
+      "name": "Adelaide Time"
+    },
+    "Australia/Brisbane": {
+      "bcp47": "aubne",
+      "name": "Brisbane Time"
+    },
+    "Australia/Broken_Hill": {
+      "bcp47": "aubhq",
+      "name": "Broken Hill Time"
+    },
+    "Australia/Darwin": {
+      "bcp47": "audrw",
+      "name": "Darwin Time"
+    },
+    "Australia/Eucla": {
+      "bcp47": "aueuc",
+      "name": "Eucla Time"
+    },
+    "Australia/Hobart": {
+      "bcp47": "auhba",
+      "name": "Hobart Time"
+    },
+    "Australia/Lindeman": {
+      "bcp47": "auldc",
+      "name": "Lindeman Time"
+    },
+    "Australia/Lord_Howe": {
+      "bcp47": "auldh",
+      "name": "Lord Howe Island Time"
+    },
+    "Australia/Melbourne": {
+      "bcp47": "aumel",
+      "name": "Melbourne Time"
+    },
+    "Australia/Perth": {
+      "bcp47": "auper",
+      "name": "Perth Time"
+    },
+    "Australia/Sydney": {
+      "bcp47": "ausyd",
+      "name": "Sydney Time"
+    },
+    "Etc/UTC": {
+      "bcp47": "utc",
+      "name": "GMT+00:00"
+    },
+    "Europe/Amsterdam": {
+      "bcp47": "nlams",
+      "name": "Netherlands Time"
+    },
+    "Europe/Andorra": {
+      "bcp47": "adalv",
+      "name": "Andorra Time"
+    },
+    "Europe/Astrakhan": {
+      "bcp47": "ruasf",
+      "name": "Astrakhan Time"
+    },
+    "Europe/Athens": {
+      "bcp47": "grath",
+      "name": "Greece Time"
+    },
+    "Europe/Belgrade": {
+      "bcp47": "rsbeg",
+      "name": "Serbia Time"
+    },
+    "Europe/Berlin": {
+      "bcp47": "deber",
+      "name": "Germany Time"
+    },
+    "Europe/Bratislava": {
+      "bcp47": "skbts",
+      "name": "Slovakia Time"
+    },
+    "Europe/Brussels": {
+      "bcp47": "bebru",
+      "name": "Belgium Time"
+    },
+    "Europe/Bucharest": {
+      "bcp47": "robuh",
+      "name": "Romania Time"
+    },
+    "Europe/Budapest": {
+      "bcp47": "hubud",
+      "name": "Hungary Time"
+    },
+    "Europe/Busingen": {
+      "bcp47": "debsngn",
+      "name": "Büsingen Time"
+    },
+    "Europe/Chisinau": {
+      "bcp47": "mdkiv",
+      "name": "Moldova Time"
+    },
+    "Europe/Copenhagen": {
+      "bcp47": "dkcph",
+      "name": "Denmark Time"
+    },
+    "Europe/Dublin": {
+      "bcp47": "iedub",
+      "name": "Ireland Time"
+    },
+    "Europe/Gibraltar": {
+      "bcp47": "gigib",
+      "name": "Gibraltar Time"
+    },
+    "Europe/Guernsey": {
+      "bcp47": "gggci",
+      "name": "Guernsey Time"
+    },
+    "Europe/Helsinki": {
+      "bcp47": "fihel",
+      "name": "Finland Time"
+    },
+    "Europe/Isle_of_Man": {
+      "bcp47": "imdgs",
+      "name": "Isle of Man Time"
+    },
+    "Europe/Istanbul": {
+      "bcp47": "trist",
+      "name": "Türkiye Time"
+    },
+    "Europe/Jersey": {
+      "bcp47": "jesth",
+      "name": "Jersey Time"
+    },
+    "Europe/Kaliningrad": {
+      "bcp47": "rukgd",
+      "name": "Kaliningrad Time"
+    },
+    "Europe/Kirov": {
+      "bcp47": "rukvx",
+      "name": "Kirov Time"
+    },
+    "Europe/Kyiv": {
+      "bcp47": "uaiev",
+      "name": "Kyiv Time"
+    },
+    "Europe/Lisbon": {
+      "bcp47": "ptlis",
+      "name": "Portugal Time"
+    },
+    "Europe/Ljubljana": {
+      "bcp47": "silju",
+      "name": "Slovenia Time"
+    },
+    "Europe/London": {
+      "bcp47": "gblon",
+      "name": "UK Time"
+    },
+    "Europe/Luxembourg": {
+      "bcp47": "lulux",
+      "name": "Luxembourg Time"
+    },
+    "Europe/Madrid": {
+      "bcp47": "esmad",
+      "name": "Spain Time"
+    },
+    "Europe/Malta": {
+      "bcp47": "mtmla",
+      "name": "Malta Time"
+    },
+    "Europe/Mariehamn": {
+      "bcp47": "fimhq",
+      "name": "Åland Islands Time"
+    },
+    "Europe/Minsk": {
+      "bcp47": "bymsq",
+      "name": "Belarus Time"
+    },
+    "Europe/Monaco": {
+      "bcp47": "mcmon",
+      "name": "Monaco Time"
+    },
+    "Europe/Moscow": {
+      "bcp47": "rumow",
+      "name": "Moscow Time"
+    },
+    "Europe/Oslo": {
+      "bcp47": "noosl",
+      "name": "Norway Time"
+    },
+    "Europe/Paris": {
+      "bcp47": "frpar",
+      "name": "France Time"
+    },
+    "Europe/Podgorica": {
+      "bcp47": "metgd",
+      "name": "Montenegro Time"
+    },
+    "Europe/Prague": {
+      "bcp47": "czprg",
+      "name": "Czechia Time"
+    },
+    "Europe/Riga": {
+      "bcp47": "lvrix",
+      "name": "Latvia Time"
+    },
+    "Europe/Rome": {
+      "bcp47": "itrom",
+      "name": "Italy Time"
+    },
+    "Europe/Samara": {
+      "bcp47": "rukuf",
+      "name": "Samara Time"
+    },
+    "Europe/San_Marino": {
+      "bcp47": "smsai",
+      "name": "San Marino Time"
+    },
+    "Europe/Sarajevo": {
+      "bcp47": "basjj",
+      "name": "Bosnia Time"
+    },
+    "Europe/Saratov": {
+      "bcp47": "rurtw",
+      "name": "Saratov Time"
+    },
+    "Europe/Simferopol": {
+      "bcp47": "uasip",
+      "name": "Simferopol Time"
+    },
+    "Europe/Skopje": {
+      "bcp47": "mkskp",
+      "name": "North Macedonia Time"
+    },
+    "Europe/Sofia": {
+      "bcp47": "bgsof",
+      "name": "Bulgaria Time"
+    },
+    "Europe/Stockholm": {
+      "bcp47": "sesto",
+      "name": "Sweden Time"
+    },
+    "Europe/Tallinn": {
+      "bcp47": "eetll",
+      "name": "Estonia Time"
+    },
+    "Europe/Tirane": {
+      "bcp47": "altia",
+      "name": "Albania Time"
+    },
+    "Europe/Ulyanovsk": {
+      "bcp47": "ruuly",
+      "name": "Ulyanovsk Time"
+    },
+    "Europe/Vaduz": {
+      "bcp47": "livdz",
+      "name": "Liechtenstein Time"
+    },
+    "Europe/Vatican": {
+      "bcp47": "vavat",
+      "name": "Vatican City Time"
+    },
+    "Europe/Vienna": {
+      "bcp47": "atvie",
+      "name": "Austria Time"
+    },
+    "Europe/Vilnius": {
+      "bcp47": "ltvno",
+      "name": "Lithuania Time"
+    },
+    "Europe/Volgograd": {
+      "bcp47": "ruvog",
+      "name": "Volgograd Time"
+    },
+    "Europe/Warsaw": {
+      "bcp47": "plwaw",
+      "name": "Poland Time"
+    },
+    "Europe/Zagreb": {
+      "bcp47": "hrzag",
+      "name": "Croatia Time"
+    },
+    "Europe/Zurich": {
+      "bcp47": "chzrh",
+      "name": "Switzerland Time"
+    },
+    "Indian/Antananarivo": {
+      "bcp47": "mgtnr",
+      "name": "Madagascar Time"
+    },
+    "Indian/Chagos": {
+      "bcp47": "iodga",
+      "name": "British Indian Ocean Territory Time"
+    },
+    "Indian/Christmas": {
+      "bcp47": "cxxch",
+      "name": "Christmas Island Time"
+    },
+    "Indian/Cocos": {
+      "bcp47": "cccck",
+      "name": "Cocos Islands Time"
+    },
+    "Indian/Comoro": {
+      "bcp47": "kmyva",
+      "name": "Comoros Time"
+    },
+    "Indian/Kerguelen": {
+      "bcp47": "tfpfr",
+      "name": "French Southern Territories Time"
+    },
+    "Indian/Mahe": {
+      "bcp47": "scmaw",
+      "name": "Seychelles Time"
+    },
+    "Indian/Maldives": {
+      "bcp47": "mvmle",
+      "name": "Maldives Time"
+    },
+    "Indian/Mauritius": {
+      "bcp47": "muplu",
+      "name": "Mauritius Time"
+    },
+    "Indian/Mayotte": {
+      "bcp47": "ytmam",
+      "name": "Mayotte Time"
+    },
+    "Indian/Reunion": {
+      "bcp47": "rereu",
+      "name": "Réunion Time"
+    },
+    "Pacific/Apia": {
+      "bcp47": "wsapw",
+      "name": "Samoa Time"
+    },
+    "Pacific/Auckland": {
+      "bcp47": "nzakl",
+      "name": "New Zealand Time"
+    },
+    "Pacific/Bougainville": {
+      "bcp47": "pgraw",
+      "name": "Bougainville Time"
+    },
+    "Pacific/Chatham": {
+      "bcp47": "nzcht",
+      "name": "Chatham Islands Time"
+    },
+    "Pacific/Chuuk": {
+      "bcp47": "fmtkk",
+      "name": "Chuuk Time"
+    },
+    "Pacific/Easter": {
+      "bcp47": "clipc",
+      "name": "Easter Island Time"
+    },
+    "Pacific/Efate": {
+      "bcp47": "vuvli",
+      "name": "Vanuatu Time"
+    },
+    "Pacific/Fakaofo": {
+      "bcp47": "tkfko",
+      "name": "Tokelau Time"
+    },
+    "Pacific/Fiji": {
+      "bcp47": "fjsuv",
+      "name": "Fiji Time"
+    },
+    "Pacific/Funafuti": {
+      "bcp47": "tvfun",
+      "name": "Tuvalu Time"
+    },
+    "Pacific/Galapagos": {
+      "bcp47": "ecgps",
+      "name": "Galápagos Islands Time"
+    },
+    "Pacific/Gambier": {
+      "bcp47": "pfgmr",
+      "name": "Gambier Time"
+    },
+    "Pacific/Guadalcanal": {
+      "bcp47": "sbhir",
+      "name": "Solomon Islands Time"
+    },
+    "Pacific/Guam": {
+      "bcp47": "gugum",
+      "name": "Guam Time"
+    },
+    "Pacific/Honolulu": {
+      "bcp47": "ushnl",
+      "name": "Honolulu Time"
+    },
+    "Pacific/Kanton": {
+      "bcp47": "kipho",
+      "name": "Canton Island Time"
+    },
+    "Pacific/Kiritimati": {
+      "bcp47": "kicxi",
+      "name": "Kiritimati Time"
+    },
+    "Pacific/Kosrae": {
+      "bcp47": "fmksa",
+      "name": "Kosrae Time"
+    },
+    "Pacific/Kwajalein": {
+      "bcp47": "mhkwa",
+      "name": "Kwajalein Atoll Time"
+    },
+    "Pacific/Majuro": {
+      "bcp47": "mhmaj",
+      "name": "Marshall Islands Time"
+    },
+    "Pacific/Marquesas": {
+      "bcp47": "pfnhv",
+      "name": "Marquesas Islands Time"
+    },
+    "Pacific/Midway": {
+      "bcp47": "ummdy",
+      "name": "Midway Atoll Time"
+    },
+    "Pacific/Nauru": {
+      "bcp47": "nrinu",
+      "name": "Nauru Time"
+    },
+    "Pacific/Niue": {
+      "bcp47": "nuiue",
+      "name": "Niue Time"
+    },
+    "Pacific/Norfolk": {
+      "bcp47": "nfnlk",
+      "name": "Norfolk Island Time"
+    },
+    "Pacific/Noumea": {
+      "bcp47": "ncnou",
+      "name": "New Caledonia Time"
+    },
+    "Pacific/Pago_Pago": {
+      "bcp47": "asppg",
+      "name": "American Samoa Time"
+    },
+    "Pacific/Palau": {
+      "bcp47": "pwror",
+      "name": "Palau Time"
+    },
+    "Pacific/Pitcairn": {
+      "bcp47": "pnpcn",
+      "name": "Pitcairn Time"
+    },
+    "Pacific/Pohnpei": {
+      "bcp47": "fmpni",
+      "name": "Pohnpei Time"
+    },
+    "Pacific/Port_Moresby": {
+      "bcp47": "pgpom",
+      "name": "Port Moresby Time"
+    },
+    "Pacific/Rarotonga": {
+      "bcp47": "ckrar",
+      "name": "Cook Islands Time"
+    },
+    "Pacific/Saipan": {
+      "bcp47": "mpspn",
+      "name": "Northern Mariana Islands Time"
+    },
+    "Pacific/Tahiti": {
+      "bcp47": "pfppt",
+      "name": "Tahiti Time"
+    },
+    "Pacific/Tarawa": {
+      "bcp47": "kitrw",
+      "name": "Tarawa Time"
+    },
+    "Pacific/Tongatapu": {
+      "bcp47": "totbu",
+      "name": "Tonga Time"
+    },
+    "Pacific/Wake": {
+      "bcp47": "umawk",
+      "name": "Wake Island Time"
+    },
+    "Pacific/Wallis": {
+      "bcp47": "wfmau",
+      "name": "Wallis & Futuna Time"
+    }
+  },
   "versions": {
     "icu_datetime": "2.3.0",
     "icu_experimental": "0.6.0",
-    "icu_locale": "2.3.1"
+    "icu_locale": "2.3.1",
+    "icu_time": "2.3.0"
   }
 }

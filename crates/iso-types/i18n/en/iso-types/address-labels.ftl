@@ -1,0 +1,31 @@
+## address-labels catalog
+
+iso-address-labels-area = Area
+iso-address-labels-city = City
+iso-address-labels-county = County
+iso-address-labels-department = Department
+iso-address-labels-district = District
+iso-address-labels-do-si = Province / metropolitan city
+iso-address-labels-eircode = Eircode
+iso-address-labels-emirate = Emirate
+iso-address-labels-island = Island
+iso-address-labels-landmark-affix = Landmark affix
+iso-address-labels-landmark-descriptor = Landmark descriptor
+iso-address-labels-landmark-name = Landmark name
+iso-address-labels-neighborhood = Neighborhood
+iso-address-labels-oblast = Oblast
+iso-address-labels-organization = Organization
+iso-address-labels-parish = Parish
+iso-address-labels-pin = PIN code
+iso-address-labels-post-town = Post town
+iso-address-labels-postal = Postal code
+iso-address-labels-prefecture = Prefecture
+iso-address-labels-province = Province
+iso-address-labels-recipient = Recipient
+iso-address-labels-sorting = Sorting code
+iso-address-labels-state = State
+iso-address-labels-street = Street address
+iso-address-labels-suburb = Suburb
+iso-address-labels-townland = Townland
+iso-address-labels-village-township = Village / township
+iso-address-labels-zip = ZIP code

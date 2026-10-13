@@ -73,7 +73,9 @@ def catalog_rust(catalog: Catalog, currency_fractions: dict) -> str:
     for field in fields:
         if spec.standard == "3166-2" and field in {"parent", "type"}:
             continue
-        if spec.standard == "units" and field == "category":
+        if spec.standard in {"units", "unit-preferences"} and field == "category":
+            continue
+        if spec.standard == "regions" and field == "level":
             continue
         method = "kind" if field == "type" else field
         methods.append(string_table(method, [entry.metadata.get(field) for entry in entries], optional=True))
@@ -105,11 +107,27 @@ def catalog_rust(catalog: Catalog, currency_fractions: dict) -> str:
         methods.append(value_table("category", "UnitCategory", [
             f"UnitCategory::{categories[entry.metadata['category']]}" for entry in entries
         ]))
-    description = ("Common CLDR core unit identifiers; English display names are owned by CLDR."
+    if spec.standard == "regions":
+        levels = {level: variant_name(level) for level in sorted({entry.metadata["level"] for entry in entries})}
+        metadata = metadata_enum("GeographicRegionLevel", levels, "The level of a region in the UN M49 geographic hierarchy.") + "\n"
+        methods.append(value_table("level", "GeographicRegionLevel", [f"GeographicRegionLevel::{levels[entry.metadata['level']]}" for entry in entries]))
+    if spec.standard == "unit-preferences":
+        methods.append(value_table("category", "crate::UnitCategory", [f"crate::UnitCategory::{variant_name(entry.metadata['category'])}" for entry in entries]))
+    description = ("Telephone calling prefixes from libphonenumber; English labels are owned by the package Fluent resource."
+                   if spec.standard == "calling-codes" else
+                   "Postal address metadata identifiers; English labels are owned by the package Fluent resource."
+                   if spec.standard.startswith("address-") else
+                   "Common CLDR unit usages; English labels are owned by the package Fluent resource."
+                   if spec.standard == "unit-preferences" else
+                   "UN M49 geographic region identifiers; English names are extracted from ICU4X."
+                   if spec.standard == "regions" else
+                   "IANA location time zones and UTC; English location names are extracted from ICU4X."
+                   if spec.standard == "time-zones" else
+                   "Common CLDR core unit identifiers; English display names are owned by CLDR."
                    if spec.standard == "units" else
                    f"Assigned codes in ISO {spec.standard}; English labels are owned by {spec.authority}.")
     return GENERATED + metadata + f"""/// {description}
-/// `from_repr()` accepts a zero-based catalog ordinal; parse ISO numeric codes as strings.
+/// `from_repr()` accepts a zero-based catalog ordinal; parse external codes as strings.
 #[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd,
     strum::VariantArray, strum::EnumIter, strum::EnumCount, strum::FromRepr,
     strum::EnumString, strum::IntoStaticStr)]
@@ -167,6 +185,7 @@ def catalog_modules(catalogs: tuple[Catalog, ...]) -> str:
         f'#[cfg(feature = "{catalog.spec.feature}")]\nmod {catalog.spec.module};\n'
         f'#[cfg(feature = "{catalog.spec.feature}")]\npub use {catalog.spec.module}::'
         + (f'{{{catalog.spec.type_name}, UnitCategory}};\n' if catalog.spec.standard == "units"
+           else f'{{{catalog.spec.type_name}, GeographicRegionLevel}};\n' if catalog.spec.standard == "regions"
            else f'{catalog.spec.type_name};\n')
         for catalog in catalogs
     )
@@ -178,7 +197,10 @@ def macro_data(catalogs: tuple[Catalog, ...]) -> str:
         catalog.spec.standard: {
             "type": catalog.spec.type_name,
             "feature": catalog.spec.feature,
-            "entries": [{"code": entry.code, "variant": entry.variant} for entry in catalog.entries],
+            "entries": [{"code": entry.code, "variant": entry.variant,
+                         **({"country": entry.code.split("-", 1)[0]} if catalog.spec.standard == "3166-2" else {}),
+                         **({"category": entry.metadata["category"]} if "category" in entry.metadata else {})}
+                        for entry in catalog.entries],
         }
         for catalog in catalogs
     }
@@ -186,7 +208,7 @@ def macro_data(catalogs: tuple[Catalog, ...]) -> str:
 
 
 def fluent_resource(catalog: Catalog) -> str:
-    return f"## ISO {catalog.spec.standard}\n\n" + "".join(
+    return f"## {catalog.spec.standard} catalog\n\n" + "".join(
         f"{entry.message_id} = {entry.name}\n" for entry in catalog.entries
     )
 
@@ -197,13 +219,22 @@ def fluent_registration(catalogs: tuple[Catalog, ...]) -> str:
         f'    include_str!("../../i18n/en/iso-types/{catalog.spec.standard}.ftl"),\n'
         for catalog in catalogs if catalog.spec.authority == "Fluent"
     )
-    lookups = "".join(
-        f'    #[cfg(feature = "{catalog.spec.feature}")]\n'
-        f'    if let Some(code) = id.strip_prefix("iso-{catalog.spec.standard}-") {{\n'
-        f'        return Some(code.parse::<crate::{catalog.spec.type_name}>().ok()?.english_name());\n'
-        f'    }}\n'
-        for catalog in catalogs if catalog.spec.authority != "Fluent"
-    )
+    lookups = ""
+    for catalog in catalogs:
+        if catalog.spec.authority == "Fluent":
+            continue
+        lookups += f'    #[cfg(feature = "{catalog.spec.feature}")]\n'
+        if catalog.spec.standard == "time-zones":
+            lookups += f'''    if id.starts_with("iso-time-zones-") {{
+        return <crate::TimeZoneId as strum::VariantArray>::VARIANTS.iter()
+            .find(|zone| zone.message_id() == id).map(|zone| zone.english_name());
+    }}
+'''
+        else:
+            lookups += f'''    if let Some(code) = id.strip_prefix("iso-{catalog.spec.standard}-") {{
+        return Some(code.parse::<crate::{catalog.spec.type_name}>().ok()?.english_name());
+    }}
+'''
     return GENERATED + f"""pub(super) const ENGLISH_RESOURCES: &[&str] = &[
 {resources}];
 

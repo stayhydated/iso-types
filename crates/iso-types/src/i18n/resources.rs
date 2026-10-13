@@ -4,6 +4,14 @@ pub(super) const ENGLISH_RESOURCES: &[&str] = &[
     include_str!("../../i18n/en/iso-types/3166-2.ftl"),
     #[cfg(feature = "5218")]
     include_str!("../../i18n/en/iso-types/5218.ftl"),
+    #[cfg(feature = "unit-preferences")]
+    include_str!("../../i18n/en/iso-types/unit-preferences.ftl"),
+    #[cfg(feature = "calling-codes")]
+    include_str!("../../i18n/en/iso-types/calling-codes.ftl"),
+    #[cfg(feature = "addresses")]
+    include_str!("../../i18n/en/iso-types/address-fields.ftl"),
+    #[cfg(feature = "addresses")]
+    include_str!("../../i18n/en/iso-types/address-labels.ftl"),
 ];
 
 pub(super) fn catalog_english_name(id: &str) -> Option<&'static str> {
@@ -42,6 +50,17 @@ pub(super) fn catalog_english_name(id: &str) -> Option<&'static str> {
     #[cfg(feature = "units")]
     if let Some(code) = id.strip_prefix("iso-units-") {
         return Some(code.parse::<crate::MeasurementUnit>().ok()?.english_name());
+    }
+    #[cfg(feature = "regions")]
+    if let Some(code) = id.strip_prefix("iso-regions-") {
+        return Some(code.parse::<crate::GeographicRegion>().ok()?.english_name());
+    }
+    #[cfg(feature = "time-zones")]
+    if id.starts_with("iso-time-zones-") {
+        return <crate::TimeZoneId as strum::VariantArray>::VARIANTS
+            .iter()
+            .find(|zone| zone.message_id() == id)
+            .map(|zone| zone.english_name());
     }
     let _ = id;
     None

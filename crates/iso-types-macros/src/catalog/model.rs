@@ -23,6 +23,8 @@ impl Model {
     pub fn parse(attr: TokenStream, item: TokenStream) -> syn::Result<Self> {
         let mut standard = None;
         let mut codes = None;
+        let mut country = None;
+        let mut category = None;
         syn::meta::parser(|meta| {
             if meta.path.is_ident("standard") && standard.is_none() {
                 standard = Some(meta.value()?.parse::<LitStr>()?);
@@ -31,10 +33,12 @@ impl Model {
                 let value = meta.value()?;
                 syn::bracketed!(content in value);
                 codes = Some(Punctuated::<LitStr, Token![,]>::parse_terminated(&content)?);
+            } else if meta.path.is_ident("country") && country.is_none() {
+                country = Some(meta.value()?.parse::<LitStr>()?);
+            } else if meta.path.is_ident("category") && category.is_none() {
+                category = Some(meta.value()?.parse::<LitStr>()?);
             } else {
-                return Err(
-                    meta.error("expected standard = \"...\" or codes = [\"...\"] once each")
-                );
+                return Err(meta.error("expected standard, codes, country, or category once each"));
             }
             Ok(())
         })
@@ -42,7 +46,33 @@ impl Model {
         let standard =
             standard.ok_or_else(|| syn::Error::new(Span::call_site(), "standard is required"))?;
         let catalog = data::catalog(&standard)?;
-        let selected = if let Some(codes) = codes {
+        for (filter, field) in [
+            (country.as_ref(), "country"),
+            (category.as_ref(), "category"),
+        ] {
+            if let Some(filter) = filter {
+                let value = filter.value();
+                let valid = catalog.entries.iter().any(|entry| {
+                    (if field == "country" {
+                        &entry.country
+                    } else {
+                        &entry.category
+                    })
+                    .as_deref()
+                        == Some(value.as_str())
+                });
+                if !valid {
+                    return Err(syn::Error::new_spanned(
+                        filter,
+                        format!(
+                            "unavailable {field} filter `{value}` in the {} catalog",
+                            standard.value()
+                        ),
+                    ));
+                }
+            }
+        }
+        let mut selected = if let Some(codes) = codes {
             if codes.is_empty() {
                 return Err(syn::Error::new_spanned(
                     &standard,
@@ -59,7 +89,7 @@ impl Model {
                         standard.value(),
                     )))?;
                 if !seen.insert(value) {
-                    return Err(syn::Error::new_spanned(code, "duplicate ISO code"));
+                    return Err(syn::Error::new_spanned(code, "duplicate catalog code"));
                 }
                 selected.push(&catalog.entries[index]);
             }
@@ -67,6 +97,22 @@ impl Model {
         } else {
             catalog.entries.iter().collect()
         };
+        let country_value = country.as_ref().map(LitStr::value);
+        let category_value = category.as_ref().map(LitStr::value);
+        selected.retain(|entry| {
+            country_value
+                .as_deref()
+                .is_none_or(|filter| entry.country.as_deref() == Some(filter))
+                && category_value
+                    .as_deref()
+                    .is_none_or(|filter| entry.category.as_deref() == Some(filter))
+        });
+        if selected.is_empty() {
+            return Err(syn::Error::new_spanned(
+                &standard,
+                "catalog filters select no codes",
+            ));
+        }
         let mut input: ItemEnum = syn::parse2(item)?;
         prepare(&mut input)?;
         let description = format!(

@@ -32,3 +32,24 @@ from CLDR validity data and the English locale. The complete pinned upstream inp
 and checksums are provided under data/current; generated Cargo packages contain
 the selected catalog. ICU4X compiled conversion data supplies conversion factors,
 temperature offsets, and reciprocal rules when unit-conversion is enabled.
+
+Regional preferences, language/script relationships, and ranked/mixed-unit
+preferences derive from pinned CLDR supplemental data under Unicode-3.0.
+Geographic relationships use numerical classification facts from the UN
+Statistics Division M49 overview, retrieved on the date recorded in provenance:
+https://unstats.un.org/unsd/methodology/m49/overview/
+
+IANA location identifiers and country associations derive from zone.tab and
+zone1970.tab in the IANA Time Zone Database. These tables are in the public domain.
+https://www.iana.org/time-zones
+The revision and checksums are recorded in data/current/provenance.json.
+Jiff supplies transition rules through its bundled database dependency.
+
+Telephone prefixes derive from libphonenumber's PhoneNumberMetadata.xml.
+Postal schemas derive from libaddressinput metadata and RegionDataConstants.java.
+https://github.com/google/libphonenumber
+https://github.com/google/libaddressinput
+Copyright Google Inc.
+SPDX-License-Identifier: Apache-2.0
+Pinned revisions, retrieval dates, URLs, and checksums are recorded in
+data/current/provenance.json. The Apache license text accompanies both packages.

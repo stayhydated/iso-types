@@ -13,7 +13,13 @@ from .rust import format_rust
 from .policy import CurrentData
 from .relations import build_relations
 from .units import build_units
+from .supplemental import name_requests, build_supplemental
 from . import render
+from . import render_supplemental
+from .preferences import render_regional
+from .unit_preferences import build_usage_catalog, render as render_unit_preferences
+from .language_relations import render as render_language_relations
+from . import contacts
 
 DATA = ROOT / "data"
 TYPES = ROOT / "crates/iso-types"
@@ -47,11 +53,15 @@ def generate(*, check: bool) -> None:
     verify_sources(DATA)
     policy = CurrentData(DATA)
     command = ["cargo", "run", "--quiet", "-p", "iso-types-icu-data", "--locked", "--", "--stdout"]
-    extracted = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True)
+    extracted = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True,
+                               input=json.dumps(name_requests(DATA)))
     snapshot = json.loads(extracted.stdout)
     catalogs = build_catalogs(DATA, FTL, policy, snapshot["catalogs"])
     relations = build_relations(catalogs, policy)
     catalogs += (build_units(DATA, policy),)
+    catalogs += build_supplemental(DATA, snapshot)
+    catalogs += (build_usage_catalog(DATA),)
+    catalogs += contacts.build_catalogs(DATA)
     plan = OutputPlan()
     plan.add(DATA / "icu/english.json", extracted.stdout)
     plan.add(TYPES / "src/catalogs.rs", format_rust(render.catalog_modules(catalogs)))
@@ -62,6 +72,12 @@ def generate(*, check: bool) -> None:
     plan.add(MACROS / "src/catalog/data.json", render.macro_data(catalogs))
     plan.add(TYPES / "src/i18n/resources.rs", format_rust(render.fluent_registration(catalogs)))
     plan.add(TYPES / "src/geography.rs", format_rust(render.geography(relations)))
+    plan.add(TYPES / "src/supplemental.rs", format_rust(render_supplemental.render(DATA, catalogs)))
+    plan.add(TYPES / "src/regional/data.rs", format_rust(render_regional(DATA, relations.countries)))
+    plan.add(TYPES / "src/unit_preferences/data.rs", format_rust(render_unit_preferences(DATA, catalogs)))
+    plan.add(TYPES / "src/language_relations/data.rs", format_rust(render_language_relations(DATA, policy, catalogs)))
+    plan.add(TYPES / "src/telephone/data.rs", format_rust(contacts.render_phones(DATA, catalogs)))
+    plan.add(TYPES / "src/address/data.rs", format_rust(contacts.render_addresses(DATA, catalogs)))
     scope = format_rust(policy.rust_locale_policy())
     for crate in (TYPES, MACROS):
         plan.add(crate / "src/locale/scope.rs", scope)

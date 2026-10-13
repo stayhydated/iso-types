@@ -1,4 +1,4 @@
-## ISO 3166-2
+## 3166-2 catalog
 
 iso-3166-2-AD-02 = Canillo
 iso-3166-2-AD-03 = Encamp

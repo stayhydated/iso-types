@@ -5,7 +5,7 @@ mod enum_input;
 #[cfg(feature = "locales")]
 mod locale;
 
-/// Fill an empty enum from an ISO catalog, optionally selecting `codes = [...]`.
+/// Fill an empty enum from a catalog, selecting codes or filtering by country or category.
 #[proc_macro_attribute]
 pub fn iso_enum(attr: TokenStream, item: TokenStream) -> TokenStream {
     catalog::expand(attr.into(), item.into())

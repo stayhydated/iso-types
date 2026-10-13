@@ -1,4 +1,4 @@
-/// An unrecognized code in a maintained ISO or measurement catalog.
+/// An unrecognized code in a maintained catalog.
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ParseIsoCodeError {
     /// The catalog identifier, such as `3166-1` or `units`.
@@ -22,11 +22,11 @@ pub trait IsoCode:
     + Eq
     + std::str::FromStr<Err = ParseIsoCodeError>
 {
-    /// The ISO standard or finite catalog identifier.
+    /// The ISO standard or catalog identifier.
     const STANDARD: &'static str;
     /// The authority responsible for the English labels.
     const LABEL_SOURCE: LabelSource;
-    /// The canonical, case-sensitive ISO representation.
+    /// The canonical, case-sensitive catalog representation.
     fn code(self) -> &'static str;
     /// The authoritative English label.
     fn english_name(self) -> &'static str;
@@ -39,6 +39,6 @@ pub enum LabelSource {
     Icu4x,
     /// Names owned by the package's English Fluent resource.
     Fluent,
-    /// English unit display names from the pinned CLDR locale data.
+    /// English display names from the pinned CLDR locale data.
     Cldr,
 }

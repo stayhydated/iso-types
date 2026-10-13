@@ -43,3 +43,27 @@ pub use iso_8601_month::Iso8601Month;
 mod measurement_unit;
 #[cfg(feature = "units")]
 pub use measurement_unit::{MeasurementUnit, UnitCategory};
+#[cfg(feature = "regions")]
+mod regions;
+#[cfg(feature = "regions")]
+pub use regions::{GeographicRegion, GeographicRegionLevel};
+#[cfg(feature = "time-zones")]
+mod time_zones;
+#[cfg(feature = "time-zones")]
+pub use time_zones::TimeZoneId;
+#[cfg(feature = "unit-preferences")]
+mod unit_preferences;
+#[cfg(feature = "unit-preferences")]
+pub use unit_preferences::UnitUsage;
+#[cfg(feature = "calling-codes")]
+mod calling_codes;
+#[cfg(feature = "calling-codes")]
+pub use calling_codes::CallingCode;
+#[cfg(feature = "addresses")]
+mod address_fields;
+#[cfg(feature = "addresses")]
+pub use address_fields::AddressField;
+#[cfg(feature = "addresses")]
+mod address_labels;
+#[cfg(feature = "addresses")]
+pub use address_labels::AddressFieldLabel;

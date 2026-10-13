@@ -14,6 +14,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@1.99.0
         with:
           components: clippy, rustfmt
+          targets: wasm32-unknown-unknown
       - uses: Swatinem/rust-cache@v2
       - run: python3 -m unittest discover -s tools/codegen/tests -v
       - run: python3 -m tools.codegen --check
@@ -21,5 +22,6 @@ jobs:
       - run: cargo test -p iso-types --locked
       - run: cargo test -p iso-types --no-default-features --locked
       - run: cargo test --workspace --all-features --locked
+      - run: python3 tools/check_features.py --wasm
       - run: cargo clippy --workspace --all-features --all-targets --locked -- -D warnings
       - run: RUSTDOCFLAGS="-D warnings" cargo doc --workspace --all-features --no-deps --locked

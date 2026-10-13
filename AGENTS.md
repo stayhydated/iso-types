@@ -15,6 +15,10 @@ Python 3.10 or newer and the pinned Rust toolchain.
 | ICU conversions | `crates/iso-types/src/icu.rs`. |
 | Country, subdivision, and currency relationships | Generated `crates/iso-types/src/geography.rs`; model validation in `tools/codegen/relations.py`. |
 | Common measurement units | Generated `src/catalogs/measurement_unit.rs`; selection in `tools/codegen/units.py`; ICU conversions in `src/measurement.rs`. |
+| Time zones and UN M49 regions | `tools/codegen/supplemental.py` and `render_supplemental.py`; generated `src/supplemental.rs`; Jiff/ICU integration in `src/time_zone.rs`. |
+| Country preferences and preferred units | `tools/codegen/preferences.py` and `unit_preferences.py`; runtime types in `src/regional.rs` and `src/unit_preferences.rs`. |
+| Language relationships | `tools/codegen/language_relations.py`; generated `src/language_relations/data.rs`; ICU directionality in `src/language_relations.rs`. |
+| Telephone and postal metadata | `tools/codegen/contacts.py`; generated tables under `src/telephone/` and `src/address/`; parser adapters and schema APIs in the parent modules. |
 | Locale parsing and English names | `crates/iso-types/src/locale.rs`. |
 | English Fluent utility | `crates/iso-types/src/i18n.rs`; owned resources under `i18n/en/iso-types/`. |
 | Macro input conventions | `crates/iso-types-macros/src/enum_input.rs`. |
@@ -29,6 +33,10 @@ Generated `src/locale/scope.rs` files carry the same selection policy into both
 public packages. The macro crate's `src/catalog/data.json` is a generated selection
 index; labels and metadata remain owned by the facade's catalog tables.
 `src/i18n/resources.rs` is generated registration glue.
+
+Catalog filters are validated against the generated selection index: `country`
+for subdivisions, and `category` for units and unit preferences. Filters intersect
+explicit `codes` and reject empty selections.
 
 Catalogs and macro-generated enums derive Strum's `VariantArray`, `EnumIter`,
 `EnumCount`, `FromRepr`, and `IntoStaticStr`. The facade re-exports Strum and
@@ -73,6 +81,20 @@ country/currency slices are const; relationships preserve canonical code order.
 Currency associations are active tender at the dated snapshot and permit several
 currencies per country. `SubdivisionKind` preserves ISO source category names.
 
+Regional defaults and language associations come from pinned CLDR supplemental
+data. Keep functional population estimates and source status definitions intact.
+Unit preferences preserve ranked choices, mixed components, thresholds, and
+skeletons; compound components use ICU's parser. UN M49 geography uses the
+published overview's hierarchy. IANA country associations combine the two pinned
+zone tables; Jiff's bundled database supplies transitions and DST behavior.
+ICU4X owns time-zone mappings and localized location formatting.
+
+Telephone relationships preserve shared prefixes and global service codes.
+Use the optional `phonenumber` adapter for parsing and validation. Postal metadata
+combines the dated live source with pinned libaddressinput constants, resolves
+the provider's documented ZZ schema defaults, and preserves language overrides.
+Keep upstream templates, fields, and Java-compatible postal patterns intact.
+
 ## Regeneration and validation
 
 Edit authoritative inputs or generator code first, then run `just generate`.
@@ -93,5 +115,7 @@ Use the narrowest relevant validation while editing:
   and diagnostics.
 - `cargo test -p iso-types-locale-consumer --locked` for real macro/runtime integration.
 - `just test` for default, minimal, and full Fluent configurations.
+- `just test-features` for isolated optional regional features; use
+  `python3 tools/check_features.py --wasm` to include facade and consumer WASM checks.
 - `just verify` before committing cross-cutting changes.
 - `just package` for a public-package dry run; it verifies archives without uploading.

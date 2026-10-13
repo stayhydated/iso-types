@@ -25,6 +25,11 @@ and `"units"` for common CLDR measurement units. `catalog_value()` exposes
 currency precision, subdivision hierarchy, and measurement categories/conversion
 on the facade's maintained type. Enable each corresponding catalog feature.
 
+Use `country = "US"` with `3166-2`, or `category = "length"` with `units` and
+`unit-preferences`. Filters intersect with an optional `codes` list and reject
+empty results. Additional catalogs use `regions`, `time-zones`, `calling-codes`,
+`address-fields`, and `address-labels`; English labels delegate to the facade.
+
 Both macros derive Strum's `VariantArray`, `EnumIter`, `EnumCount`, `FromRepr`,
 and `IntoStaticStr`. Import `iso_types::{VariantArray, IntoEnumIterator, EnumCount}`
 for `VARIANTS`, `iter()`, and `COUNT`. Canonical `code()` and `into_str()` work

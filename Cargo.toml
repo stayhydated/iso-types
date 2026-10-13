@@ -11,7 +11,7 @@ resolver = "3"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.99"
-license = "(MIT OR Apache-2.0) AND LGPL-2.1-or-later AND Unicode-3.0"
+license = "(MIT OR Apache-2.0) AND LGPL-2.1-or-later AND Unicode-3.0 AND Apache-2.0"
 repository = "https://github.com/stayhydated/iso-types"
 
 [workspace.dependencies]
@@ -30,6 +30,12 @@ icu_datetime = "=2.3.0"
 icu_experimental = "=0.6.0"
 icu_provider = "=2.3.1"
 icu_plurals = "=2.3.0"
+icu_time = "=2.3.0"
+jiff = { version = "=0.2.38", default-features = false, features = [
+  "std",
+  "tzdb-bundle-always",
+] }
+phonenumber = "0.3.10"
 writeable = "0.6"
 proc-macro-crate = "3.5"
 proc-macro2 = "1.0"

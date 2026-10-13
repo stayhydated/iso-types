@@ -29,6 +29,10 @@ test:
 clippy:
     cargo clippy --workspace --all-features --all-targets --locked -- -D warnings
 
+# Test each optional regional feature without default-feature unification.
+test-features:
+    python3 tools/check_features.py
+
 docs:
     RUSTDOCFLAGS="-D warnings" cargo doc --workspace --all-features --no-deps --locked
 
@@ -37,4 +41,4 @@ package:
     cargo publish --workspace --dry-run --allow-dirty --locked
 
 # Run the complete repository verification sequence.
-verify: codegen-test generate-check format-check test clippy docs
+verify: codegen-test generate-check format-check test test-features clippy docs

@@ -47,10 +47,49 @@
     "units-en.xml": {
       "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/main/en.xml",
       "sha256": "67607f4c9cf57157e70564987d8ae92a9ddcd73c00a2f1cd6abf79524a969cbd"
+    },
+    "unitPreferences.xml": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/supplemental/units.xml",
+      "sha256": "6ef31425565e76c456295ca9d2b140fed9da27bc67712228f0079dedbdf94614"
+    },
+    "zone.tab": {
+      "url": "https://raw.githubusercontent.com/eggert/tz/fbbd33b7e90c0872fe43277760f695039742baa7/zone.tab",
+      "sha256": "e2e8e31c4e10f44576c79345e76060591dbb3eef6ce14e006afc8a373caa9593"
+    },
+    "zone1970.tab": {
+      "url": "https://raw.githubusercontent.com/eggert/tz/fbbd33b7e90c0872fe43277760f695039742baa7/zone1970.tab",
+      "sha256": "5f23781702bf51408ff1581daa109ab3b9257fb433b1554e579d92172892c0cf"
+    },
+    "PhoneNumberMetadata.xml": {
+      "url": "https://raw.githubusercontent.com/google/libphonenumber/33be5664343676b27761213d8f5500d682568ea7/resources/PhoneNumberMetadata.xml",
+      "sha256": "9d3b07b53c7e8a437ddc316249620b51d4090987026f9e8ffb9743aab4e4d5a6"
+    },
+    "addresses.json": {
+      "url": "https://www.gstatic.com/chrome/autofill/libaddressinput/chromium-i18n/ssl-address/data/{country}",
+      "retrieved": "2026-10-13",
+      "sha256": "2553f06e42c704b668f8fa6fc5e95d7be1351ac052584816b1c0d622fb6beb54",
+      "supplemental_source": {
+        "url": "https://raw.githubusercontent.com/google/libaddressinput/81eb9628382b07d371d8ea0b11badf7de3857fd5/common/src/main/java/com/google/i18n/addressinput/common/RegionDataConstants.java",
+        "revision": "81eb9628382b07d371d8ea0b11badf7de3857fd5",
+        "source_sha256": "ae0c44ef06e64e32e5c2f74ac43e717e69256ee17bc9c6770546ef716e223416"
+      }
+    },
+    "m49.json": {
+      "url": "https://unstats.un.org/unsd/methodology/m49/overview/",
+      "retrieved": "2026-10-13",
+      "sha256": "aa370cb65a830628cb4fdbb112c1339ff2d7a1b5aeeac6d08c838268af338ffa"
+    },
+    "RegionDataConstants.java": {
+      "url": "https://raw.githubusercontent.com/google/libaddressinput/81eb9628382b07d371d8ea0b11badf7de3857fd5/common/src/main/java/com/google/i18n/addressinput/common/RegionDataConstants.java",
+      "sha256": "ae0c44ef06e64e32e5c2f74ac43e717e69256ee17bc9c6770546ef716e223416"
     }
   },
   "sources": [
     "https://github.com/unicode-org/cldr",
-    "https://www.six-group.com/en/products-services/financial-information/market-reference-data/data-standards.html"
+    "https://www.six-group.com/en/products-services/financial-information/market-reference-data/data-standards.html",
+    "https://www.iana.org/time-zones",
+    "https://github.com/google/libphonenumber",
+    "https://github.com/google/libaddressinput",
+    "https://unstats.un.org/unsd/methodology/m49/overview/"
   ]
 }
