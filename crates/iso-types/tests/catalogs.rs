@@ -1,3 +1,17 @@
+#![cfg(any(
+    feature = "639-1",
+    feature = "639-2",
+    feature = "639-3",
+    feature = "639-5",
+    feature = "3166-1",
+    feature = "3166-2",
+    feature = "3166-3",
+    feature = "4217",
+    feature = "15924",
+    feature = "5218",
+    feature = "8601"
+))]
+
 use iso_types::IsoCode;
 
 fn verify<C: IsoCode + std::fmt::Debug>() {

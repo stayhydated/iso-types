@@ -3,6 +3,8 @@
 extern crate self as iso_types;
 
 mod generated;
+// The catalog glob is empty when every catalog feature is disabled.
+#[allow(unused_imports)]
 pub use generated::*;
 
 #[cfg(feature = "macros")]
