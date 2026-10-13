@@ -1,0 +1,52 @@
+{
+  "source": "https://github.com/unicode-org/cldr",
+  "release": "48.2",
+  "revision": "11299982335beb974c1c63c45265184e759c0f41",
+  "as_of": "2026-10-13",
+  "files": {
+    "coverageLevels.txt": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/properties/coverageLevels.txt",
+      "sha256": "219b247b1c5471802f8ce3fc8449031d2943a77c076270425ed074505cd06f23"
+    },
+    "scriptMetadata.txt": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/properties/scriptMetadata.txt",
+      "sha256": "50a0499acddd7a5ce935e8d77b59ab789f91b16c15b95b00236d90137fe662a4"
+    },
+    "language.xml": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/validity/language.xml",
+      "sha256": "3f2be6cb8f4a1b506a5bc8d79d3a91349f3061ade565f836c534c00c2efd2996"
+    },
+    "region.xml": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/validity/region.xml",
+      "sha256": "e751e0eedd46b52c38f3cdb72b0fab61ac8b48e052e8b28ba74b6ac26c4c8cb1"
+    },
+    "script.xml": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/validity/script.xml",
+      "sha256": "30f7f5f64be0df200bdfe42f7ce103a045ab661490885a7f060f31d4199be948"
+    },
+    "subdivision.xml": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/validity/subdivision.xml",
+      "sha256": "93b12c9d55938266c96d44a7ccbb66800afeef4f9dd48b0dc16edfab89833d95"
+    },
+    "supplementalMetadata.xml": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/supplemental/supplementalMetadata.xml",
+      "sha256": "36e807ce72b15304dd993f132216f408351be1c4376edaa2fe9e9547e2efcac1"
+    },
+    "supplementalData.xml": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/supplemental/supplementalData.xml",
+      "sha256": "cd2af39aef82fdbfba4d591c87548203350538ad2318486d104b3b38b8d62f1a"
+    },
+    "likelySubtags.xml": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/supplemental/likelySubtags.xml",
+      "sha256": "b0049bc6420715b1e3010f43d95745dca227c5aa60357d1d89a1bdcb06287312"
+    },
+    "current_currencies.json": {
+      "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+      "sha256": "f2357f818b1af2d112d11dd14c77b948a7909d8319ec90ceb6e260303d2a3fd4"
+    }
+  },
+  "sources": [
+    "https://github.com/unicode-org/cldr",
+    "https://www.six-group.com/en/products-services/financial-information/market-reference-data/data-standards.html"
+  ]
+}

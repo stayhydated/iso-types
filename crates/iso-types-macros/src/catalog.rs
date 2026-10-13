@@ -220,6 +220,34 @@ mod tests {
                 "canonical code",
             ),
             (
+                quote!(standard = "3166-3"),
+                quote!(
+                    enum Codes {}
+                ),
+                "unsupported ISO catalog",
+            ),
+            (
+                quote!(standard = "639-5"),
+                quote!(
+                    enum Codes {}
+                ),
+                "unsupported ISO catalog",
+            ),
+            (
+                quote!(standard = "639-3", codes = ["ang"]),
+                quote!(
+                    enum Codes {}
+                ),
+                "canonical code",
+            ),
+            (
+                quote!(standard = "15924", codes = ["Egyp"]),
+                quote!(
+                    enum Codes {}
+                ),
+                "canonical code",
+            ),
+            (
                 quote!(standard = "3166-1", codes = ["US", "US"]),
                 quote!(
                     enum Codes {}

@@ -2,6 +2,8 @@
 use proc_macro::TokenStream;
 mod catalog;
 #[cfg(feature = "locales")]
+mod current;
+#[cfg(feature = "locales")]
 mod locale;
 
 /// Fill an empty enum from an ISO catalog, optionally selecting `codes = [...]`.

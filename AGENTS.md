@@ -10,9 +10,23 @@ ICU4X owns English names for languages, countries, scripts, currencies, months,
 and weekdays. `tools/icu-data` extracts pinned compiled provider data into
 `crates/iso-types-macros/data/icu_english.json`. Exclude codes whose ICU English
 name is absent; do not substitute ISO names or codes. English FTL under
-`crates/iso-types/i18n/en/iso-types` owns language-family, subdivision,
-former-country, and sex-code labels, following koruma-collection's FTL-to-Display
+`crates/iso-types/i18n/en/iso-types` owns current subdivision and sex-code labels,
+following koruma-collection's FTL-to-Display
 convention.
+
+`scripts/current_data.py` owns the current/common selection policy. Living
+languages require CLDR modern locale coverage and a recommended default script.
+Scripts require CLDR regular status and recommended identifier usage. Countries
+and subdivisions require regular current validity; currencies require active
+tender circulation and presence in SIX's current ISO 4217 list. Locale APIs and
+macros share generated policy tables and reject excluded components and variants
+before ICU normalization. Bibliographic aliases are excluded.
+
+Selection sources are pinned under `crates/iso-types-macros/data/current` with
+checksums and an `as_of` date. Refresh and review those inputs when updating the
+data; do not hand-edit generated policy tables. Published macro packages contain
+the selected catalog and policy tables; complete source snapshots stay in the
+repository for reproducibility.
 
 Run `python3 scripts/generate.py` after changing source data or an owned FTL label.
 It runs the ICU extractor and regenerates Rust tables, macro records, and resource

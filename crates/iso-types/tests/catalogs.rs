@@ -2,10 +2,8 @@
     feature = "639-1",
     feature = "639-2",
     feature = "639-3",
-    feature = "639-5",
     feature = "3166-1",
     feature = "3166-2",
-    feature = "3166-3",
     feature = "4217",
     feature = "15924",
     feature = "5218",
@@ -36,15 +34,13 @@ macro_rules! catalog_test {
         }
     };
 }
-catalog_test!("639-1", languages_1, Iso6391, 183);
-catalog_test!("639-2", languages_2, Iso6392, 420);
-catalog_test!("639-3", languages_3, Iso6393, 699);
-catalog_test!("639-5", families, Iso6395, 115);
+catalog_test!("639-1", languages_1, Iso6391, 93);
+catalog_test!("639-2", languages_2, Iso6392, 100);
+catalog_test!("639-3", languages_3, Iso6393, 121);
 catalog_test!("3166-1", countries, Iso3166_1, 249);
-catalog_test!("3166-2", subdivisions, Iso3166_2, 5046);
-catalog_test!("3166-3", former_countries, Iso3166_3, 31);
-catalog_test!("4217", currencies, Iso4217, 177);
-catalog_test!("15924", scripts, Iso15924, 212);
+catalog_test!("3166-2", subdivisions, Iso3166_2, 5027);
+catalog_test!("4217", currencies, Iso4217, 153);
+catalog_test!("15924", scripts, Iso15924, 34);
 catalog_test!("5218", sex_codes, Iso5218, 4);
 catalog_test!("8601", weekdays, Iso8601Weekday, 7);
 catalog_test!("8601", months, Iso8601Month, 12);
@@ -63,22 +59,10 @@ fn alternate_codes_and_metadata_preserve_standard_representations() {
     assert_eq!(Iso3166_1::Us.alpha_3(), Some("USA"));
     assert_eq!(Iso4217::Usd.numeric(), Some("840"));
     assert_eq!("eng".parse::<Iso6391>().unwrap(), Iso6391::En);
-    assert_eq!("fre".parse::<Iso6391>().unwrap(), Iso6391::Fr);
+    assert_eq!("fra".parse::<Iso6391>().unwrap(), Iso6391::Fr);
+    assert!("fre".parse::<Iso6391>().is_err());
     assert_eq!("215".parse::<Iso15924>().unwrap(), Iso15924::Latn);
     assert!("us".parse::<Iso3166_1>().is_err());
-}
-
-#[cfg(feature = "3166-3")]
-#[test]
-fn ambiguous_historical_codes_are_rejected() {
-    assert!("CS".parse::<iso_types::Iso3166_3>().is_err());
-    assert_eq!(
-        "CSHH"
-            .parse::<iso_types::Iso3166_3>()
-            .unwrap()
-            .withdrawal_date(),
-        Some("1993-06-15")
-    );
 }
 
 #[cfg(all(feature = "3166-1", feature = "macros"))]
@@ -132,10 +116,8 @@ fn fluent_catalogs_match_every_english_display_label_and_keep_owner_scoping() {
     check!("639-1", Iso6391);
     check!("639-2", Iso6392);
     check!("639-3", Iso6393);
-    check!("639-5", Iso6395);
     check!("3166-1", Iso3166_1);
     check!("3166-2", Iso3166_2);
-    check!("3166-3", Iso3166_3);
     check!("4217", Iso4217);
     check!("15924", Iso15924);
     check!("5218", Iso5218);

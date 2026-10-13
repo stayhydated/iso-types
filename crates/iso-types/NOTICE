@@ -21,3 +21,8 @@ https://github.com/unicode-org/icu4x
 Copyright Unicode, Inc.
 SPDX-License-Identifier: Unicode-3.0
 The Unicode license text accompanies both Cargo packages.
+
+Current-data selection uses CLDR coverage, script, validity, alias, and currency
+metadata under the Unicode license, plus current ISO 4217 code facts published
+by SIX. Retrieval dates, releases, URLs, and checksums are recorded in
+crates/iso-types-macros/data/current/provenance.json in the repository.

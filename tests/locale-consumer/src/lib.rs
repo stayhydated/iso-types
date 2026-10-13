@@ -48,7 +48,16 @@ mod tests {
             "de".parse::<Languages>(),
             Err(codes::LocaleConversionError::Unsupported(_))
         ));
-        assert_eq!(AllLanguages::ALL.len(), 183);
+        for code in ["iw-IL", "sh", "en-BU", "de-DE-1901", "la", "en-Goth"] {
+            assert!(
+                matches!(
+                    code.parse::<Languages>(),
+                    Err(codes::LocaleConversionError::OutOfScope(_))
+                ),
+                "{code}"
+            );
+        }
+        assert_eq!(AllLanguages::ALL.len(), 93);
         assert_eq!("eng".parse::<AllLanguages>().unwrap(), AllLanguages::En);
         assert_eq!(
             Languages::ZhHantTw.to_string(),

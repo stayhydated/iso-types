@@ -100,7 +100,16 @@ fn excluded_icu_items_have_no_fluent_label() {
         .find(|module| module.data().owner == "iso-types")
         .unwrap();
     let localizer = module.create_localizer().unwrap();
-    for id in ["iso-639-3-aaa", "iso-15924-Qaaa", "iso-4217-XAD"] {
+    for id in [
+        "iso-639-3-aaa",
+        "iso-639-3-ang",
+        "iso-15924-Egyp",
+        "iso-4217-XTS",
+        "iso-3166-2-FR-NC",
+        "iso-3166-3-CSHH",
+        "iso-639-5-art",
+        "iso-locale-iw-IL",
+    ] {
         let key = es_fluent::registry::__macro::static_message_key(
             "iso-types",
             es_fluent::registry::__macro::static_domain("iso-types"),
@@ -117,12 +126,7 @@ fn english_locale_names_and_aliases_follow_icu_and_missing_names_fail() {
         ("en-US", "American English"),
         ("fr-CA", "Canadian French"),
         ("zh-Hant-TW", "Traditional Chinese (Taiwan)"),
-        (
-            "de-DE-1901",
-            "German (Germany, Traditional German orthography)",
-        ),
         ("en-001", "English (world)"),
-        ("iw-IL", "Hebrew (Israel)"),
     ] {
         assert_eq!(
             iso_types::locale_english_name(&input.parse().unwrap()).unwrap(),
@@ -131,15 +135,76 @@ fn english_locale_names_and_aliases_follow_icu_and_missing_names_fail() {
     }
     assert!(matches!(
         iso_types::locale_english_name(&iso_types::langid!("aaa")),
-        Err(iso_types::LocaleNameError::Unavailable(_))
+        Err(iso_types::LocaleNameError::OutOfScope(_))
     ));
     assert_eq!(
         iso_types::parse_language_identifier("eng-US").unwrap(),
         iso_types::langid!("en-US")
     );
-    assert_eq!(
-        iso_types::parse_language_identifier("sh").unwrap(),
-        iso_types::langid!("sr-Latn")
-    );
+    for code in [
+        "iw-IL",
+        "sh",
+        "tl",
+        "la",
+        "ang",
+        "en-BU",
+        "en-SU",
+        "en-Qaai",
+        "en-Goth",
+        "de-DE-1901",
+        "en-fonipa",
+        "en-XX",
+        "fre-FR",
+    ] {
+        assert!(
+            matches!(
+                iso_types::parse_language_identifier(code),
+                Err(iso_types::LocaleConversionError::OutOfScope(_))
+            ),
+            "{code}"
+        );
+        assert!(
+            iso_types::locale_english_name(&code.parse().unwrap()).is_err(),
+            "{code}"
+        );
+    }
     assert!(iso_types::parse_language_identifier("invalid!").is_err());
+}
+
+#[cfg(all(
+    feature = "639-1",
+    feature = "639-2",
+    feature = "639-3",
+    feature = "15924",
+    feature = "4217",
+    feature = "3166-2"
+))]
+#[test]
+fn catalogs_exclude_historical_rare_special_and_retired_data() {
+    for code in ["la", "cu", "sh", "tl", "eo"] {
+        assert!(code.parse::<iso_types::Iso6391>().is_err(), "{code}");
+    }
+    for code in ["ang", "akk", "grc", "lat", "tlh", "und", "mul", "fre"] {
+        assert!(code.parse::<iso_types::Iso6392>().is_err(), "{code}");
+    }
+    for code in ["ang", "akk", "grc", "lat", "tlh", "und", "mul", "cnr"] {
+        assert!(code.parse::<iso_types::Iso6393>().is_err(), "{code}");
+    }
+    for code in [
+        "Egyp", "Goth", "Runr", "Glag", "Zzzz", "Zyyy", "Qaaa", "Bopo",
+    ] {
+        assert!(code.parse::<iso_types::Iso15924>().is_err(), "{code}");
+    }
+    for code in [
+        "BGN", "HRK", "ZWL", "XTS", "XXX", "XAU", "XDR", "USN", "SVC",
+    ] {
+        assert!(code.parse::<iso_types::Iso4217>().is_err(), "{code}");
+    }
+    for code in ["FR-NC", "FI-01", "US-PR"] {
+        assert!(code.parse::<iso_types::Iso3166_2>().is_err(), "{code}");
+    }
+    assert_eq!(iso_types::Iso6393::Eng.kind(), Some("L"));
+    assert_eq!(iso_types::Iso4217::Zwg.numeric(), Some("924"));
+    assert_eq!(iso_types::Iso15924::Hant.english_name(), "Traditional");
+    assert!("US-TX".parse::<iso_types::Iso3166_2>().is_ok());
 }

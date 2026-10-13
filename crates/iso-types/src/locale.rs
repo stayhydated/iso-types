@@ -5,7 +5,7 @@ use icu_locale::{
 };
 use writeable::TryWriteable;
 
-/// Parse and canonicalize aliases using ICU4X's locale data.
+/// Parse current, common locale data and normalize current ISO representations with ICU4X.
 pub fn parse_language_identifier(input: &str) -> Result<LanguageIdentifier, LocaleConversionError> {
     let id = input.parse::<IcuLanguageIdentifier>().map_err(|source| {
         LocaleConversionError::Invalid {
@@ -13,7 +13,23 @@ pub fn parse_language_identifier(input: &str) -> Result<LanguageIdentifier, Loca
             source,
         }
     })?;
-    Ok(to_fluent_identifier(canonicalize(id)))
+    let id = current_identifier(id)?;
+    Ok(to_fluent_identifier(id))
+}
+
+fn current_identifier(
+    id: IcuLanguageIdentifier,
+) -> Result<IcuLanguageIdentifier, LocaleConversionError> {
+    if !crate::current::current_locale(&id) {
+        return Err(LocaleConversionError::OutOfScope(to_fluent_identifier(id)));
+    }
+    let canonical = canonicalize(id);
+    if !crate::current::current_locale(&canonical) {
+        return Err(LocaleConversionError::OutOfScope(to_fluent_identifier(
+            canonical,
+        )));
+    }
+    Ok(canonical)
 }
 
 fn canonicalize(id: IcuLanguageIdentifier) -> IcuLanguageIdentifier {
@@ -28,18 +44,21 @@ fn to_fluent_identifier(id: IcuLanguageIdentifier) -> LanguageIdentifier {
         .expect("ICU language identifiers are valid Fluent identifiers")
 }
 
-/// Canonicalize deprecated language, script, region, and variant aliases with ICU4X.
-pub fn canonicalize_language_identifier(locale: &LanguageIdentifier) -> LanguageIdentifier {
+/// Canonicalize current identifiers; excluded and deprecated components return an error.
+pub fn canonicalize_language_identifier(
+    locale: &LanguageIdentifier,
+) -> Result<LanguageIdentifier, LocaleConversionError> {
     let id = locale
         .to_string()
         .parse()
         .expect("Fluent identifier has valid ICU syntax");
-    to_fluent_identifier(canonicalize(id))
+    current_identifier(id).map(to_fluent_identifier)
 }
 
 /// Format an English locale name from ICU4X, requiring names for every component.
 pub fn icu_locale_english_name(locale: &IcuLanguageIdentifier) -> Result<String, LocaleNameError> {
-    let target = canonicalize(locale.clone());
+    let target = current_identifier(locale.clone())
+        .map_err(|_| LocaleNameError::OutOfScope(locale.clone()))?;
     let name = LanguageIdentifierDisplayName::try_new_heavy(
         locale!("en").into(),
         target.clone(),
@@ -66,12 +85,14 @@ pub fn locale_english_name(locale: &LanguageIdentifier) -> Result<String, Locale
 pub enum LocaleNameError {
     Data(icu_provider::DataError),
     Unavailable(IcuLanguageIdentifier),
+    OutOfScope(IcuLanguageIdentifier),
 }
 impl std::fmt::Display for LocaleNameError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Data(error) => error.fmt(f),
             Self::Unavailable(locale) => write!(f, "ICU English name unavailable for {locale}"),
+            Self::OutOfScope(locale) => write!(f, "locale outside current data scope: {locale}"),
         }
     }
 }
@@ -79,7 +100,7 @@ impl std::error::Error for LocaleNameError {
     fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
         match self {
             Self::Data(error) => Some(error),
-            Self::Unavailable(_) => None,
+            Self::Unavailable(_) | Self::OutOfScope(_) => None,
         }
     }
 }
@@ -92,12 +113,14 @@ pub enum LocaleConversionError {
         source: icu_locale::ParseError,
     },
     Unsupported(LanguageIdentifier),
+    OutOfScope(LanguageIdentifier),
 }
 impl std::fmt::Display for LocaleConversionError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Invalid { input, source } => write!(f, "invalid locale '{input}': {source}"),
             Self::Unsupported(locale) => write!(f, "unsupported locale: {locale}"),
+            Self::OutOfScope(locale) => write!(f, "locale outside current data scope: {locale}"),
         }
     }
 }
@@ -105,7 +128,7 @@ impl std::error::Error for LocaleConversionError {
     fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
         match self {
             Self::Invalid { source, .. } => Some(source),
-            Self::Unsupported(_) => None,
+            Self::Unsupported(_) | Self::OutOfScope(_) => None,
         }
     }
 }

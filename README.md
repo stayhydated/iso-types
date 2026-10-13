@@ -13,8 +13,13 @@ es-fluent 0.21 API.
 ICU4X owns language, country, script, currency, month, weekday, and composite
 locale names. ICU-owned catalogs include assigned codes with an ICU4X English
 name. Every included variant has English `Display`; codes without ICU names are
-excluded. Language families, subdivisions, former countries, and sex codes
-use authoritative English Fluent catalogs.
+excluded. Current subdivisions and sex codes use authoritative English Fluent
+catalogs.
+
+The data scope is current and common: living languages with CLDR modern locale
+coverage, recommended modern scripts, current countries and subdivisions, and
+currencies in active tender circulation. Historical, deprecated, reserved, and
+uncommon entries are excluded from catalogs and locale lookup.
 
 ## Crates
 
@@ -40,8 +45,8 @@ assert_eq!(Market::Us.to_string(), "United States");
 # Ok::<(), iso_types::ParseIsoCodeError>(())
 ```
 
-The maintained catalogs cover ISO 639 sets 1, 2, 3, and 5; ISO 3166 country,
-subdivision, and former-country codes; ISO 4217 currencies; ISO 15924 scripts;
+The maintained catalogs cover ISO 639 sets 1, 2, and 3; ISO 3166 country and
+subdivision codes; ISO 4217 currencies; ISO 15924 scripts;
 ISO 5218 sex codes; and ISO 8601 months and weekdays. Catalogs preserve canonical
 code spelling and applicable alternate representations.
 

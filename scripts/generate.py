@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+from current_data import CurrentData
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'crates/iso-types-macros/data'
@@ -13,10 +14,8 @@ CATALOGS = [
     ('639-1', 'Iso6391', 'alpha_2', '639-2'),
     ('639-2', 'Iso6392', 'alpha_3', '639-2'),
     ('639-3', 'Iso6393', 'alpha_3', '639-3'),
-    ('639-5', 'Iso6395', 'alpha_3', '639-5'),
     ('3166-1', 'Iso3166_1', 'alpha_2', '3166-1'),
     ('3166-2', 'Iso3166_2', 'code', '3166-2'),
-    ('3166-3', 'Iso3166_3', 'alpha_4', '3166-3'),
     ('4217', 'Iso4217', 'alpha_3', '4217'),
     ('15924', 'Iso15924', 'alpha_4', '15924'),
     ('5218', 'Iso5218', 'code', 'finite'),
@@ -71,6 +70,7 @@ def main():
     for filename, expected in manifest['sha256'].items():
         if hashlib.sha256((DATA / filename).read_bytes()).hexdigest() != expected:
             raise SystemExit(f'source checksum mismatch: {filename}')
+    current = CurrentData(DATA)
     icu_command = ['cargo', 'run', '--quiet', '-p', 'iso-types-icu-data', '--locked']
     if args.check:
         icu_command += ['--', '--check']
@@ -88,6 +88,7 @@ def main():
             if set(icu[standard]) != {record[code_key] for record in records}:
                 raise SystemExit(f'ICU snapshot codes differ from ISO source: {standard}')
             records = [record for record in records if icu[standard][record[code_key]] is not None]
+        records = [record for record in records if current.includes(standard, record, code_key)]
         codes = [r[code_key] for r in records]
         assert len(set(codes)) == len(codes), standard
         variants = [r.get('variant', variant(r[code_key])) for r in records]
@@ -114,14 +115,14 @@ def main():
                 if args.check:
                     raise SystemExit(f'missing English FTL entry: {key}')
                 translations[key] = record['name']
-            aliases = [record[k] for k in ('alpha_2', 'alpha_3', 'alpha_4', 'numeric', 'bibliographic') if k in record and record[k] != code]
+            aliases = [record[k] for k in ('alpha_2', 'alpha_3', 'alpha_4', 'numeric') if k in record and record[k] != code]
             label = icu[standard][code] if use_icu else translations[key]
             if not label or any(c in label for c in '{}\n\r'):
                 raise SystemExit(f'invalid English label: {key}')
             catalog_entries.append({'code': code, 'variant': name, 'name': label, 'id': key, 'aliases': aliases})
         expected_keys = {e['id'] for e in catalog_entries}
-        if not use_icu and translations.keys() != expected_keys:
-            raise SystemExit(f'English FTL keys differ from source catalog: {standard}')
+        if not use_icu and translations.keys() != expected_keys and args.check:
+            raise SystemExit(f'English FTL keys differ from current catalog: {standard}')
         if not use_icu:
             write(ftl_path, f'## ISO {standard}\n\n' + ''.join(f"{e['id']} = {e['name']}\n" for e in catalog_entries), args.check)
         authority = 'Icu4x' if use_icu else 'Fluent'
@@ -137,7 +138,7 @@ def main():
                    'message_id': [e['id'] for e in catalog_entries]}
         metadata = sorted(set().union(*(r.keys() for r in records)) - {'name', 'variant', code_key})
         for field in metadata:
-            if field in ('alpha_2', 'alpha_3', 'alpha_4', 'numeric', 'bibliographic', 'common_name', 'official_name', 'type', 'scope', 'parent', 'withdrawal_date'):
+            if field in ('alpha_2', 'alpha_3', 'alpha_4', 'numeric', 'common_name', 'official_name', 'type', 'scope', 'parent'):
                 method = 'kind' if field == 'type' else field
                 values = ', '.join('Some(' + literal(r[field]) + ')' if field in r else 'None' for r in records)
                 output += [f'    pub const fn {method}(self) -> Option<&\'static str> {{\n        const VALUES: &[Option<&str>] = &[{values}];\n        VALUES[self as usize]\n    }}\n']
@@ -180,6 +181,9 @@ def main():
     resources += '    let _ = id;\n    None\n}\n'
     resources = subprocess.run(['rustfmt', '--edition', '2024', '--emit', 'stdout'], input=resources, text=True, capture_output=True, check=True).stdout
     write(ROOT / 'crates/iso-types/src/resources.rs', resources, args.check)
+    policy = subprocess.run(['rustfmt', '--edition', '2024', '--emit', 'stdout'], input=current.rust_locale_policy(), text=True, capture_output=True, check=True).stdout
+    for crate in ['iso-types', 'iso-types-macros']:
+        write(ROOT / f'crates/{crate}/src/current.rs', policy, args.check)
     print(f'{len(catalog_data)} catalogs, {sum(len(c["entries"]) for c in catalog_data.values())} assigned codes verified')
 
 

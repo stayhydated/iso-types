@@ -11,6 +11,12 @@ fn canonical_locale(code: &str) -> syn::Result<icu_locale::Locale> {
             format!("invalid ICU locale {code}: {error}"),
         )
     })?;
+    if !crate::current::current_locale(&locale.id) {
+        return Err(syn::Error::new(
+            proc_macro2::Span::call_site(),
+            format!("locale outside current data scope: {code}"),
+        ));
+    }
     icu_locale::LocaleCanonicalizer::new_extended().canonicalize(&mut locale);
     Ok(locale)
 }
@@ -174,7 +180,7 @@ pub(crate) fn expand(attr: TokenStream, item: TokenStream) -> syn::Result<TokenS
         impl std::convert::TryFrom<&#root::LanguageIdentifier> for #name {
             type Error = #root::LocaleConversionError;
             fn try_from(value: &#root::LanguageIdentifier) -> Result<Self, Self::Error> {
-                let canonical = #root::canonicalize_language_identifier(value);
+                let canonical = #root::canonicalize_language_identifier(value)?;
                 match canonical.to_string().as_str() { #(#codes => Ok(Self::#variants),)* _ => Err(#root::LocaleConversionError::Unsupported(canonical)) }
             }
         }
@@ -207,7 +213,11 @@ mod tests {
             "Traditional Chinese (Taiwan)"
         );
         assert!(english_label("aaa").is_err());
-        assert!(english_label("en-fonipa").is_ok());
+        assert!(english_label("en-fonipa").is_err());
+        assert!(english_label("iw-IL").is_err());
+        assert!(english_label("la").is_err());
+        assert!(english_label("en-BU").is_err());
+        assert!(english_label("de-DE-1901").is_err());
         assert!(english_label("en-abcde").is_err());
     }
 }
