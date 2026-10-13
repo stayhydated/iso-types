@@ -21,3 +21,4 @@ jobs:
       - run: cargo test -p iso-types --no-default-features --locked
       - run: cargo test --workspace --all-features --locked
       - run: cargo clippy --workspace --all-features --all-targets --locked -- -D warnings
+      - run: RUSTDOCFLAGS="-D warnings" cargo doc --workspace --all-features --no-deps --locked

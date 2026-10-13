@@ -29,6 +29,10 @@ def literal(value):
     return json.dumps(value, ensure_ascii=False)
 
 
+def markdown(value):
+    return value.replace('\\', '\\\\').replace('[', '\\[').replace(']', '\\]')
+
+
 def variant(code):
     return ''.join(part[0].upper() + part[1:].lower() for part in code.split('-'))
 
@@ -102,7 +106,7 @@ def main():
         catalog_data[standard] = {'type': typename, 'feature': feature, 'entries': catalog_entries}
         output += [f'#[cfg(feature = "{feature}")]\n', '#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]\n',
                    '#[repr(u16)]\n', f'/// Assigned codes in ISO {standard}; English labels are owned by its FTL catalog.\n', f'pub enum {typename} {{\n']
-        output += [f'    /// {e["name"]} (`{e["code"]}`).\n    {e["variant"]},\n' for e in catalog_entries]
+        output += [f'    /// {markdown(e["name"])} (`{e["code"]}`).\n    {e["variant"]},\n' for e in catalog_entries]
         output += ['}\n', f'#[cfg(feature = "{feature}")]\nimpl {typename} {{\n',
                    f'    pub const STANDARD: &\'static str = "{standard}";\n',
                    f'    pub const ALL: &\'static [Self] = &[{", ".join("Self::" + e["variant"] for e in catalog_entries)}];\n']

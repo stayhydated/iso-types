@@ -101077,7 +101077,7 @@ pub enum Iso3166_2 {
     EsAs,
     /// Ávila (`ES-AV`).
     EsAv,
-    /// Barcelona [Barcelona] (`ES-B`).
+    /// Barcelona \[Barcelona\] (`ES-B`).
     EsB,
     /// Badajoz (`ES-BA`).
     EsBa,
@@ -101085,7 +101085,7 @@ pub enum Iso3166_2 {
     EsBi,
     /// Burgos (`ES-BU`).
     EsBu,
-    /// A Coruña [La Coruña] (`ES-C`).
+    /// A Coruña \[La Coruña\] (`ES-C`).
     EsC,
     /// Cádiz (`ES-CA`).
     EsCa,
@@ -101107,17 +101107,17 @@ pub enum Iso3166_2 {
     EsCr,
     /// Castellón (`ES-CS`).
     EsCs,
-    /// Catalunya [Cataluña] (`ES-CT`).
+    /// Catalunya \[Cataluña\] (`ES-CT`).
     EsCt,
     /// Cuenca (`ES-CU`).
     EsCu,
     /// Extremadura (`ES-EX`).
     EsEx,
-    /// Galicia [Galicia] (`ES-GA`).
+    /// Galicia \[Galicia\] (`ES-GA`).
     EsGa,
     /// Las Palmas (`ES-GC`).
     EsGc,
-    /// Girona [Gerona] (`ES-GI`).
+    /// Girona \[Gerona\] (`ES-GI`).
     EsGi,
     /// Granada (`ES-GR`).
     EsGr,
@@ -101127,17 +101127,17 @@ pub enum Iso3166_2 {
     EsH,
     /// Huesca (`ES-HU`).
     EsHu,
-    /// Illes Balears [Islas Baleares] (`ES-IB`).
+    /// Illes Balears \[Islas Baleares\] (`ES-IB`).
     EsIb,
     /// Jaén (`ES-J`).
     EsJ,
-    /// Lleida [Lérida] (`ES-L`).
+    /// Lleida \[Lérida\] (`ES-L`).
     EsL,
     /// León (`ES-LE`).
     EsLe,
     /// La Rioja (`ES-LO`).
     EsLo,
-    /// Lugo [Lugo] (`ES-LU`).
+    /// Lugo \[Lugo\] (`ES-LU`).
     EsLu,
     /// Madrid (`ES-M`).
     EsM,
@@ -101157,13 +101157,13 @@ pub enum Iso3166_2 {
     EsNc,
     /// Asturias (`ES-O`).
     EsO,
-    /// Ourense [Orense] (`ES-OR`).
+    /// Ourense \[Orense\] (`ES-OR`).
     EsOr,
     /// Palencia (`ES-P`).
     EsP,
-    /// Illes Balears [Islas Baleares] (`ES-PM`).
+    /// Illes Balears \[Islas Baleares\] (`ES-PM`).
     EsPm,
-    /// Pontevedra [Pontevedra] (`ES-PO`).
+    /// Pontevedra \[Pontevedra\] (`ES-PO`).
     EsPo,
     /// País Vasco (`ES-PV`).
     EsPv,
@@ -101181,7 +101181,7 @@ pub enum Iso3166_2 {
     EsSo,
     /// Gipuzkoa (`ES-SS`).
     EsSs,
-    /// Tarragona [Tarragona] (`ES-T`).
+    /// Tarragona \[Tarragona\] (`ES-T`).
     EsT,
     /// Teruel (`ES-TE`).
     EsTe,
@@ -101585,7 +101585,7 @@ pub enum Iso3166_2 {
     GbAbe,
     /// Argyll and Bute (`GB-AGB`).
     GbAgb,
-    /// Isle of Anglesey [Sir Ynys Môn GB-YNM] (`GB-AGY`).
+    /// Isle of Anglesey \[Sir Ynys Môn GB-YNM\] (`GB-AGY`).
     GbAgy,
     /// Ards and North Down (`GB-AND`).
     GbAnd,
@@ -101609,7 +101609,7 @@ pub enum Iso3166_2 {
     GbBex,
     /// Belfast City (`GB-BFS`).
     GbBfs,
-    /// Bridgend [Pen-y-bont ar Ogwr GB-POG] (`GB-BGE`).
+    /// Bridgend \[Pen-y-bont ar Ogwr GB-POG\] (`GB-BGE`).
     GbBge,
     /// Blaenau Gwent (`GB-BGW`).
     GbBgw,
@@ -101639,13 +101639,13 @@ pub enum Iso3166_2 {
     GbBur,
     /// Cambridgeshire (`GB-CAM`).
     GbCam,
-    /// Caerphilly [Caerffili GB-CAF] (`GB-CAY`).
+    /// Caerphilly \[Caerffili GB-CAF\] (`GB-CAY`).
     GbCay,
     /// Central Bedfordshire (`GB-CBF`).
     GbCbf,
     /// Causeway Coast and Glens (`GB-CCG`).
     GbCcg,
-    /// Ceredigion [Sir Ceredigion] (`GB-CGN`).
+    /// Ceredigion \[Sir Ceredigion\] (`GB-CGN`).
     GbCgn,
     /// Cheshire East (`GB-CHE`).
     GbChe,
@@ -101659,13 +101659,13 @@ pub enum Iso3166_2 {
     GbCma,
     /// Camden (`GB-CMD`).
     GbCmd,
-    /// Carmarthenshire [Sir Gaerfyrddin GB-GFY] (`GB-CMN`).
+    /// Carmarthenshire \[Sir Gaerfyrddin GB-GFY\] (`GB-CMN`).
     GbCmn,
     /// Cornwall (`GB-CON`).
     GbCon,
     /// Coventry (`GB-COV`).
     GbCov,
-    /// Cardiff [Caerdydd GB-CRD] (`GB-CRF`).
+    /// Cardiff \[Caerdydd GB-CRD\] (`GB-CRF`).
     GbCrf,
     /// Croydon (`GB-CRY`).
     GbCry,
@@ -101675,7 +101675,7 @@ pub enum Iso3166_2 {
     GbDal,
     /// Derbyshire (`GB-DBY`).
     GbDby,
-    /// Denbighshire [Sir Ddinbych GB-DDB] (`GB-DEN`).
+    /// Denbighshire \[Sir Ddinbych GB-DDB\] (`GB-DEN`).
     GbDen,
     /// Derby (`GB-DER`).
     GbDer,
@@ -101723,7 +101723,7 @@ pub enum Iso3166_2 {
     GbFal,
     /// Fife (`GB-FIF`).
     GbFif,
-    /// Flintshire [Sir y Fflint GB-FFL] (`GB-FLN`).
+    /// Flintshire \[Sir y Fflint GB-FFL\] (`GB-FLN`).
     GbFln,
     /// Fermanagh and Omagh (`GB-FMO`).
     GbFmo,
@@ -101817,13 +101817,13 @@ pub enum Iso3166_2 {
     GbMik,
     /// Midlothian (`GB-MLN`).
     GbMln,
-    /// Monmouthshire [Sir Fynwy GB-FYN] (`GB-MON`).
+    /// Monmouthshire \[Sir Fynwy GB-FYN\] (`GB-MON`).
     GbMon,
     /// Merton (`GB-MRT`).
     GbMrt,
     /// Moray (`GB-MRY`).
     GbMry,
-    /// Merthyr Tydfil [Merthyr Tudful GB-MTU] (`GB-MTY`).
+    /// Merthyr Tydfil \[Merthyr Tudful GB-MTU\] (`GB-MTY`).
     GbMty,
     /// Mid-Ulster (`GB-MUL`).
     GbMul,
@@ -101851,7 +101851,7 @@ pub enum Iso3166_2 {
     GbNnh,
     /// North Somerset (`GB-NSM`).
     GbNsm,
-    /// Neath Port Talbot [Castell-nedd Port Talbot GB-CTL] (`GB-NTL`).
+    /// Neath Port Talbot \[Castell-nedd Port Talbot GB-CTL\] (`GB-NTL`).
     GbNtl,
     /// Nottinghamshire (`GB-NTT`).
     GbNtt,
@@ -101859,7 +101859,7 @@ pub enum Iso3166_2 {
     GbNty,
     /// Newham (`GB-NWM`).
     GbNwm,
-    /// Newport [Casnewydd GB-CNW] (`GB-NWP`).
+    /// Newport \[Casnewydd GB-CNW\] (`GB-NWP`).
     GbNwp,
     /// North Yorkshire (`GB-NYK`).
     GbNyk,
@@ -101869,7 +101869,7 @@ pub enum Iso3166_2 {
     GbOrk,
     /// Oxfordshire (`GB-OXF`).
     GbOxf,
-    /// Pembrokeshire [Sir Benfro GB-BNF] (`GB-PEM`).
+    /// Pembrokeshire \[Sir Benfro GB-BNF\] (`GB-PEM`).
     GbPem,
     /// Perth and Kinross (`GB-PKN`).
     GbPkn,
@@ -101885,7 +101885,7 @@ pub enum Iso3166_2 {
     GbRcc,
     /// Rochdale (`GB-RCH`).
     GbRch,
-    /// Rhondda Cynon Taff [Rhondda CynonTaf] (`GB-RCT`).
+    /// Rhondda Cynon Taff \[Rhondda CynonTaf\] (`GB-RCT`).
     GbRct,
     /// Redbridge (`GB-RDB`).
     GbRdb,
@@ -101951,7 +101951,7 @@ pub enum Iso3166_2 {
     GbStt,
     /// South Tyneside (`GB-STY`).
     GbSty,
-    /// Swansea [Abertawe GB-ATA] (`GB-SWA`).
+    /// Swansea \[Abertawe GB-ATA\] (`GB-SWA`).
     GbSwa,
     /// Swindon (`GB-SWD`).
     GbSwd,
@@ -101965,13 +101965,13 @@ pub enum Iso3166_2 {
     GbThr,
     /// Torbay (`GB-TOB`).
     GbTob,
-    /// Torfaen [Tor-faen] (`GB-TOF`).
+    /// Torfaen \[Tor-faen\] (`GB-TOF`).
     GbTof,
     /// Trafford (`GB-TRF`).
     GbTrf,
     /// Tower Hamlets (`GB-TWH`).
     GbTwh,
-    /// Vale of Glamorgan, The [Bro Morgannwg GB-BMG] (`GB-VGL`).
+    /// Vale of Glamorgan, The \[Bro Morgannwg GB-BMG\] (`GB-VGL`).
     GbVgl,
     /// Warwickshire (`GB-WAR`).
     GbWar,
@@ -101991,7 +101991,7 @@ pub enum Iso3166_2 {
     GbWll,
     /// West Lothian (`GB-WLN`).
     GbWln,
-    /// Wales [Cymru GB-CYM] (`GB-WLS`).
+    /// Wales \[Cymru GB-CYM\] (`GB-WLS`).
     GbWls,
     /// Wolverhampton (`GB-WLV`).
     GbWlv,
@@ -102009,7 +102009,7 @@ pub enum Iso3166_2 {
     GbWrl,
     /// Warrington (`GB-WRT`).
     GbWrt,
-    /// Wrexham [Wrecsam GB-WRC] (`GB-WRX`).
+    /// Wrexham \[Wrecsam GB-WRC\] (`GB-WRX`).
     GbWrx,
     /// Westminster (`GB-WSM`).
     GbWsm,
@@ -104425,7 +104425,7 @@ pub enum Iso3166_2 {
     MdAn,
     /// Bălți (`MD-BA`).
     MdBa,
-    /// Bender [Tighina] (`MD-BD`).
+    /// Bender \[Tighina\] (`MD-BD`).
     MdBd,
     /// Briceni (`MD-BR`).
     MdBr,
@@ -106573,47 +106573,47 @@ pub enum Iso3166_2 {
     SdRs,
     /// Sennar (`SD-SI`).
     SdSi,
-    /// Stockholms län [SE-01] (`SE-AB`).
+    /// Stockholms län \[SE-01\] (`SE-AB`).
     SeAb,
-    /// Västerbottens län [SE-24] (`SE-AC`).
+    /// Västerbottens län \[SE-24\] (`SE-AC`).
     SeAc,
-    /// Norrbottens län [SE-25] (`SE-BD`).
+    /// Norrbottens län \[SE-25\] (`SE-BD`).
     SeBd,
-    /// Uppsala län [SE-03] (`SE-C`).
+    /// Uppsala län \[SE-03\] (`SE-C`).
     SeC,
-    /// Södermanlands län [SE-04] (`SE-D`).
+    /// Södermanlands län \[SE-04\] (`SE-D`).
     SeD,
-    /// Östergötlands län [SE-05] (`SE-E`).
+    /// Östergötlands län \[SE-05\] (`SE-E`).
     SeE,
-    /// Jönköpings län [SE-06] (`SE-F`).
+    /// Jönköpings län \[SE-06\] (`SE-F`).
     SeF,
-    /// Kronobergs län [SE-07] (`SE-G`).
+    /// Kronobergs län \[SE-07\] (`SE-G`).
     SeG,
-    /// Kalmar län [SE-08] (`SE-H`).
+    /// Kalmar län \[SE-08\] (`SE-H`).
     SeH,
-    /// Gotlands län [SE-09] (`SE-I`).
+    /// Gotlands län \[SE-09\] (`SE-I`).
     SeI,
-    /// Blekinge län [SE-10] (`SE-K`).
+    /// Blekinge län \[SE-10\] (`SE-K`).
     SeK,
-    /// Skåne län [SE-12] (`SE-M`).
+    /// Skåne län \[SE-12\] (`SE-M`).
     SeM,
-    /// Hallands län [SE-13] (`SE-N`).
+    /// Hallands län \[SE-13\] (`SE-N`).
     SeN,
-    /// Västra Götalands län [SE-14] (`SE-O`).
+    /// Västra Götalands län \[SE-14\] (`SE-O`).
     SeO,
-    /// Värmlands län [SE-17] (`SE-S`).
+    /// Värmlands län \[SE-17\] (`SE-S`).
     SeS,
-    /// Örebro län [SE-18] (`SE-T`).
+    /// Örebro län \[SE-18\] (`SE-T`).
     SeT,
-    /// Västmanlands län [SE-19] (`SE-U`).
+    /// Västmanlands län \[SE-19\] (`SE-U`).
     SeU,
-    /// Dalarnas län [SE-20] (`SE-W`).
+    /// Dalarnas län \[SE-20\] (`SE-W`).
     SeW,
-    /// Gävleborgs län [SE-21] (`SE-X`).
+    /// Gävleborgs län \[SE-21\] (`SE-X`).
     SeX,
-    /// Västernorrlands län [SE-22] (`SE-Y`).
+    /// Västernorrlands län \[SE-22\] (`SE-Y`).
     SeY,
-    /// Jämtlands län [SE-23] (`SE-Z`).
+    /// Jämtlands län \[SE-23\] (`SE-Z`).
     SeZ,
     /// Central Singapore (`SG-01`).
     Sg01,
@@ -108703,7 +108703,7 @@ pub enum Iso3166_2 {
     YeMw,
     /// Raymah (`YE-RA`).
     YeRa,
-    /// Amānat al ‘Āşimah [city] (`YE-SA`).
+    /// Amānat al ‘Āşimah \[city\] (`YE-SA`).
     YeSa,
     /// Şāʻdah (`YE-SD`).
     YeSd,
