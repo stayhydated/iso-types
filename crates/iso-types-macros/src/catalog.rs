@@ -46,7 +46,7 @@ mod tests {
                 quote!(
                     enum Codes {}
                 ),
-                "unsupported ISO catalog",
+                "unsupported catalog",
             ),
             (
                 quote!(standard = "3166-1", codes = ["ZZ"]),
@@ -67,14 +67,14 @@ mod tests {
                 quote!(
                     enum Codes {}
                 ),
-                "unsupported ISO catalog",
+                "unsupported catalog",
             ),
             (
                 quote!(standard = "639-5"),
                 quote!(
                     enum Codes {}
                 ),
-                "unsupported ISO catalog",
+                "unsupported catalog",
             ),
             (
                 quote!(standard = "639-3", codes = ["ang"]),

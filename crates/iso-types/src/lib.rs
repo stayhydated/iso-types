@@ -11,6 +11,17 @@ pub use strum::{EnumCount, IntoEnumIterator, VariantArray};
 #[allow(unused_imports)]
 pub use catalogs::*;
 
+mod geography;
+#[cfg(feature = "3166-2")]
+pub use geography::SubdivisionKind;
+
+#[cfg(feature = "unit-conversion")]
+mod measurement;
+#[cfg(feature = "unit-conversion")]
+pub use icu_experimental;
+#[cfg(feature = "unit-conversion")]
+pub use measurement::UnitConversionError;
+
 #[cfg(feature = "macros")]
 pub use iso_types_macros::iso_enum;
 #[cfg(feature = "locales")]

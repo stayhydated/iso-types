@@ -6,7 +6,7 @@ pub(super) const ENGLISH_RESOURCES: &[&str] = &[
     include_str!("../../i18n/en/iso-types/5218.ftl"),
 ];
 
-pub(super) fn icu_english_name(id: &str) -> Option<&'static str> {
+pub(super) fn catalog_english_name(id: &str) -> Option<&'static str> {
     #[cfg(feature = "639-1")]
     if let Some(code) = id.strip_prefix("iso-639-1-") {
         return Some(code.parse::<crate::Iso6391>().ok()?.english_name());
@@ -38,6 +38,10 @@ pub(super) fn icu_english_name(id: &str) -> Option<&'static str> {
     #[cfg(feature = "8601")]
     if let Some(code) = id.strip_prefix("iso-8601-month-") {
         return Some(code.parse::<crate::Iso8601Month>().ok()?.english_name());
+    }
+    #[cfg(feature = "units")]
+    if let Some(code) = id.strip_prefix("iso-units-") {
+        return Some(code.parse::<crate::MeasurementUnit>().ok()?.english_name());
     }
     let _ = id;
     None

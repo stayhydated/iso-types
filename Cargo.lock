@@ -986,6 +986,7 @@ dependencies = [
  "fluent-bundle",
  "fluent-syntax",
  "icu_calendar",
+ "icu_experimental",
  "icu_locale",
  "icu_provider",
  "inventory",

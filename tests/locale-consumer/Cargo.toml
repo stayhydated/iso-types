@@ -5,7 +5,13 @@ edition = "2024"
 publish = false
 
 [dependencies]
-codes = { package = "iso-types", path = "../../crates/iso-types", features = ["locales", "fluent"] }
+codes = { package = "iso-types", path = "../../crates/iso-types", features = [
+  "locales",
+  "fluent",
+  "3166-2",
+  "units",
+  "unit-conversion",
+] }
 es-fluent = { workspace = true }
 es-fluent-manager-core = { workspace = true }
 inventory = { workspace = true }

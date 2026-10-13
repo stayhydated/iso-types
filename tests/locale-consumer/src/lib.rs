@@ -8,6 +8,15 @@ pub enum CustomLabels {}
 #[codes::iso_enum(standard = "639-1")]
 pub enum AllLanguages {}
 
+#[codes::iso_enum(standard = "4217", codes = ["USD", "JPY"])]
+pub enum Payments {}
+
+#[codes::iso_enum(standard = "3166-2", codes = ["US-CA", "CA-QC"])]
+pub enum DeliveryAreas {}
+
+#[codes::iso_enum(standard = "units", codes = ["meter", "foot"])]
+pub enum Distances {}
+
 #[cfg(test)]
 const CONFIGURED_LOCALES: &[Languages] = <Languages as codes::VariantArray>::VARIANTS;
 
@@ -20,6 +29,41 @@ mod tests {
     use codes::{EnumCount as _, IntoEnumIterator as _, VariantArray as _};
     use es_fluent::FluentMessage;
     use es_fluent_manager_core::I18nModuleRegistration;
+
+    #[test]
+    fn renamed_facade_supports_currency_geography_and_measurement_subsets() {
+        assert_eq!(Payments::Usd.catalog_value().fraction_digits(), 2);
+        assert_eq!(
+            DeliveryAreas::UsCa.catalog_value().country(),
+            codes::Iso3166_1::Us
+        );
+        assert_eq!(
+            DeliveryAreas::CaQc.catalog_value().kind(),
+            codes::SubdivisionKind::Province
+        );
+        assert_eq!(
+            Distances::Foot.catalog_value().category(),
+            codes::UnitCategory::Length
+        );
+        let meters = Distances::Foot
+            .catalog_value()
+            .convert(1.0, codes::MeasurementUnit::Meter)
+            .unwrap();
+        assert!((meters - 0.3048).abs() < 1e-12);
+        let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
+            .find(|entry| entry.data().owner == "iso-types")
+            .unwrap();
+        let localizer = module.create_localizer().unwrap();
+        for (message, expected) in [
+            (&Payments::Usd as &dyn FluentMessage, "US dollar"),
+            (&DeliveryAreas::UsCa as &dyn FluentMessage, "California"),
+            (&Distances::Meter as &dyn FluentMessage, "meters"),
+        ] {
+            let actual =
+                message.to_fluent_string_with(&mut |key, _| localizer.localize(key, None).unwrap());
+            assert_eq!(actual, expected);
+        }
+    }
 
     #[test]
     fn renamed_facade_supports_both_macros_and_locale_conversions() {

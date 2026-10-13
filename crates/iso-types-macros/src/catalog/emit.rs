@@ -1,7 +1,7 @@
 //! Emit implementations from a validated catalog selection.
 
 use proc_macro2::TokenStream;
-use quote::quote;
+use quote::{format_ident, quote};
 
 use crate::enum_input::facade;
 
@@ -31,7 +31,12 @@ pub(super) fn emit(model: &Model) -> TokenStream {
         )
     };
     let fluent = if cfg!(feature = "fluent") {
+        let keepalive = format_ident!("__ISO_CATALOG_LINK_{name}");
         quote! {
+            #[cfg(target_arch = "wasm32")]
+            #[doc(hidden)]
+            #[used]
+            static #keepalive: fn() -> usize = #root::i18n::force_link;
             impl #root::__fluent::FluentMessage for #name {
                 fn to_fluent_string_with(&self, lookup: &mut #root::__fluent::FluentMessageLookup<'_>) -> ::std::string::String {
                     #root::__fluent::FluentMessage::to_fluent_string_with(&self.catalog_value(), lookup)

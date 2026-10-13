@@ -15,6 +15,7 @@ class CatalogSpec:
     code_key: str
     source: str
     icu_names: bool = True
+    label_source: str | None = None
 
     @property
     def feature(self) -> str:
@@ -22,11 +23,13 @@ class CatalogSpec:
 
     @property
     def module(self) -> str:
+        if self.standard == "units":
+            return "measurement_unit"
         return "iso_" + self.standard.replace("-", "_")
 
     @property
     def authority(self) -> str:
-        return "Icu4x" if self.icu_names else "Fluent"
+        return self.label_source or ("Icu4x" if self.icu_names else "Fluent")
 
 
 SPECS = (

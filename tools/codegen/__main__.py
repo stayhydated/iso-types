@@ -11,6 +11,8 @@ from .catalog import SPECS, build_catalogs, verify_sources
 from .output import ROOT, OutputPlan
 from .rust import format_rust
 from .policy import CurrentData
+from .relations import build_relations
+from .units import build_units
 from . import render
 
 DATA = ROOT / "data"
@@ -46,16 +48,20 @@ def generate(*, check: bool) -> None:
     policy = CurrentData(DATA)
     command = ["cargo", "run", "--quiet", "-p", "iso-types-icu-data", "--locked", "--", "--stdout"]
     extracted = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True)
-    catalogs = build_catalogs(DATA, FTL, policy, json.loads(extracted.stdout)["catalogs"])
+    snapshot = json.loads(extracted.stdout)
+    catalogs = build_catalogs(DATA, FTL, policy, snapshot["catalogs"])
+    relations = build_relations(catalogs, policy)
+    catalogs += (build_units(DATA, policy),)
     plan = OutputPlan()
     plan.add(DATA / "icu/english.json", extracted.stdout)
     plan.add(TYPES / "src/catalogs.rs", format_rust(render.catalog_modules(catalogs)))
     for catalog in catalogs:
-        plan.add(TYPES / "src/catalogs" / f"{catalog.spec.module}.rs", format_rust(render.catalog_rust(catalog)))
-        if not catalog.spec.icu_names:
+        plan.add(TYPES / "src/catalogs" / f"{catalog.spec.module}.rs", format_rust(render.catalog_rust(catalog, snapshot["currency_fractions"])))
+        if catalog.spec.authority == "Fluent":
             plan.add(FTL / f"{catalog.spec.standard}.ftl", render.fluent_resource(catalog))
     plan.add(MACROS / "src/catalog/data.json", render.macro_data(catalogs))
     plan.add(TYPES / "src/i18n/resources.rs", format_rust(render.fluent_registration(catalogs)))
+    plan.add(TYPES / "src/geography.rs", format_rust(render.geography(relations)))
     scope = format_rust(policy.rust_locale_policy())
     for crate in (TYPES, MACROS):
         plan.add(crate / "src/locale/scope.rs", scope)

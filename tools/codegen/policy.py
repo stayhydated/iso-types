@@ -75,7 +75,8 @@ class CurrentData:
         self.languages = self._modern_languages(supplemental)
         self.regions = self.validity("region", {"regular", "macroregion"})
         self.subdivisions = self.validity("subdivision", {"regular"})
-        self.currencies = self._currencies(supplemental)
+        self.currency_regions = self._currency_regions(supplemental)
+        self.currencies = {code for currencies in self.currency_regions.values() for code in currencies}
         self.language_inputs = self.languages | {
             code for code, (_, reason) in self.language_aliases.items()
             if reason in {"overlong", "macrolanguage"} and self.language(code) in self.languages
@@ -113,13 +114,16 @@ class CurrentData:
                 result.add(language)
         return result
 
-    def _currencies(self, supplemental: ET.ElementTree) -> set[str]:
-        tender = {row.get("iso4217") for row in supplemental.findall(".//currencyData/region/currency")
-                  if row.get("tender") != "false"
-                  and row.get("from", "0000-01-01") <= self.as_of
-                  and row.get("to", "9999-12-31") >= self.as_of}
+    def _currency_regions(self, supplemental: ET.ElementTree) -> dict[str, tuple[str, ...]]:
         current_iso = json.loads((self.path / "current_currencies.json").read_text(encoding="utf-8"))
-        return tender & set(current_iso["codes"])
+        current = set(current_iso["codes"])
+        return {
+            region.get("iso3166"): tuple(sorted({row.get("iso4217") for row in region.findall("currency")
+                if row.get("iso4217") in current and row.get("tender") != "false"
+                and row.get("from", "0000-01-01") <= self.as_of
+                and row.get("to", "9999-12-31") >= self.as_of}))
+            for region in supplemental.findall(".//currencyData/region")
+        }
 
     def validity(self, kind: str, statuses: set[str]) -> set[str]:
         return {code for row in ET.parse(self.path / f"{kind}.xml").findall(".//id")

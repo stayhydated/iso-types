@@ -43,9 +43,7 @@ fn load() -> Result<BTreeMap<String, Catalog>, String> {
                 })
                 .collect::<Result<Vec<_>, String>>()?;
             if entries.is_empty() || entries.windows(2).any(|pair| pair[0].code >= pair[1].code) {
-                return Err(format!(
-                    "ISO {standard} entries must have unique sorted codes"
-                ));
+                return Err(format!("{standard} entries must have unique sorted codes"));
             }
             Ok((
                 standard.clone(),
@@ -62,7 +60,7 @@ fn load() -> Result<BTreeMap<String, Catalog>, String> {
 pub(super) fn catalog(standard: &LitStr) -> syn::Result<&'static Catalog> {
     static CATALOGS: OnceLock<Result<BTreeMap<String, Catalog>, String>> = OnceLock::new();
     let catalogs = CATALOGS.get_or_init(load).as_ref().map_err(|error| {
-        syn::Error::new_spanned(standard, format!("invalid generated ISO catalog: {error}"))
+        syn::Error::new_spanned(standard, format!("invalid generated catalog: {error}"))
     })?;
     catalogs.get(&standard.value()).ok_or_else(|| {
         let supported = catalogs
@@ -72,7 +70,7 @@ pub(super) fn catalog(standard: &LitStr) -> syn::Result<&'static Catalog> {
             .join(", ");
         syn::Error::new_spanned(
             standard,
-            format!("unsupported ISO catalog; choose one of: {supported}"),
+            format!("unsupported catalog; choose one of: {supported}"),
         )
     })
 }

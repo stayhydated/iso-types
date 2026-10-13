@@ -2,9 +2,10 @@
 
 [![CI][ci-image]][ci]
 
-Typed ISO enums for Rust applications, with ICU4X English names and optional
-es-fluent messages. Choose maintained catalogs or declare an application-specific
-subset with `#[iso_enum]`. Use `#[iso_locale]` to generate a language picker from
+Typed ISO and measurement catalogs for Rust applications, with authoritative
+English names and optional es-fluent messages. Choose maintained catalogs or
+declare an application-specific subset with `#[iso_enum]`. Use `#[iso_locale]`
+to generate a language picker from
 an es-fluent package's configured locales.
 
 Both public packages require Rust 1.99 or newer. Fluent integration uses the
@@ -43,6 +44,7 @@ assert_eq!(Market::Ca.catalog_value(), Iso3166_1::Ca);
 assert_eq!(Market::VARIANTS, &[Market::Us, Market::Ca]);
 assert_eq!(Market::COUNT, 2);
 assert_eq!(Iso4217::Usd.numeric(), Some("840"));
+assert_eq!(Iso3166_1::Us.currencies(), &[Iso4217::Usd]);
 assert_eq!(Market::Us.to_string(), "United States");
 # Ok::<(), iso_types::ParseIsoCodeError>(())
 ```
@@ -51,6 +53,15 @@ The maintained catalogs cover ISO 639 sets 1, 2, and 3; ISO 3166 country and
 subdivision codes; ISO 4217 currencies; ISO 15924 scripts;
 ISO 5218 sex codes; and ISO 8601 months and weekdays. Catalogs preserve canonical
 code spelling and applicable alternate representations.
+
+Enable `3166-2` for typed country/subdivision navigation, including states,
+provinces, territories, parents, and children. Country/currency relationships
+support shared tender and countries using several currencies. Currency metadata
+includes ICU4X formatting precision and cash rounding.
+
+Enable `units` for 87 common CLDR measurement identifiers across 16 categories.
+`unit-conversion` delegates metric/customary conversions, temperature offsets,
+and reciprocal fuel economy to ICU4X. CLDR owns the unit display names.
 
 [types]: crates/iso-types/README.md
 [macros]: crates/iso-types-macros/README.md

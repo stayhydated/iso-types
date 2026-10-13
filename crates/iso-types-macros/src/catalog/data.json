@@ -23258,5 +23258,359 @@
         "variant": "December"
       }
     ]
+  },
+  "units": {
+    "type": "MeasurementUnit",
+    "feature": "units",
+    "entries": [
+      {
+        "code": "acre",
+        "variant": "Acre"
+      },
+      {
+        "code": "ampere",
+        "variant": "Ampere"
+      },
+      {
+        "code": "bar",
+        "variant": "Bar"
+      },
+      {
+        "code": "bit",
+        "variant": "Bit"
+      },
+      {
+        "code": "byte",
+        "variant": "Byte"
+      },
+      {
+        "code": "calorie",
+        "variant": "Calorie"
+      },
+      {
+        "code": "celsius",
+        "variant": "Celsius"
+      },
+      {
+        "code": "centimeter",
+        "variant": "Centimeter"
+      },
+      {
+        "code": "cubic-centimeter",
+        "variant": "CubicCentimeter"
+      },
+      {
+        "code": "cubic-meter",
+        "variant": "CubicMeter"
+      },
+      {
+        "code": "cup",
+        "variant": "Cup"
+      },
+      {
+        "code": "day",
+        "variant": "Day"
+      },
+      {
+        "code": "degree",
+        "variant": "Degree"
+      },
+      {
+        "code": "fahrenheit",
+        "variant": "Fahrenheit"
+      },
+      {
+        "code": "fluid-ounce",
+        "variant": "FluidOunce"
+      },
+      {
+        "code": "foot",
+        "variant": "Foot"
+      },
+      {
+        "code": "gallon",
+        "variant": "Gallon"
+      },
+      {
+        "code": "gallon-imperial",
+        "variant": "GallonImperial"
+      },
+      {
+        "code": "gigabit",
+        "variant": "Gigabit"
+      },
+      {
+        "code": "gigabyte",
+        "variant": "Gigabyte"
+      },
+      {
+        "code": "gigahertz",
+        "variant": "Gigahertz"
+      },
+      {
+        "code": "gram",
+        "variant": "Gram"
+      },
+      {
+        "code": "hectare",
+        "variant": "Hectare"
+      },
+      {
+        "code": "hectopascal",
+        "variant": "Hectopascal"
+      },
+      {
+        "code": "hertz",
+        "variant": "Hertz"
+      },
+      {
+        "code": "hour",
+        "variant": "Hour"
+      },
+      {
+        "code": "inch",
+        "variant": "Inch"
+      },
+      {
+        "code": "joule",
+        "variant": "Joule"
+      },
+      {
+        "code": "kelvin",
+        "variant": "Kelvin"
+      },
+      {
+        "code": "kilobit",
+        "variant": "Kilobit"
+      },
+      {
+        "code": "kilobyte",
+        "variant": "Kilobyte"
+      },
+      {
+        "code": "kilocalorie",
+        "variant": "Kilocalorie"
+      },
+      {
+        "code": "kilogram",
+        "variant": "Kilogram"
+      },
+      {
+        "code": "kilohertz",
+        "variant": "Kilohertz"
+      },
+      {
+        "code": "kilojoule",
+        "variant": "Kilojoule"
+      },
+      {
+        "code": "kilometer",
+        "variant": "Kilometer"
+      },
+      {
+        "code": "kilometer-per-hour",
+        "variant": "KilometerPerHour"
+      },
+      {
+        "code": "kilopascal",
+        "variant": "Kilopascal"
+      },
+      {
+        "code": "kilowatt",
+        "variant": "Kilowatt"
+      },
+      {
+        "code": "kilowatt-hour",
+        "variant": "KilowattHour"
+      },
+      {
+        "code": "liter",
+        "variant": "Liter"
+      },
+      {
+        "code": "liter-per-100-kilometer",
+        "variant": "LiterPer100Kilometer"
+      },
+      {
+        "code": "megabit",
+        "variant": "Megabit"
+      },
+      {
+        "code": "megabyte",
+        "variant": "Megabyte"
+      },
+      {
+        "code": "megahertz",
+        "variant": "Megahertz"
+      },
+      {
+        "code": "megawatt",
+        "variant": "Megawatt"
+      },
+      {
+        "code": "meter",
+        "variant": "Meter"
+      },
+      {
+        "code": "meter-per-second",
+        "variant": "MeterPerSecond"
+      },
+      {
+        "code": "micrometer",
+        "variant": "Micrometer"
+      },
+      {
+        "code": "microsecond",
+        "variant": "Microsecond"
+      },
+      {
+        "code": "mile",
+        "variant": "Mile"
+      },
+      {
+        "code": "mile-per-gallon",
+        "variant": "MilePerGallon"
+      },
+      {
+        "code": "mile-per-gallon-imperial",
+        "variant": "MilePerGallonImperial"
+      },
+      {
+        "code": "mile-per-hour",
+        "variant": "MilePerHour"
+      },
+      {
+        "code": "millibar",
+        "variant": "Millibar"
+      },
+      {
+        "code": "milligram",
+        "variant": "Milligram"
+      },
+      {
+        "code": "milliliter",
+        "variant": "Milliliter"
+      },
+      {
+        "code": "millimeter",
+        "variant": "Millimeter"
+      },
+      {
+        "code": "millisecond",
+        "variant": "Millisecond"
+      },
+      {
+        "code": "minute",
+        "variant": "Minute"
+      },
+      {
+        "code": "nanometer",
+        "variant": "Nanometer"
+      },
+      {
+        "code": "nanosecond",
+        "variant": "Nanosecond"
+      },
+      {
+        "code": "newton",
+        "variant": "Newton"
+      },
+      {
+        "code": "ohm",
+        "variant": "Ohm"
+      },
+      {
+        "code": "ounce",
+        "variant": "Ounce"
+      },
+      {
+        "code": "pascal",
+        "variant": "Pascal"
+      },
+      {
+        "code": "pint",
+        "variant": "Pint"
+      },
+      {
+        "code": "pound",
+        "variant": "Pound"
+      },
+      {
+        "code": "pound-force-per-square-inch",
+        "variant": "PoundForcePerSquareInch"
+      },
+      {
+        "code": "quart",
+        "variant": "Quart"
+      },
+      {
+        "code": "radian",
+        "variant": "Radian"
+      },
+      {
+        "code": "second",
+        "variant": "Second"
+      },
+      {
+        "code": "square-centimeter",
+        "variant": "SquareCentimeter"
+      },
+      {
+        "code": "square-foot",
+        "variant": "SquareFoot"
+      },
+      {
+        "code": "square-inch",
+        "variant": "SquareInch"
+      },
+      {
+        "code": "square-kilometer",
+        "variant": "SquareKilometer"
+      },
+      {
+        "code": "square-meter",
+        "variant": "SquareMeter"
+      },
+      {
+        "code": "stone",
+        "variant": "Stone"
+      },
+      {
+        "code": "tablespoon",
+        "variant": "Tablespoon"
+      },
+      {
+        "code": "teaspoon",
+        "variant": "Teaspoon"
+      },
+      {
+        "code": "terabit",
+        "variant": "Terabit"
+      },
+      {
+        "code": "terabyte",
+        "variant": "Terabyte"
+      },
+      {
+        "code": "tonne",
+        "variant": "Tonne"
+      },
+      {
+        "code": "volt",
+        "variant": "Volt"
+      },
+      {
+        "code": "watt",
+        "variant": "Watt"
+      },
+      {
+        "code": "week",
+        "variant": "Week"
+      },
+      {
+        "code": "yard",
+        "variant": "Yard"
+      }
+    ]
   }
 }

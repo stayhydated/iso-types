@@ -1,8 +1,9 @@
-//! Extract English names from pinned ICU4X compiled providers, without name substitution.
+//! Extract English names and currency formatting metadata from pinned ICU4X providers.
 use icu_datetime::provider::names::{
     DatetimeNamesMonthGregorianV1, DatetimeNamesWeekdayV1, MonthNames,
 };
 use icu_experimental::dimension::provider::currency::extended::CurrencyExtendedDataV1;
+use icu_experimental::dimension::provider::currency::fractions::{CurrencyFractionsV1, Rounding};
 use icu_locale::{
     Locale, LocaleCanonicalizer, data_locale, locale,
     names::{
@@ -38,6 +39,16 @@ fn name_or_missing<T: std::fmt::Display>(
     }
 }
 
+fn rounding_increment(rounding: Rounding) -> Result<u8, Box<dyn Error>> {
+    match rounding {
+        Rounding::R1 => Ok(1),
+        Rounding::R5 => Ok(5),
+        Rounding::R20 => Ok(20),
+        Rounding::R50 => Ok(50),
+        _ => Err("unsupported ICU currency rounding increment".into()),
+    }
+}
+
 enum Output {
     Snapshot,
     Check,
@@ -52,7 +63,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         [argument] if argument == "--stdout" => Output::Stdout,
         [argument] if argument == "--help" || argument == "-h" => {
             println!(
-                "Extract pinned ICU4X English names\nUsage: iso-types-icu-data [--check | --stdout]"
+                "Extract pinned ICU4X English names and currency precision\nUsage: iso-types-icu-data [--check | --stdout]"
             );
             return Ok(());
         }
@@ -63,6 +74,12 @@ fn main() -> Result<(), Box<dyn Error>> {
     let english = data_locale!("en");
     let canonicalizer = LocaleCanonicalizer::new_extended();
     let currency_plurals = PluralRules::try_new_cardinal(locale!("en").into())?;
+    let fractions = DataProvider::<CurrencyFractionsV1>::load(
+        &icu_experimental::provider::Baked,
+        DataRequest::default(),
+    )?
+    .payload;
+    let mut currency_fractions = BTreeMap::new();
     let mut catalogs = BTreeMap::<&str, BTreeMap<String, Option<String>>>::new();
     for (standard, file, field) in [
         ("639-1", "639-2", "alpha_2"),
@@ -79,6 +96,17 @@ fn main() -> Result<(), Box<dyn Error>> {
             let Some(code) = record[field].as_str() else {
                 continue;
             };
+            if standard == "4217" {
+                let currency =
+                    icu_experimental::dimension::currency::CurrencyType::try_from_str(code)?;
+                let info = fractions.get().resolve(currency);
+                currency_fractions.insert(code.to_owned(), json!({
+                    "digits": info.digits,
+                    "cash_digits": info.cash_digits.unwrap_or(info.digits),
+                    "rounding": rounding_increment(info.rounding)?,
+                    "cash_rounding": rounding_increment(info.cash_rounding.unwrap_or(info.rounding))?,
+                }));
+            }
             let name = match standard {
                 "639-1" | "639-2" | "639-3" => match code.parse::<Locale>() {
                     Ok(mut target) => {
@@ -173,6 +201,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "display_locale": "en",
         "versions": { "icu_locale": "2.3.1", "icu_datetime": "2.3.0", "icu_experimental": "0.6.0" },
         "catalogs": catalogs,
+        "currency_fractions": currency_fractions,
     });
     let output = serde_json::to_string_pretty(&result)? + "\n";
     let path = root.join("data/icu/english.json");

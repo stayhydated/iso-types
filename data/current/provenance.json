@@ -39,6 +39,14 @@
     "current_currencies.json": {
       "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
       "sha256": "f2357f818b1af2d112d11dd14c77b948a7909d8319ec90ceb6e260303d2a3fd4"
+    },
+    "unit.xml": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/validity/unit.xml",
+      "sha256": "6c233cc5f6f43ca21345fff38ffde5e49eb8e96c9b7f6796ab7b195f55303861"
+    },
+    "units-en.xml": {
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/main/en.xml",
+      "sha256": "67607f4c9cf57157e70564987d8ae92a9ddcd73c00a2f1cd6abf79524a969cbd"
     }
   },
   "sources": [

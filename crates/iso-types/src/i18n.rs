@@ -7,7 +7,7 @@ use fluent_bundle::{FluentResource, concurrent::FluentBundle};
 use std::sync::OnceLock;
 
 mod resources;
-use resources::{ENGLISH_RESOURCES, icu_english_name};
+use resources::{ENGLISH_RESOURCES, catalog_english_name};
 
 static DATA: ModuleData = ModuleData {
     name: "iso-types",
@@ -74,7 +74,7 @@ impl Localizer for EnglishLocalizer {
                 .ok()
                 .and_then(|locale| crate::locale_english_name(&locale).ok());
         }
-        if let Some(label) = icu_english_name(key.id().as_str()) {
+        if let Some(label) = catalog_english_name(key.id().as_str()) {
             return Some(label.to_owned());
         }
         let bundle = bundle();

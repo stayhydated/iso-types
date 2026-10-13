@@ -39,3 +39,7 @@ pub use iso_8601_weekday::Iso8601Weekday;
 mod iso_8601_month;
 #[cfg(feature = "8601")]
 pub use iso_8601_month::Iso8601Month;
+#[cfg(feature = "units")]
+mod measurement_unit;
+#[cfg(feature = "units")]
+pub use measurement_unit::{MeasurementUnit, UnitCategory};

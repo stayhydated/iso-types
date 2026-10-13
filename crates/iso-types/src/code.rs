@@ -1,14 +1,14 @@
-/// An unrecognized code in a specific ISO catalog.
+/// An unrecognized code in a maintained ISO or measurement catalog.
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ParseIsoCodeError {
-    /// The ISO catalog identifier, such as `3166-1`.
+    /// The catalog identifier, such as `3166-1` or `units`.
     pub standard: &'static str,
     /// The rejected input, preserved for diagnostics.
     pub input: String,
 }
 impl std::fmt::Display for ParseIsoCodeError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "unrecognized ISO {} code: {}", self.standard, self.input)
+        write!(f, "unrecognized {} code: {}", self.standard, self.input)
     }
 }
 impl std::error::Error for ParseIsoCodeError {}
@@ -39,4 +39,6 @@ pub enum LabelSource {
     Icu4x,
     /// Names owned by the package's English Fluent resource.
     Fluent,
+    /// English unit display names from the pinned CLDR locale data.
+    Cldr,
 }

@@ -1,5 +1,5 @@
 The ISO source snapshots in data/iso/iso_*.json (except
-iso_finite.json), the generated ISO tables and macro selection index,
+iso_finite.json), the generated ISO tables and ISO entries in the macro selection index,
 and corresponding English Fluent catalog names derive from iso-codes:
 https://salsa.debian.org/iso-codes-team/iso-codes
 
@@ -14,8 +14,8 @@ Original Rust implementation and generator code:
 Copyright 2026 Mark (stayhydated)
 SPDX-License-Identifier: MIT OR Apache-2.0
 
-English ICU-owned names in data/icu/english.json and generated catalog tables derive
-from ICU4X compiled data. Provider versions and the English display locale are
+English ICU-owned names and currency formatting metadata in data/icu/english.json
+and generated catalog tables derive from ICU4X compiled data. Provider versions and the English display locale are
 recorded in data/icu/english.json; Cargo.lock pins provider data packages and checksums.
 https://github.com/unicode-org/icu4x
 Copyright Unicode, Inc.
@@ -26,3 +26,9 @@ Current-data selection uses CLDR coverage, script, validity, alias, and currency
 metadata under the Unicode license, plus current ISO 4217 code facts published
 by SIX. Retrieval dates, releases, URLs, and checksums are recorded in
 data/current/provenance.json in the repository.
+
+Common measurement-unit identifiers, categories, and English display names derive
+from CLDR validity data and the English locale. The complete pinned upstream inputs
+and checksums are provided under data/current; generated Cargo packages contain
+the selected catalog. ICU4X compiled conversion data supplies conversion factors,
+temperature offsets, and reciprocal rules when unit-conversion is enabled.

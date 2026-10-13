@@ -13,6 +13,8 @@ Python 3.10 or newer and the pinned Rust toolchain.
 | Public ISO contract and errors | `crates/iso-types/src/code.rs`; exports in `src/lib.rs`. |
 | Catalog enums and tables | Generated `crates/iso-types/src/catalogs.rs` and `src/catalogs/`. |
 | ICU conversions | `crates/iso-types/src/icu.rs`. |
+| Country, subdivision, and currency relationships | Generated `crates/iso-types/src/geography.rs`; model validation in `tools/codegen/relations.py`. |
+| Common measurement units | Generated `src/catalogs/measurement_unit.rs`; selection in `tools/codegen/units.py`; ICU conversions in `src/measurement.rs`. |
 | Locale parsing and English names | `crates/iso-types/src/locale.rs`. |
 | English Fluent utility | `crates/iso-types/src/i18n.rs`; owned resources under `i18n/en/iso-types/`. |
 | Macro input conventions | `crates/iso-types-macros/src/enum_input.rs`. |
@@ -42,7 +44,8 @@ parsing after benchmarking it against binary search.
 Pinned ISO snapshots and their checksums live in `data/iso`. CLDR/SIX selection
 metadata, checksums, retrieval dates, and the snapshot's `as_of` date live in
 `data/current`. `data/icu/english.json` records names extracted from the locked
-ICU4X providers. Complete upstream inputs stay at repository scope; published
+ICU4X providers, including currency formatting precision and cash rounding.
+Complete upstream inputs stay at repository scope; published
 crates contain their generated tables and selection index.
 
 ICU4X owns English names for languages, countries, scripts, currencies, months,
@@ -50,6 +53,11 @@ and weekdays. Exclude codes whose ICU English name is absent; do not substitute
 ISO labels or codes. Current subdivisions and sex-code labels are owned by the
 single-line literal English FTL resources. Duplicate FTL keys and dynamic values
 are errors. Fluent lookup and `Display` share the same label authority.
+Measurement-unit display names come directly from pinned CLDR English data.
+`units.py` selects common regular CLDR core identifiers and requires every name.
+The `units` feature supplies the catalog; `unit-conversion` delegates conversion
+factors, temperature offsets, and reciprocal rules to ICU4X. Unit categories use
+CLDR's grouping; ICU determines conversion compatibility.
 
 `tools/codegen/policy.py` owns the current/common selection rules. Living
 languages require CLDR modern locale coverage and a recommended default script.
@@ -58,6 +66,12 @@ Countries and subdivisions require current regular codes; currencies require
 active tender circulation and presence in SIX's current ISO 4217 list. Locale
 APIs and macros check components before and after ICU normalization and reject
 variants and excluded representations.
+
+`relations.py` validates country ownership, closed parent references, and acyclic
+subdivision hierarchies before rendering. Country/subdivision navigation and
+country/currency slices are const; relationships preserve canonical code order.
+Currency associations are active tender at the dated snapshot and permit several
+currencies per country. `SubdivisionKind` preserves ISO source category names.
 
 ## Regeneration and validation
 

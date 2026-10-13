@@ -7,7 +7,8 @@
     feature = "4217",
     feature = "15924",
     feature = "5218",
-    feature = "8601"
+    feature = "8601",
+    feature = "units"
 ))]
 
 use iso_types::{EnumCount as _, IntoEnumIterator as _, IsoCode, VariantArray as _};
@@ -65,6 +66,7 @@ catalog_test!("15924", scripts, Iso15924, 34);
 catalog_test!("5218", sex_codes, Iso5218, 4);
 catalog_test!("8601", weekdays, Iso8601Weekday, 7);
 catalog_test!("8601", months, Iso8601Month, 12);
+catalog_test!("units", measurement_units, MeasurementUnit, 87);
 
 macro_rules! alias_test {
     ($feature:literal, $name:ident, $kind:ident, $($getter:ident),+) => {
@@ -191,6 +193,7 @@ fn fluent_catalogs_match_every_english_display_label_and_keep_owner_scoping() {
     check!("5218", Iso5218);
     check!("8601", Iso8601Weekday);
     check!("8601", Iso8601Month);
+    check!("units", MeasurementUnit);
     let foreign = es_fluent::registry::__macro::static_message_key(
         "other-owner",
         es_fluent::registry::__macro::static_domain("iso-types"),

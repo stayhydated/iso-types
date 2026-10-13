@@ -55,7 +55,7 @@ impl Model {
                 let value = code.value();
                 let index = catalog.entries.binary_search_by(|entry| entry.code.cmp(&value))
                     .map_err(|_| syn::Error::new_spanned(&code, format!(
-                        "expected a canonical code in the current ISO {} catalog; `{value}` is unavailable",
+                        "expected a canonical code in the current {} catalog; `{value}` is unavailable",
                         standard.value(),
                     )))?;
                 if !seen.insert(value) {
@@ -70,7 +70,7 @@ impl Model {
         let mut input: ItemEnum = syn::parse2(item)?;
         prepare(&mut input)?;
         let description = format!(
-            "ISO {} selection. Requires iso-types' `{}` catalog feature.",
+            "{} catalog selection. Requires iso-types' `{}` catalog feature.",
             standard.value(),
             catalog.feature
         );

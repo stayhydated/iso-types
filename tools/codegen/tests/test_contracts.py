@@ -4,10 +4,12 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from tools.codegen.catalog import read_ftl
+from tools.codegen.catalog import Catalog, CatalogSpec, Entry, read_ftl
 from tools.codegen.output import ROOT, OutputPlan
 from tools.codegen.policy import CurrentData, expand_range
 from tools.codegen.rust import literal
+from tools.codegen.relations import build_relations
+from tools.codegen.units import build_units
 
 
 class RangeTests(unittest.TestCase):
@@ -34,6 +36,63 @@ class SelectionTests(unittest.TestCase):
         self.assertTrue({"Egyp", "Qaai", "Zinh"}.isdisjoint(policy.scripts))
         self.assertTrue({"EUR", "USD", "ZWG"} <= policy.currencies)
         self.assertTrue({"BGN", "XTS", "XXX", "XAU"}.isdisjoint(policy.currencies))
+        self.assertEqual(policy.currency_regions["US"], ("USD",))
+        self.assertEqual(policy.currency_regions["PA"], ("PAB", "USD"))
+        self.assertEqual(policy.currency_regions["ZW"], ("USD", "ZWG"))
+        self.assertEqual(policy.currency_regions["AQ"], ())
+
+    def test_measurement_selection_requires_regular_codes_and_real_cldr_names(self):
+        policy = CurrentData(ROOT / "data")
+        units = build_units(ROOT / "data", policy)
+        entries = {entry.code: entry for entry in units.entries}
+        self.assertEqual(len(entries), 87)
+        self.assertEqual(entries["meter"].name, "meters")
+        self.assertEqual(entries["celsius"].metadata["category"], "temperature")
+        self.assertNotIn("light-year", entries)
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "current").mkdir()
+            (root / "current/units-en.xml").write_text("<ldml><units/></ldml>")
+            with self.assertRaisesRegex(ValueError, "CLDR English unit name is unavailable"):
+                build_units(root, policy)
+
+
+class RelationshipTests(unittest.TestCase):
+    @staticmethod
+    def entry(code, **metadata):
+        return Entry(code, code.replace("-", ""), code, code, (), metadata)
+
+    def catalogs(self, subdivisions):
+        return (
+            Catalog(CatalogSpec("3166-1", "Countries", "code", "3166-1"),
+                    (self.entry("CA"), self.entry("US"))),
+            Catalog(CatalogSpec("4217", "Currencies", "code", "4217"),
+                    (self.entry("CAD"), self.entry("USD"))),
+            Catalog(CatalogSpec("3166-2", "Subdivisions", "code", "3166-2"), tuple(subdivisions)),
+        )
+
+    def test_parent_country_and_currency_relationships_are_typed_and_closed(self):
+        parent = self.entry("US-AA", type="State")
+        child = self.entry("US-BB", type="County", parent="US-AA")
+        model = build_relations(self.catalogs([parent, child]), CurrentData(ROOT / "data"))
+        self.assertEqual(model.country_roots["US"], (parent,))
+        self.assertEqual(model.parents, (None, parent))
+        self.assertEqual(model.children["US-AA"], (child,))
+        self.assertEqual([entry.code for entry in model.country_currencies["US"]], ["USD"])
+        self.assertEqual([entry.code for entry in model.currency_countries["CAD"]], ["CA"])
+
+    def test_invalid_and_cyclic_subdivision_parents_fail_before_rendering(self):
+        policy = CurrentData(ROOT / "data")
+        cases = [
+            [self.entry("ZZ-AA", type="State")],
+            [self.entry("US-AA", type="State", parent="US-MISSING")],
+            [self.entry("US-AA", type="State", parent="CA-BB"), self.entry("CA-BB", type="Province")],
+            [self.entry("US-AA", type="State", parent="US-AA")],
+            [self.entry("US-AA", type="State", parent="US-BB"), self.entry("US-BB", type="County", parent="US-AA")],
+        ]
+        for entries in cases:
+            with self.subTest(codes=[entry.code for entry in entries]), self.assertRaises(ValueError):
+                build_relations(self.catalogs(entries), policy)
 
 
 class OutputTests(unittest.TestCase):

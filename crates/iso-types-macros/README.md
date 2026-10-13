@@ -20,6 +20,11 @@ the invoking package's
 `i18n.toml`; its optional `custom` mode assigns label ownership to that package.
 Both require an empty enum without generics.
 
+Use `standard = "4217"` for currency subsets, `"3166-2"` for delivery areas,
+and `"units"` for common CLDR measurement units. `catalog_value()` exposes
+currency precision, subdivision hierarchy, and measurement categories/conversion
+on the facade's maintained type. Enable each corresponding catalog feature.
+
 Both macros derive Strum's `VariantArray`, `EnumIter`, `EnumCount`, `FromRepr`,
 and `IntoStaticStr`. Import `iso_types::{VariantArray, IntoEnumIterator, EnumCount}`
 for `VARIANTS`, `iter()`, and `COUNT`. Canonical `code()` and `into_str()` work
