@@ -42,3 +42,22 @@ package:
 
 # Run the complete repository verification sequence.
 verify: codegen-test generate-check format-check test test-features clippy docs
+
+# Assemble the book, Markdown exports, and Dioxus examples for GitHub Pages.
+web-build:
+    cargo xtask build book
+    cargo xtask build llms-txt
+    cargo xtask build web
+
+# Develop the Dioxus examples with live reload.
+web: web-build
+    dx serve --package web
+
+# Preview the assembled Pages artifact, including direct route navigation.
+web-preview: web-build
+    cargo xtask preview web
+
+# Validate the web package's typed messages and both UI languages.
+web-i18n:
+    cargo es-fluent doctor --package web
+    cargo es-fluent check --package web --all-locales

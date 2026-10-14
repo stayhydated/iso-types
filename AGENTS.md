@@ -27,6 +27,8 @@ Python 3.10 or newer and the pinned Rust toolchain.
 | Real consumer tests | `tests/locale-consumer`: renamed dependency, custom inventory, conversions, and macro hygiene. |
 | ICU snapshot extraction | `tools/icu-data`: pinned compiled providers. |
 | Data selection and generation | `tools/codegen`: catalogs, current policy, Rust rendering, and output verification. |
+| Interactive Dioxus examples | `web/src/examples/`; shared controls in `web/src/components.rs`; messages and assets owned by `web/`. |
+| GitHub Pages site and artifacts | `web/src/site.rs` and its route manifest; `xtask/` assembles shared-powered book, LLM exports, and Dioxus outputs. |
 
 Paths in a crate's row are relative to that crate where the prefix is omitted.
 Generated `src/locale/scope.rs` files carry the same selection policy into both
@@ -119,3 +121,23 @@ Use the narrowest relevant validation while editing:
   `python3 tools/check_features.py --wasm` to include facade and consumer WASM checks.
 - `just verify` before committing cross-cutting changes.
 - `just package` for a public-package dry run; it verifies archives without uploading.
+
+## Browser examples
+
+The featureless `web` package demonstrates every catalog/data area with Dioxus,
+es-fluent, and es-fluent-manager-dioxus. Keep messages reachable from its library
+target and maintain both `en-US` and `fr-FR` resources. Catalog names retain the
+facade's English label authority. `#[iso_locale]` owns the locale choices.
+
+`just web-i18n` validates registration and translations. Use
+`cargo test -p web --lib --locked` for the example behavior and route manifest,
+and `cargo check -p web --target wasm32-unknown-unknown --locked` for the browser
+target. `just web-build` builds every promised static destination; `just web`
+starts live development and `just web-preview` serves the assembled artifact
+under `/iso-types/`. Keep `Cargo.lock` committed before the locked Dioxus build.
+
+Pin all shared crates and the reusable Pages workflow to the same full revision.
+Shared owns the shell, components, styles, preview, and assembly. Consumer CSS
+contains the catalog workbench's controls and result layouts. Validate source and
+the assembled artifact with the shared skill's consumer audit when changing the
+site contract, and inspect direct navigation and locale changes in the browser.

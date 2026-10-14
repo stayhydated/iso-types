@@ -1,0 +1,103 @@
+## Interface
+
+ui-Examples = Explorer les catalogues
+ui-Intro = Des données réelles, des choix typés. Modifiez une valeur pour explorer les relations.
+ui-Language = Langue de l’interface
+ui-EnglishLabels = Les noms des catalogues suivent leurs sources anglaises de référence. Les messages de l’interface changent de langue.
+ui-Country = Pays
+ui-Subdivision = État / province / territoire
+ui-Kind = Catégorie de subdivision
+# es-fluent: same-as-fallback
+ui-Parent = Parent
+ui-Children = Enfants
+ui-None = Aucun
+ui-NoData = Aucune entrée pour cette sélection.
+ui-Source = Source Rust
+ui-Search = Rechercher…
+ui-NoMatches = Aucun résultat
+ui-GeographyIntro = Choisissez un pays, puis une subdivision. Le Canada comprend les provinces et territoires ; les États-Unis comprennent les États et Washington.
+ui-AddressesIntro = Le pays détermine les champs d’adresse, leur caractère obligatoire et leurs libellés : State, Province, ZIP ou Eircode.
+ui-Required = Obligatoire
+ui-Optional = Facultatif
+ui-Template = Modèle d’adresse
+ui-PostalExamples = Exemples de codes postaux
+ui-AddressNote = Essayez les États-Unis, le Canada, l’Irlande, l’Inde et Hong Kong. Cet aperçu suit l’ordre des champs de la source.
+ui-CurrenciesIntro = Explorez les monnaies en circulation par pays, leur précision, leur arrondi en espèces et les pays qui les utilisent.
+ui-Currency = Monnaie
+ui-Digits = Chiffres décimaux
+ui-CashDigits = Décimales en espèces
+ui-CashRounding = Pas d’arrondi en espèces
+ui-CurrencyCountries = Pays utilisant cette monnaie
+ui-CurrencyNote = Un pays peut utiliser plusieurs monnaies. La précision sert au formatage ; le pas d’arrondi est exprimé dans la plus petite unité affichée.
+ui-LanguagesIntro = Explorez les estimations linguistiques par pays, les écritures associées aux langues et le sens du texte fourni par ICU.
+ui-LanguageCode = Langue
+ui-Script = Écriture
+ui-Direction = Sens du texte
+ui-Population = Estimation de population (%)
+ui-Status = Statut dans la source
+ui-LanguageNote = Les estimations CLDR incluent les langues secondes. Le navigateur couvre aussi ISO 639-2 et 639-3.
+ui-UnitsIntro = Convertissez les quantités avec ICU4X, puis consultez les unités préférées de CLDR pour un pays et un usage.
+ui-FromUnit = Unité de départ
+ui-ToUnit = Unité d’arrivée
+ui-Quantity = Quantité
+ui-Result = Résultat
+ui-InvalidNumber = Saisissez un nombre fini.
+ui-IncompatibleUnits = Ces unités ne sont pas convertibles.
+ui-Usage = Usage de mesure
+ui-Threshold = Seuil dans la première unité
+ui-Components = Composants d’unité
+ui-Skeleton = Squelette de formatage numérique
+ui-UnitNote = Les préférences sont classées selon la source. Les seuils utilisent le premier composant ; les unités mixtes et arrondis nécessitent un formateur.
+ui-PreferencesIntro = Consultez les valeurs régionales pour les semaines, heures, calendriers, mesures et papier. Les préférences personnelles peuvent les remplacer.
+ui-FirstWeekday = Premier jour de la semaine
+ui-Weekend = Week-end
+ui-MinWeekDays = Jours minimum dans la première semaine
+ui-HourCycle = Cycle horaire
+ui-Calendars = Calendriers préférés
+ui-MeasurementSystem = Système de mesure
+ui-TemperatureSystem = Système de température
+ui-Paper = Format de papier
+ui-RegionsIntro = Parcourez la hiérarchie ONU M49 et les pays de chaque région.
+ui-Region = Région géographique
+ui-Level = Niveau hiérarchique
+ui-Countries = Pays
+ui-TimeZonesIntro = Choisissez un pays et un fuseau IANA. Jiff convertit votre instant UTC avec les règles intégrées ; ICU traduit le nom du fuseau.
+ui-TimeZone = Fuseau horaire
+ui-Instant = Instant UTC (RFC 3339)
+ui-ZonedTime = Date et heure locales
+ui-ZoneName = Nom localisé du fuseau
+ui-InvalidInstant = Saisissez un instant avec décalage, par exemple 2026-07-01T12:00:00Z.
+ui-ZoneUnavailable = Les données du fuseau sont indisponibles.
+ui-PhoneIntro = Plusieurs pays peuvent partager un indicatif. Analysez un numéro en utilisant le pays sélectionné comme région par défaut.
+ui-CallingCodes = Indicatifs du pays
+ui-CallingCode = Indicatif
+ui-PhoneNumber = Numéro de téléphone
+ui-InvalidPhone = Le numéro est invalide ou ne peut pas être analysé pour cette région.
+ui-SharedCountries = Pays partageant cet indicatif
+ui-GlobalCode = Indicatif de service mondial
+ui-CatalogsIntro = Parcourez tous les catalogues et analysez un code canonique ou un alias accepté. Les sous-ensembles utilisent les mêmes API Strum.
+ui-Catalog = Catalogue
+# es-fluent: same-as-fallback
+ui-Code = Code
+ui-EnglishName = Nom anglais
+ui-ParseInput = Code ou alias à analyser
+ui-UnknownCode = Code inconnu dans ce catalogue.
+ui-Filter = Filtrer les entrées
+ui-Subset = Sous-ensemble applicatif
+
+## Example pages
+
+page-Geography = Pays et subdivisions
+page-Addresses = Champs et libellés d’adresse
+page-Currencies = Monnaies
+page-Languages = Langues et écritures
+page-Units = Unités de mesure
+page-Preferences = Préférences régionales
+page-Regions = Régions géographiques
+page-TimeZones = Fuseaux horaires
+page-Phone = Données téléphoniques
+page-Catalogs = Tous les catalogues et sous-ensembles
+
+# es-fluent: same-as-fallback
+quantity_result = { $amount } { $unit }
+catalog_count = { $visible } entrées sur { $total }

@@ -1,6 +1,7 @@
 # iso-types
 
 [![CI][ci-image]][ci]
+[![Book][book-image]][book]
 
 Typed ISO, geographic, and measurement catalogs for Rust applications, with authoritative
 English names and optional es-fluent messages. Choose maintained catalogs or
@@ -10,6 +11,9 @@ an es-fluent package's configured locales.
 
 Both public packages require Rust 1.99 or newer. Fluent integration uses the
 es-fluent 0.21 API.
+
+[Interactive Dioxus examples][examples] cover every catalog and regional data
+area, with reactive English/French messages through es-fluent-manager-dioxus.
 
 ICU4X owns language, country, script, currency, month, weekday, and composite
 locale names. ICU-owned catalogs include assigned codes with an ICU4X English
@@ -77,3 +81,6 @@ a measurement category. The facade's feature table describes each optional area.
 [macros]: crates/iso-types-macros/README.md
 [ci-image]: https://github.com/stayhydated/iso-types/actions/workflows/ci.yml/badge.svg?branch=master
 [ci]: https://github.com/stayhydated/iso-types/actions/workflows/ci.yml
+[book-image]: https://img.shields.io/badge/book-guide-blue
+[book]: https://stayhydated.github.io/iso-types/book/
+[examples]: https://stayhydated.github.io/iso-types/examples/

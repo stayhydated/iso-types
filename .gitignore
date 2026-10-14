@@ -1,3 +1,9 @@
 /target/
 __pycache__/
 .rumdl_cache/
+.es-fluent/
+/web/dist/
+/web/public/book/
+/web/public/llms/
+/web/public/llms.txt
+/web/public/llms-full.txt

@@ -1,0 +1,12 @@
+[book]
+title = "iso-types"
+description = "Typed ISO and regional data in Rust and localized Dioxus applications"
+language = "en"
+src = "src"
+
+[build]
+create-missing = false
+
+[output.html]
+site-url = "/iso-types/book/"
+git-repository-url = "https://github.com/stayhydated/iso-types"
