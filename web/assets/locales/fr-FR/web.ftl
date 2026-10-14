@@ -101,3 +101,6 @@ page-Catalogs = Tous les catalogues et sous-ensembles
 # es-fluent: same-as-fallback
 quantity_result = { $amount } { $unit }
 catalog_count = { $visible } entrées sur { $total }
+ui-RestrictToCountry = Limiter les devises à un pays
+ui-AllCurrencies = Toutes les devises actives sont affichées. Choisissez une devise indépendamment du pays.
+ui-DetectedCountry = Région du numéro

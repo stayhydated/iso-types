@@ -1,7 +1,9 @@
 mod components;
 mod examples;
+mod flag_assets;
 mod i18n;
 mod site;
+mod visuals;
 
 pub use site::App;
 

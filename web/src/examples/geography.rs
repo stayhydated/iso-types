@@ -3,7 +3,7 @@ use es_fluent_manager_dioxus::use_i18n;
 use iso_types::{IntoEnumIterator as _, Iso3166_1 as Country, Iso3166_2 as Subdivision};
 
 use crate::{
-    components::{CatalogSelect, DemoFrame, Fact, names},
+    components::{CatalogSelect, DemoFrame, Fact, Identity, names},
     i18n::Ui,
     site::Page,
 };
@@ -52,6 +52,10 @@ pub(crate) fn Demo() -> Element {
                 }
             }
             if let Some(area) = subdivision() {
+                div { class: "identity-grid", aria_live: "polite",
+                    Identity::<Country> { value: country(), caption: i18n.localize_message(&Ui::Country) }
+                    Identity::<Subdivision> { value: area, caption: format!("{} · {}", country().english_name(), area.kind().into_str()) }
+                }
                 dl { class: "fact-grid", aria_live: "polite",
                     Fact { label: Ui::Code, value: area.code().to_owned() }
                     Fact { label: Ui::Kind, value: area.kind().into_str().to_owned() }

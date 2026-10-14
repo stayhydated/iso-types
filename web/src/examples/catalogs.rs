@@ -12,6 +12,7 @@ use crate::{
     components::{DemoFrame, names},
     i18n::{CatalogCount, Ui},
     site::Page,
+    visuals,
 };
 
 #[derive(Clone, Copy, Debug, PartialEq, strum::VariantArray)]
@@ -194,7 +195,12 @@ pub(crate) fn Demo() -> Element {
             div { class: "table-scroll catalog-table", table {
                 thead { tr { th { "{i18n.localize_message(&Ui::Code)}" } th { "{i18n.localize_message(&Ui::EnglishName)}" } } }
                 tbody { for value in filtered {
-                    tr { key: "{value.code}", td { code { "{value.code}" } } td { "{value.name}" } }
+                    tr { key: "{value.code}", td { code { "{value.code}" } } td {
+                        span { class: "catalog-entry-name",
+                            img { src: visuals::catalog_icon(catalog().standard(), value.code), alt: "", aria_hidden: "true", width: 24, height: 24, loading: "lazy", decoding: "async" }
+                            "{value.name}"
+                        }
+                    } }
                 } }
             } }
             section { class: "subset-results", h4 { "{i18n.localize_message(&Ui::Subset)}" }

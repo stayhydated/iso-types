@@ -4639,7 +4639,7 @@ checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 [[package]]
 name = "stayhydated-dioxus"
 version = "0.1.0"
-source = "git+https://github.com/stayhydated/shared?rev=e6fedf9b02726ef500a503613b4a3ad038b5b446#e6fedf9b02726ef500a503613b4a3ad038b5b446"
+source = "git+https://github.com/stayhydated/shared?rev=86a30301bdf8e9dc07cacf82e79b1b7498272dfc#86a30301bdf8e9dc07cacf82e79b1b7498272dfc"
 dependencies = [
  "bon",
  "dioxus",
@@ -4653,7 +4653,7 @@ dependencies = [
 [[package]]
 name = "stayhydated-dioxus-core"
 version = "0.1.0"
-source = "git+https://github.com/stayhydated/shared?rev=e6fedf9b02726ef500a503613b4a3ad038b5b446#e6fedf9b02726ef500a503613b4a3ad038b5b446"
+source = "git+https://github.com/stayhydated/shared?rev=86a30301bdf8e9dc07cacf82e79b1b7498272dfc#86a30301bdf8e9dc07cacf82e79b1b7498272dfc"
 dependencies = [
  "bytemuck",
  "derive_more",
@@ -4670,7 +4670,7 @@ dependencies = [
 [[package]]
 name = "stayhydated-site"
 version = "0.1.0"
-source = "git+https://github.com/stayhydated/shared?rev=e6fedf9b02726ef500a503613b4a3ad038b5b446#e6fedf9b02726ef500a503613b4a3ad038b5b446"
+source = "git+https://github.com/stayhydated/shared?rev=86a30301bdf8e9dc07cacf82e79b1b7498272dfc#86a30301bdf8e9dc07cacf82e79b1b7498272dfc"
 dependencies = [
  "derive_more",
  "dioxus",
@@ -4680,7 +4680,7 @@ dependencies = [
 [[package]]
 name = "stayhydated-xtask"
 version = "0.1.0"
-source = "git+https://github.com/stayhydated/shared?rev=e6fedf9b02726ef500a503613b4a3ad038b5b446#e6fedf9b02726ef500a503613b4a3ad038b5b446"
+source = "git+https://github.com/stayhydated/shared?rev=86a30301bdf8e9dc07cacf82e79b1b7498272dfc#86a30301bdf8e9dc07cacf82e79b1b7498272dfc"
 dependencies = [
  "anyhow",
  "bon",

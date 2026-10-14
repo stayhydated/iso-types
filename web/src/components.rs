@@ -9,6 +9,7 @@ use stayhydated_dioxus::{
 use crate::{
     i18n::{DemoLanguage, Ui},
     site::{PROJECT, Page, Route, VERSION},
+    visuals,
 };
 
 #[component]
@@ -48,7 +49,10 @@ pub(crate) fn ExampleShell(
                         }
                     }
                 }
-                header { class: "example-heading", h2 { "{heading}" } p { "{description}" } }
+                header { class: "example-heading",
+                    if let Some(page) = page { img { class: "example-area-icon", src: visuals::page_icon(page), alt: "", aria_hidden: "true", width: 40, height: 40 } }
+                    h2 { "{heading}" } p { "{description}" }
+                }
                 {children}
                 p { class: "data-note", "{i18n.localize_message(&Ui::EnglishLabels)}" }
             }
@@ -83,7 +87,10 @@ pub(crate) fn CatalogSelect<T: IsoCode + 'static>(
     let selected = use_memo(move || Some(value()));
     let items = values
         .into_iter()
-        .map(|v| SelectItem::new(v, format!("{} · {}", v.code(), v.english_name())))
+        .map(|v| {
+            SelectItem::new(v, format!("{} · {}", v.code(), v.english_name()))
+                .with_icon(visuals::for_value(v))
+        })
         .collect();
     rsx! {
         div { class: "catalog-control",
@@ -107,6 +114,32 @@ pub(crate) fn CountryPicker(value: Signal<Iso3166_1>) -> Element {
 pub(crate) fn Fact(label: Ui, value: String) -> Element {
     let i18n = use_i18n()?;
     rsx! { div { class: "catalog-fact", dt { "{i18n.localize_message(&label)}" } dd { "{value}" } } }
+}
+
+#[component]
+pub(crate) fn Identity<T: IsoCode + 'static>(value: T, caption: String) -> Element {
+    rsx! {
+        div { class: "catalog-identity",
+            img { src: visuals::for_value(value), alt: "", aria_hidden: "true", width: 56, height: 56 }
+            div { small { "{caption}" } strong { "{value.english_name()}" } code { "{value.code()}" } }
+        }
+    }
+}
+
+#[component]
+pub(crate) fn CountryChips(values: Vec<Iso3166_1>) -> Element {
+    rsx! { ul { class: "country-chips",
+        for country in values { li { key: "{country.code()}",
+            img { src: visuals::for_value(country), alt: "", aria_hidden: "true", width: 24, height: 24, loading: "lazy", decoding: "async" }
+            span { "{country.english_name()}" } code { "{country.code()}" }
+        } }
+    } }
+}
+
+#[component]
+pub(crate) fn CountryFact(label: Ui, values: Vec<Iso3166_1>) -> Element {
+    let i18n = use_i18n()?;
+    rsx! { div { class: "catalog-fact", dt { "{i18n.localize_message(&label)}" } dd { CountryChips { values } } } }
 }
 
 pub(crate) fn names<T: IsoCode>(values: &[T]) -> String {

@@ -21,6 +21,15 @@ Open the preview URL ending in `/iso-types/`, then choose **Demos**. For live
 development, `just web` starts Dioxus after assembling the static documentation.
 `just web-i18n` checks the web package's message registration and both languages.
 
+Country choices and relationship lists include local flag artwork. Subdivisions
+use their own flag where artwork is available and a location icon elsewhere.
+The telephone result identifies the number’s detected region, including when
+an international prefix overrides the selected default country.
+
+On **Currencies**, clear **Limit currencies to a country** to browse all active
+currencies. Re-enabling the filter keeps your choice when it is valid for the
+selected country. Currency details list every country that uses it.
+
 The application registers its package's assets with
 `es_fluent_manager_dioxus::define_i18n_module!()` in a library module. Its root
 `DioxusAssetI18nProvider` persists across routes; components obtain the active

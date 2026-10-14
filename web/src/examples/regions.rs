@@ -3,7 +3,7 @@ use es_fluent_manager_dioxus::use_i18n;
 use iso_types::{GeographicRegion as Region, IntoEnumIterator as _, Iso3166_1 as Country};
 
 use crate::{
-    components::{CatalogSelect, CountryPicker, DemoFrame, Fact, names},
+    components::{CatalogSelect, CountryChips, CountryPicker, DemoFrame, Fact, names},
     i18n::Ui,
     site::Page,
 };
@@ -27,7 +27,7 @@ pub(crate) fn Demo() -> Element {
                 Fact { label: Ui::Region, value: names(country().geographic_regions()) }
             }
             section { class: "region-countries", h4 { "{i18n.localize_message(&Ui::Countries)}" }
-                p { "{names(region().countries())}" }
+                CountryChips { values: region().countries().to_vec() }
             }
         }
     }

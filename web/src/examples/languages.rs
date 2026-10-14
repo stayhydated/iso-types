@@ -5,7 +5,7 @@ use iso_types::{
 };
 
 use crate::{
-    components::{CatalogSelect, CountryPicker, DemoFrame, Fact, names},
+    components::{CatalogSelect, CountryFact, CountryPicker, DemoFrame, Fact, names},
     i18n::Ui,
     site::Page,
 };
@@ -25,7 +25,7 @@ pub(crate) fn Demo() -> Element {
             }
             dl { class: "fact-grid", aria_live: "polite",
                 Fact { label: Ui::Script, value: names(language().scripts()) }
-                Fact { label: Ui::Countries, value: names(language().countries()) }
+                CountryFact { label: Ui::Countries, values: language().countries().to_vec() }
                 Fact { label: Ui::Direction, value: format!("{:?}", script().direction()) }
                 Fact { label: Ui::LanguageCode, value: names(script().languages()) }
             }
