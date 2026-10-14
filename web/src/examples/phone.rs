@@ -16,8 +16,14 @@ struct ParsedPhone {
 }
 
 fn parse_phone(country: Country, input: &str) -> Result<ParsedPhone, Ui> {
-    let region = phonenumber::country::Id::try_from(country).map_err(|_| Ui::InvalidPhone)?;
-    let phone = phonenumber::parse(Some(region), input).map_err(|_| Ui::InvalidPhone)?;
+    // An explicit international prefix owns the region. Passing a default
+    // region can strip its national dialing prefix from a global service number.
+    let region = if input.trim_start().starts_with('+') {
+        None
+    } else {
+        Some(phonenumber::country::Id::try_from(country).map_err(|_| Ui::InvalidPhone)?)
+    };
+    let phone = phonenumber::parse(region, input).map_err(|_| Ui::InvalidPhone)?;
     if !phonenumber::is_valid(&phone) {
         return Err(Ui::InvalidPhone);
     }

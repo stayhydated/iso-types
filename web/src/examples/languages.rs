@@ -25,9 +25,9 @@ pub(crate) fn Demo() -> Element {
             }
             dl { class: "fact-grid", aria_live: "polite",
                 Fact { label: Ui::Script, value: names(language().scripts()) }
-                CountryFact { label: Ui::Countries, values: language().countries().to_vec() }
                 Fact { label: Ui::Direction, value: format!("{:?}", script().direction()) }
                 Fact { label: Ui::LanguageCode, value: names(script().languages()) }
+                CountryFact { label: Ui::Countries, values: language().countries().to_vec() }
             }
             div { class: "table-scroll", table {
                 thead { tr { th { "{i18n.localize_message(&Ui::LanguageCode)}" } th { "{i18n.localize_message(&Ui::Population)}" } th { "{i18n.localize_message(&Ui::Status)}" } } }

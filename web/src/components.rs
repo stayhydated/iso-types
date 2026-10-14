@@ -139,7 +139,7 @@ pub(crate) fn CountryChips(values: Vec<Iso3166_1>) -> Element {
 #[component]
 pub(crate) fn CountryFact(label: Ui, values: Vec<Iso3166_1>) -> Element {
     let i18n = use_i18n()?;
-    rsx! { div { class: "catalog-fact", dt { "{i18n.localize_message(&label)}" } dd { CountryChips { values } } } }
+    rsx! { div { class: "catalog-fact catalog-country-fact", dt { "{i18n.localize_message(&label)}" } dd { CountryChips { values } } } }
 }
 
 pub(crate) fn names<T: IsoCode>(values: &[T]) -> String {
