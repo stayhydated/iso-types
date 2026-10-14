@@ -18,6 +18,7 @@ jobs:
   deploy:
     uses: stayhydated/shared/.github/workflows/deploy-pages.yml@75a8361e55f9e435c7f7484924ac4486a61e38e7
     with:
+      dioxus-cli-version: 0.7.10
       build-command: |
         cargo xtask build book
         cargo xtask build llms-txt

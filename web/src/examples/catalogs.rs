@@ -123,6 +123,10 @@ impl Catalog {
 #[iso_enum(standard = "3166-1", codes = ["CA", "US"])]
 enum Market {}
 #[iso_enum(standard = "3166-2", country = "US")]
+#[allow(
+    clippy::enum_variant_names,
+    reason = "Subdivision variants retain the canonical ISO country prefix."
+)]
 enum UsAreas {}
 #[iso_enum(standard = "units", category = "length")]
 enum LengthUnits {}

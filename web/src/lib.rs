@@ -12,6 +12,12 @@ pub fn route_manifest() -> stayhydated_site::SiteRouteManifest {
 #[cfg(test)]
 mod tests {
     #[test]
+    fn dioxus_assets_are_registered_from_the_library_target() {
+        let modules = es_fluent_manager_dioxus::DioxusI18nAssetModules::discovered();
+        assert_eq!(modules.as_slice().len(), 1);
+    }
+
+    #[test]
     fn pages_manifest_includes_every_example_and_promised_static_output() {
         let manifest = super::route_manifest();
         let paths = manifest

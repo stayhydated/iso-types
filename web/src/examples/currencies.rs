@@ -19,14 +19,20 @@ pub(crate) fn Demo() -> Element {
                 CatalogSelect::<Country> { label: Ui::Country, value: country, values: Country::iter().collect(),
                     on_change: move |next: Country| { country.set(next); if let Some(next) = next.currencies().first() { currency.set(*next); } },
                 }
-                CatalogSelect::<Currency> { label: Ui::Currency, value: currency, values: Currency::iter().collect(), on_change: move |next| currency.set(next) }
+                if !country().currencies().is_empty() {
+                    CatalogSelect::<Currency> { key: "{country().code()}", label: Ui::Currency, value: currency, values: country().currencies().to_vec(), on_change: move |next| currency.set(next) }
+                }
             }
-            p { class: "country-currencies", aria_live: "polite", "{names(country().currencies())}" }
-            dl { class: "fact-grid", aria_live: "polite",
-                Fact { label: Ui::Digits, value: currency().fraction_digits().to_string() }
-                Fact { label: Ui::CashDigits, value: currency().cash_fraction_digits().to_string() }
-                Fact { label: Ui::CashRounding, value: currency().cash_rounding_increment().to_string() }
-                Fact { label: Ui::CurrencyCountries, value: names(currency().countries()) }
+            if country().currencies().is_empty() {
+                p { "{i18n.localize_message(&Ui::NoData)}" }
+            } else {
+                p { class: "country-currencies", aria_live: "polite", "{names(country().currencies())}" }
+                dl { class: "fact-grid", aria_live: "polite",
+                    Fact { label: Ui::Digits, value: currency().fraction_digits().to_string() }
+                    Fact { label: Ui::CashDigits, value: currency().cash_fraction_digits().to_string() }
+                    Fact { label: Ui::CashRounding, value: currency().cash_rounding_increment().to_string() }
+                    Fact { label: Ui::CurrencyCountries, value: names(currency().countries()) }
+                }
             }
             p { class: "data-note", "{i18n.localize_message(&Ui::CurrencyNote)}" }
         }
