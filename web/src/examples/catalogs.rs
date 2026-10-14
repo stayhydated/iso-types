@@ -152,8 +152,12 @@ pub(crate) fn Demo() -> Element {
         visible: filtered.len() as i64,
         total: count as i64,
     });
-    let result = catalog()
-        .parse(&input())
+    let parsed = catalog().parse(&input());
+    let result_icon = parsed.as_ref().map_or_else(
+        |_| visuals::icon(visuals::Icon::Unknown),
+        |value| visuals::catalog_icon(catalog().standard(), value.code),
+    );
+    let result = parsed
         .map(|v| format!("{} · {}", v.code, v.name))
         .unwrap_or_else(|_| i18n.localize_message(&Ui::UnknownCode));
     let items = Catalog::VARIANTS
@@ -190,7 +194,10 @@ pub(crate) fn Demo() -> Element {
                     input { id: "parse-code", value: input, oninput: move |event| input.set(event.value()) }
                 }
             }
-            output { class: "conversion-result", aria_live: "polite", "{result}" }
+            output { class: "conversion-result catalog-inline-value", aria_live: "polite",
+                img { src: result_icon, alt: "", aria_hidden: "true", width: 24, height: 24 }
+                span { "{result}" }
+            }
             label { class: "catalog-control", r#for: "filter", span { class: "control-label", "{i18n.localize_message(&Ui::Filter)}" }
                 input { id: "filter", value: filter, oninput: move |event| filter.set(event.value()) }
             }
