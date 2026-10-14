@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   deploy:
-    uses: stayhydated/shared/.github/workflows/deploy-pages.yml@86a30301bdf8e9dc07cacf82e79b1b7498272dfc
+    uses: stayhydated/shared/.github/workflows/deploy-pages.yml@3136b369bb54312096ad83ba74735aab29109835
     with:
       dioxus-cli-version: 0.7.10
       build-command: |
