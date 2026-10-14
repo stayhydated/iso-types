@@ -3,7 +3,7 @@ use es_fluent_manager_dioxus::use_i18n;
 use iso_types::{IntoEnumIterator as _, Iso3166_1 as Country, Iso4217 as Currency};
 
 use crate::{
-    components::{CatalogSelect, CountryFact, DemoFrame, Fact, Identity},
+    components::{CatalogFact, CatalogSelect, DemoFrame, Fact, Identity},
     i18n::Ui,
     site::Page,
 };
@@ -76,7 +76,7 @@ pub(crate) fn Demo() -> Element {
                     Fact { label: Ui::Digits, value: currency.fraction_digits().to_string() }
                     Fact { label: Ui::CashDigits, value: currency.cash_fraction_digits().to_string() }
                     Fact { label: Ui::CashRounding, value: currency.cash_rounding_increment().to_string() }
-                    CountryFact { label: Ui::CurrencyCountries, values: currency.countries().to_vec() }
+                    CatalogFact::<Country> { label: Ui::CurrencyCountries, values: currency.countries().to_vec() }
                 }
             } else { p { "{i18n.localize_message(&Ui::NoData)}" } }
             p { class: "data-note", "{i18n.localize_message(&Ui::CurrencyNote)}" }

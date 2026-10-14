@@ -5,9 +5,10 @@ use iso_types::{
 };
 
 use crate::{
-    components::{CatalogSelect, CountryFact, CountryPicker, DemoFrame, Fact, names},
+    components::{CatalogFact, CatalogSelect, CountryPicker, DemoFrame, Fact},
     i18n::Ui,
     site::Page,
+    visuals,
 };
 
 #[component]
@@ -16,6 +17,11 @@ pub(crate) fn Demo() -> Element {
     let country = use_signal(|| Country::Ca);
     let mut language = use_signal(|| Language::En);
     let mut script = use_signal(|| Script::Latn);
+    let direction = match script().direction() {
+        Some(iso_types::icu_locale::Direction::LeftToRight) => Ui::LeftToRight,
+        Some(iso_types::icu_locale::Direction::RightToLeft) => Ui::RightToLeft,
+        _ => Ui::None,
+    };
     rsx! {
         DemoFrame { page: Page::Languages, description: Ui::LanguagesIntro, source: include_str!("languages.rs"),
             div { class: "control-grid",
@@ -24,10 +30,10 @@ pub(crate) fn Demo() -> Element {
                 CatalogSelect::<Script> { label: Ui::Script, value: script, values: Script::iter().collect(), on_change: move |next| script.set(next) }
             }
             dl { class: "fact-grid", aria_live: "polite",
-                Fact { label: Ui::Script, value: names(language().scripts()) }
-                Fact { label: Ui::Direction, value: format!("{:?}", script().direction()) }
-                Fact { label: Ui::LanguageCode, value: names(script().languages()) }
-                CountryFact { label: Ui::Countries, values: language().countries().to_vec() }
+                Fact { label: Ui::Direction, value: i18n.localize_message(&direction), symbol: visuals::script_icon(script()) }
+                CatalogFact::<Script> { label: Ui::Script, values: language().scripts().to_vec() }
+                CatalogFact::<Language> { label: Ui::LanguageCode, values: script().languages().to_vec() }
+                CatalogFact::<Country> { label: Ui::Countries, values: language().countries().to_vec() }
             }
             div { class: "table-scroll", table {
                 thead { tr { th { "{i18n.localize_message(&Ui::LanguageCode)}" } th { "{i18n.localize_message(&Ui::Population)}" } th { "{i18n.localize_message(&Ui::Status)}" } } }

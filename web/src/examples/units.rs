@@ -6,6 +6,7 @@ use crate::{
     components::{CatalogSelect, CountryPicker, DemoFrame},
     i18n::{QuantityResult, Ui},
     site::Page,
+    visuals,
 };
 
 fn convert(input: &str, from: Unit, to: Unit) -> Result<f64, Ui> {
@@ -28,7 +29,12 @@ pub(crate) fn Demo() -> Element {
     let mut quantity = use_signal(|| "1".to_owned());
     let country = use_signal(|| Country::Us);
     let mut usage = use_signal(|| UnitUsage::TemperatureWeather);
-    let result = match convert(&quantity(), from(), to()) {
+    let converted = convert(&quantity(), from(), to());
+    let result_icon = converted.as_ref().map_or_else(
+        |_| visuals::icon(visuals::Icon::Warning),
+        |_| visuals::for_value(to()),
+    );
+    let result = match converted {
         Ok(amount) => i18n.localize_message(&QuantityResult {
             amount,
             unit: to().code(),
@@ -44,7 +50,10 @@ pub(crate) fn Demo() -> Element {
                     input { id: "quantity", r#type: "text", inputmode: "decimal", value: quantity, oninput: move |event| quantity.set(event.value()) }
                 }
             }
-            output { class: "conversion-result", aria_live: "polite", "{i18n.localize_message(&Ui::Result)}: {result}" }
+            output { class: "conversion-result catalog-inline-value", aria_live: "polite",
+                img { src: result_icon, alt: "", aria_hidden: "true", width: 24, height: 24 }
+                span { "{i18n.localize_message(&Ui::Result)}: {result}" }
+            }
             div { class: "control-grid",
                 CountryPicker { value: country }
                 CatalogSelect::<UnitUsage> { label: Ui::Usage, value: usage, values: UnitUsage::iter().collect(), on_change: move |next| usage.set(next) }
@@ -53,7 +62,15 @@ pub(crate) fn Demo() -> Element {
                 thead { tr { th { "{i18n.localize_message(&Ui::Components)}" } th { "{i18n.localize_message(&Ui::Threshold)}" } th { "{i18n.localize_message(&Ui::Skeleton)}" } } }
                 tbody { for (index, preference) in country().unit_preferences(usage()).iter().enumerate() {
                     tr { key: "{index}",
-                        td { "{preference.units.iter().map(|u| u.code()).collect::<Vec<_>>().join(\" + \")}" }
+                        td { div { class: "unit-components",
+                            for (index, unit) in preference.units.iter().copied().enumerate() {
+                                if index > 0 { span { "+" } }
+                                span { class: "catalog-inline-value",
+                                    img { src: visuals::preference_icon(unit, usage()), alt: "", aria_hidden: "true", width: 24, height: 24 }
+                                    code { "{unit.code()}" }
+                                }
+                            }
+                        } }
                         td { "{preference.threshold}" }
                         td { "{preference.skeleton.unwrap_or(\"—\")}" }
                     }

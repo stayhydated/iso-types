@@ -136,6 +136,11 @@ target. `just web-build` builds every promised static destination; `just web`
 starts live development and `just web-preview` serves the assembled artifact
 under `/iso-types/`. Keep `Cargo.lock` committed before the locked Dioxus build.
 
+Example pictograms are owned by `web/src/visuals/` and local SVG assets under
+`web/public/assets/icons/`. Keep `Icon` variants and kebab-case SVG stems aligned.
+Use typed unit categories and usages for quantity/context mappings; keep labels
+as the accessible names and retain the country/region meaning of flags.
+
 Pin all shared crates and the reusable Pages workflow to the same full revision.
 Shared owns the shell, components, styles, preview, and assembly. Consumer CSS
 contains the catalog workbench's controls and result layouts. Validate source and

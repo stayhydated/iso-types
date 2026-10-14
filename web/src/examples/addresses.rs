@@ -6,6 +6,7 @@ use crate::{
     components::{CountryPicker, DemoFrame, Fact},
     i18n::Ui,
     site::Page,
+    visuals,
 };
 
 #[component]
@@ -27,7 +28,10 @@ pub(crate) fn Demo() -> Element {
                             let requirement = i18n.localize_message(&if required { Ui::Required } else { Ui::Optional });
                             rsx! {
                                 label { class: "address-field", r#for: id.clone(),
-                                    span { "{label}" small { "{requirement}" } }
+                                    span {
+                                        img { src: visuals::for_value(metadata.field_label(field)), alt: "", aria_hidden: "true", width: 20, height: 20 }
+                                        "{label}" small { "{requirement}" }
+                                    }
                                     input { id, r#type: "text", required, autocomplete: "off",
                                         placeholder: if field == AddressField::PostalCode { metadata.postal_code_examples.first().copied().unwrap_or("") } else { "" },
                                     }

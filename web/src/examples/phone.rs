@@ -3,7 +3,7 @@ use es_fluent_manager_dioxus::use_i18n;
 use iso_types::{CallingCode, IntoEnumIterator as _, Iso3166_1 as Country, phonenumber};
 
 use crate::{
-    components::{CatalogSelect, CountryFact, CountryPicker, DemoFrame, Fact, names},
+    components::{CatalogFact, CatalogSelect, CountryPicker, DemoFrame, Fact},
     i18n::Ui,
     site::Page,
     visuals,
@@ -44,11 +44,11 @@ pub(crate) fn Demo() -> Element {
     let mut number = use_signal(|| "202-555-0123".to_owned());
     let parsed = parse_phone(country(), &number());
     let number_icon = parsed.as_ref().ok().map_or_else(
-        || visuals::icon("phone"),
+        || visuals::icon(visuals::Icon::Phone),
         |parsed| {
             parsed
                 .country
-                .map_or_else(|| visuals::icon("globe"), visuals::for_value)
+                .map_or_else(|| visuals::icon(visuals::Icon::Globe), visuals::for_value)
         },
     );
     rsx! {
@@ -66,7 +66,7 @@ pub(crate) fn Demo() -> Element {
             match parsed {
                 Ok(parsed) => rsx! {
                     div { class: "catalog-identity phone-result", aria_live: "polite",
-                        img { src: parsed.country.map_or_else(|| visuals::icon("globe"), visuals::for_value), alt: "", aria_hidden: "true", width: 56, height: 56 }
+                        img { src: parsed.country.map_or_else(|| visuals::icon(visuals::Icon::Globe), visuals::for_value), alt: "", aria_hidden: "true", width: 56, height: 56 }
                         div { small { "{i18n.localize_message(&Ui::Result)}" } strong { "{parsed.number}" }
                             span { "{i18n.localize_message(&Ui::DetectedCountry)}: {parsed.country.map_or_else(|| i18n.localize_message(&Ui::GlobalCode), |country| country.english_name().to_owned())}" }
                         }
@@ -75,9 +75,9 @@ pub(crate) fn Demo() -> Element {
                 Err(message) => rsx! { p { role: "status", "{i18n.localize_message(&message)}" } },
             }
             dl { class: "fact-grid", aria_live: "polite",
-                Fact { label: Ui::CallingCodes, value: names(country().calling_codes()) }
+                CatalogFact::<CallingCode> { label: Ui::CallingCodes, values: country().calling_codes().to_vec() }
                 if calling_code().countries().is_empty() { Fact { label: Ui::SharedCountries, value: i18n.localize_message(&Ui::GlobalCode) } }
-                else { CountryFact { label: Ui::SharedCountries, values: calling_code().countries().to_vec() } }
+                else { CatalogFact::<Country> { label: Ui::SharedCountries, values: calling_code().countries().to_vec() } }
             }
 
         }

@@ -42,6 +42,8 @@ pub(crate) enum Ui {
     LanguageCode,
     Script,
     Direction,
+    LeftToRight,
+    RightToLeft,
     Population,
     Status,
     LanguageNote,

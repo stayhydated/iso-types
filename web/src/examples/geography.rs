@@ -3,7 +3,7 @@ use es_fluent_manager_dioxus::use_i18n;
 use iso_types::{IntoEnumIterator as _, Iso3166_1 as Country, Iso3166_2 as Subdivision};
 
 use crate::{
-    components::{CatalogSelect, DemoFrame, Fact, Identity, names},
+    components::{CatalogFact, CatalogSelect, DemoFrame, Fact, Identity},
     i18n::Ui,
     site::Page,
 };
@@ -37,7 +37,6 @@ pub(crate) fn Demo() -> Element {
     let country = use_memo(move || selection().country);
     let subdivision = use_memo(move || selection().subdivision);
     let selected_area = use_memo(move || selection().subdivision.unwrap_or(Subdivision::CaOn));
-    let none = i18n.localize_message(&Ui::None);
     rsx! {
         DemoFrame { page: Page::Geography, description: Ui::GeographyIntro, source: include_str!("geography.rs"),
             div { class: "control-grid",
@@ -59,8 +58,8 @@ pub(crate) fn Demo() -> Element {
                 dl { class: "fact-grid", aria_live: "polite",
                     Fact { label: Ui::Code, value: area.code().to_owned() }
                     Fact { label: Ui::Kind, value: area.kind().into_str().to_owned() }
-                    Fact { label: Ui::Parent, value: area.parent().map_or_else(|| none.clone(), |p| names(&[p])) }
-                    Fact { label: Ui::Children, value: if area.children().is_empty() { none.clone() } else { names(area.children()) } }
+                    CatalogFact::<Subdivision> { label: Ui::Parent, values: area.parent().into_iter().collect() }
+                    CatalogFact::<Subdivision> { label: Ui::Children, values: area.children().to_vec() }
                 }
             } else { p { "{i18n.localize_message(&Ui::NoData)}" } }
         }

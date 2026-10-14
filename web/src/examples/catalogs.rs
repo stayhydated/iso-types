@@ -158,7 +158,10 @@ pub(crate) fn Demo() -> Element {
         .unwrap_or_else(|_| i18n.localize_message(&Ui::UnknownCode));
     let items = Catalog::VARIANTS
         .iter()
-        .map(|v| SelectItem::new(*v, v.standard()))
+        .map(|v| {
+            SelectItem::new(*v, v.standard())
+                .with_icon(visuals::icon(visuals::standard_icon(v.standard())))
+        })
         .collect();
     let market = Market::VARIANTS
         .iter()
@@ -218,6 +221,10 @@ mod tests {
     fn every_catalog_round_trips_and_subsets_keep_runtime_relationships() {
         assert_eq!(Catalog::VARIANTS.len(), 17);
         for catalog in Catalog::VARIANTS {
+            assert_ne!(
+                visuals::standard_icon(catalog.standard()),
+                visuals::Icon::Catalog
+            );
             let entries = catalog.entries();
             assert!(!entries.is_empty());
             for entry in entries {
@@ -232,5 +239,23 @@ mod tests {
                 .iter()
                 .all(|v| v.catalog_value().category() == iso_types::UnitCategory::Length)
         );
+    }
+
+    #[test]
+    fn every_catalog_value_resolves_to_a_shipped_visual_asset() {
+        let mut paths = std::collections::BTreeSet::new();
+        for catalog in Catalog::VARIANTS {
+            for entry in catalog.entries() {
+                let path = visuals::catalog_icon(catalog.standard(), entry.code);
+                paths.insert(path);
+            }
+        }
+        for path in paths {
+            let relative = path.strip_prefix('/').expect("root-relative asset URL");
+            let asset = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+                .join("public")
+                .join(relative);
+            assert!(asset.is_file(), "{}", asset.display());
+        }
     }
 }

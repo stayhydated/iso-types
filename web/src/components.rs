@@ -111,9 +111,17 @@ pub(crate) fn CountryPicker(value: Signal<Iso3166_1>) -> Element {
 }
 
 #[component]
-pub(crate) fn Fact(label: Ui, value: String) -> Element {
+pub(crate) fn Fact(
+    label: Ui,
+    value: String,
+    #[props(default)] symbol: Option<visuals::Icon>,
+) -> Element {
     let i18n = use_i18n()?;
-    rsx! { div { class: "catalog-fact", dt { "{i18n.localize_message(&label)}" } dd { "{value}" } } }
+    let symbol = symbol.or_else(|| visuals::detail_icon(label));
+    rsx! { div { class: "catalog-fact", dt {
+        if let Some(symbol) = symbol { img { src: visuals::icon(symbol), alt: "", aria_hidden: "true", width: 20, height: 20 } }
+        "{i18n.localize_message(&label)}"
+    } dd { "{value}" } } }
 }
 
 #[component]
@@ -127,19 +135,26 @@ pub(crate) fn Identity<T: IsoCode + 'static>(value: T, caption: String) -> Eleme
 }
 
 #[component]
-pub(crate) fn CountryChips(values: Vec<Iso3166_1>) -> Element {
-    rsx! { ul { class: "country-chips",
-        for country in values { li { key: "{country.code()}",
-            img { src: visuals::for_value(country), alt: "", aria_hidden: "true", width: 24, height: 24, loading: "lazy", decoding: "async" }
-            span { "{country.english_name()}" } code { "{country.code()}" }
+pub(crate) fn CatalogChips<T: IsoCode + 'static>(values: Vec<T>) -> Element {
+    rsx! { ul { class: "catalog-chips",
+        for value in values { li { key: "{value.code()}",
+            img { src: visuals::for_value(value), alt: "", aria_hidden: "true", width: 24, height: 24, loading: "lazy", decoding: "async" }
+            span { "{value.english_name()}" } code { "{value.code()}" }
         } }
     } }
 }
 
 #[component]
-pub(crate) fn CountryFact(label: Ui, values: Vec<Iso3166_1>) -> Element {
+pub(crate) fn CatalogFact<T: IsoCode + 'static>(label: Ui, values: Vec<T>) -> Element {
     let i18n = use_i18n()?;
-    rsx! { div { class: "catalog-fact catalog-country-fact", dt { "{i18n.localize_message(&label)}" } dd { CountryChips { values } } } }
+    let wide = values.len() > 2;
+    rsx! { div { class: if wide { "catalog-fact catalog-list-fact" } else { "catalog-fact" }, dt {
+        if let Some(symbol) = visuals::detail_icon(label) { img { src: visuals::icon(symbol), alt: "", aria_hidden: "true", width: 20, height: 20 } }
+        "{i18n.localize_message(&label)}"
+    } dd {
+        if values.is_empty() { "{i18n.localize_message(&Ui::None)}" }
+        else { CatalogChips::<T> { values } }
+    } } }
 }
 
 pub(crate) fn names<T: IsoCode>(values: &[T]) -> String {

@@ -26,6 +26,12 @@ use their own flag where artwork is available and a location icon elsewhere.
 The telephone result identifies the number’s detected region, including when
 an international prefix overrides the selected default country.
 
+Measurement icons follow the quantity and context: a bolt for volts, a
+thermometer for temperature, a waveform for frequency, and rain or wind for
+weather-related usages. Address fields, script direction, calendar entries,
+and sex codes also have appropriate pictograms. The code and name remain
+visible beside each icon. Browse **All catalogs & subsets** to inspect them.
+
 On **Currencies**, clear **Limit currencies to a country** to browse all active
 currencies. Re-enabling the filter keeps your choice when it is valid for the
 selected country. Currency details list every country that uses it.
