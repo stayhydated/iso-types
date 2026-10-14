@@ -22,9 +22,9 @@ clap = { version = "4.6", features = ["derive"] }
 dioxus = { version = "0.7", default-features = false }
 es-fluent-build = "0.21.0"
 es-fluent-manager-dioxus = { version = "0.21.0", default-features = false }
-stayhydated-dioxus = { git = "https://github.com/stayhydated/shared", rev = "75a8361e55f9e435c7f7484924ac4486a61e38e7" }
-stayhydated-site = { git = "https://github.com/stayhydated/shared", rev = "75a8361e55f9e435c7f7484924ac4486a61e38e7" }
-stayhydated-xtask = { git = "https://github.com/stayhydated/shared", rev = "75a8361e55f9e435c7f7484924ac4486a61e38e7" }
+stayhydated-dioxus = { git = "https://github.com/stayhydated/shared", rev = "ed56b455c6bd6fb934f284c4f42c6b468c39ca76" }
+stayhydated-site = { git = "https://github.com/stayhydated/shared", rev = "ed56b455c6bd6fb934f284c4f42c6b468c39ca76" }
+stayhydated-xtask = { git = "https://github.com/stayhydated/shared", rev = "ed56b455c6bd6fb934f284c4f42c6b468c39ca76" }
 web = { path = "web" }
 iso-types = { path = "crates/iso-types", version = "0.1.0" }
 iso-types-macros = { path = "crates/iso-types-macros", version = "0.1.0" }
