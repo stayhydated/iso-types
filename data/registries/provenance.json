@@ -31,7 +31,9 @@
       "sha256": "ad409fc7149b10f98d61190c34d9daf78b78bb8b31464cc66de1a89d09b01b5d",
       "release": "2025-1",
       "license": "CC-BY-4.0",
-      "terms": "https://unlocode.unece.org/terms"
+      "license_statement_url": "https://unlocode.unece.org/publications/",
+      "license_checked": "2026-10-15",
+      "site_terms": "https://unlocode.unece.org/terms/"
     },
     "language-groups.html": {
       "url": "https://www.loc.gov/standards/iso639-5/id.php",
@@ -55,6 +57,9 @@
       "authority": "UNECE",
       "release": "Recommendation 20 Revision 17 (2021)",
       "license": "CC-BY-4.0",
+      "license_statement_url": "https://unlocode.unece.org/publications/",
+      "license_checked": "2026-10-15",
+      "site_terms": "https://unlocode.unece.org/terms/",
       "original_url": "https://unece.org/sites/default/files/2023-10/rec20_Rev17e-2021.xlsx",
       "git_blob": "b9509babe203d4dab6696f51943e9f27c40c2710"
     },
@@ -75,7 +80,9 @@
       "release": "Recommendation 21 Revision 12 (2021)",
       "authority": "UNECE",
       "license": "CC-BY-4.0",
-      "terms": "https://unlocode.unece.org/terms"
+      "license_statement_url": "https://unlocode.unece.org/publications/",
+      "license_checked": "2026-10-15",
+      "site_terms": "https://unlocode.unece.org/terms/"
     },
     "rec21.json": {
       "url": "https://unece.org/sites/default/files/2021-06/rec21_Rev12e_Annex-V-VI_2021.xls",

@@ -14,7 +14,8 @@ resolver = "3"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.99"
-license = "(MIT OR Apache-2.0) AND LGPL-2.1-or-later AND Unicode-3.0 AND Apache-2.0 AND CC-BY-4.0"
+# Original code; public crates declare the additional bundled-data licenses.
+license = "MIT OR Apache-2.0"
 repository = "https://github.com/stayhydated/iso-types"
 
 [workspace.dependencies]

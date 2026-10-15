@@ -108,6 +108,9 @@ The generator extracts ICU names, validates catalogs, and formats every output
 before replacing changed files. `just generate-check` checks all generated
 outputs without modifying them and reports every differing path. Root `NOTICE`
 and `LICENSE-*` files are the source for the copies shipped in each public crate.
+The workspace license covers original code; public crate manifests preserve the
+combined code/data SPDX expression. `NOTICE` maps those licenses to their sources.
+Keep registry license statements and general website terms distinct in provenance.
 
 Use `python3 -m tools.codegen --import-data /path/to/iso-codes` to snapshot a new
 ISO checkout and regenerate. Refresh CLDR/SIX metadata and its provenance when

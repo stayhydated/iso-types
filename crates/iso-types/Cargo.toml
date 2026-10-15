@@ -4,7 +4,8 @@ description = "Typed ISO, geographic, and regional catalogs with optional ICU4X,
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
-license.workspace = true
+# Original code and bundled data; see NOTICE for the scope of each license.
+license = "(MIT OR Apache-2.0) AND LGPL-2.1-or-later AND Unicode-3.0 AND Apache-2.0 AND CC-BY-4.0"
 repository.workspace = true
 
 [features]

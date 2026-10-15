@@ -1,3 +1,53 @@
+iso-types licensing and attribution
+==================================
+
+Original code
+-------------
+
+Original Rust implementation, macros, generators, tests, examples, and site code:
+Copyright 2025-2026 stayhydated
+SPDX-License-Identifier: MIT OR Apache-2.0
+Choose either LICENSE-MIT or LICENSE-APACHE for these original contributions.
+
+Package scope
+-------------
+
+The workspace's default Cargo license applies to original code. The public
+iso-types, iso-types-macros, and iso-types-locations packages retain a combined
+SPDX expression covering original code and data. In that expression, OR offers
+a choice for the original code; AND preserves the additional data licenses.
+The source attributions below identify the materials covered by each license.
+
+iso-types contains the selected catalogs, English Fluent resources, and regional
+metadata. iso-types-macros contains the catalog selection index and locale scope
+derived from the same inputs. iso-types-locations contains the selected UNECE
+directory and uses iso-types for country and subdivision types.
+
+The unpublished iso-types-locale-consumer, iso-types-icu-data, web, and xtask
+packages inherit the original-code license. Their dependencies and data retain
+their respective licenses. The flag assets under web/public/assets/flags carry
+the HatScripts MIT notice in that directory's LICENSE.md. Cargo.lock records the
+dependency versions; each dependency supplies its own license and notices.
+
+Redistribution
+--------------
+
+Preserve the applicable copyright notices, license texts, and source attributions
+when redistributing covered materials. For LGPL-covered materials in distributed
+binaries, follow LICENSE-LGPL-2.1 sections 4-6, including covered source
+availability and the applicable relinking and customer modification requirements.
+For CC-BY-4.0 materials, preserve attribution, provide the license reference, and
+identify modifications as described in LICENSE-CC-BY-4.0. These requirements also
+apply when covered materials are included in a proprietary application.
+
+Root NOTICE and LICENSE-* files are authoritative. python3 -m tools.codegen
+copies them into each public crate; python3 -m tools.codegen --check verifies
+the copies. Complete upstream inputs and their provenance live in this repository:
+https://github.com/stayhydated/iso-types
+
+Third-party data
+----------------
+
 The ISO source snapshots in data/iso/iso_*.json (except
 iso_finite.json), the generated ISO tables and ISO entries in the macro selection index,
 and corresponding English Fluent catalog names derive from iso-codes:
@@ -10,13 +60,10 @@ The source revision and SHA-256 checksums are recorded in data/iso/provenance.js
 The original source data, editable FTL, and generator are provided in this
 repository. The LGPL license text accompanies the public Cargo packages.
 
-Original Rust implementation and generator code:
-Copyright 2026 Mark (stayhydated)
-SPDX-License-Identifier: MIT OR Apache-2.0
-
 English ICU-owned names and currency formatting metadata in data/icu/english.json
-and generated catalog tables derive from ICU4X compiled data. Provider versions and the English display locale are
-recorded in data/icu/english.json; Cargo.lock pins provider data packages and checksums.
+and generated catalog tables derive from ICU4X compiled data. Provider versions
+and the English display locale are recorded in data/icu/english.json; Cargo.lock
+pins provider data packages and checksums.
 https://github.com/unicode-org/icu4x
 Copyright Unicode, Inc.
 SPDX-License-Identifier: Unicode-3.0
@@ -77,6 +124,11 @@ and Recommendation 21 revision 12 (2021). Copyright United Nations / UNECE.
 SPDX-License-Identifier: CC-BY-4.0
 https://unlocode.unece.org/publications/
 https://unece.org/trade/uncefact/cl-recommendations
+The UN/LOCODE publications page states that UN/CEFACT standards are available
+under CC BY 4.0. data/registries/provenance.json records this license statement
+separately from the site's general terms and the date it was checked.
+The general website terms also contain personal, non-commercial-use wording;
+the CC-BY-4.0 declaration follows the publisher's standards-specific statement.
 The generated selections remove deleted/deprecated entries and excluded country
 codes; UN/LOCODE alternative listings and source metadata are preserved. Rec 21
 package counts use the Rec 20 X prefix. A project-owned explicit crosswalk links
