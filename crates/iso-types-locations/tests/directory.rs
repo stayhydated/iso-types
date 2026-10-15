@@ -57,3 +57,28 @@ fn alternatives_preserve_conflicting_published_metadata() {
         assert_eq!(record.subdivision().unwrap().country(), Country::Us);
     }
 }
+
+#[test]
+fn function_masks_decode_recognized_positions_with_any_length() {
+    let mut record = "FIHEL"
+        .parse::<UnLocode>()
+        .unwrap()
+        .records()
+        .next()
+        .unwrap();
+    for (mask, expected) in [
+        ("", &[][..]),
+        ("1", &[LocationFunction::Port][..]),
+        ("----5", &[LocationFunction::PostalExchange][..]),
+        ("-------B", &[LocationFunction::BorderCrossing][..]),
+        ("1234567B", &LocationFunction::ALL[..]),
+        ("1234567Bextra", &LocationFunction::ALL[..]),
+        ("--------", &[][..]),
+        ("0-------", &[][..]),
+        ("B1234567", &[][..]),
+        ("é", &[][..]),
+    ] {
+        record.function_code = mask;
+        assert_eq!(record.functions().collect::<Vec<_>>(), expected, "{mask:?}");
+    }
+}

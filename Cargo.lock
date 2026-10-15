@@ -2830,7 +2830,6 @@ dependencies = [
 name = "iso-types-icu-data"
 version = "0.0.0"
 dependencies = [
- "icu_calendar",
  "icu_datetime",
  "icu_experimental",
  "icu_locale",
@@ -2870,7 +2869,6 @@ dependencies = [
  "quote",
  "serde_json",
  "syn 3.0.9",
- "unic-langid",
  "writeable",
 ]
 

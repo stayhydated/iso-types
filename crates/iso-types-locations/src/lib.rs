@@ -127,12 +127,16 @@ pub struct LocationRecord {
 }
 
 impl LocationRecord {
+    /// Decode recognized markers in the eight defined byte positions.
+    /// Missing or unrecognized markers and trailing bytes are ignored.
     pub fn functions(self) -> impl Iterator<Item = LocationFunction> {
         let code = self.function_code.as_bytes();
         LocationFunction::ALL
             .into_iter()
             .enumerate()
-            .filter_map(move |(index, value)| (code[index] == b"1234567B"[index]).then_some(value))
+            .filter_map(move |(index, value)| {
+                (code.get(index) == Some(&b"1234567B"[index])).then_some(value)
+            })
     }
 
     /// Parse degree/minute coordinates; malformed source values return `None`.
