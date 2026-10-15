@@ -98,7 +98,7 @@ mod tests {
                 "unsupported catalog",
             ),
             (
-                quote!(standard = "639-5"),
+                quote!(standard = "639-4"),
                 quote!(
                     enum Codes {}
                 ),

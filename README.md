@@ -9,7 +9,7 @@ declare an application-specific subset with `#[iso_enum]`. Use `#[iso_locale]`
 to generate a language picker from
 an es-fluent package's configured locales.
 
-Both public packages require Rust 1.99 or newer. Fluent integration uses the
+The public packages require Rust 1.99 or newer. Fluent integration uses the
 es-fluent 0.21 API.
 
 [Interactive Dioxus examples][examples] cover every catalog and regional data
@@ -31,6 +31,7 @@ uncommon entries are excluded from catalogs and locale lookup.
 | Crate | Purpose |
 | --- | --- |
 | [`iso-types`][types] | ISO catalogs, subset and locale macros, English display, and Fluent runtime integration. |
+| [`iso-types-locations`][locations] | Separately packaged UN/LOCODE directory with typed countries and preserved alternative listings. |
 | [`iso-types-macros`][macros] | Macro implementation, normally consumed through iso-types. |
 
 ## Example
@@ -53,7 +54,7 @@ assert_eq!(Market::Us.to_string(), "United States");
 # Ok::<(), iso_types::ParseIsoCodeError>(())
 ```
 
-The maintained catalogs cover ISO 639 sets 1, 2, and 3; ISO 3166 country and
+The maintained catalogs cover ISO 639 sets 1, 2, 3, and 5; ISO 3166 country and
 subdivision codes; ISO 4217 currencies; ISO 15924 scripts;
 ISO 5218 sex codes; and ISO 8601 months and weekdays. Catalogs preserve canonical
 code spelling and applicable alternate representations.
@@ -63,7 +64,7 @@ provinces, territories, parents, and children. Country/currency relationships
 support shared tender and countries using several currencies. Currency metadata
 includes ICU4X formatting precision and cash rounding.
 
-Enable `units` for 103 common CLDR measurement identifiers across 16 categories.
+Enable `units` for 148 common CLDR measurement identifiers across 22 categories.
 `unit-conversion` delegates metric/customary conversions, temperature offsets,
 and reciprocal fuel economy to ICU4X. CLDR owns the unit display names.
 
@@ -73,11 +74,18 @@ Jiff supplies bundled IANA transition rules; ICU4X supplies time-zone mappings a
 localized names. CLDR unit preferences retain usage-specific choices, thresholds,
 mixed units, and formatting skeletons. Phone parsing integrates with `phonenumber`.
 
+Additional features provide CLDR numbering systems and locale defaults, ISO 216
+paper dimensions, language group hierarchies and macrolanguage membership,
+UNECE trade units and packaging, and registered IBAN formats with checksum
+validation. ISO 10383 support imports an application's own MIC CSV.
+`iso-types-locations` supplies the larger UN/LOCODE directory separately.
+
 Use `#[iso_enum(standard = "3166-2", country = "US")]` to select a country's
 subdivisions, or `#[iso_enum(standard = "units", category = "length")]` to select
 a measurement category. The facade's feature table describes each optional area.
 
 [types]: crates/iso-types/README.md
+[locations]: crates/iso-types-locations/README.md
 [macros]: crates/iso-types-macros/README.md
 [ci-image]: https://github.com/stayhydated/iso-types/actions/workflows/ci.yml/badge.svg?branch=master
 [ci]: https://github.com/stayhydated/iso-types/actions/workflows/ci.yml

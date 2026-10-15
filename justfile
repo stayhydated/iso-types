@@ -36,7 +36,7 @@ test-features:
 docs:
     RUSTDOCFLAGS="-D warnings" cargo doc --workspace --all-features --no-deps --locked
 
-# Package and verify both public crates without uploading.
+# Package and verify the public crates without uploading.
 package:
     cargo publish --workspace --dry-run --allow-dirty --locked
 

@@ -51,7 +51,7 @@ class SelectionTests(unittest.TestCase):
         policy = CurrentData(ROOT / "data")
         units = build_units(ROOT / "data", policy)
         entries = {entry.code: entry for entry in units.entries}
-        self.assertEqual(len(entries), 103)
+        self.assertEqual(len(entries), 148)
         self.assertEqual(entries["meter"].name, "meters")
         self.assertEqual(entries["celsius"].metadata["category"], "temperature")
         self.assertNotIn("light-year", entries)

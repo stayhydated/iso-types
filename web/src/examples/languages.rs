@@ -1,7 +1,8 @@
 use dioxus::prelude::*;
 use es_fluent_manager_dioxus::use_i18n;
 use iso_types::{
-    IntoEnumIterator as _, Iso3166_1 as Country, Iso6391 as Language, Iso15924 as Script,
+    IntoEnumIterator as _, Iso3166_1 as Country, Iso6391 as Language, Iso6395 as Group,
+    Iso15924 as Script,
 };
 
 use crate::{
@@ -17,6 +18,7 @@ pub(crate) fn Demo() -> Element {
     let country = use_signal(|| Country::Ca);
     let mut language = use_signal(|| Language::En);
     let mut script = use_signal(|| Script::Latn);
+    let mut group = use_signal(|| Group::Ine);
     let direction = match script().direction() {
         Some(iso_types::icu_locale::Direction::LeftToRight) => Ui::LeftToRight,
         Some(iso_types::icu_locale::Direction::RightToLeft) => Ui::RightToLeft,
@@ -34,6 +36,13 @@ pub(crate) fn Demo() -> Element {
                 CatalogFact::<Script> { label: Ui::Script, values: language().scripts().to_vec() }
                 CatalogFact::<Language> { label: Ui::LanguageCode, values: script().languages().to_vec() }
                 CatalogFact::<Country> { label: Ui::Countries, values: language().countries().to_vec() }
+                CatalogFact::<Language> { label: Ui::Macrolanguage, values: language().macrolanguage().into_iter().collect() }
+                CatalogFact::<Language> { label: Ui::Members, values: language().members().to_vec() }
+            }
+            CatalogSelect::<Group> { label: Ui::LanguageGroup, value: group, values: Group::iter().collect(), on_change: move |next| group.set(next) }
+            dl { class: "fact-grid", aria_live: "polite",
+                CatalogFact::<Group> { label: Ui::Parent, values: group().parent().into_iter().collect() }
+                CatalogFact::<Group> { label: Ui::Children, values: group().children().to_vec() }
             }
             div { class: "table-scroll", table {
                 thead { tr { th { "{i18n.localize_message(&Ui::LanguageCode)}" } th { "{i18n.localize_message(&Ui::Population)}" } th { "{i18n.localize_message(&Ui::Status)}" } } }

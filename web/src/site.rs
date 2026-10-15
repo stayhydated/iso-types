@@ -49,6 +49,7 @@ pub(crate) enum Page {
     TimeZones,
     Phone,
     Catalogs,
+    Registries,
 }
 
 impl Page {
@@ -64,6 +65,7 @@ impl Page {
             Self::TimeZones => Route::TimeZones {},
             Self::Phone => Route::Phone {},
             Self::Catalogs => Route::Catalogs {},
+            Self::Registries => Route::Registries {},
         }
     }
 }
@@ -92,6 +94,8 @@ pub(crate) enum Route {
     TimeZones {},
     #[route("/examples/phone/")]
     Phone {},
+    #[route("/examples/registries/")]
+    Registries {},
     #[route("/examples/catalogs/")]
     Catalogs {},
 }
@@ -166,4 +170,9 @@ fn Phone() -> Element {
 #[component]
 fn Catalogs() -> Element {
     rsx! { examples::catalogs::Demo {} }
+}
+
+#[component]
+fn Registries() -> Element {
+    rsx! { examples::registries::Demo {} }
 }

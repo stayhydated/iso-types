@@ -4,6 +4,12 @@ use super::Icon;
 
 pub(super) fn category_icon(category: UnitCategory) -> Icon {
     match category {
+        UnitCategory::Acceleration => Icon::Wind,
+        UnitCategory::Concentr => Icon::Food,
+        UnitCategory::Graphics => Icon::Camera,
+        UnitCategory::Light => Icon::Eye,
+        UnitCategory::Magnetic => Icon::Resistance,
+        UnitCategory::Torque => Icon::Engine,
         UnitCategory::Angle => Icon::Angle,
         UnitCategory::Area => Icon::Area,
         UnitCategory::Consumption => Icon::Fuel,

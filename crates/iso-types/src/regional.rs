@@ -53,6 +53,17 @@ pub enum PaperSize {
     UsLetter,
 }
 
+#[cfg(feature = "216")]
+impl PaperSize {
+    /// The corresponding ISO 216 size, when the regional default uses that series.
+    pub const fn iso216(self) -> Option<crate::Iso216> {
+        match self {
+            Self::A4 => Some(crate::Iso216::A4),
+            Self::UsLetter => None,
+        }
+    }
+}
+
 /// Defaults for a country; applications can combine these with explicit ICU4X preferences.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct RegionalPreferences {

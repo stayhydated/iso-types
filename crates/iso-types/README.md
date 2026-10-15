@@ -21,7 +21,7 @@ The ICU integration pins ICU4X 2.3; its locale-name APIs are upstream unstable.
 | `icu` | Yes | ICU locale/calendar re-exports and typed ISO conversions. |
 | `locales` | No | ICU locale parsing and naming; re-export `iso_locale` and Fluent-facing `LanguageIdentifier`/`langid`. |
 | `fluent` | No | `FluentMessage` and English utility registration using ICU names or owned FTL. |
-| `full` | No | Enable all catalogs and regional relationships, including Jiff zone rules. |
+| `full` | No | Enable all catalogs and regional relationships, including Jiff zone rules and local MIC imports; integration adapters remain separate. |
 | `639-1` | Yes | `Iso6391`: current languages with two-letter identifiers. |
 | `639-2` | No | `Iso6392`: current languages with three-letter identifiers. |
 | `639-3` | No | `Iso6393`: current living languages, scope, and kind. |
@@ -31,17 +31,25 @@ The ICU integration pins ICU4X 2.3; its locale-name APIs are upstream unstable.
 | `15924` | Yes | `Iso15924`: recommended modern scripts and numeric representations. |
 | `5218` | Yes | `Iso5218`: human sex interchange codes. |
 | `8601` | Yes | `Iso8601Weekday` and `Iso8601Month`: numbered weekdays and months. |
-| `units` | No | `MeasurementUnit` and `UnitCategory`: 103 common CLDR measurement identifiers and English names. |
+| `units` | No | `MeasurementUnit` and `UnitCategory`: 148 common CLDR measurement identifiers and English names. |
 | `unit-conversion` | No | Enable `units` and ICU4X unit conversion, including temperature offsets and reciprocal fuel economy. |
 | `regions` | No | `GeographicRegion`: 30 UN M49 regions, hierarchy, and country associations; enable `3166-1`. |
 | `regional-preferences` | No | Week, calendar, hour-cycle, measurement-system, and paper-size defaults; enable `3166-1`, `8601`, and `icu`. |
 | `unit-preferences` | No | `UnitUsage`: 35 CLDR usage categories with ranked and mixed-unit choices; enable `units` and `3166-1`. |
-| `language-relations` | No | Language/country/script associations, population metadata, and ICU directionality; enable `639-1`, `3166-1`, `15924`, and `icu`. |
+| `language-relations` | No | Language/country/script associations, population metadata, macrolanguage membership, and ICU directionality; enable `639-1`, `3166-1`, `15924`, and `icu`. |
 | `time-zones` | No | `TimeZoneId`: 419 IANA location zones and UTC, country associations, and Jiff's bundled rules; enable `3166-1`. |
 | `time-zone-localization` | No | ICU time-zone conversions and localized location names; enable `time-zones` and `icu`. |
 | `calling-codes` | No | `CallingCode`: 215 telephone prefixes, country associations, and global service prefixes; enable `3166-1`. |
 | `phone-numbers` | No | Re-export `phonenumber` and convert country identifiers for parsing and validation; enable `calling-codes`. |
 | `addresses` | No | Address templates, required fields, postal data, typed Fluent labels, and language overrides; enable `3166-1`. |
+| `numbering-systems` | No | `NumberingSystem` and inherited CLDR locale numbering preferences; enable `locales`. |
+| `216` | No | `Iso216`: ISO A0–A10 and B0–B10 paper dimensions in millimeters. |
+| `639-5` | No | `Iso6395`: 115 language groups and their published coding hierarchy. |
+| `13616` | No | Registered `IbanFormat` metadata and validated `Iban`; enable `3166-1`. |
+| `10383` | No | `Iso10383` identifiers and a date-selected `MarketRegistry` imported from local CSV; enable `3166-1`. |
+| `trade-units` | No | `TradeUnit`: 2,161 UNECE Rec 20 codes, including Rec 21 package counts. |
+| `packaging` | No | `PackagingType`: 405 current UNECE Rec 21 package codes. |
+
 
 Parsing is case-sensitive for ISO catalogs and accepts unique alternate codes,
 including numeric and current alpha-code representations. ICU conversions
@@ -135,7 +143,8 @@ assert_eq!(fahrenheit, 32.0);
 
 The unit catalog covers length, area, volume, mass, duration, temperature, speed,
 fuel economy, digital quantities, energy, power, pressure, frequency, angle,
-electric quantities, and force. Parse canonical CLDR core IDs such as `meter`
+electric quantities, force, acceleration, concentration, graphics, light, magnetic quantities,
+and torque. Parse canonical CLDR core IDs such as `meter`
 or `gallon-imperial`. Unit symbols belong to localized formatting. English
 `Display` uses CLDR display names, such as `meters`; `iso_enum(standard = "units",
 codes = ["meter", "foot"])` declares a subset.
@@ -239,3 +248,72 @@ when naming arbitrary Fluent identifiers.
 Locale identifiers use current languages, scripts, and regions without variants.
 Deprecated aliases, bibliographic language forms, historical orthographies, and
 excluded components return `LocaleConversionError::OutOfScope`.
+
+With `numbering-systems`, `216`, `639-5`, `trade-units`, `packaging`, and `units`:
+
+```rust
+# #[cfg(all(feature = "numbering-systems", feature = "216", feature = "639-5", feature = "trade-units", feature = "packaging", feature = "units"))] {
+use iso_types::{numbering_preferences, Iso216, Iso6395, MeasurementUnit, NumberingSystem, PackagingType, TradeUnit};
+
+assert_eq!(numbering_preferences("ar-MA")?.default, NumberingSystem::Latn);
+assert_eq!(Iso216::A4.width_mm(), 210);
+assert_eq!(Iso216::A4.height_mm(), 297);
+assert_eq!(Iso6395::Gmw.parent(), Some(Iso6395::Gem));
+assert_eq!(TradeUnit::Kgm.catalog_unit(), Some(MeasurementUnit::Kilogram));
+assert_eq!(PackagingType::Bx.trade_unit(), TradeUnit::Xbx);
+# }
+# Ok::<(), Box<dyn std::error::Error>>(())
+```
+
+Numbering metadata distinguishes decimal digits from algorithmic CLDR rules.
+`numbering_preferences()` accepts a language identifier; apply explicit user
+numbering choices separately. Language `macrolanguage()` and `members()` expose
+IANA membership within each selected language catalog under `language-relations`.
+ISO 639-5 `parent()`, `children()`, and `ancestors()` describe the published group
+hierarchy. Individual language membership is a separate relationship.
+
+Trade records preserve source descriptions, symbols, and conversion-factor text.
+With `units`, explicit `catalog_unit()`/`trade_codes()` links connect equivalent
+CLDR units; ICU4X performs conversions. Package counts link through
+`packaging_type()`/`trade_unit()` when both trade features are enabled.
+
+With `13616`, parse an electronic or space-grouped IBAN:
+
+```rust
+# #[cfg(feature = "13616")] {
+use iso_types::{Iban, Iso3166_1};
+
+let account: Iban = "GB82 WEST 1234 5698 7654 32".parse()?;
+assert_eq!(account.country(), Iso3166_1::Gb);
+assert_eq!(account.bank_identifier(), Some("WEST"));
+assert_eq!(account.as_str(), "GB82WEST12345698765432");
+# }
+# Ok::<(), Box<dyn std::error::Error>>(())
+```
+
+`IbanFormat::ALL` contains 88 registered country-prefix formats from release 103.
+Country `iban_format()` includes explicit territory associations. Parsing checks
+registered length, BBAN character classes, check digits, and MOD 97. Account
+existence and domestic validation belong to the bank.
+
+With `10383`, import a MIC CSV that the application is authorized to use:
+
+```rust,no_run
+# #[cfg(feature = "10383")] {
+use iso_types::{Iso10383, MarketRegistry};
+
+let file = std::fs::File::open("registry.csv")?;
+let registry = MarketRegistry::from_csv(file, "2026-10-15".parse()?)?;
+let code: Iso10383 = "XNAS".parse()?;
+if let Some(market) = registry.get(code) {
+    println!("{}: {}", market.code, market.name());
+}
+# }
+# Ok::<(), Box<dyn std::error::Error>>(())
+```
+
+MIC parsing validates four uppercase ASCII letters/digits. The local registry
+resolves membership and operating/segment relationships at its selected date.
+Descriptions and reported status retain the supplied publication's values.
+Use [`iso-types-locations`](https://github.com/stayhydated/iso-types/tree/master/crates/iso-types-locations)
+for the separately packaged UN/LOCODE directory.

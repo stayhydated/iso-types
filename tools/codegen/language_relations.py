@@ -9,6 +9,58 @@ from .relations import variant_name
 from .rust import literal
 
 
+def macrolanguage_records(data):
+    """Read explicit IANA membership without applying CLDR language aliases."""
+    result = {}
+    source = (data / "registries/language-subtag-registry.txt").read_text(encoding="utf-8")
+    for block in source.split("%%"):
+        fields = {}
+        for line in block.splitlines():
+            if not line or line.startswith(" "):
+                continue
+            key, separator, value = line.partition(": ")
+            if separator:
+                fields[key] = value
+        if fields.get("Type") == "language" and "Deprecated" not in fields:
+            code = fields["Subtag"]
+            if code in result:
+                raise ValueError(f"duplicate IANA language subtag: {code}")
+            result[code] = fields.get("Macrolanguage")
+    for code in result:
+        visited = {code}
+        parent = result[code]
+        while parent is not None:
+            if parent in visited:
+                raise ValueError(f"cyclic macrolanguage relationship: {code}")
+            visited.add(parent)
+            # A deprecated parent remains an upstream identity; selection omits it.
+            parent = result.get(parent)
+    return result
+
+
+def render_macrolanguages(data, catalogs):
+    source = macrolanguage_records(data)
+    result = ""
+    for catalog in catalogs:
+        if catalog.spec.standard not in {"639-1", "639-2", "639-3"}:
+            continue
+        # Exact ISO alpha-2 equivalence is safe; CLDR aliases can merge an
+        # individual language into its macrolanguage and erase the relationship.
+        key = lambda entry: entry.metadata.get("alpha_2", entry.code)
+        selected = {key(entry): entry for entry in catalog.entries}
+        parents = {entry.code: selected.get(source.get(key(entry))) for entry in catalog.entries}
+        kind = f"crate::{catalog.spec.type_name}"
+        result += f'#[cfg(feature = "{catalog.spec.feature}")]\nimpl {kind} {{\n'
+        result += "    /// The explicit IANA macrolanguage, when selected in this catalog.\n"
+        result += value_table("macrolanguage", f"Option<{kind}>", [
+            f"Some({kind}::{parents[e.code].variant})" if parents[e.code] else "None" for e in catalog.entries])
+        result += "    /// Direct individual-language members within the current/common catalog.\n"
+        result += slice_table("members", kind, [tuple(child for child in catalog.entries
+            if parents[child.code] == parent) for parent in catalog.entries])
+        result += "}\n"
+    return result
+
+
 def render(data, policy, catalogs):
     by_id = {c.spec.standard:c for c in catalogs}
     countries = by_id["3166-1"]
@@ -77,4 +129,4 @@ pub struct LanguageUsage {
     language = by_id["639-1"]
     script_languages = {e.code:tuple(l for l in language.entries if e.code in script_codes[policy.language(l.code)]) for e in scripts.entries}
     output += "impl crate::Iso15924 {\n" + slice_table("languages", "crate::Iso6391", [script_languages[e.code] for e in scripts.entries]) + "}\n"
-    return output
+    return output + render_macrolanguages(data, catalogs)

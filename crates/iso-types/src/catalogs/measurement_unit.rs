@@ -20,10 +20,14 @@
 #[cfg_attr(feature = "fmt", derive(strum::Display))]
 #[repr(u16)]
 pub enum UnitCategory {
+    #[strum(to_string = "acceleration")]
+    Acceleration,
     #[strum(to_string = "angle")]
     Angle,
     #[strum(to_string = "area")]
     Area,
+    #[strum(to_string = "concentr")]
+    Concentr,
     #[strum(to_string = "consumption")]
     Consumption,
     #[strum(to_string = "digital")]
@@ -38,8 +42,14 @@ pub enum UnitCategory {
     Force,
     #[strum(to_string = "frequency")]
     Frequency,
+    #[strum(to_string = "graphics")]
+    Graphics,
     #[strum(to_string = "length")]
     Length,
+    #[strum(to_string = "light")]
+    Light,
+    #[strum(to_string = "magnetic")]
+    Magnetic,
     #[strum(to_string = "mass")]
     Mass,
     #[strum(to_string = "power")]
@@ -50,6 +60,8 @@ pub enum UnitCategory {
     Speed,
     #[strum(to_string = "temperature")]
     Temperature,
+    #[strum(to_string = "torque")]
+    Torque,
     #[strum(to_string = "volume")]
     Volume,
 }
@@ -81,6 +93,15 @@ pub enum MeasurementUnit {
     /// amperes (`ampere`).
     #[strum(to_string = "ampere")]
     Ampere,
+    /// arcminutes (`arc-minute`).
+    #[strum(to_string = "arc-minute")]
+    ArcMinute,
+    /// arcseconds (`arc-second`).
+    #[strum(to_string = "arc-second")]
+    ArcSecond,
+    /// atmospheres (`atmosphere`).
+    #[strum(to_string = "atmosphere")]
+    Atmosphere,
     /// bars (`bar`).
     #[strum(to_string = "bar")]
     Bar,
@@ -96,12 +117,24 @@ pub enum MeasurementUnit {
     /// calories (`calorie`).
     #[strum(to_string = "calorie")]
     Calorie,
+    /// candela (`candela`).
+    #[strum(to_string = "candela")]
+    Candela,
+    /// carats (`carat`).
+    #[strum(to_string = "carat")]
+    Carat,
     /// degrees Celsius (`celsius`).
     #[strum(to_string = "celsius")]
     Celsius,
+    /// centiliters (`centiliter`).
+    #[strum(to_string = "centiliter")]
+    Centiliter,
     /// centimeters (`centimeter`).
     #[strum(to_string = "centimeter")]
     Centimeter,
+    /// coulombs (`coulomb`).
+    #[strum(to_string = "coulomb")]
+    Coulomb,
     /// cubic centimeters (`cubic-centimeter`).
     #[strum(to_string = "cubic-centimeter")]
     CubicCentimeter,
@@ -117,27 +150,54 @@ pub enum MeasurementUnit {
     /// cups (`cup`).
     #[strum(to_string = "cup")]
     Cup,
+    /// metric cups (`cup-metric`).
+    #[strum(to_string = "cup-metric")]
+    CupMetric,
     /// days (`day`).
     #[strum(to_string = "day")]
     Day,
+    /// deciliters (`deciliter`).
+    #[strum(to_string = "deciliter")]
+    Deciliter,
+    /// decimeters (`decimeter`).
+    #[strum(to_string = "decimeter")]
+    Decimeter,
     /// degrees (`degree`).
     #[strum(to_string = "degree")]
     Degree,
+    /// dots (`dot`).
+    #[strum(to_string = "dot")]
+    Dot,
+    /// dots per centimeter (`dot-per-centimeter`).
+    #[strum(to_string = "dot-per-centimeter")]
+    DotPerCentimeter,
+    /// dots per inch (`dot-per-inch`).
+    #[strum(to_string = "dot-per-inch")]
+    DotPerInch,
     /// degrees Fahrenheit (`fahrenheit`).
     #[strum(to_string = "fahrenheit")]
     Fahrenheit,
+    /// farads (`farad`).
+    #[strum(to_string = "farad")]
+    Farad,
     /// fluid ounces (`fluid-ounce`).
     #[strum(to_string = "fluid-ounce")]
     FluidOunce,
     /// Imp. fluid ounces (`fluid-ounce-imperial`).
     #[strum(to_string = "fluid-ounce-imperial")]
     FluidOunceImperial,
+    /// metric fluid ounces (`fluid-ounce-metric`).
+    #[strum(to_string = "fluid-ounce-metric")]
+    FluidOunceMetric,
     /// Calories (`foodcalorie`).
     #[strum(to_string = "foodcalorie")]
     Foodcalorie,
     /// feet (`foot`).
     #[strum(to_string = "foot")]
     Foot,
+    /// g-force (`g-force`).
+    #[strum(to_string = "g-force")]
+    GForce,
     /// gallons (`gallon`).
     #[strum(to_string = "gallon")]
     Gallon,
@@ -165,6 +225,9 @@ pub enum MeasurementUnit {
     /// hectopascals (`hectopascal`).
     #[strum(to_string = "hectopascal")]
     Hectopascal,
+    /// henrys (`henry`).
+    #[strum(to_string = "henry")]
+    Henry,
     /// hertz (`hertz`).
     #[strum(to_string = "hertz")]
     Hertz,
@@ -183,6 +246,9 @@ pub enum MeasurementUnit {
     /// joules (`joule`).
     #[strum(to_string = "joule")]
     Joule,
+    /// karats (`karat`).
+    #[strum(to_string = "karat")]
+    Karat,
     /// kelvins (`kelvin`).
     #[strum(to_string = "kelvin")]
     Kelvin,
@@ -219,6 +285,9 @@ pub enum MeasurementUnit {
     /// kilowatt-hours (`kilowatt-hour`).
     #[strum(to_string = "kilowatt-hour")]
     KilowattHour,
+    /// knots (`knot`).
+    #[strum(to_string = "knot")]
+    Knot,
     /// liters (`liter`).
     #[strum(to_string = "liter")]
     Liter,
@@ -228,6 +297,12 @@ pub enum MeasurementUnit {
     /// liters per kilometer (`liter-per-kilometer`).
     #[strum(to_string = "liter-per-kilometer")]
     LiterPerKilometer,
+    /// lumen (`lumen`).
+    #[strum(to_string = "lumen")]
+    Lumen,
+    /// lux (`lux`).
+    #[strum(to_string = "lux")]
+    Lux,
     /// megabits (`megabit`).
     #[strum(to_string = "megabit")]
     Megabit,
@@ -240,6 +315,9 @@ pub enum MeasurementUnit {
     /// megapascals (`megapascal`).
     #[strum(to_string = "megapascal")]
     Megapascal,
+    /// megapixels (`megapixel`).
+    #[strum(to_string = "megapixel")]
+    Megapixel,
     /// megawatts (`megawatt`).
     #[strum(to_string = "megawatt")]
     Megawatt,
@@ -249,6 +327,9 @@ pub enum MeasurementUnit {
     /// meters per second (`meter-per-second`).
     #[strum(to_string = "meter-per-second")]
     MeterPerSecond,
+    /// meters per second squared (`meter-per-square-second`).
+    #[strum(to_string = "meter-per-square-second")]
+    MeterPerSquareSecond,
     /// micrograms (`microgram`).
     #[strum(to_string = "microgram")]
     Microgram,
@@ -273,6 +354,9 @@ pub enum MeasurementUnit {
     /// miles-scandinavian (`mile-scandinavian`).
     #[strum(to_string = "mile-scandinavian")]
     MileScandinavian,
+    /// milliamperes (`milliampere`).
+    #[strum(to_string = "milliampere")]
+    Milliampere,
     /// millibars (`millibar`).
     #[strum(to_string = "millibar")]
     Millibar,
@@ -297,42 +381,99 @@ pub enum MeasurementUnit {
     /// minutes (`minute`).
     #[strum(to_string = "minute")]
     Minute,
+    /// moles (`mole`).
+    #[strum(to_string = "mole")]
+    Mole,
     /// nanometers (`nanometer`).
     #[strum(to_string = "nanometer")]
     Nanometer,
     /// nanoseconds (`nanosecond`).
     #[strum(to_string = "nanosecond")]
     Nanosecond,
+    /// nautical miles (`nautical-mile`).
+    #[strum(to_string = "nautical-mile")]
+    NauticalMile,
     /// newtons (`newton`).
     #[strum(to_string = "newton")]
     Newton,
+    /// newton-meters (`newton-meter`).
+    #[strum(to_string = "newton-meter")]
+    NewtonMeter,
     /// ohms (`ohm`).
     #[strum(to_string = "ohm")]
     Ohm,
     /// ounces (`ounce`).
     #[strum(to_string = "ounce")]
     Ounce,
+    /// troy ounces (`ounce-troy`).
+    #[strum(to_string = "ounce-troy")]
+    OunceTroy,
+    /// parts per million (`part-per-1e6`).
+    #[strum(to_string = "part-per-1e6")]
+    PartPer1e6,
+    /// parts per billion (`part-per-1e9`).
+    #[strum(to_string = "part-per-1e9")]
+    PartPer1e9,
     /// pascals (`pascal`).
     #[strum(to_string = "pascal")]
     Pascal,
+    /// percent (`percent`).
+    #[strum(to_string = "percent")]
+    Percent,
+    /// permille (`permille`).
+    #[strum(to_string = "permille")]
+    Permille,
+    /// petabytes (`petabyte`).
+    #[strum(to_string = "petabyte")]
+    Petabyte,
     /// pints (`pint`).
     #[strum(to_string = "pint")]
     Pint,
+    /// pints Imperial (`pint-imperial`).
+    #[strum(to_string = "pint-imperial")]
+    PintImperial,
+    /// metric pints (`pint-metric`).
+    #[strum(to_string = "pint-metric")]
+    PintMetric,
+    /// pixels (`pixel`).
+    #[strum(to_string = "pixel")]
+    Pixel,
+    /// pixels per centimeter (`pixel-per-centimeter`).
+    #[strum(to_string = "pixel-per-centimeter")]
+    PixelPerCentimeter,
+    /// pixels per inch (`pixel-per-inch`).
+    #[strum(to_string = "pixel-per-inch")]
+    PixelPerInch,
+    /// points (`point`).
+    #[strum(to_string = "point")]
+    Point,
     /// pounds (`pound`).
     #[strum(to_string = "pound")]
     Pound,
+    /// pound-force-feet (`pound-force-foot`).
+    #[strum(to_string = "pound-force-foot")]
+    PoundForceFoot,
     /// pounds-force per square inch (`pound-force-per-square-inch`).
     #[strum(to_string = "pound-force-per-square-inch")]
     PoundForcePerSquareInch,
     /// quarts (`quart`).
     #[strum(to_string = "quart")]
     Quart,
+    /// Imp. quarts (`quart-imperial`).
+    #[strum(to_string = "quart-imperial")]
+    QuartImperial,
     /// radians (`radian`).
     #[strum(to_string = "radian")]
     Radian,
+    /// revolutions (`revolution`).
+    #[strum(to_string = "revolution")]
+    Revolution,
     /// seconds (`second`).
     #[strum(to_string = "second")]
     Second,
+    /// siemens (`siemens`).
+    #[strum(to_string = "siemens")]
+    Siemens,
     /// square centimeters (`square-centimeter`).
     #[strum(to_string = "square-centimeter")]
     SquareCentimeter,
@@ -366,6 +507,9 @@ pub enum MeasurementUnit {
     /// terabytes (`terabyte`).
     #[strum(to_string = "terabyte")]
     Terabyte,
+    /// teslas (`tesla`).
+    #[strum(to_string = "tesla")]
+    Tesla,
     /// tons (`ton`).
     #[strum(to_string = "ton")]
     Ton,
@@ -378,6 +522,9 @@ pub enum MeasurementUnit {
     /// watts (`watt`).
     #[strum(to_string = "watt")]
     Watt,
+    /// webers (`weber`).
+    #[strum(to_string = "weber")]
+    Weber,
     /// weeks (`week`).
     #[strum(to_string = "week")]
     Week,
@@ -402,25 +549,41 @@ impl MeasurementUnit {
         const VALUES: &[&str] = &[
             "acres",
             "amperes",
+            "arcminutes",
+            "arcseconds",
+            "atmospheres",
             "bars",
             "barrels",
             "bits",
             "bytes",
             "calories",
+            "candela",
+            "carats",
             "degrees Celsius",
+            "centiliters",
             "centimeters",
+            "coulombs",
             "cubic centimeters",
             "cubic feet",
             "cubic inches",
             "cubic meters",
             "cups",
+            "metric cups",
             "days",
+            "deciliters",
+            "decimeters",
             "degrees",
+            "dots",
+            "dots per centimeter",
+            "dots per inch",
             "degrees Fahrenheit",
+            "farads",
             "fluid ounces",
             "Imp. fluid ounces",
+            "metric fluid ounces",
             "Calories",
             "feet",
+            "g-force",
             "gallons",
             "Imp. gallons",
             "gigabits",
@@ -430,12 +593,14 @@ impl MeasurementUnit {
             "grams",
             "hectares",
             "hectopascals",
+            "henrys",
             "hertz",
             "horsepower",
             "hours",
             "inches",
             "inches of mercury",
             "joules",
+            "karats",
             "kelvins",
             "kilobits",
             "kilobytes",
@@ -448,16 +613,21 @@ impl MeasurementUnit {
             "kilopascals",
             "kilowatts",
             "kilowatt-hours",
+            "knots",
             "liters",
             "liters per 100 kilometers",
             "liters per kilometer",
+            "lumen",
+            "lux",
             "megabits",
             "megabytes",
             "megahertz",
             "megapascals",
+            "megapixels",
             "megawatts",
             "meters",
             "meters per second",
+            "meters per second squared",
             "micrograms",
             "micrometers",
             "microseconds",
@@ -466,6 +636,7 @@ impl MeasurementUnit {
             "miles per Imp. gallon",
             "miles per hour",
             "miles-scandinavian",
+            "milliamperes",
             "millibars",
             "milligrams",
             "milliliters",
@@ -474,18 +645,37 @@ impl MeasurementUnit {
             "milliseconds",
             "milliwatts",
             "minutes",
+            "moles",
             "nanometers",
             "nanoseconds",
+            "nautical miles",
             "newtons",
+            "newton-meters",
             "ohms",
             "ounces",
+            "troy ounces",
+            "parts per million",
+            "parts per billion",
             "pascals",
+            "percent",
+            "permille",
+            "petabytes",
             "pints",
+            "pints Imperial",
+            "metric pints",
+            "pixels",
+            "pixels per centimeter",
+            "pixels per inch",
+            "points",
             "pounds",
+            "pound-force-feet",
             "pounds-force per square inch",
             "quarts",
+            "Imp. quarts",
             "radians",
+            "revolutions",
             "seconds",
+            "siemens",
             "square centimeters",
             "square feet",
             "square inches",
@@ -497,10 +687,12 @@ impl MeasurementUnit {
             "teaspoons",
             "terabits",
             "terabytes",
+            "teslas",
             "tons",
             "metric tons",
             "volts",
             "watts",
+            "webers",
             "weeks",
             "yards",
         ];
@@ -510,25 +702,41 @@ impl MeasurementUnit {
         const VALUES: &[&str] = &[
             "iso-units-acre",
             "iso-units-ampere",
+            "iso-units-arc-minute",
+            "iso-units-arc-second",
+            "iso-units-atmosphere",
             "iso-units-bar",
             "iso-units-barrel",
             "iso-units-bit",
             "iso-units-byte",
             "iso-units-calorie",
+            "iso-units-candela",
+            "iso-units-carat",
             "iso-units-celsius",
+            "iso-units-centiliter",
             "iso-units-centimeter",
+            "iso-units-coulomb",
             "iso-units-cubic-centimeter",
             "iso-units-cubic-foot",
             "iso-units-cubic-inch",
             "iso-units-cubic-meter",
             "iso-units-cup",
+            "iso-units-cup-metric",
             "iso-units-day",
+            "iso-units-deciliter",
+            "iso-units-decimeter",
             "iso-units-degree",
+            "iso-units-dot",
+            "iso-units-dot-per-centimeter",
+            "iso-units-dot-per-inch",
             "iso-units-fahrenheit",
+            "iso-units-farad",
             "iso-units-fluid-ounce",
             "iso-units-fluid-ounce-imperial",
+            "iso-units-fluid-ounce-metric",
             "iso-units-foodcalorie",
             "iso-units-foot",
+            "iso-units-g-force",
             "iso-units-gallon",
             "iso-units-gallon-imperial",
             "iso-units-gigabit",
@@ -538,12 +746,14 @@ impl MeasurementUnit {
             "iso-units-gram",
             "iso-units-hectare",
             "iso-units-hectopascal",
+            "iso-units-henry",
             "iso-units-hertz",
             "iso-units-horsepower",
             "iso-units-hour",
             "iso-units-inch",
             "iso-units-inch-ofhg",
             "iso-units-joule",
+            "iso-units-karat",
             "iso-units-kelvin",
             "iso-units-kilobit",
             "iso-units-kilobyte",
@@ -556,16 +766,21 @@ impl MeasurementUnit {
             "iso-units-kilopascal",
             "iso-units-kilowatt",
             "iso-units-kilowatt-hour",
+            "iso-units-knot",
             "iso-units-liter",
             "iso-units-liter-per-100-kilometer",
             "iso-units-liter-per-kilometer",
+            "iso-units-lumen",
+            "iso-units-lux",
             "iso-units-megabit",
             "iso-units-megabyte",
             "iso-units-megahertz",
             "iso-units-megapascal",
+            "iso-units-megapixel",
             "iso-units-megawatt",
             "iso-units-meter",
             "iso-units-meter-per-second",
+            "iso-units-meter-per-square-second",
             "iso-units-microgram",
             "iso-units-micrometer",
             "iso-units-microsecond",
@@ -574,6 +789,7 @@ impl MeasurementUnit {
             "iso-units-mile-per-gallon-imperial",
             "iso-units-mile-per-hour",
             "iso-units-mile-scandinavian",
+            "iso-units-milliampere",
             "iso-units-millibar",
             "iso-units-milligram",
             "iso-units-milliliter",
@@ -582,18 +798,37 @@ impl MeasurementUnit {
             "iso-units-millisecond",
             "iso-units-milliwatt",
             "iso-units-minute",
+            "iso-units-mole",
             "iso-units-nanometer",
             "iso-units-nanosecond",
+            "iso-units-nautical-mile",
             "iso-units-newton",
+            "iso-units-newton-meter",
             "iso-units-ohm",
             "iso-units-ounce",
+            "iso-units-ounce-troy",
+            "iso-units-part-per-1e6",
+            "iso-units-part-per-1e9",
             "iso-units-pascal",
+            "iso-units-percent",
+            "iso-units-permille",
+            "iso-units-petabyte",
             "iso-units-pint",
+            "iso-units-pint-imperial",
+            "iso-units-pint-metric",
+            "iso-units-pixel",
+            "iso-units-pixel-per-centimeter",
+            "iso-units-pixel-per-inch",
+            "iso-units-point",
             "iso-units-pound",
+            "iso-units-pound-force-foot",
             "iso-units-pound-force-per-square-inch",
             "iso-units-quart",
+            "iso-units-quart-imperial",
             "iso-units-radian",
+            "iso-units-revolution",
             "iso-units-second",
+            "iso-units-siemens",
             "iso-units-square-centimeter",
             "iso-units-square-foot",
             "iso-units-square-inch",
@@ -605,10 +840,12 @@ impl MeasurementUnit {
             "iso-units-teaspoon",
             "iso-units-terabit",
             "iso-units-terabyte",
+            "iso-units-tesla",
             "iso-units-ton",
             "iso-units-tonne",
             "iso-units-volt",
             "iso-units-watt",
+            "iso-units-weber",
             "iso-units-week",
             "iso-units-yard",
         ];
@@ -618,25 +855,41 @@ impl MeasurementUnit {
         const VALUES: &[UnitCategory] = &[
             UnitCategory::Area,
             UnitCategory::Electric,
+            UnitCategory::Angle,
+            UnitCategory::Angle,
+            UnitCategory::Pressure,
             UnitCategory::Pressure,
             UnitCategory::Volume,
             UnitCategory::Digital,
             UnitCategory::Digital,
             UnitCategory::Energy,
+            UnitCategory::Light,
+            UnitCategory::Mass,
             UnitCategory::Temperature,
+            UnitCategory::Volume,
             UnitCategory::Length,
+            UnitCategory::Electric,
+            UnitCategory::Volume,
             UnitCategory::Volume,
             UnitCategory::Volume,
             UnitCategory::Volume,
             UnitCategory::Volume,
             UnitCategory::Volume,
             UnitCategory::Duration,
+            UnitCategory::Volume,
+            UnitCategory::Length,
             UnitCategory::Angle,
+            UnitCategory::Graphics,
+            UnitCategory::Graphics,
+            UnitCategory::Graphics,
             UnitCategory::Temperature,
+            UnitCategory::Electric,
+            UnitCategory::Volume,
             UnitCategory::Volume,
             UnitCategory::Volume,
             UnitCategory::Energy,
             UnitCategory::Length,
+            UnitCategory::Acceleration,
             UnitCategory::Volume,
             UnitCategory::Volume,
             UnitCategory::Digital,
@@ -646,12 +899,14 @@ impl MeasurementUnit {
             UnitCategory::Mass,
             UnitCategory::Area,
             UnitCategory::Pressure,
+            UnitCategory::Electric,
             UnitCategory::Frequency,
             UnitCategory::Power,
             UnitCategory::Duration,
             UnitCategory::Length,
             UnitCategory::Pressure,
             UnitCategory::Energy,
+            UnitCategory::Concentr,
             UnitCategory::Temperature,
             UnitCategory::Digital,
             UnitCategory::Digital,
@@ -664,16 +919,21 @@ impl MeasurementUnit {
             UnitCategory::Pressure,
             UnitCategory::Power,
             UnitCategory::Energy,
+            UnitCategory::Speed,
             UnitCategory::Volume,
             UnitCategory::Consumption,
             UnitCategory::Consumption,
+            UnitCategory::Light,
+            UnitCategory::Light,
             UnitCategory::Digital,
             UnitCategory::Digital,
             UnitCategory::Frequency,
             UnitCategory::Pressure,
+            UnitCategory::Graphics,
             UnitCategory::Power,
             UnitCategory::Length,
             UnitCategory::Speed,
+            UnitCategory::Acceleration,
             UnitCategory::Mass,
             UnitCategory::Length,
             UnitCategory::Duration,
@@ -682,6 +942,7 @@ impl MeasurementUnit {
             UnitCategory::Consumption,
             UnitCategory::Speed,
             UnitCategory::Length,
+            UnitCategory::Electric,
             UnitCategory::Pressure,
             UnitCategory::Mass,
             UnitCategory::Volume,
@@ -690,18 +951,37 @@ impl MeasurementUnit {
             UnitCategory::Duration,
             UnitCategory::Power,
             UnitCategory::Duration,
+            UnitCategory::Concentr,
             UnitCategory::Length,
             UnitCategory::Duration,
+            UnitCategory::Length,
             UnitCategory::Force,
+            UnitCategory::Torque,
             UnitCategory::Electric,
             UnitCategory::Mass,
+            UnitCategory::Mass,
+            UnitCategory::Concentr,
+            UnitCategory::Concentr,
+            UnitCategory::Pressure,
+            UnitCategory::Concentr,
+            UnitCategory::Concentr,
+            UnitCategory::Digital,
+            UnitCategory::Volume,
+            UnitCategory::Volume,
+            UnitCategory::Volume,
+            UnitCategory::Graphics,
+            UnitCategory::Graphics,
+            UnitCategory::Graphics,
+            UnitCategory::Length,
+            UnitCategory::Mass,
+            UnitCategory::Torque,
             UnitCategory::Pressure,
             UnitCategory::Volume,
-            UnitCategory::Mass,
-            UnitCategory::Pressure,
             UnitCategory::Volume,
             UnitCategory::Angle,
+            UnitCategory::Angle,
             UnitCategory::Duration,
+            UnitCategory::Electric,
             UnitCategory::Area,
             UnitCategory::Area,
             UnitCategory::Area,
@@ -713,10 +993,12 @@ impl MeasurementUnit {
             UnitCategory::Volume,
             UnitCategory::Digital,
             UnitCategory::Digital,
+            UnitCategory::Magnetic,
             UnitCategory::Mass,
             UnitCategory::Mass,
             UnitCategory::Electric,
             UnitCategory::Power,
+            UnitCategory::Magnetic,
             UnitCategory::Duration,
             UnitCategory::Length,
         ];

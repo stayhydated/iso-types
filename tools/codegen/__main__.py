@@ -20,6 +20,7 @@ from .preferences import render_regional
 from .unit_preferences import build_usage_catalog, render as render_unit_preferences
 from .language_relations import render as render_language_relations
 from . import contacts
+from . import numbering, registries, paper, language_groups, locations, trade, iban
 
 DATA = ROOT / "data"
 TYPES = ROOT / "crates/iso-types"
@@ -51,6 +52,7 @@ def import_iso(checkout: Path) -> None:
 
 def generate(*, check: bool) -> None:
     verify_sources(DATA)
+    registries.verify_sources(DATA)
     policy = CurrentData(DATA)
     command = ["cargo", "run", "--quiet", "-p", "iso-types-icu-data", "--locked", "--", "--stdout"]
     extracted = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True,
@@ -62,6 +64,12 @@ def generate(*, check: bool) -> None:
     catalogs += build_supplemental(DATA, snapshot)
     catalogs += (build_usage_catalog(DATA),)
     catalogs += contacts.build_catalogs(DATA)
+    number_catalog = numbering.build_catalog(DATA, policy)
+    catalogs += (number_catalog,)
+    paper_catalog = paper.build_catalog(DATA)
+    group_catalog = language_groups.build_catalog(DATA)
+    catalogs += (paper_catalog, group_catalog)
+    catalogs += trade.build_catalogs(DATA)
     plan = OutputPlan()
     plan.add(DATA / "icu/english.json", extracted.stdout)
     plan.add(TYPES / "src/catalogs.rs", format_rust(render.catalog_modules(catalogs)))
@@ -78,10 +86,20 @@ def generate(*, check: bool) -> None:
     plan.add(TYPES / "src/language_relations/data.rs", format_rust(render_language_relations(DATA, policy, catalogs)))
     plan.add(TYPES / "src/telephone/data.rs", format_rust(contacts.render_phones(DATA, catalogs)))
     plan.add(TYPES / "src/address/data.rs", format_rust(contacts.render_addresses(DATA, catalogs)))
+    plan.add(TYPES / "src/numbering/data.rs", format_rust(numbering.render(DATA, policy, number_catalog)))
+    plan.add(TYPES / "src/paper.rs", format_rust(paper.render(DATA, paper_catalog)))
+    plan.add(TYPES / "src/language_groups.rs", format_rust(language_groups.render(DATA, group_catalog)))
+    plan.add(TYPES / "src/trade.rs", format_rust(trade.render(DATA, catalogs)))
+    plan.add(TYPES / "src/iban/data.rs", format_rust(iban.render(DATA, relations.countries)))
+    location_index, location_data = locations.render(DATA, relations.countries)
+    location_root = ROOT / "crates/iso-types-locations"
+    plan.add(location_root / "src/data.rs", format_rust(location_index))
+    plan.add(location_root / "src/directory.tsv", location_data)
     scope = format_rust(policy.rust_locale_policy())
     for crate in (TYPES, MACROS):
         plan.add(crate / "src/locale/scope.rs", scope)
-        for name in ("NOTICE", "LICENSE-APACHE", "LICENSE-MIT", "LICENSE-LGPL-2.1", "LICENSE-UNICODE"):
+    for crate in (TYPES, MACROS, location_root):
+        for name in ("NOTICE", "LICENSE-APACHE", "LICENSE-MIT", "LICENSE-LGPL-2.1", "LICENSE-UNICODE", "LICENSE-CC-BY-4.0"):
             plan.add(crate / name, (ROOT / name).read_text(encoding="utf-8"))
     changed = plan.apply(check=check)
     if check and changed:

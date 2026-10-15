@@ -21,6 +21,13 @@ kilowatt-hour calorie kilocalorie pascal hectopascal kilopascal bar millibar
 pound-force-per-square-inch hertz kilohertz megahertz gigahertz degree radian
 newton ampere volt ohm
 liter-per-100-kilometer mile-per-gallon mile-per-gallon-imperial
+g-force meter-per-square-second arc-minute arc-second revolution
+percent permille part-per-1e6 part-per-1e9 mole karat petabyte
+coulomb farad henry milliampere siemens
+dot dot-per-centimeter dot-per-inch megapixel pixel pixel-per-centimeter pixel-per-inch
+candela lumen lux tesla weber newton-meter pound-force-foot
+decimeter nautical-mile point carat ounce-troy atmosphere knot
+centiliter deciliter cup-metric pint-imperial pint-metric quart-imperial fluid-ounce-metric
 """.split())
 
 

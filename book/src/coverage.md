@@ -1,8 +1,8 @@
 # Catalog and data coverage
 
-The gallery's ten pages cover every maintained catalog and relationship area.
+The gallery's eleven pages cover every maintained catalog and relationship area.
 The catalog browser uses Strum iteration and the shared `IsoCode` contract for
-all 17 catalogs. Enter a code or supported alias to see its canonical spelling,
+all 22 catalogs. Enter a code or supported alias to see its canonical spelling,
 or filter the complete list by code or English name.
 
 | Page | Catalogs and APIs |
@@ -10,12 +10,13 @@ or filter the complete list by code or English name.
 | Countries & subdivisions | ISO 3166-1 and 3166-2; subdivision kinds, parents, and children. |
 | Address fields & labels | Address fields and labels; country schemas, required fields, templates, and postal examples. |
 | Currencies | ISO 4217; country tender relationships, formatting precision, and cash rounding. |
-| Languages & scripts | ISO 639-1 and 15924; countries, scripts, directionality, and CLDR population estimates/status. |
+| Languages & scripts | ISO 639-1, 639-5, and 15924; macrolanguage membership and group hierarchies; countries, scripts, directionality, and CLDR population estimates/status. |
 | Measurement units | Measurement units and unit usages; ICU conversion and ranked CLDR preferences with thresholds and skeletons. |
-| Regional preferences | ISO weekdays; week conventions, clock cycles, calendars, measurement systems, and paper. |
+| Regional preferences | ISO weekdays; week conventions, clock cycles, calendars, measurement systems, ISO 216 paper dimensions, and locale numbering systems. |
 | Geographic regions | UN M49 hierarchy, region countries, and country ancestry. |
 | Time zones | IANA identities; country associations, Jiff transitions, ICU mappings, and localized names. |
 | Telephone data | Calling codes, shared/global code relationships, and phone parsing/validation. |
+| Accounts, locations & markets | Registered IBAN validation; UN/LOCODE alternative listings; local MIC CSV lookup. |
 | All catalogs & subsets | All of the above plus ISO 639-2, ISO 639-3, ISO 5218 sex codes, and ISO months; typed subset macros. |
 
 The subset examples select Canada/US markets, US subdivisions, and length units

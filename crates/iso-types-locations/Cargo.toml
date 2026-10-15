@@ -1,0 +1,18 @@
+[package]
+name = "iso-types-locations"
+description = "Pinned UN/LOCODE directory with typed countries and source-preserving location records"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[features]
+default = []
+subdivisions = ["iso-types/3166-2"]
+
+[dependencies]
+iso-types = { workspace = true, default-features = false, features = ["3166-1"] }
+
+[lints]
+workspace = true

@@ -119,7 +119,7 @@ fn excluded_icu_items_have_no_fluent_label() {
         "iso-4217-XTS",
         "iso-3166-2-FR-NC",
         "iso-3166-3-CSHH",
-        "iso-639-5-art",
+        "iso-639-5-zzz",
         "iso-locale-iw-IL",
     ] {
         let key = es_fluent::registry::__macro::static_message_key(

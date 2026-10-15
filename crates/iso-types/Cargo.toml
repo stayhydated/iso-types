@@ -37,6 +37,13 @@ full = [
   "time-zones",
   "calling-codes",
   "addresses",
+  "numbering-systems",
+  "216",
+  "639-5",
+  "10383",
+  "trade-units",
+  "packaging",
+  "13616",
 ]
 fmt = []
 macros = ["dep:iso-types-macros"]
@@ -59,6 +66,12 @@ locales = [
 639-1 = []
 639-2 = []
 639-3 = []
+639-5 = []
+216 = []
+10383 = ["3166-1", "dep:csv"]
+trade-units = []
+packaging = []
+13616 = ["3166-1"]
 3166-1 = []
 3166-2 = ["3166-1", "strum/phf"]
 4217 = []
@@ -82,9 +95,11 @@ time-zone-localization = [
 calling-codes = ["3166-1"]
 phone-numbers = ["calling-codes", "dep:phonenumber"]
 addresses = ["3166-1"]
+numbering-systems = ["locales"]
 
 [dependencies]
 strum = { workspace = true }
+csv = { workspace = true, optional = true }
 iso-types-macros = { workspace = true, optional = true }
 es-fluent = { workspace = true, optional = true }
 es-fluent-manager-core = { workspace = true, optional = true }
@@ -106,3 +121,7 @@ fluent-syntax = { workspace = true }
 
 [lints]
 workspace = true
+
+[[example]]
+name = "market_registry"
+required-features = ["10383"]

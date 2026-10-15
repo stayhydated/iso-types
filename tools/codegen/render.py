@@ -113,7 +113,7 @@ def catalog_rust(catalog: Catalog, currency_fractions: dict) -> str:
         methods.append(value_table("level", "GeographicRegionLevel", [f"GeographicRegionLevel::{levels[entry.metadata['level']]}" for entry in entries]))
     if spec.standard == "unit-preferences":
         methods.append(value_table("category", "crate::UnitCategory", [f"crate::UnitCategory::{variant_name(entry.metadata['category'])}" for entry in entries]))
-    description = ("Telephone calling prefixes from libphonenumber; English labels are owned by the package Fluent resource."
+    description = spec.description or ("Telephone calling prefixes from libphonenumber; English labels are owned by the package Fluent resource."
                    if spec.standard == "calling-codes" else
                    "Postal address metadata identifiers; English labels are owned by the package Fluent resource."
                    if spec.standard.startswith("address-") else

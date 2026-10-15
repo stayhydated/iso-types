@@ -27,7 +27,7 @@ mod tests {
             .iter()
             .map(|p| p.as_str())
             .collect::<Vec<_>>();
-        assert_eq!(paths.len(), 12);
+        assert_eq!(paths.len(), 13);
         for page in <super::site::Page as iso_types::VariantArray>::VARIANTS {
             assert!(
                 paths.contains(&page.route().to_string().as_str()),

@@ -28301,6 +28301,21 @@
         "category": "electric"
       },
       {
+        "code": "arc-minute",
+        "variant": "ArcMinute",
+        "category": "angle"
+      },
+      {
+        "code": "arc-second",
+        "variant": "ArcSecond",
+        "category": "angle"
+      },
+      {
+        "code": "atmosphere",
+        "variant": "Atmosphere",
+        "category": "pressure"
+      },
+      {
         "code": "bar",
         "variant": "Bar",
         "category": "pressure"
@@ -28326,14 +28341,34 @@
         "category": "energy"
       },
       {
+        "code": "candela",
+        "variant": "Candela",
+        "category": "light"
+      },
+      {
+        "code": "carat",
+        "variant": "Carat",
+        "category": "mass"
+      },
+      {
         "code": "celsius",
         "variant": "Celsius",
         "category": "temperature"
       },
       {
+        "code": "centiliter",
+        "variant": "Centiliter",
+        "category": "volume"
+      },
+      {
         "code": "centimeter",
         "variant": "Centimeter",
         "category": "length"
+      },
+      {
+        "code": "coulomb",
+        "variant": "Coulomb",
+        "category": "electric"
       },
       {
         "code": "cubic-centimeter",
@@ -28361,9 +28396,24 @@
         "category": "volume"
       },
       {
+        "code": "cup-metric",
+        "variant": "CupMetric",
+        "category": "volume"
+      },
+      {
         "code": "day",
         "variant": "Day",
         "category": "duration"
+      },
+      {
+        "code": "deciliter",
+        "variant": "Deciliter",
+        "category": "volume"
+      },
+      {
+        "code": "decimeter",
+        "variant": "Decimeter",
+        "category": "length"
       },
       {
         "code": "degree",
@@ -28371,9 +28421,29 @@
         "category": "angle"
       },
       {
+        "code": "dot",
+        "variant": "Dot",
+        "category": "graphics"
+      },
+      {
+        "code": "dot-per-centimeter",
+        "variant": "DotPerCentimeter",
+        "category": "graphics"
+      },
+      {
+        "code": "dot-per-inch",
+        "variant": "DotPerInch",
+        "category": "graphics"
+      },
+      {
         "code": "fahrenheit",
         "variant": "Fahrenheit",
         "category": "temperature"
+      },
+      {
+        "code": "farad",
+        "variant": "Farad",
+        "category": "electric"
       },
       {
         "code": "fluid-ounce",
@@ -28386,6 +28456,11 @@
         "category": "volume"
       },
       {
+        "code": "fluid-ounce-metric",
+        "variant": "FluidOunceMetric",
+        "category": "volume"
+      },
+      {
         "code": "foodcalorie",
         "variant": "Foodcalorie",
         "category": "energy"
@@ -28394,6 +28469,11 @@
         "code": "foot",
         "variant": "Foot",
         "category": "length"
+      },
+      {
+        "code": "g-force",
+        "variant": "GForce",
+        "category": "acceleration"
       },
       {
         "code": "gallon",
@@ -28441,6 +28521,11 @@
         "category": "pressure"
       },
       {
+        "code": "henry",
+        "variant": "Henry",
+        "category": "electric"
+      },
+      {
         "code": "hertz",
         "variant": "Hertz",
         "category": "frequency"
@@ -28469,6 +28554,11 @@
         "code": "joule",
         "variant": "Joule",
         "category": "energy"
+      },
+      {
+        "code": "karat",
+        "variant": "Karat",
+        "category": "concentr"
       },
       {
         "code": "kelvin",
@@ -28531,6 +28621,11 @@
         "category": "energy"
       },
       {
+        "code": "knot",
+        "variant": "Knot",
+        "category": "speed"
+      },
+      {
         "code": "liter",
         "variant": "Liter",
         "category": "volume"
@@ -28544,6 +28639,16 @@
         "code": "liter-per-kilometer",
         "variant": "LiterPerKilometer",
         "category": "consumption"
+      },
+      {
+        "code": "lumen",
+        "variant": "Lumen",
+        "category": "light"
+      },
+      {
+        "code": "lux",
+        "variant": "Lux",
+        "category": "light"
       },
       {
         "code": "megabit",
@@ -28566,6 +28671,11 @@
         "category": "pressure"
       },
       {
+        "code": "megapixel",
+        "variant": "Megapixel",
+        "category": "graphics"
+      },
+      {
         "code": "megawatt",
         "variant": "Megawatt",
         "category": "power"
@@ -28579,6 +28689,11 @@
         "code": "meter-per-second",
         "variant": "MeterPerSecond",
         "category": "speed"
+      },
+      {
+        "code": "meter-per-square-second",
+        "variant": "MeterPerSquareSecond",
+        "category": "acceleration"
       },
       {
         "code": "microgram",
@@ -28621,6 +28736,11 @@
         "category": "length"
       },
       {
+        "code": "milliampere",
+        "variant": "Milliampere",
+        "category": "electric"
+      },
+      {
         "code": "millibar",
         "variant": "Millibar",
         "category": "pressure"
@@ -28661,6 +28781,11 @@
         "category": "duration"
       },
       {
+        "code": "mole",
+        "variant": "Mole",
+        "category": "concentr"
+      },
+      {
         "code": "nanometer",
         "variant": "Nanometer",
         "category": "length"
@@ -28671,9 +28796,19 @@
         "category": "duration"
       },
       {
+        "code": "nautical-mile",
+        "variant": "NauticalMile",
+        "category": "length"
+      },
+      {
         "code": "newton",
         "variant": "Newton",
         "category": "force"
+      },
+      {
+        "code": "newton-meter",
+        "variant": "NewtonMeter",
+        "category": "torque"
       },
       {
         "code": "ohm",
@@ -28686,9 +28821,39 @@
         "category": "mass"
       },
       {
+        "code": "ounce-troy",
+        "variant": "OunceTroy",
+        "category": "mass"
+      },
+      {
+        "code": "part-per-1e6",
+        "variant": "PartPer1e6",
+        "category": "concentr"
+      },
+      {
+        "code": "part-per-1e9",
+        "variant": "PartPer1e9",
+        "category": "concentr"
+      },
+      {
         "code": "pascal",
         "variant": "Pascal",
         "category": "pressure"
+      },
+      {
+        "code": "percent",
+        "variant": "Percent",
+        "category": "concentr"
+      },
+      {
+        "code": "permille",
+        "variant": "Permille",
+        "category": "concentr"
+      },
+      {
+        "code": "petabyte",
+        "variant": "Petabyte",
+        "category": "digital"
       },
       {
         "code": "pint",
@@ -28696,9 +28861,44 @@
         "category": "volume"
       },
       {
+        "code": "pint-imperial",
+        "variant": "PintImperial",
+        "category": "volume"
+      },
+      {
+        "code": "pint-metric",
+        "variant": "PintMetric",
+        "category": "volume"
+      },
+      {
+        "code": "pixel",
+        "variant": "Pixel",
+        "category": "graphics"
+      },
+      {
+        "code": "pixel-per-centimeter",
+        "variant": "PixelPerCentimeter",
+        "category": "graphics"
+      },
+      {
+        "code": "pixel-per-inch",
+        "variant": "PixelPerInch",
+        "category": "graphics"
+      },
+      {
+        "code": "point",
+        "variant": "Point",
+        "category": "length"
+      },
+      {
         "code": "pound",
         "variant": "Pound",
         "category": "mass"
+      },
+      {
+        "code": "pound-force-foot",
+        "variant": "PoundForceFoot",
+        "category": "torque"
       },
       {
         "code": "pound-force-per-square-inch",
@@ -28711,14 +28911,29 @@
         "category": "volume"
       },
       {
+        "code": "quart-imperial",
+        "variant": "QuartImperial",
+        "category": "volume"
+      },
+      {
         "code": "radian",
         "variant": "Radian",
+        "category": "angle"
+      },
+      {
+        "code": "revolution",
+        "variant": "Revolution",
         "category": "angle"
       },
       {
         "code": "second",
         "variant": "Second",
         "category": "duration"
+      },
+      {
+        "code": "siemens",
+        "variant": "Siemens",
+        "category": "electric"
       },
       {
         "code": "square-centimeter",
@@ -28776,6 +28991,11 @@
         "category": "digital"
       },
       {
+        "code": "tesla",
+        "variant": "Tesla",
+        "category": "magnetic"
+      },
+      {
         "code": "ton",
         "variant": "Ton",
         "category": "mass"
@@ -28794,6 +29014,11 @@
         "code": "watt",
         "variant": "Watt",
         "category": "power"
+      },
+      {
+        "code": "weber",
+        "variant": "Weber",
+        "category": "magnetic"
       },
       {
         "code": "week",
@@ -31831,6 +32056,10968 @@
       {
         "code": "zip",
         "variant": "Zip"
+      }
+    ]
+  },
+  "numbering-systems": {
+    "type": "NumberingSystem",
+    "feature": "numbering-systems",
+    "entries": [
+      {
+        "code": "arab",
+        "variant": "Arab"
+      },
+      {
+        "code": "arabext",
+        "variant": "Arabext"
+      },
+      {
+        "code": "armn",
+        "variant": "Armn"
+      },
+      {
+        "code": "beng",
+        "variant": "Beng"
+      },
+      {
+        "code": "deva",
+        "variant": "Deva"
+      },
+      {
+        "code": "ethi",
+        "variant": "Ethi"
+      },
+      {
+        "code": "geor",
+        "variant": "Geor"
+      },
+      {
+        "code": "grek",
+        "variant": "Grek"
+      },
+      {
+        "code": "gujr",
+        "variant": "Gujr"
+      },
+      {
+        "code": "guru",
+        "variant": "Guru"
+      },
+      {
+        "code": "hanidec",
+        "variant": "Hanidec"
+      },
+      {
+        "code": "hans",
+        "variant": "Hans"
+      },
+      {
+        "code": "hansfin",
+        "variant": "Hansfin"
+      },
+      {
+        "code": "hant",
+        "variant": "Hant"
+      },
+      {
+        "code": "hantfin",
+        "variant": "Hantfin"
+      },
+      {
+        "code": "hebr",
+        "variant": "Hebr"
+      },
+      {
+        "code": "java",
+        "variant": "Java"
+      },
+      {
+        "code": "jpan",
+        "variant": "Jpan"
+      },
+      {
+        "code": "jpanfin",
+        "variant": "Jpanfin"
+      },
+      {
+        "code": "khmr",
+        "variant": "Khmr"
+      },
+      {
+        "code": "knda",
+        "variant": "Knda"
+      },
+      {
+        "code": "laoo",
+        "variant": "Laoo"
+      },
+      {
+        "code": "latn",
+        "variant": "Latn"
+      },
+      {
+        "code": "mlym",
+        "variant": "Mlym"
+      },
+      {
+        "code": "mymr",
+        "variant": "Mymr"
+      },
+      {
+        "code": "orya",
+        "variant": "Orya"
+      },
+      {
+        "code": "taml",
+        "variant": "Taml"
+      },
+      {
+        "code": "tamldec",
+        "variant": "Tamldec"
+      },
+      {
+        "code": "telu",
+        "variant": "Telu"
+      },
+      {
+        "code": "thai",
+        "variant": "Thai"
+      }
+    ]
+  },
+  "216": {
+    "type": "Iso216",
+    "feature": "216",
+    "entries": [
+      {
+        "code": "A0",
+        "variant": "A0"
+      },
+      {
+        "code": "A1",
+        "variant": "A1"
+      },
+      {
+        "code": "A10",
+        "variant": "A10"
+      },
+      {
+        "code": "A2",
+        "variant": "A2"
+      },
+      {
+        "code": "A3",
+        "variant": "A3"
+      },
+      {
+        "code": "A4",
+        "variant": "A4"
+      },
+      {
+        "code": "A5",
+        "variant": "A5"
+      },
+      {
+        "code": "A6",
+        "variant": "A6"
+      },
+      {
+        "code": "A7",
+        "variant": "A7"
+      },
+      {
+        "code": "A8",
+        "variant": "A8"
+      },
+      {
+        "code": "A9",
+        "variant": "A9"
+      },
+      {
+        "code": "B0",
+        "variant": "B0"
+      },
+      {
+        "code": "B1",
+        "variant": "B1"
+      },
+      {
+        "code": "B10",
+        "variant": "B10"
+      },
+      {
+        "code": "B2",
+        "variant": "B2"
+      },
+      {
+        "code": "B3",
+        "variant": "B3"
+      },
+      {
+        "code": "B4",
+        "variant": "B4"
+      },
+      {
+        "code": "B5",
+        "variant": "B5"
+      },
+      {
+        "code": "B6",
+        "variant": "B6"
+      },
+      {
+        "code": "B7",
+        "variant": "B7"
+      },
+      {
+        "code": "B8",
+        "variant": "B8"
+      },
+      {
+        "code": "B9",
+        "variant": "B9"
+      }
+    ]
+  },
+  "639-5": {
+    "type": "Iso6395",
+    "feature": "639-5",
+    "entries": [
+      {
+        "code": "aav",
+        "variant": "Aav"
+      },
+      {
+        "code": "afa",
+        "variant": "Afa"
+      },
+      {
+        "code": "alg",
+        "variant": "Alg"
+      },
+      {
+        "code": "alv",
+        "variant": "Alv"
+      },
+      {
+        "code": "apa",
+        "variant": "Apa"
+      },
+      {
+        "code": "aqa",
+        "variant": "Aqa"
+      },
+      {
+        "code": "aql",
+        "variant": "Aql"
+      },
+      {
+        "code": "art",
+        "variant": "Art"
+      },
+      {
+        "code": "ath",
+        "variant": "Ath"
+      },
+      {
+        "code": "auf",
+        "variant": "Auf"
+      },
+      {
+        "code": "aus",
+        "variant": "Aus"
+      },
+      {
+        "code": "awd",
+        "variant": "Awd"
+      },
+      {
+        "code": "azc",
+        "variant": "Azc"
+      },
+      {
+        "code": "bad",
+        "variant": "Bad"
+      },
+      {
+        "code": "bai",
+        "variant": "Bai"
+      },
+      {
+        "code": "bat",
+        "variant": "Bat"
+      },
+      {
+        "code": "ber",
+        "variant": "Ber"
+      },
+      {
+        "code": "bih",
+        "variant": "Bih"
+      },
+      {
+        "code": "bnt",
+        "variant": "Bnt"
+      },
+      {
+        "code": "btk",
+        "variant": "Btk"
+      },
+      {
+        "code": "cai",
+        "variant": "Cai"
+      },
+      {
+        "code": "cau",
+        "variant": "Cau"
+      },
+      {
+        "code": "cba",
+        "variant": "Cba"
+      },
+      {
+        "code": "ccn",
+        "variant": "Ccn"
+      },
+      {
+        "code": "ccs",
+        "variant": "Ccs"
+      },
+      {
+        "code": "cdc",
+        "variant": "Cdc"
+      },
+      {
+        "code": "cdd",
+        "variant": "Cdd"
+      },
+      {
+        "code": "cel",
+        "variant": "Cel"
+      },
+      {
+        "code": "cmc",
+        "variant": "Cmc"
+      },
+      {
+        "code": "cpe",
+        "variant": "Cpe"
+      },
+      {
+        "code": "cpf",
+        "variant": "Cpf"
+      },
+      {
+        "code": "cpp",
+        "variant": "Cpp"
+      },
+      {
+        "code": "crp",
+        "variant": "Crp"
+      },
+      {
+        "code": "csu",
+        "variant": "Csu"
+      },
+      {
+        "code": "cus",
+        "variant": "Cus"
+      },
+      {
+        "code": "day",
+        "variant": "Day"
+      },
+      {
+        "code": "dmn",
+        "variant": "Dmn"
+      },
+      {
+        "code": "dra",
+        "variant": "Dra"
+      },
+      {
+        "code": "egx",
+        "variant": "Egx"
+      },
+      {
+        "code": "esx",
+        "variant": "Esx"
+      },
+      {
+        "code": "euq",
+        "variant": "Euq"
+      },
+      {
+        "code": "fiu",
+        "variant": "Fiu"
+      },
+      {
+        "code": "fox",
+        "variant": "Fox"
+      },
+      {
+        "code": "gem",
+        "variant": "Gem"
+      },
+      {
+        "code": "gme",
+        "variant": "Gme"
+      },
+      {
+        "code": "gmq",
+        "variant": "Gmq"
+      },
+      {
+        "code": "gmw",
+        "variant": "Gmw"
+      },
+      {
+        "code": "grk",
+        "variant": "Grk"
+      },
+      {
+        "code": "hmx",
+        "variant": "Hmx"
+      },
+      {
+        "code": "hok",
+        "variant": "Hok"
+      },
+      {
+        "code": "hyx",
+        "variant": "Hyx"
+      },
+      {
+        "code": "iir",
+        "variant": "Iir"
+      },
+      {
+        "code": "ijo",
+        "variant": "Ijo"
+      },
+      {
+        "code": "inc",
+        "variant": "Inc"
+      },
+      {
+        "code": "ine",
+        "variant": "Ine"
+      },
+      {
+        "code": "ira",
+        "variant": "Ira"
+      },
+      {
+        "code": "iro",
+        "variant": "Iro"
+      },
+      {
+        "code": "itc",
+        "variant": "Itc"
+      },
+      {
+        "code": "jpx",
+        "variant": "Jpx"
+      },
+      {
+        "code": "kar",
+        "variant": "Kar"
+      },
+      {
+        "code": "kdo",
+        "variant": "Kdo"
+      },
+      {
+        "code": "khi",
+        "variant": "Khi"
+      },
+      {
+        "code": "kro",
+        "variant": "Kro"
+      },
+      {
+        "code": "map",
+        "variant": "Map"
+      },
+      {
+        "code": "mkh",
+        "variant": "Mkh"
+      },
+      {
+        "code": "mno",
+        "variant": "Mno"
+      },
+      {
+        "code": "mun",
+        "variant": "Mun"
+      },
+      {
+        "code": "myn",
+        "variant": "Myn"
+      },
+      {
+        "code": "nah",
+        "variant": "Nah"
+      },
+      {
+        "code": "nai",
+        "variant": "Nai"
+      },
+      {
+        "code": "ngf",
+        "variant": "Ngf"
+      },
+      {
+        "code": "nic",
+        "variant": "Nic"
+      },
+      {
+        "code": "nub",
+        "variant": "Nub"
+      },
+      {
+        "code": "omq",
+        "variant": "Omq"
+      },
+      {
+        "code": "omv",
+        "variant": "Omv"
+      },
+      {
+        "code": "oto",
+        "variant": "Oto"
+      },
+      {
+        "code": "paa",
+        "variant": "Paa"
+      },
+      {
+        "code": "phi",
+        "variant": "Phi"
+      },
+      {
+        "code": "plf",
+        "variant": "Plf"
+      },
+      {
+        "code": "poz",
+        "variant": "Poz"
+      },
+      {
+        "code": "pqe",
+        "variant": "Pqe"
+      },
+      {
+        "code": "pqw",
+        "variant": "Pqw"
+      },
+      {
+        "code": "pra",
+        "variant": "Pra"
+      },
+      {
+        "code": "qwe",
+        "variant": "Qwe"
+      },
+      {
+        "code": "roa",
+        "variant": "Roa"
+      },
+      {
+        "code": "sai",
+        "variant": "Sai"
+      },
+      {
+        "code": "sal",
+        "variant": "Sal"
+      },
+      {
+        "code": "sdv",
+        "variant": "Sdv"
+      },
+      {
+        "code": "sem",
+        "variant": "Sem"
+      },
+      {
+        "code": "sgn",
+        "variant": "Sgn"
+      },
+      {
+        "code": "sio",
+        "variant": "Sio"
+      },
+      {
+        "code": "sit",
+        "variant": "Sit"
+      },
+      {
+        "code": "sla",
+        "variant": "Sla"
+      },
+      {
+        "code": "smi",
+        "variant": "Smi"
+      },
+      {
+        "code": "son",
+        "variant": "Son"
+      },
+      {
+        "code": "sqj",
+        "variant": "Sqj"
+      },
+      {
+        "code": "ssa",
+        "variant": "Ssa"
+      },
+      {
+        "code": "syd",
+        "variant": "Syd"
+      },
+      {
+        "code": "tai",
+        "variant": "Tai"
+      },
+      {
+        "code": "tbq",
+        "variant": "Tbq"
+      },
+      {
+        "code": "trk",
+        "variant": "Trk"
+      },
+      {
+        "code": "tup",
+        "variant": "Tup"
+      },
+      {
+        "code": "tut",
+        "variant": "Tut"
+      },
+      {
+        "code": "tuw",
+        "variant": "Tuw"
+      },
+      {
+        "code": "urj",
+        "variant": "Urj"
+      },
+      {
+        "code": "wak",
+        "variant": "Wak"
+      },
+      {
+        "code": "wen",
+        "variant": "Wen"
+      },
+      {
+        "code": "xgn",
+        "variant": "Xgn"
+      },
+      {
+        "code": "xnd",
+        "variant": "Xnd"
+      },
+      {
+        "code": "ypk",
+        "variant": "Ypk"
+      },
+      {
+        "code": "zhx",
+        "variant": "Zhx"
+      },
+      {
+        "code": "zle",
+        "variant": "Zle"
+      },
+      {
+        "code": "zls",
+        "variant": "Zls"
+      },
+      {
+        "code": "zlw",
+        "variant": "Zlw"
+      },
+      {
+        "code": "znd",
+        "variant": "Znd"
+      }
+    ]
+  },
+  "trade-units": {
+    "type": "TradeUnit",
+    "feature": "trade-units",
+    "entries": [
+      {
+        "code": "10",
+        "variant": "Code10"
+      },
+      {
+        "code": "11",
+        "variant": "Code11"
+      },
+      {
+        "code": "13",
+        "variant": "Code13"
+      },
+      {
+        "code": "14",
+        "variant": "Code14"
+      },
+      {
+        "code": "15",
+        "variant": "Code15"
+      },
+      {
+        "code": "1I",
+        "variant": "Code1I"
+      },
+      {
+        "code": "20",
+        "variant": "Code20"
+      },
+      {
+        "code": "21",
+        "variant": "Code21"
+      },
+      {
+        "code": "22",
+        "variant": "Code22"
+      },
+      {
+        "code": "23",
+        "variant": "Code23"
+      },
+      {
+        "code": "24",
+        "variant": "Code24"
+      },
+      {
+        "code": "25",
+        "variant": "Code25"
+      },
+      {
+        "code": "27",
+        "variant": "Code27"
+      },
+      {
+        "code": "28",
+        "variant": "Code28"
+      },
+      {
+        "code": "2A",
+        "variant": "Code2A"
+      },
+      {
+        "code": "2B",
+        "variant": "Code2B"
+      },
+      {
+        "code": "2C",
+        "variant": "Code2C"
+      },
+      {
+        "code": "2G",
+        "variant": "Code2G"
+      },
+      {
+        "code": "2H",
+        "variant": "Code2H"
+      },
+      {
+        "code": "2I",
+        "variant": "Code2I"
+      },
+      {
+        "code": "2J",
+        "variant": "Code2J"
+      },
+      {
+        "code": "2K",
+        "variant": "Code2K"
+      },
+      {
+        "code": "2L",
+        "variant": "Code2L"
+      },
+      {
+        "code": "2M",
+        "variant": "Code2M"
+      },
+      {
+        "code": "2N",
+        "variant": "Code2N"
+      },
+      {
+        "code": "2P",
+        "variant": "Code2P"
+      },
+      {
+        "code": "2Q",
+        "variant": "Code2Q"
+      },
+      {
+        "code": "2R",
+        "variant": "Code2R"
+      },
+      {
+        "code": "2U",
+        "variant": "Code2U"
+      },
+      {
+        "code": "2X",
+        "variant": "Code2X"
+      },
+      {
+        "code": "2Y",
+        "variant": "Code2Y"
+      },
+      {
+        "code": "2Z",
+        "variant": "Code2Z"
+      },
+      {
+        "code": "33",
+        "variant": "Code33"
+      },
+      {
+        "code": "34",
+        "variant": "Code34"
+      },
+      {
+        "code": "35",
+        "variant": "Code35"
+      },
+      {
+        "code": "37",
+        "variant": "Code37"
+      },
+      {
+        "code": "38",
+        "variant": "Code38"
+      },
+      {
+        "code": "3B",
+        "variant": "Code3B"
+      },
+      {
+        "code": "3C",
+        "variant": "Code3C"
+      },
+      {
+        "code": "40",
+        "variant": "Code40"
+      },
+      {
+        "code": "41",
+        "variant": "Code41"
+      },
+      {
+        "code": "4C",
+        "variant": "Code4C"
+      },
+      {
+        "code": "4G",
+        "variant": "Code4G"
+      },
+      {
+        "code": "4H",
+        "variant": "Code4H"
+      },
+      {
+        "code": "4K",
+        "variant": "Code4K"
+      },
+      {
+        "code": "4L",
+        "variant": "Code4L"
+      },
+      {
+        "code": "4M",
+        "variant": "Code4M"
+      },
+      {
+        "code": "4N",
+        "variant": "Code4N"
+      },
+      {
+        "code": "4O",
+        "variant": "Code4O"
+      },
+      {
+        "code": "4P",
+        "variant": "Code4P"
+      },
+      {
+        "code": "4Q",
+        "variant": "Code4Q"
+      },
+      {
+        "code": "4R",
+        "variant": "Code4R"
+      },
+      {
+        "code": "4T",
+        "variant": "Code4T"
+      },
+      {
+        "code": "4U",
+        "variant": "Code4U"
+      },
+      {
+        "code": "4W",
+        "variant": "Code4W"
+      },
+      {
+        "code": "4X",
+        "variant": "Code4X"
+      },
+      {
+        "code": "56",
+        "variant": "Code56"
+      },
+      {
+        "code": "57",
+        "variant": "Code57"
+      },
+      {
+        "code": "58",
+        "variant": "Code58"
+      },
+      {
+        "code": "59",
+        "variant": "Code59"
+      },
+      {
+        "code": "5A",
+        "variant": "Code5A"
+      },
+      {
+        "code": "5B",
+        "variant": "Code5B"
+      },
+      {
+        "code": "5E",
+        "variant": "Code5E"
+      },
+      {
+        "code": "5J",
+        "variant": "Code5J"
+      },
+      {
+        "code": "60",
+        "variant": "Code60"
+      },
+      {
+        "code": "61",
+        "variant": "Code61"
+      },
+      {
+        "code": "74",
+        "variant": "Code74"
+      },
+      {
+        "code": "77",
+        "variant": "Code77"
+      },
+      {
+        "code": "80",
+        "variant": "Code80"
+      },
+      {
+        "code": "81",
+        "variant": "Code81"
+      },
+      {
+        "code": "85",
+        "variant": "Code85"
+      },
+      {
+        "code": "87",
+        "variant": "Code87"
+      },
+      {
+        "code": "89",
+        "variant": "Code89"
+      },
+      {
+        "code": "91",
+        "variant": "Code91"
+      },
+      {
+        "code": "A10",
+        "variant": "A10"
+      },
+      {
+        "code": "A11",
+        "variant": "A11"
+      },
+      {
+        "code": "A12",
+        "variant": "A12"
+      },
+      {
+        "code": "A13",
+        "variant": "A13"
+      },
+      {
+        "code": "A14",
+        "variant": "A14"
+      },
+      {
+        "code": "A15",
+        "variant": "A15"
+      },
+      {
+        "code": "A16",
+        "variant": "A16"
+      },
+      {
+        "code": "A17",
+        "variant": "A17"
+      },
+      {
+        "code": "A18",
+        "variant": "A18"
+      },
+      {
+        "code": "A19",
+        "variant": "A19"
+      },
+      {
+        "code": "A2",
+        "variant": "A2"
+      },
+      {
+        "code": "A20",
+        "variant": "A20"
+      },
+      {
+        "code": "A21",
+        "variant": "A21"
+      },
+      {
+        "code": "A22",
+        "variant": "A22"
+      },
+      {
+        "code": "A23",
+        "variant": "A23"
+      },
+      {
+        "code": "A24",
+        "variant": "A24"
+      },
+      {
+        "code": "A26",
+        "variant": "A26"
+      },
+      {
+        "code": "A27",
+        "variant": "A27"
+      },
+      {
+        "code": "A28",
+        "variant": "A28"
+      },
+      {
+        "code": "A29",
+        "variant": "A29"
+      },
+      {
+        "code": "A3",
+        "variant": "A3"
+      },
+      {
+        "code": "A30",
+        "variant": "A30"
+      },
+      {
+        "code": "A31",
+        "variant": "A31"
+      },
+      {
+        "code": "A32",
+        "variant": "A32"
+      },
+      {
+        "code": "A33",
+        "variant": "A33"
+      },
+      {
+        "code": "A34",
+        "variant": "A34"
+      },
+      {
+        "code": "A35",
+        "variant": "A35"
+      },
+      {
+        "code": "A36",
+        "variant": "A36"
+      },
+      {
+        "code": "A37",
+        "variant": "A37"
+      },
+      {
+        "code": "A38",
+        "variant": "A38"
+      },
+      {
+        "code": "A39",
+        "variant": "A39"
+      },
+      {
+        "code": "A4",
+        "variant": "A4"
+      },
+      {
+        "code": "A40",
+        "variant": "A40"
+      },
+      {
+        "code": "A41",
+        "variant": "A41"
+      },
+      {
+        "code": "A42",
+        "variant": "A42"
+      },
+      {
+        "code": "A43",
+        "variant": "A43"
+      },
+      {
+        "code": "A44",
+        "variant": "A44"
+      },
+      {
+        "code": "A45",
+        "variant": "A45"
+      },
+      {
+        "code": "A47",
+        "variant": "A47"
+      },
+      {
+        "code": "A48",
+        "variant": "A48"
+      },
+      {
+        "code": "A49",
+        "variant": "A49"
+      },
+      {
+        "code": "A5",
+        "variant": "A5"
+      },
+      {
+        "code": "A53",
+        "variant": "A53"
+      },
+      {
+        "code": "A54",
+        "variant": "A54"
+      },
+      {
+        "code": "A55",
+        "variant": "A55"
+      },
+      {
+        "code": "A56",
+        "variant": "A56"
+      },
+      {
+        "code": "A59",
+        "variant": "A59"
+      },
+      {
+        "code": "A6",
+        "variant": "A6"
+      },
+      {
+        "code": "A68",
+        "variant": "A68"
+      },
+      {
+        "code": "A69",
+        "variant": "A69"
+      },
+      {
+        "code": "A7",
+        "variant": "A7"
+      },
+      {
+        "code": "A70",
+        "variant": "A70"
+      },
+      {
+        "code": "A71",
+        "variant": "A71"
+      },
+      {
+        "code": "A73",
+        "variant": "A73"
+      },
+      {
+        "code": "A74",
+        "variant": "A74"
+      },
+      {
+        "code": "A75",
+        "variant": "A75"
+      },
+      {
+        "code": "A76",
+        "variant": "A76"
+      },
+      {
+        "code": "A8",
+        "variant": "A8"
+      },
+      {
+        "code": "A84",
+        "variant": "A84"
+      },
+      {
+        "code": "A85",
+        "variant": "A85"
+      },
+      {
+        "code": "A86",
+        "variant": "A86"
+      },
+      {
+        "code": "A87",
+        "variant": "A87"
+      },
+      {
+        "code": "A88",
+        "variant": "A88"
+      },
+      {
+        "code": "A89",
+        "variant": "A89"
+      },
+      {
+        "code": "A9",
+        "variant": "A9"
+      },
+      {
+        "code": "A90",
+        "variant": "A90"
+      },
+      {
+        "code": "A91",
+        "variant": "A91"
+      },
+      {
+        "code": "A93",
+        "variant": "A93"
+      },
+      {
+        "code": "A94",
+        "variant": "A94"
+      },
+      {
+        "code": "A95",
+        "variant": "A95"
+      },
+      {
+        "code": "A96",
+        "variant": "A96"
+      },
+      {
+        "code": "A97",
+        "variant": "A97"
+      },
+      {
+        "code": "A98",
+        "variant": "A98"
+      },
+      {
+        "code": "A99",
+        "variant": "A99"
+      },
+      {
+        "code": "AA",
+        "variant": "Aa"
+      },
+      {
+        "code": "AB",
+        "variant": "Ab"
+      },
+      {
+        "code": "ACR",
+        "variant": "Acr"
+      },
+      {
+        "code": "ACT",
+        "variant": "Act"
+      },
+      {
+        "code": "AD",
+        "variant": "Ad"
+      },
+      {
+        "code": "AE",
+        "variant": "Ae"
+      },
+      {
+        "code": "AH",
+        "variant": "Ah"
+      },
+      {
+        "code": "AI",
+        "variant": "Ai"
+      },
+      {
+        "code": "AK",
+        "variant": "Ak"
+      },
+      {
+        "code": "AL",
+        "variant": "Al"
+      },
+      {
+        "code": "AMH",
+        "variant": "Amh"
+      },
+      {
+        "code": "AMP",
+        "variant": "Amp"
+      },
+      {
+        "code": "ANN",
+        "variant": "Ann"
+      },
+      {
+        "code": "APZ",
+        "variant": "Apz"
+      },
+      {
+        "code": "AQ",
+        "variant": "Aq"
+      },
+      {
+        "code": "AS",
+        "variant": "As"
+      },
+      {
+        "code": "ASM",
+        "variant": "Asm"
+      },
+      {
+        "code": "ASU",
+        "variant": "Asu"
+      },
+      {
+        "code": "ATM",
+        "variant": "Atm"
+      },
+      {
+        "code": "AWG",
+        "variant": "Awg"
+      },
+      {
+        "code": "AY",
+        "variant": "Ay"
+      },
+      {
+        "code": "AZ",
+        "variant": "Az"
+      },
+      {
+        "code": "B1",
+        "variant": "B1"
+      },
+      {
+        "code": "B10",
+        "variant": "B10"
+      },
+      {
+        "code": "B11",
+        "variant": "B11"
+      },
+      {
+        "code": "B12",
+        "variant": "B12"
+      },
+      {
+        "code": "B13",
+        "variant": "B13"
+      },
+      {
+        "code": "B14",
+        "variant": "B14"
+      },
+      {
+        "code": "B15",
+        "variant": "B15"
+      },
+      {
+        "code": "B16",
+        "variant": "B16"
+      },
+      {
+        "code": "B17",
+        "variant": "B17"
+      },
+      {
+        "code": "B18",
+        "variant": "B18"
+      },
+      {
+        "code": "B19",
+        "variant": "B19"
+      },
+      {
+        "code": "B20",
+        "variant": "B20"
+      },
+      {
+        "code": "B21",
+        "variant": "B21"
+      },
+      {
+        "code": "B22",
+        "variant": "B22"
+      },
+      {
+        "code": "B23",
+        "variant": "B23"
+      },
+      {
+        "code": "B24",
+        "variant": "B24"
+      },
+      {
+        "code": "B25",
+        "variant": "B25"
+      },
+      {
+        "code": "B26",
+        "variant": "B26"
+      },
+      {
+        "code": "B27",
+        "variant": "B27"
+      },
+      {
+        "code": "B28",
+        "variant": "B28"
+      },
+      {
+        "code": "B29",
+        "variant": "B29"
+      },
+      {
+        "code": "B3",
+        "variant": "B3"
+      },
+      {
+        "code": "B30",
+        "variant": "B30"
+      },
+      {
+        "code": "B31",
+        "variant": "B31"
+      },
+      {
+        "code": "B32",
+        "variant": "B32"
+      },
+      {
+        "code": "B33",
+        "variant": "B33"
+      },
+      {
+        "code": "B34",
+        "variant": "B34"
+      },
+      {
+        "code": "B35",
+        "variant": "B35"
+      },
+      {
+        "code": "B4",
+        "variant": "B4"
+      },
+      {
+        "code": "B41",
+        "variant": "B41"
+      },
+      {
+        "code": "B42",
+        "variant": "B42"
+      },
+      {
+        "code": "B43",
+        "variant": "B43"
+      },
+      {
+        "code": "B44",
+        "variant": "B44"
+      },
+      {
+        "code": "B45",
+        "variant": "B45"
+      },
+      {
+        "code": "B46",
+        "variant": "B46"
+      },
+      {
+        "code": "B47",
+        "variant": "B47"
+      },
+      {
+        "code": "B48",
+        "variant": "B48"
+      },
+      {
+        "code": "B49",
+        "variant": "B49"
+      },
+      {
+        "code": "B50",
+        "variant": "B50"
+      },
+      {
+        "code": "B52",
+        "variant": "B52"
+      },
+      {
+        "code": "B53",
+        "variant": "B53"
+      },
+      {
+        "code": "B54",
+        "variant": "B54"
+      },
+      {
+        "code": "B55",
+        "variant": "B55"
+      },
+      {
+        "code": "B56",
+        "variant": "B56"
+      },
+      {
+        "code": "B57",
+        "variant": "B57"
+      },
+      {
+        "code": "B58",
+        "variant": "B58"
+      },
+      {
+        "code": "B59",
+        "variant": "B59"
+      },
+      {
+        "code": "B60",
+        "variant": "B60"
+      },
+      {
+        "code": "B61",
+        "variant": "B61"
+      },
+      {
+        "code": "B62",
+        "variant": "B62"
+      },
+      {
+        "code": "B63",
+        "variant": "B63"
+      },
+      {
+        "code": "B64",
+        "variant": "B64"
+      },
+      {
+        "code": "B66",
+        "variant": "B66"
+      },
+      {
+        "code": "B67",
+        "variant": "B67"
+      },
+      {
+        "code": "B68",
+        "variant": "B68"
+      },
+      {
+        "code": "B69",
+        "variant": "B69"
+      },
+      {
+        "code": "B7",
+        "variant": "B7"
+      },
+      {
+        "code": "B70",
+        "variant": "B70"
+      },
+      {
+        "code": "B71",
+        "variant": "B71"
+      },
+      {
+        "code": "B72",
+        "variant": "B72"
+      },
+      {
+        "code": "B73",
+        "variant": "B73"
+      },
+      {
+        "code": "B74",
+        "variant": "B74"
+      },
+      {
+        "code": "B75",
+        "variant": "B75"
+      },
+      {
+        "code": "B76",
+        "variant": "B76"
+      },
+      {
+        "code": "B77",
+        "variant": "B77"
+      },
+      {
+        "code": "B78",
+        "variant": "B78"
+      },
+      {
+        "code": "B79",
+        "variant": "B79"
+      },
+      {
+        "code": "B8",
+        "variant": "B8"
+      },
+      {
+        "code": "B80",
+        "variant": "B80"
+      },
+      {
+        "code": "B81",
+        "variant": "B81"
+      },
+      {
+        "code": "B82",
+        "variant": "B82"
+      },
+      {
+        "code": "B83",
+        "variant": "B83"
+      },
+      {
+        "code": "B84",
+        "variant": "B84"
+      },
+      {
+        "code": "B85",
+        "variant": "B85"
+      },
+      {
+        "code": "B86",
+        "variant": "B86"
+      },
+      {
+        "code": "B87",
+        "variant": "B87"
+      },
+      {
+        "code": "B88",
+        "variant": "B88"
+      },
+      {
+        "code": "B89",
+        "variant": "B89"
+      },
+      {
+        "code": "B90",
+        "variant": "B90"
+      },
+      {
+        "code": "B91",
+        "variant": "B91"
+      },
+      {
+        "code": "B92",
+        "variant": "B92"
+      },
+      {
+        "code": "B93",
+        "variant": "B93"
+      },
+      {
+        "code": "B94",
+        "variant": "B94"
+      },
+      {
+        "code": "B95",
+        "variant": "B95"
+      },
+      {
+        "code": "B96",
+        "variant": "B96"
+      },
+      {
+        "code": "B97",
+        "variant": "B97"
+      },
+      {
+        "code": "B98",
+        "variant": "B98"
+      },
+      {
+        "code": "B99",
+        "variant": "B99"
+      },
+      {
+        "code": "BAR",
+        "variant": "Bar"
+      },
+      {
+        "code": "BB",
+        "variant": "Bb"
+      },
+      {
+        "code": "BFT",
+        "variant": "Bft"
+      },
+      {
+        "code": "BHP",
+        "variant": "Bhp"
+      },
+      {
+        "code": "BIL",
+        "variant": "Bil"
+      },
+      {
+        "code": "BLD",
+        "variant": "Bld"
+      },
+      {
+        "code": "BLL",
+        "variant": "Bll"
+      },
+      {
+        "code": "BP",
+        "variant": "Bp"
+      },
+      {
+        "code": "BPM",
+        "variant": "Bpm"
+      },
+      {
+        "code": "BQL",
+        "variant": "Bql"
+      },
+      {
+        "code": "BTU",
+        "variant": "Btu"
+      },
+      {
+        "code": "BUA",
+        "variant": "Bua"
+      },
+      {
+        "code": "BUI",
+        "variant": "Bui"
+      },
+      {
+        "code": "C0",
+        "variant": "C0"
+      },
+      {
+        "code": "C10",
+        "variant": "C10"
+      },
+      {
+        "code": "C11",
+        "variant": "C11"
+      },
+      {
+        "code": "C12",
+        "variant": "C12"
+      },
+      {
+        "code": "C13",
+        "variant": "C13"
+      },
+      {
+        "code": "C14",
+        "variant": "C14"
+      },
+      {
+        "code": "C15",
+        "variant": "C15"
+      },
+      {
+        "code": "C16",
+        "variant": "C16"
+      },
+      {
+        "code": "C17",
+        "variant": "C17"
+      },
+      {
+        "code": "C18",
+        "variant": "C18"
+      },
+      {
+        "code": "C19",
+        "variant": "C19"
+      },
+      {
+        "code": "C20",
+        "variant": "C20"
+      },
+      {
+        "code": "C21",
+        "variant": "C21"
+      },
+      {
+        "code": "C22",
+        "variant": "C22"
+      },
+      {
+        "code": "C23",
+        "variant": "C23"
+      },
+      {
+        "code": "C24",
+        "variant": "C24"
+      },
+      {
+        "code": "C25",
+        "variant": "C25"
+      },
+      {
+        "code": "C26",
+        "variant": "C26"
+      },
+      {
+        "code": "C27",
+        "variant": "C27"
+      },
+      {
+        "code": "C28",
+        "variant": "C28"
+      },
+      {
+        "code": "C29",
+        "variant": "C29"
+      },
+      {
+        "code": "C3",
+        "variant": "C3"
+      },
+      {
+        "code": "C30",
+        "variant": "C30"
+      },
+      {
+        "code": "C31",
+        "variant": "C31"
+      },
+      {
+        "code": "C32",
+        "variant": "C32"
+      },
+      {
+        "code": "C33",
+        "variant": "C33"
+      },
+      {
+        "code": "C34",
+        "variant": "C34"
+      },
+      {
+        "code": "C35",
+        "variant": "C35"
+      },
+      {
+        "code": "C36",
+        "variant": "C36"
+      },
+      {
+        "code": "C37",
+        "variant": "C37"
+      },
+      {
+        "code": "C38",
+        "variant": "C38"
+      },
+      {
+        "code": "C39",
+        "variant": "C39"
+      },
+      {
+        "code": "C40",
+        "variant": "C40"
+      },
+      {
+        "code": "C41",
+        "variant": "C41"
+      },
+      {
+        "code": "C42",
+        "variant": "C42"
+      },
+      {
+        "code": "C43",
+        "variant": "C43"
+      },
+      {
+        "code": "C44",
+        "variant": "C44"
+      },
+      {
+        "code": "C45",
+        "variant": "C45"
+      },
+      {
+        "code": "C46",
+        "variant": "C46"
+      },
+      {
+        "code": "C47",
+        "variant": "C47"
+      },
+      {
+        "code": "C48",
+        "variant": "C48"
+      },
+      {
+        "code": "C49",
+        "variant": "C49"
+      },
+      {
+        "code": "C50",
+        "variant": "C50"
+      },
+      {
+        "code": "C51",
+        "variant": "C51"
+      },
+      {
+        "code": "C52",
+        "variant": "C52"
+      },
+      {
+        "code": "C53",
+        "variant": "C53"
+      },
+      {
+        "code": "C54",
+        "variant": "C54"
+      },
+      {
+        "code": "C55",
+        "variant": "C55"
+      },
+      {
+        "code": "C56",
+        "variant": "C56"
+      },
+      {
+        "code": "C57",
+        "variant": "C57"
+      },
+      {
+        "code": "C58",
+        "variant": "C58"
+      },
+      {
+        "code": "C59",
+        "variant": "C59"
+      },
+      {
+        "code": "C60",
+        "variant": "C60"
+      },
+      {
+        "code": "C61",
+        "variant": "C61"
+      },
+      {
+        "code": "C62",
+        "variant": "C62"
+      },
+      {
+        "code": "C63",
+        "variant": "C63"
+      },
+      {
+        "code": "C64",
+        "variant": "C64"
+      },
+      {
+        "code": "C65",
+        "variant": "C65"
+      },
+      {
+        "code": "C66",
+        "variant": "C66"
+      },
+      {
+        "code": "C67",
+        "variant": "C67"
+      },
+      {
+        "code": "C68",
+        "variant": "C68"
+      },
+      {
+        "code": "C69",
+        "variant": "C69"
+      },
+      {
+        "code": "C7",
+        "variant": "C7"
+      },
+      {
+        "code": "C70",
+        "variant": "C70"
+      },
+      {
+        "code": "C71",
+        "variant": "C71"
+      },
+      {
+        "code": "C72",
+        "variant": "C72"
+      },
+      {
+        "code": "C73",
+        "variant": "C73"
+      },
+      {
+        "code": "C74",
+        "variant": "C74"
+      },
+      {
+        "code": "C75",
+        "variant": "C75"
+      },
+      {
+        "code": "C76",
+        "variant": "C76"
+      },
+      {
+        "code": "C78",
+        "variant": "C78"
+      },
+      {
+        "code": "C79",
+        "variant": "C79"
+      },
+      {
+        "code": "C8",
+        "variant": "C8"
+      },
+      {
+        "code": "C80",
+        "variant": "C80"
+      },
+      {
+        "code": "C81",
+        "variant": "C81"
+      },
+      {
+        "code": "C82",
+        "variant": "C82"
+      },
+      {
+        "code": "C83",
+        "variant": "C83"
+      },
+      {
+        "code": "C84",
+        "variant": "C84"
+      },
+      {
+        "code": "C85",
+        "variant": "C85"
+      },
+      {
+        "code": "C86",
+        "variant": "C86"
+      },
+      {
+        "code": "C87",
+        "variant": "C87"
+      },
+      {
+        "code": "C88",
+        "variant": "C88"
+      },
+      {
+        "code": "C89",
+        "variant": "C89"
+      },
+      {
+        "code": "C9",
+        "variant": "C9"
+      },
+      {
+        "code": "C90",
+        "variant": "C90"
+      },
+      {
+        "code": "C91",
+        "variant": "C91"
+      },
+      {
+        "code": "C92",
+        "variant": "C92"
+      },
+      {
+        "code": "C93",
+        "variant": "C93"
+      },
+      {
+        "code": "C94",
+        "variant": "C94"
+      },
+      {
+        "code": "C95",
+        "variant": "C95"
+      },
+      {
+        "code": "C96",
+        "variant": "C96"
+      },
+      {
+        "code": "C97",
+        "variant": "C97"
+      },
+      {
+        "code": "C99",
+        "variant": "C99"
+      },
+      {
+        "code": "CCT",
+        "variant": "Cct"
+      },
+      {
+        "code": "CDL",
+        "variant": "Cdl"
+      },
+      {
+        "code": "CEL",
+        "variant": "Cel"
+      },
+      {
+        "code": "CEN",
+        "variant": "Cen"
+      },
+      {
+        "code": "CG",
+        "variant": "Cg"
+      },
+      {
+        "code": "CGM",
+        "variant": "Cgm"
+      },
+      {
+        "code": "CKG",
+        "variant": "Ckg"
+      },
+      {
+        "code": "CLF",
+        "variant": "Clf"
+      },
+      {
+        "code": "CLT",
+        "variant": "Clt"
+      },
+      {
+        "code": "CMK",
+        "variant": "Cmk"
+      },
+      {
+        "code": "CMQ",
+        "variant": "Cmq"
+      },
+      {
+        "code": "CMT",
+        "variant": "Cmt"
+      },
+      {
+        "code": "CNP",
+        "variant": "Cnp"
+      },
+      {
+        "code": "CNT",
+        "variant": "Cnt"
+      },
+      {
+        "code": "COU",
+        "variant": "Cou"
+      },
+      {
+        "code": "CTG",
+        "variant": "Ctg"
+      },
+      {
+        "code": "CTM",
+        "variant": "Ctm"
+      },
+      {
+        "code": "CTN",
+        "variant": "Ctn"
+      },
+      {
+        "code": "CUR",
+        "variant": "Cur"
+      },
+      {
+        "code": "CWA",
+        "variant": "Cwa"
+      },
+      {
+        "code": "CWI",
+        "variant": "Cwi"
+      },
+      {
+        "code": "D03",
+        "variant": "D03"
+      },
+      {
+        "code": "D04",
+        "variant": "D04"
+      },
+      {
+        "code": "D1",
+        "variant": "D1"
+      },
+      {
+        "code": "D10",
+        "variant": "D10"
+      },
+      {
+        "code": "D11",
+        "variant": "D11"
+      },
+      {
+        "code": "D12",
+        "variant": "D12"
+      },
+      {
+        "code": "D13",
+        "variant": "D13"
+      },
+      {
+        "code": "D15",
+        "variant": "D15"
+      },
+      {
+        "code": "D16",
+        "variant": "D16"
+      },
+      {
+        "code": "D17",
+        "variant": "D17"
+      },
+      {
+        "code": "D18",
+        "variant": "D18"
+      },
+      {
+        "code": "D19",
+        "variant": "D19"
+      },
+      {
+        "code": "D2",
+        "variant": "D2"
+      },
+      {
+        "code": "D20",
+        "variant": "D20"
+      },
+      {
+        "code": "D21",
+        "variant": "D21"
+      },
+      {
+        "code": "D22",
+        "variant": "D22"
+      },
+      {
+        "code": "D23",
+        "variant": "D23"
+      },
+      {
+        "code": "D24",
+        "variant": "D24"
+      },
+      {
+        "code": "D25",
+        "variant": "D25"
+      },
+      {
+        "code": "D26",
+        "variant": "D26"
+      },
+      {
+        "code": "D27",
+        "variant": "D27"
+      },
+      {
+        "code": "D29",
+        "variant": "D29"
+      },
+      {
+        "code": "D30",
+        "variant": "D30"
+      },
+      {
+        "code": "D31",
+        "variant": "D31"
+      },
+      {
+        "code": "D32",
+        "variant": "D32"
+      },
+      {
+        "code": "D33",
+        "variant": "D33"
+      },
+      {
+        "code": "D34",
+        "variant": "D34"
+      },
+      {
+        "code": "D36",
+        "variant": "D36"
+      },
+      {
+        "code": "D41",
+        "variant": "D41"
+      },
+      {
+        "code": "D42",
+        "variant": "D42"
+      },
+      {
+        "code": "D43",
+        "variant": "D43"
+      },
+      {
+        "code": "D44",
+        "variant": "D44"
+      },
+      {
+        "code": "D45",
+        "variant": "D45"
+      },
+      {
+        "code": "D46",
+        "variant": "D46"
+      },
+      {
+        "code": "D47",
+        "variant": "D47"
+      },
+      {
+        "code": "D48",
+        "variant": "D48"
+      },
+      {
+        "code": "D49",
+        "variant": "D49"
+      },
+      {
+        "code": "D5",
+        "variant": "D5"
+      },
+      {
+        "code": "D50",
+        "variant": "D50"
+      },
+      {
+        "code": "D51",
+        "variant": "D51"
+      },
+      {
+        "code": "D52",
+        "variant": "D52"
+      },
+      {
+        "code": "D53",
+        "variant": "D53"
+      },
+      {
+        "code": "D54",
+        "variant": "D54"
+      },
+      {
+        "code": "D55",
+        "variant": "D55"
+      },
+      {
+        "code": "D56",
+        "variant": "D56"
+      },
+      {
+        "code": "D57",
+        "variant": "D57"
+      },
+      {
+        "code": "D58",
+        "variant": "D58"
+      },
+      {
+        "code": "D59",
+        "variant": "D59"
+      },
+      {
+        "code": "D6",
+        "variant": "D6"
+      },
+      {
+        "code": "D60",
+        "variant": "D60"
+      },
+      {
+        "code": "D61",
+        "variant": "D61"
+      },
+      {
+        "code": "D62",
+        "variant": "D62"
+      },
+      {
+        "code": "D63",
+        "variant": "D63"
+      },
+      {
+        "code": "D65",
+        "variant": "D65"
+      },
+      {
+        "code": "D68",
+        "variant": "D68"
+      },
+      {
+        "code": "D69",
+        "variant": "D69"
+      },
+      {
+        "code": "D73",
+        "variant": "D73"
+      },
+      {
+        "code": "D74",
+        "variant": "D74"
+      },
+      {
+        "code": "D77",
+        "variant": "D77"
+      },
+      {
+        "code": "D78",
+        "variant": "D78"
+      },
+      {
+        "code": "D80",
+        "variant": "D80"
+      },
+      {
+        "code": "D81",
+        "variant": "D81"
+      },
+      {
+        "code": "D82",
+        "variant": "D82"
+      },
+      {
+        "code": "D83",
+        "variant": "D83"
+      },
+      {
+        "code": "D85",
+        "variant": "D85"
+      },
+      {
+        "code": "D86",
+        "variant": "D86"
+      },
+      {
+        "code": "D87",
+        "variant": "D87"
+      },
+      {
+        "code": "D88",
+        "variant": "D88"
+      },
+      {
+        "code": "D89",
+        "variant": "D89"
+      },
+      {
+        "code": "D91",
+        "variant": "D91"
+      },
+      {
+        "code": "D93",
+        "variant": "D93"
+      },
+      {
+        "code": "D94",
+        "variant": "D94"
+      },
+      {
+        "code": "D95",
+        "variant": "D95"
+      },
+      {
+        "code": "DAA",
+        "variant": "Daa"
+      },
+      {
+        "code": "DAD",
+        "variant": "Dad"
+      },
+      {
+        "code": "DAY",
+        "variant": "Day"
+      },
+      {
+        "code": "DB",
+        "variant": "Db"
+      },
+      {
+        "code": "DBM",
+        "variant": "Dbm"
+      },
+      {
+        "code": "DBW",
+        "variant": "Dbw"
+      },
+      {
+        "code": "DD",
+        "variant": "Dd"
+      },
+      {
+        "code": "DEC",
+        "variant": "Dec"
+      },
+      {
+        "code": "DG",
+        "variant": "Dg"
+      },
+      {
+        "code": "DJ",
+        "variant": "Dj"
+      },
+      {
+        "code": "DLT",
+        "variant": "Dlt"
+      },
+      {
+        "code": "DMA",
+        "variant": "Dma"
+      },
+      {
+        "code": "DMK",
+        "variant": "Dmk"
+      },
+      {
+        "code": "DMO",
+        "variant": "Dmo"
+      },
+      {
+        "code": "DMQ",
+        "variant": "Dmq"
+      },
+      {
+        "code": "DMT",
+        "variant": "Dmt"
+      },
+      {
+        "code": "DN",
+        "variant": "Dn"
+      },
+      {
+        "code": "DPC",
+        "variant": "Dpc"
+      },
+      {
+        "code": "DPR",
+        "variant": "Dpr"
+      },
+      {
+        "code": "DPT",
+        "variant": "Dpt"
+      },
+      {
+        "code": "DRA",
+        "variant": "Dra"
+      },
+      {
+        "code": "DRI",
+        "variant": "Dri"
+      },
+      {
+        "code": "DRL",
+        "variant": "Drl"
+      },
+      {
+        "code": "DT",
+        "variant": "Dt"
+      },
+      {
+        "code": "DTN",
+        "variant": "Dtn"
+      },
+      {
+        "code": "DWT",
+        "variant": "Dwt"
+      },
+      {
+        "code": "DZN",
+        "variant": "Dzn"
+      },
+      {
+        "code": "DZP",
+        "variant": "Dzp"
+      },
+      {
+        "code": "E01",
+        "variant": "E01"
+      },
+      {
+        "code": "E07",
+        "variant": "E07"
+      },
+      {
+        "code": "E08",
+        "variant": "E08"
+      },
+      {
+        "code": "E09",
+        "variant": "E09"
+      },
+      {
+        "code": "E10",
+        "variant": "E10"
+      },
+      {
+        "code": "E12",
+        "variant": "E12"
+      },
+      {
+        "code": "E14",
+        "variant": "E14"
+      },
+      {
+        "code": "E15",
+        "variant": "E15"
+      },
+      {
+        "code": "E16",
+        "variant": "E16"
+      },
+      {
+        "code": "E17",
+        "variant": "E17"
+      },
+      {
+        "code": "E18",
+        "variant": "E18"
+      },
+      {
+        "code": "E19",
+        "variant": "E19"
+      },
+      {
+        "code": "E20",
+        "variant": "E20"
+      },
+      {
+        "code": "E21",
+        "variant": "E21"
+      },
+      {
+        "code": "E22",
+        "variant": "E22"
+      },
+      {
+        "code": "E23",
+        "variant": "E23"
+      },
+      {
+        "code": "E25",
+        "variant": "E25"
+      },
+      {
+        "code": "E27",
+        "variant": "E27"
+      },
+      {
+        "code": "E28",
+        "variant": "E28"
+      },
+      {
+        "code": "E30",
+        "variant": "E30"
+      },
+      {
+        "code": "E31",
+        "variant": "E31"
+      },
+      {
+        "code": "E32",
+        "variant": "E32"
+      },
+      {
+        "code": "E33",
+        "variant": "E33"
+      },
+      {
+        "code": "E34",
+        "variant": "E34"
+      },
+      {
+        "code": "E35",
+        "variant": "E35"
+      },
+      {
+        "code": "E36",
+        "variant": "E36"
+      },
+      {
+        "code": "E37",
+        "variant": "E37"
+      },
+      {
+        "code": "E38",
+        "variant": "E38"
+      },
+      {
+        "code": "E39",
+        "variant": "E39"
+      },
+      {
+        "code": "E4",
+        "variant": "E4"
+      },
+      {
+        "code": "E40",
+        "variant": "E40"
+      },
+      {
+        "code": "E41",
+        "variant": "E41"
+      },
+      {
+        "code": "E42",
+        "variant": "E42"
+      },
+      {
+        "code": "E43",
+        "variant": "E43"
+      },
+      {
+        "code": "E44",
+        "variant": "E44"
+      },
+      {
+        "code": "E45",
+        "variant": "E45"
+      },
+      {
+        "code": "E46",
+        "variant": "E46"
+      },
+      {
+        "code": "E47",
+        "variant": "E47"
+      },
+      {
+        "code": "E48",
+        "variant": "E48"
+      },
+      {
+        "code": "E49",
+        "variant": "E49"
+      },
+      {
+        "code": "E50",
+        "variant": "E50"
+      },
+      {
+        "code": "E51",
+        "variant": "E51"
+      },
+      {
+        "code": "E52",
+        "variant": "E52"
+      },
+      {
+        "code": "E53",
+        "variant": "E53"
+      },
+      {
+        "code": "E54",
+        "variant": "E54"
+      },
+      {
+        "code": "E55",
+        "variant": "E55"
+      },
+      {
+        "code": "E56",
+        "variant": "E56"
+      },
+      {
+        "code": "E57",
+        "variant": "E57"
+      },
+      {
+        "code": "E58",
+        "variant": "E58"
+      },
+      {
+        "code": "E59",
+        "variant": "E59"
+      },
+      {
+        "code": "E60",
+        "variant": "E60"
+      },
+      {
+        "code": "E61",
+        "variant": "E61"
+      },
+      {
+        "code": "E62",
+        "variant": "E62"
+      },
+      {
+        "code": "E63",
+        "variant": "E63"
+      },
+      {
+        "code": "E64",
+        "variant": "E64"
+      },
+      {
+        "code": "E65",
+        "variant": "E65"
+      },
+      {
+        "code": "E66",
+        "variant": "E66"
+      },
+      {
+        "code": "E67",
+        "variant": "E67"
+      },
+      {
+        "code": "E68",
+        "variant": "E68"
+      },
+      {
+        "code": "E69",
+        "variant": "E69"
+      },
+      {
+        "code": "E70",
+        "variant": "E70"
+      },
+      {
+        "code": "E71",
+        "variant": "E71"
+      },
+      {
+        "code": "E72",
+        "variant": "E72"
+      },
+      {
+        "code": "E73",
+        "variant": "E73"
+      },
+      {
+        "code": "E74",
+        "variant": "E74"
+      },
+      {
+        "code": "E75",
+        "variant": "E75"
+      },
+      {
+        "code": "E76",
+        "variant": "E76"
+      },
+      {
+        "code": "E77",
+        "variant": "E77"
+      },
+      {
+        "code": "E78",
+        "variant": "E78"
+      },
+      {
+        "code": "E79",
+        "variant": "E79"
+      },
+      {
+        "code": "E80",
+        "variant": "E80"
+      },
+      {
+        "code": "E81",
+        "variant": "E81"
+      },
+      {
+        "code": "E82",
+        "variant": "E82"
+      },
+      {
+        "code": "E83",
+        "variant": "E83"
+      },
+      {
+        "code": "E84",
+        "variant": "E84"
+      },
+      {
+        "code": "E85",
+        "variant": "E85"
+      },
+      {
+        "code": "E86",
+        "variant": "E86"
+      },
+      {
+        "code": "E87",
+        "variant": "E87"
+      },
+      {
+        "code": "E88",
+        "variant": "E88"
+      },
+      {
+        "code": "E89",
+        "variant": "E89"
+      },
+      {
+        "code": "E90",
+        "variant": "E90"
+      },
+      {
+        "code": "E91",
+        "variant": "E91"
+      },
+      {
+        "code": "E92",
+        "variant": "E92"
+      },
+      {
+        "code": "E93",
+        "variant": "E93"
+      },
+      {
+        "code": "E94",
+        "variant": "E94"
+      },
+      {
+        "code": "E95",
+        "variant": "E95"
+      },
+      {
+        "code": "E96",
+        "variant": "E96"
+      },
+      {
+        "code": "E97",
+        "variant": "E97"
+      },
+      {
+        "code": "E98",
+        "variant": "E98"
+      },
+      {
+        "code": "E99",
+        "variant": "E99"
+      },
+      {
+        "code": "EA",
+        "variant": "Ea"
+      },
+      {
+        "code": "EB",
+        "variant": "Eb"
+      },
+      {
+        "code": "EQ",
+        "variant": "Eq"
+      },
+      {
+        "code": "F01",
+        "variant": "F01"
+      },
+      {
+        "code": "F02",
+        "variant": "F02"
+      },
+      {
+        "code": "F03",
+        "variant": "F03"
+      },
+      {
+        "code": "F04",
+        "variant": "F04"
+      },
+      {
+        "code": "F05",
+        "variant": "F05"
+      },
+      {
+        "code": "F06",
+        "variant": "F06"
+      },
+      {
+        "code": "F07",
+        "variant": "F07"
+      },
+      {
+        "code": "F08",
+        "variant": "F08"
+      },
+      {
+        "code": "F10",
+        "variant": "F10"
+      },
+      {
+        "code": "F11",
+        "variant": "F11"
+      },
+      {
+        "code": "F12",
+        "variant": "F12"
+      },
+      {
+        "code": "F13",
+        "variant": "F13"
+      },
+      {
+        "code": "F14",
+        "variant": "F14"
+      },
+      {
+        "code": "F15",
+        "variant": "F15"
+      },
+      {
+        "code": "F16",
+        "variant": "F16"
+      },
+      {
+        "code": "F17",
+        "variant": "F17"
+      },
+      {
+        "code": "F18",
+        "variant": "F18"
+      },
+      {
+        "code": "F19",
+        "variant": "F19"
+      },
+      {
+        "code": "F20",
+        "variant": "F20"
+      },
+      {
+        "code": "F21",
+        "variant": "F21"
+      },
+      {
+        "code": "F22",
+        "variant": "F22"
+      },
+      {
+        "code": "F23",
+        "variant": "F23"
+      },
+      {
+        "code": "F24",
+        "variant": "F24"
+      },
+      {
+        "code": "F25",
+        "variant": "F25"
+      },
+      {
+        "code": "F26",
+        "variant": "F26"
+      },
+      {
+        "code": "F27",
+        "variant": "F27"
+      },
+      {
+        "code": "F28",
+        "variant": "F28"
+      },
+      {
+        "code": "F29",
+        "variant": "F29"
+      },
+      {
+        "code": "F30",
+        "variant": "F30"
+      },
+      {
+        "code": "F31",
+        "variant": "F31"
+      },
+      {
+        "code": "F32",
+        "variant": "F32"
+      },
+      {
+        "code": "F33",
+        "variant": "F33"
+      },
+      {
+        "code": "F34",
+        "variant": "F34"
+      },
+      {
+        "code": "F35",
+        "variant": "F35"
+      },
+      {
+        "code": "F36",
+        "variant": "F36"
+      },
+      {
+        "code": "F37",
+        "variant": "F37"
+      },
+      {
+        "code": "F38",
+        "variant": "F38"
+      },
+      {
+        "code": "F39",
+        "variant": "F39"
+      },
+      {
+        "code": "F40",
+        "variant": "F40"
+      },
+      {
+        "code": "F41",
+        "variant": "F41"
+      },
+      {
+        "code": "F42",
+        "variant": "F42"
+      },
+      {
+        "code": "F43",
+        "variant": "F43"
+      },
+      {
+        "code": "F44",
+        "variant": "F44"
+      },
+      {
+        "code": "F45",
+        "variant": "F45"
+      },
+      {
+        "code": "F46",
+        "variant": "F46"
+      },
+      {
+        "code": "F47",
+        "variant": "F47"
+      },
+      {
+        "code": "F48",
+        "variant": "F48"
+      },
+      {
+        "code": "F49",
+        "variant": "F49"
+      },
+      {
+        "code": "F50",
+        "variant": "F50"
+      },
+      {
+        "code": "F51",
+        "variant": "F51"
+      },
+      {
+        "code": "F52",
+        "variant": "F52"
+      },
+      {
+        "code": "F53",
+        "variant": "F53"
+      },
+      {
+        "code": "F54",
+        "variant": "F54"
+      },
+      {
+        "code": "F55",
+        "variant": "F55"
+      },
+      {
+        "code": "F56",
+        "variant": "F56"
+      },
+      {
+        "code": "F57",
+        "variant": "F57"
+      },
+      {
+        "code": "F58",
+        "variant": "F58"
+      },
+      {
+        "code": "F59",
+        "variant": "F59"
+      },
+      {
+        "code": "F60",
+        "variant": "F60"
+      },
+      {
+        "code": "F61",
+        "variant": "F61"
+      },
+      {
+        "code": "F62",
+        "variant": "F62"
+      },
+      {
+        "code": "F63",
+        "variant": "F63"
+      },
+      {
+        "code": "F64",
+        "variant": "F64"
+      },
+      {
+        "code": "F65",
+        "variant": "F65"
+      },
+      {
+        "code": "F66",
+        "variant": "F66"
+      },
+      {
+        "code": "F67",
+        "variant": "F67"
+      },
+      {
+        "code": "F68",
+        "variant": "F68"
+      },
+      {
+        "code": "F69",
+        "variant": "F69"
+      },
+      {
+        "code": "F70",
+        "variant": "F70"
+      },
+      {
+        "code": "F71",
+        "variant": "F71"
+      },
+      {
+        "code": "F72",
+        "variant": "F72"
+      },
+      {
+        "code": "F73",
+        "variant": "F73"
+      },
+      {
+        "code": "F74",
+        "variant": "F74"
+      },
+      {
+        "code": "F75",
+        "variant": "F75"
+      },
+      {
+        "code": "F76",
+        "variant": "F76"
+      },
+      {
+        "code": "F77",
+        "variant": "F77"
+      },
+      {
+        "code": "F78",
+        "variant": "F78"
+      },
+      {
+        "code": "F79",
+        "variant": "F79"
+      },
+      {
+        "code": "F80",
+        "variant": "F80"
+      },
+      {
+        "code": "F81",
+        "variant": "F81"
+      },
+      {
+        "code": "F82",
+        "variant": "F82"
+      },
+      {
+        "code": "F83",
+        "variant": "F83"
+      },
+      {
+        "code": "F84",
+        "variant": "F84"
+      },
+      {
+        "code": "F85",
+        "variant": "F85"
+      },
+      {
+        "code": "F86",
+        "variant": "F86"
+      },
+      {
+        "code": "F87",
+        "variant": "F87"
+      },
+      {
+        "code": "F88",
+        "variant": "F88"
+      },
+      {
+        "code": "F89",
+        "variant": "F89"
+      },
+      {
+        "code": "F90",
+        "variant": "F90"
+      },
+      {
+        "code": "F91",
+        "variant": "F91"
+      },
+      {
+        "code": "F92",
+        "variant": "F92"
+      },
+      {
+        "code": "F93",
+        "variant": "F93"
+      },
+      {
+        "code": "F94",
+        "variant": "F94"
+      },
+      {
+        "code": "F95",
+        "variant": "F95"
+      },
+      {
+        "code": "F96",
+        "variant": "F96"
+      },
+      {
+        "code": "F97",
+        "variant": "F97"
+      },
+      {
+        "code": "F98",
+        "variant": "F98"
+      },
+      {
+        "code": "F99",
+        "variant": "F99"
+      },
+      {
+        "code": "FAH",
+        "variant": "Fah"
+      },
+      {
+        "code": "FAR",
+        "variant": "Far"
+      },
+      {
+        "code": "FBM",
+        "variant": "Fbm"
+      },
+      {
+        "code": "FC",
+        "variant": "Fc"
+      },
+      {
+        "code": "FF",
+        "variant": "Ff"
+      },
+      {
+        "code": "FH",
+        "variant": "Fh"
+      },
+      {
+        "code": "FIT",
+        "variant": "Fit"
+      },
+      {
+        "code": "FL",
+        "variant": "Fl"
+      },
+      {
+        "code": "FNU",
+        "variant": "Fnu"
+      },
+      {
+        "code": "FOT",
+        "variant": "Fot"
+      },
+      {
+        "code": "FP",
+        "variant": "Fp"
+      },
+      {
+        "code": "FR",
+        "variant": "Fr"
+      },
+      {
+        "code": "FS",
+        "variant": "Fs"
+      },
+      {
+        "code": "FTK",
+        "variant": "Ftk"
+      },
+      {
+        "code": "FTQ",
+        "variant": "Ftq"
+      },
+      {
+        "code": "G01",
+        "variant": "G01"
+      },
+      {
+        "code": "G04",
+        "variant": "G04"
+      },
+      {
+        "code": "G05",
+        "variant": "G05"
+      },
+      {
+        "code": "G06",
+        "variant": "G06"
+      },
+      {
+        "code": "G08",
+        "variant": "G08"
+      },
+      {
+        "code": "G09",
+        "variant": "G09"
+      },
+      {
+        "code": "G10",
+        "variant": "G10"
+      },
+      {
+        "code": "G11",
+        "variant": "G11"
+      },
+      {
+        "code": "G12",
+        "variant": "G12"
+      },
+      {
+        "code": "G13",
+        "variant": "G13"
+      },
+      {
+        "code": "G14",
+        "variant": "G14"
+      },
+      {
+        "code": "G15",
+        "variant": "G15"
+      },
+      {
+        "code": "G16",
+        "variant": "G16"
+      },
+      {
+        "code": "G17",
+        "variant": "G17"
+      },
+      {
+        "code": "G18",
+        "variant": "G18"
+      },
+      {
+        "code": "G19",
+        "variant": "G19"
+      },
+      {
+        "code": "G2",
+        "variant": "G2"
+      },
+      {
+        "code": "G20",
+        "variant": "G20"
+      },
+      {
+        "code": "G21",
+        "variant": "G21"
+      },
+      {
+        "code": "G23",
+        "variant": "G23"
+      },
+      {
+        "code": "G24",
+        "variant": "G24"
+      },
+      {
+        "code": "G25",
+        "variant": "G25"
+      },
+      {
+        "code": "G26",
+        "variant": "G26"
+      },
+      {
+        "code": "G27",
+        "variant": "G27"
+      },
+      {
+        "code": "G28",
+        "variant": "G28"
+      },
+      {
+        "code": "G29",
+        "variant": "G29"
+      },
+      {
+        "code": "G3",
+        "variant": "G3"
+      },
+      {
+        "code": "G30",
+        "variant": "G30"
+      },
+      {
+        "code": "G31",
+        "variant": "G31"
+      },
+      {
+        "code": "G32",
+        "variant": "G32"
+      },
+      {
+        "code": "G33",
+        "variant": "G33"
+      },
+      {
+        "code": "G34",
+        "variant": "G34"
+      },
+      {
+        "code": "G35",
+        "variant": "G35"
+      },
+      {
+        "code": "G36",
+        "variant": "G36"
+      },
+      {
+        "code": "G37",
+        "variant": "G37"
+      },
+      {
+        "code": "G38",
+        "variant": "G38"
+      },
+      {
+        "code": "G39",
+        "variant": "G39"
+      },
+      {
+        "code": "G40",
+        "variant": "G40"
+      },
+      {
+        "code": "G41",
+        "variant": "G41"
+      },
+      {
+        "code": "G42",
+        "variant": "G42"
+      },
+      {
+        "code": "G43",
+        "variant": "G43"
+      },
+      {
+        "code": "G44",
+        "variant": "G44"
+      },
+      {
+        "code": "G45",
+        "variant": "G45"
+      },
+      {
+        "code": "G46",
+        "variant": "G46"
+      },
+      {
+        "code": "G47",
+        "variant": "G47"
+      },
+      {
+        "code": "G48",
+        "variant": "G48"
+      },
+      {
+        "code": "G49",
+        "variant": "G49"
+      },
+      {
+        "code": "G50",
+        "variant": "G50"
+      },
+      {
+        "code": "G51",
+        "variant": "G51"
+      },
+      {
+        "code": "G52",
+        "variant": "G52"
+      },
+      {
+        "code": "G53",
+        "variant": "G53"
+      },
+      {
+        "code": "G54",
+        "variant": "G54"
+      },
+      {
+        "code": "G55",
+        "variant": "G55"
+      },
+      {
+        "code": "G56",
+        "variant": "G56"
+      },
+      {
+        "code": "G57",
+        "variant": "G57"
+      },
+      {
+        "code": "G58",
+        "variant": "G58"
+      },
+      {
+        "code": "G59",
+        "variant": "G59"
+      },
+      {
+        "code": "G60",
+        "variant": "G60"
+      },
+      {
+        "code": "G61",
+        "variant": "G61"
+      },
+      {
+        "code": "G62",
+        "variant": "G62"
+      },
+      {
+        "code": "G63",
+        "variant": "G63"
+      },
+      {
+        "code": "G64",
+        "variant": "G64"
+      },
+      {
+        "code": "G65",
+        "variant": "G65"
+      },
+      {
+        "code": "G66",
+        "variant": "G66"
+      },
+      {
+        "code": "G67",
+        "variant": "G67"
+      },
+      {
+        "code": "G68",
+        "variant": "G68"
+      },
+      {
+        "code": "G69",
+        "variant": "G69"
+      },
+      {
+        "code": "G70",
+        "variant": "G70"
+      },
+      {
+        "code": "G71",
+        "variant": "G71"
+      },
+      {
+        "code": "G72",
+        "variant": "G72"
+      },
+      {
+        "code": "G73",
+        "variant": "G73"
+      },
+      {
+        "code": "G74",
+        "variant": "G74"
+      },
+      {
+        "code": "G75",
+        "variant": "G75"
+      },
+      {
+        "code": "G76",
+        "variant": "G76"
+      },
+      {
+        "code": "G77",
+        "variant": "G77"
+      },
+      {
+        "code": "G78",
+        "variant": "G78"
+      },
+      {
+        "code": "G79",
+        "variant": "G79"
+      },
+      {
+        "code": "G80",
+        "variant": "G80"
+      },
+      {
+        "code": "G81",
+        "variant": "G81"
+      },
+      {
+        "code": "G82",
+        "variant": "G82"
+      },
+      {
+        "code": "G83",
+        "variant": "G83"
+      },
+      {
+        "code": "G84",
+        "variant": "G84"
+      },
+      {
+        "code": "G85",
+        "variant": "G85"
+      },
+      {
+        "code": "G86",
+        "variant": "G86"
+      },
+      {
+        "code": "G87",
+        "variant": "G87"
+      },
+      {
+        "code": "G88",
+        "variant": "G88"
+      },
+      {
+        "code": "G89",
+        "variant": "G89"
+      },
+      {
+        "code": "G90",
+        "variant": "G90"
+      },
+      {
+        "code": "G91",
+        "variant": "G91"
+      },
+      {
+        "code": "G92",
+        "variant": "G92"
+      },
+      {
+        "code": "G93",
+        "variant": "G93"
+      },
+      {
+        "code": "G94",
+        "variant": "G94"
+      },
+      {
+        "code": "G95",
+        "variant": "G95"
+      },
+      {
+        "code": "G96",
+        "variant": "G96"
+      },
+      {
+        "code": "G97",
+        "variant": "G97"
+      },
+      {
+        "code": "G98",
+        "variant": "G98"
+      },
+      {
+        "code": "G99",
+        "variant": "G99"
+      },
+      {
+        "code": "GB",
+        "variant": "Gb"
+      },
+      {
+        "code": "GBQ",
+        "variant": "Gbq"
+      },
+      {
+        "code": "GDW",
+        "variant": "Gdw"
+      },
+      {
+        "code": "GE",
+        "variant": "Ge"
+      },
+      {
+        "code": "GF",
+        "variant": "Gf"
+      },
+      {
+        "code": "GFI",
+        "variant": "Gfi"
+      },
+      {
+        "code": "GGR",
+        "variant": "Ggr"
+      },
+      {
+        "code": "GIA",
+        "variant": "Gia"
+      },
+      {
+        "code": "GIC",
+        "variant": "Gic"
+      },
+      {
+        "code": "GII",
+        "variant": "Gii"
+      },
+      {
+        "code": "GIP",
+        "variant": "Gip"
+      },
+      {
+        "code": "GJ",
+        "variant": "Gj"
+      },
+      {
+        "code": "GL",
+        "variant": "Gl"
+      },
+      {
+        "code": "GLD",
+        "variant": "Gld"
+      },
+      {
+        "code": "GLI",
+        "variant": "Gli"
+      },
+      {
+        "code": "GLL",
+        "variant": "Gll"
+      },
+      {
+        "code": "GM",
+        "variant": "Gm"
+      },
+      {
+        "code": "GO",
+        "variant": "Go"
+      },
+      {
+        "code": "GP",
+        "variant": "Gp"
+      },
+      {
+        "code": "GQ",
+        "variant": "Gq"
+      },
+      {
+        "code": "GRM",
+        "variant": "Grm"
+      },
+      {
+        "code": "GRN",
+        "variant": "Grn"
+      },
+      {
+        "code": "GRO",
+        "variant": "Gro"
+      },
+      {
+        "code": "GV",
+        "variant": "Gv"
+      },
+      {
+        "code": "GWH",
+        "variant": "Gwh"
+      },
+      {
+        "code": "H03",
+        "variant": "H03"
+      },
+      {
+        "code": "H04",
+        "variant": "H04"
+      },
+      {
+        "code": "H05",
+        "variant": "H05"
+      },
+      {
+        "code": "H06",
+        "variant": "H06"
+      },
+      {
+        "code": "H07",
+        "variant": "H07"
+      },
+      {
+        "code": "H08",
+        "variant": "H08"
+      },
+      {
+        "code": "H09",
+        "variant": "H09"
+      },
+      {
+        "code": "H10",
+        "variant": "H10"
+      },
+      {
+        "code": "H11",
+        "variant": "H11"
+      },
+      {
+        "code": "H12",
+        "variant": "H12"
+      },
+      {
+        "code": "H13",
+        "variant": "H13"
+      },
+      {
+        "code": "H14",
+        "variant": "H14"
+      },
+      {
+        "code": "H15",
+        "variant": "H15"
+      },
+      {
+        "code": "H16",
+        "variant": "H16"
+      },
+      {
+        "code": "H18",
+        "variant": "H18"
+      },
+      {
+        "code": "H19",
+        "variant": "H19"
+      },
+      {
+        "code": "H20",
+        "variant": "H20"
+      },
+      {
+        "code": "H21",
+        "variant": "H21"
+      },
+      {
+        "code": "H22",
+        "variant": "H22"
+      },
+      {
+        "code": "H23",
+        "variant": "H23"
+      },
+      {
+        "code": "H24",
+        "variant": "H24"
+      },
+      {
+        "code": "H25",
+        "variant": "H25"
+      },
+      {
+        "code": "H26",
+        "variant": "H26"
+      },
+      {
+        "code": "H27",
+        "variant": "H27"
+      },
+      {
+        "code": "H28",
+        "variant": "H28"
+      },
+      {
+        "code": "H29",
+        "variant": "H29"
+      },
+      {
+        "code": "H30",
+        "variant": "H30"
+      },
+      {
+        "code": "H31",
+        "variant": "H31"
+      },
+      {
+        "code": "H32",
+        "variant": "H32"
+      },
+      {
+        "code": "H33",
+        "variant": "H33"
+      },
+      {
+        "code": "H34",
+        "variant": "H34"
+      },
+      {
+        "code": "H35",
+        "variant": "H35"
+      },
+      {
+        "code": "H36",
+        "variant": "H36"
+      },
+      {
+        "code": "H37",
+        "variant": "H37"
+      },
+      {
+        "code": "H38",
+        "variant": "H38"
+      },
+      {
+        "code": "H39",
+        "variant": "H39"
+      },
+      {
+        "code": "H40",
+        "variant": "H40"
+      },
+      {
+        "code": "H41",
+        "variant": "H41"
+      },
+      {
+        "code": "H42",
+        "variant": "H42"
+      },
+      {
+        "code": "H43",
+        "variant": "H43"
+      },
+      {
+        "code": "H44",
+        "variant": "H44"
+      },
+      {
+        "code": "H45",
+        "variant": "H45"
+      },
+      {
+        "code": "H46",
+        "variant": "H46"
+      },
+      {
+        "code": "H47",
+        "variant": "H47"
+      },
+      {
+        "code": "H48",
+        "variant": "H48"
+      },
+      {
+        "code": "H49",
+        "variant": "H49"
+      },
+      {
+        "code": "H50",
+        "variant": "H50"
+      },
+      {
+        "code": "H51",
+        "variant": "H51"
+      },
+      {
+        "code": "H52",
+        "variant": "H52"
+      },
+      {
+        "code": "H53",
+        "variant": "H53"
+      },
+      {
+        "code": "H54",
+        "variant": "H54"
+      },
+      {
+        "code": "H55",
+        "variant": "H55"
+      },
+      {
+        "code": "H56",
+        "variant": "H56"
+      },
+      {
+        "code": "H57",
+        "variant": "H57"
+      },
+      {
+        "code": "H58",
+        "variant": "H58"
+      },
+      {
+        "code": "H59",
+        "variant": "H59"
+      },
+      {
+        "code": "H60",
+        "variant": "H60"
+      },
+      {
+        "code": "H61",
+        "variant": "H61"
+      },
+      {
+        "code": "H62",
+        "variant": "H62"
+      },
+      {
+        "code": "H63",
+        "variant": "H63"
+      },
+      {
+        "code": "H64",
+        "variant": "H64"
+      },
+      {
+        "code": "H65",
+        "variant": "H65"
+      },
+      {
+        "code": "H66",
+        "variant": "H66"
+      },
+      {
+        "code": "H67",
+        "variant": "H67"
+      },
+      {
+        "code": "H68",
+        "variant": "H68"
+      },
+      {
+        "code": "H69",
+        "variant": "H69"
+      },
+      {
+        "code": "H70",
+        "variant": "H70"
+      },
+      {
+        "code": "H71",
+        "variant": "H71"
+      },
+      {
+        "code": "H72",
+        "variant": "H72"
+      },
+      {
+        "code": "H73",
+        "variant": "H73"
+      },
+      {
+        "code": "H74",
+        "variant": "H74"
+      },
+      {
+        "code": "H75",
+        "variant": "H75"
+      },
+      {
+        "code": "H76",
+        "variant": "H76"
+      },
+      {
+        "code": "H77",
+        "variant": "H77"
+      },
+      {
+        "code": "H79",
+        "variant": "H79"
+      },
+      {
+        "code": "H80",
+        "variant": "H80"
+      },
+      {
+        "code": "H81",
+        "variant": "H81"
+      },
+      {
+        "code": "H82",
+        "variant": "H82"
+      },
+      {
+        "code": "H83",
+        "variant": "H83"
+      },
+      {
+        "code": "H84",
+        "variant": "H84"
+      },
+      {
+        "code": "H85",
+        "variant": "H85"
+      },
+      {
+        "code": "H87",
+        "variant": "H87"
+      },
+      {
+        "code": "H88",
+        "variant": "H88"
+      },
+      {
+        "code": "H89",
+        "variant": "H89"
+      },
+      {
+        "code": "H90",
+        "variant": "H90"
+      },
+      {
+        "code": "H91",
+        "variant": "H91"
+      },
+      {
+        "code": "H92",
+        "variant": "H92"
+      },
+      {
+        "code": "H93",
+        "variant": "H93"
+      },
+      {
+        "code": "H94",
+        "variant": "H94"
+      },
+      {
+        "code": "H95",
+        "variant": "H95"
+      },
+      {
+        "code": "H96",
+        "variant": "H96"
+      },
+      {
+        "code": "H98",
+        "variant": "H98"
+      },
+      {
+        "code": "H99",
+        "variant": "H99"
+      },
+      {
+        "code": "HA",
+        "variant": "Ha"
+      },
+      {
+        "code": "HAD",
+        "variant": "Had"
+      },
+      {
+        "code": "HBA",
+        "variant": "Hba"
+      },
+      {
+        "code": "HBX",
+        "variant": "Hbx"
+      },
+      {
+        "code": "HC",
+        "variant": "Hc"
+      },
+      {
+        "code": "HDW",
+        "variant": "Hdw"
+      },
+      {
+        "code": "HEA",
+        "variant": "Hea"
+      },
+      {
+        "code": "HGM",
+        "variant": "Hgm"
+      },
+      {
+        "code": "HH",
+        "variant": "Hh"
+      },
+      {
+        "code": "HIU",
+        "variant": "Hiu"
+      },
+      {
+        "code": "HKM",
+        "variant": "Hkm"
+      },
+      {
+        "code": "HLT",
+        "variant": "Hlt"
+      },
+      {
+        "code": "HM",
+        "variant": "Hm"
+      },
+      {
+        "code": "HMO",
+        "variant": "Hmo"
+      },
+      {
+        "code": "HMQ",
+        "variant": "Hmq"
+      },
+      {
+        "code": "HMT",
+        "variant": "Hmt"
+      },
+      {
+        "code": "HPA",
+        "variant": "Hpa"
+      },
+      {
+        "code": "HTZ",
+        "variant": "Htz"
+      },
+      {
+        "code": "HUR",
+        "variant": "Hur"
+      },
+      {
+        "code": "HWE",
+        "variant": "Hwe"
+      },
+      {
+        "code": "IA",
+        "variant": "Ia"
+      },
+      {
+        "code": "IE",
+        "variant": "Ie"
+      },
+      {
+        "code": "INH",
+        "variant": "Inh"
+      },
+      {
+        "code": "INK",
+        "variant": "Ink"
+      },
+      {
+        "code": "INQ",
+        "variant": "Inq"
+      },
+      {
+        "code": "ISD",
+        "variant": "Isd"
+      },
+      {
+        "code": "IU",
+        "variant": "Iu"
+      },
+      {
+        "code": "IUG",
+        "variant": "Iug"
+      },
+      {
+        "code": "IV",
+        "variant": "Iv"
+      },
+      {
+        "code": "J10",
+        "variant": "J10"
+      },
+      {
+        "code": "J12",
+        "variant": "J12"
+      },
+      {
+        "code": "J13",
+        "variant": "J13"
+      },
+      {
+        "code": "J14",
+        "variant": "J14"
+      },
+      {
+        "code": "J15",
+        "variant": "J15"
+      },
+      {
+        "code": "J16",
+        "variant": "J16"
+      },
+      {
+        "code": "J17",
+        "variant": "J17"
+      },
+      {
+        "code": "J18",
+        "variant": "J18"
+      },
+      {
+        "code": "J19",
+        "variant": "J19"
+      },
+      {
+        "code": "J2",
+        "variant": "J2"
+      },
+      {
+        "code": "J20",
+        "variant": "J20"
+      },
+      {
+        "code": "J21",
+        "variant": "J21"
+      },
+      {
+        "code": "J22",
+        "variant": "J22"
+      },
+      {
+        "code": "J23",
+        "variant": "J23"
+      },
+      {
+        "code": "J24",
+        "variant": "J24"
+      },
+      {
+        "code": "J25",
+        "variant": "J25"
+      },
+      {
+        "code": "J26",
+        "variant": "J26"
+      },
+      {
+        "code": "J27",
+        "variant": "J27"
+      },
+      {
+        "code": "J28",
+        "variant": "J28"
+      },
+      {
+        "code": "J29",
+        "variant": "J29"
+      },
+      {
+        "code": "J30",
+        "variant": "J30"
+      },
+      {
+        "code": "J31",
+        "variant": "J31"
+      },
+      {
+        "code": "J32",
+        "variant": "J32"
+      },
+      {
+        "code": "J33",
+        "variant": "J33"
+      },
+      {
+        "code": "J34",
+        "variant": "J34"
+      },
+      {
+        "code": "J35",
+        "variant": "J35"
+      },
+      {
+        "code": "J36",
+        "variant": "J36"
+      },
+      {
+        "code": "J38",
+        "variant": "J38"
+      },
+      {
+        "code": "J39",
+        "variant": "J39"
+      },
+      {
+        "code": "J40",
+        "variant": "J40"
+      },
+      {
+        "code": "J41",
+        "variant": "J41"
+      },
+      {
+        "code": "J42",
+        "variant": "J42"
+      },
+      {
+        "code": "J43",
+        "variant": "J43"
+      },
+      {
+        "code": "J44",
+        "variant": "J44"
+      },
+      {
+        "code": "J45",
+        "variant": "J45"
+      },
+      {
+        "code": "J46",
+        "variant": "J46"
+      },
+      {
+        "code": "J47",
+        "variant": "J47"
+      },
+      {
+        "code": "J48",
+        "variant": "J48"
+      },
+      {
+        "code": "J49",
+        "variant": "J49"
+      },
+      {
+        "code": "J50",
+        "variant": "J50"
+      },
+      {
+        "code": "J51",
+        "variant": "J51"
+      },
+      {
+        "code": "J52",
+        "variant": "J52"
+      },
+      {
+        "code": "J53",
+        "variant": "J53"
+      },
+      {
+        "code": "J54",
+        "variant": "J54"
+      },
+      {
+        "code": "J55",
+        "variant": "J55"
+      },
+      {
+        "code": "J56",
+        "variant": "J56"
+      },
+      {
+        "code": "J57",
+        "variant": "J57"
+      },
+      {
+        "code": "J58",
+        "variant": "J58"
+      },
+      {
+        "code": "J59",
+        "variant": "J59"
+      },
+      {
+        "code": "J60",
+        "variant": "J60"
+      },
+      {
+        "code": "J61",
+        "variant": "J61"
+      },
+      {
+        "code": "J62",
+        "variant": "J62"
+      },
+      {
+        "code": "J63",
+        "variant": "J63"
+      },
+      {
+        "code": "J64",
+        "variant": "J64"
+      },
+      {
+        "code": "J65",
+        "variant": "J65"
+      },
+      {
+        "code": "J66",
+        "variant": "J66"
+      },
+      {
+        "code": "J67",
+        "variant": "J67"
+      },
+      {
+        "code": "J68",
+        "variant": "J68"
+      },
+      {
+        "code": "J69",
+        "variant": "J69"
+      },
+      {
+        "code": "J70",
+        "variant": "J70"
+      },
+      {
+        "code": "J71",
+        "variant": "J71"
+      },
+      {
+        "code": "J72",
+        "variant": "J72"
+      },
+      {
+        "code": "J73",
+        "variant": "J73"
+      },
+      {
+        "code": "J74",
+        "variant": "J74"
+      },
+      {
+        "code": "J75",
+        "variant": "J75"
+      },
+      {
+        "code": "J76",
+        "variant": "J76"
+      },
+      {
+        "code": "J78",
+        "variant": "J78"
+      },
+      {
+        "code": "J79",
+        "variant": "J79"
+      },
+      {
+        "code": "J81",
+        "variant": "J81"
+      },
+      {
+        "code": "J82",
+        "variant": "J82"
+      },
+      {
+        "code": "J83",
+        "variant": "J83"
+      },
+      {
+        "code": "J84",
+        "variant": "J84"
+      },
+      {
+        "code": "J85",
+        "variant": "J85"
+      },
+      {
+        "code": "J87",
+        "variant": "J87"
+      },
+      {
+        "code": "J90",
+        "variant": "J90"
+      },
+      {
+        "code": "J91",
+        "variant": "J91"
+      },
+      {
+        "code": "J92",
+        "variant": "J92"
+      },
+      {
+        "code": "J93",
+        "variant": "J93"
+      },
+      {
+        "code": "J95",
+        "variant": "J95"
+      },
+      {
+        "code": "J96",
+        "variant": "J96"
+      },
+      {
+        "code": "J97",
+        "variant": "J97"
+      },
+      {
+        "code": "J98",
+        "variant": "J98"
+      },
+      {
+        "code": "J99",
+        "variant": "J99"
+      },
+      {
+        "code": "JE",
+        "variant": "Je"
+      },
+      {
+        "code": "JK",
+        "variant": "Jk"
+      },
+      {
+        "code": "JM",
+        "variant": "Jm"
+      },
+      {
+        "code": "JNT",
+        "variant": "Jnt"
+      },
+      {
+        "code": "JOU",
+        "variant": "Jou"
+      },
+      {
+        "code": "JPS",
+        "variant": "Jps"
+      },
+      {
+        "code": "JWL",
+        "variant": "Jwl"
+      },
+      {
+        "code": "K1",
+        "variant": "K1"
+      },
+      {
+        "code": "K10",
+        "variant": "K10"
+      },
+      {
+        "code": "K11",
+        "variant": "K11"
+      },
+      {
+        "code": "K12",
+        "variant": "K12"
+      },
+      {
+        "code": "K13",
+        "variant": "K13"
+      },
+      {
+        "code": "K14",
+        "variant": "K14"
+      },
+      {
+        "code": "K15",
+        "variant": "K15"
+      },
+      {
+        "code": "K16",
+        "variant": "K16"
+      },
+      {
+        "code": "K17",
+        "variant": "K17"
+      },
+      {
+        "code": "K18",
+        "variant": "K18"
+      },
+      {
+        "code": "K19",
+        "variant": "K19"
+      },
+      {
+        "code": "K2",
+        "variant": "K2"
+      },
+      {
+        "code": "K20",
+        "variant": "K20"
+      },
+      {
+        "code": "K21",
+        "variant": "K21"
+      },
+      {
+        "code": "K22",
+        "variant": "K22"
+      },
+      {
+        "code": "K23",
+        "variant": "K23"
+      },
+      {
+        "code": "K26",
+        "variant": "K26"
+      },
+      {
+        "code": "K27",
+        "variant": "K27"
+      },
+      {
+        "code": "K28",
+        "variant": "K28"
+      },
+      {
+        "code": "K3",
+        "variant": "K3"
+      },
+      {
+        "code": "K30",
+        "variant": "K30"
+      },
+      {
+        "code": "K31",
+        "variant": "K31"
+      },
+      {
+        "code": "K32",
+        "variant": "K32"
+      },
+      {
+        "code": "K33",
+        "variant": "K33"
+      },
+      {
+        "code": "K34",
+        "variant": "K34"
+      },
+      {
+        "code": "K35",
+        "variant": "K35"
+      },
+      {
+        "code": "K36",
+        "variant": "K36"
+      },
+      {
+        "code": "K37",
+        "variant": "K37"
+      },
+      {
+        "code": "K38",
+        "variant": "K38"
+      },
+      {
+        "code": "K39",
+        "variant": "K39"
+      },
+      {
+        "code": "K40",
+        "variant": "K40"
+      },
+      {
+        "code": "K41",
+        "variant": "K41"
+      },
+      {
+        "code": "K42",
+        "variant": "K42"
+      },
+      {
+        "code": "K43",
+        "variant": "K43"
+      },
+      {
+        "code": "K45",
+        "variant": "K45"
+      },
+      {
+        "code": "K46",
+        "variant": "K46"
+      },
+      {
+        "code": "K47",
+        "variant": "K47"
+      },
+      {
+        "code": "K48",
+        "variant": "K48"
+      },
+      {
+        "code": "K49",
+        "variant": "K49"
+      },
+      {
+        "code": "K50",
+        "variant": "K50"
+      },
+      {
+        "code": "K51",
+        "variant": "K51"
+      },
+      {
+        "code": "K52",
+        "variant": "K52"
+      },
+      {
+        "code": "K53",
+        "variant": "K53"
+      },
+      {
+        "code": "K54",
+        "variant": "K54"
+      },
+      {
+        "code": "K55",
+        "variant": "K55"
+      },
+      {
+        "code": "K58",
+        "variant": "K58"
+      },
+      {
+        "code": "K59",
+        "variant": "K59"
+      },
+      {
+        "code": "K6",
+        "variant": "K6"
+      },
+      {
+        "code": "K60",
+        "variant": "K60"
+      },
+      {
+        "code": "K61",
+        "variant": "K61"
+      },
+      {
+        "code": "K62",
+        "variant": "K62"
+      },
+      {
+        "code": "K63",
+        "variant": "K63"
+      },
+      {
+        "code": "K64",
+        "variant": "K64"
+      },
+      {
+        "code": "K65",
+        "variant": "K65"
+      },
+      {
+        "code": "K66",
+        "variant": "K66"
+      },
+      {
+        "code": "K67",
+        "variant": "K67"
+      },
+      {
+        "code": "K68",
+        "variant": "K68"
+      },
+      {
+        "code": "K69",
+        "variant": "K69"
+      },
+      {
+        "code": "K70",
+        "variant": "K70"
+      },
+      {
+        "code": "K71",
+        "variant": "K71"
+      },
+      {
+        "code": "K73",
+        "variant": "K73"
+      },
+      {
+        "code": "K74",
+        "variant": "K74"
+      },
+      {
+        "code": "K75",
+        "variant": "K75"
+      },
+      {
+        "code": "K76",
+        "variant": "K76"
+      },
+      {
+        "code": "K77",
+        "variant": "K77"
+      },
+      {
+        "code": "K78",
+        "variant": "K78"
+      },
+      {
+        "code": "K79",
+        "variant": "K79"
+      },
+      {
+        "code": "K80",
+        "variant": "K80"
+      },
+      {
+        "code": "K81",
+        "variant": "K81"
+      },
+      {
+        "code": "K82",
+        "variant": "K82"
+      },
+      {
+        "code": "K83",
+        "variant": "K83"
+      },
+      {
+        "code": "K84",
+        "variant": "K84"
+      },
+      {
+        "code": "K85",
+        "variant": "K85"
+      },
+      {
+        "code": "K86",
+        "variant": "K86"
+      },
+      {
+        "code": "K87",
+        "variant": "K87"
+      },
+      {
+        "code": "K88",
+        "variant": "K88"
+      },
+      {
+        "code": "K89",
+        "variant": "K89"
+      },
+      {
+        "code": "K90",
+        "variant": "K90"
+      },
+      {
+        "code": "K91",
+        "variant": "K91"
+      },
+      {
+        "code": "K92",
+        "variant": "K92"
+      },
+      {
+        "code": "K93",
+        "variant": "K93"
+      },
+      {
+        "code": "K94",
+        "variant": "K94"
+      },
+      {
+        "code": "K95",
+        "variant": "K95"
+      },
+      {
+        "code": "K96",
+        "variant": "K96"
+      },
+      {
+        "code": "K97",
+        "variant": "K97"
+      },
+      {
+        "code": "K98",
+        "variant": "K98"
+      },
+      {
+        "code": "K99",
+        "variant": "K99"
+      },
+      {
+        "code": "KA",
+        "variant": "Ka"
+      },
+      {
+        "code": "KAT",
+        "variant": "Kat"
+      },
+      {
+        "code": "KB",
+        "variant": "Kb"
+      },
+      {
+        "code": "KBA",
+        "variant": "Kba"
+      },
+      {
+        "code": "KCC",
+        "variant": "Kcc"
+      },
+      {
+        "code": "KDW",
+        "variant": "Kdw"
+      },
+      {
+        "code": "KEL",
+        "variant": "Kel"
+      },
+      {
+        "code": "KGM",
+        "variant": "Kgm"
+      },
+      {
+        "code": "KGS",
+        "variant": "Kgs"
+      },
+      {
+        "code": "KHY",
+        "variant": "Khy"
+      },
+      {
+        "code": "KHZ",
+        "variant": "Khz"
+      },
+      {
+        "code": "KI",
+        "variant": "Ki"
+      },
+      {
+        "code": "KIC",
+        "variant": "Kic"
+      },
+      {
+        "code": "KIP",
+        "variant": "Kip"
+      },
+      {
+        "code": "KJ",
+        "variant": "Kj"
+      },
+      {
+        "code": "KJO",
+        "variant": "Kjo"
+      },
+      {
+        "code": "KL",
+        "variant": "Kl"
+      },
+      {
+        "code": "KLK",
+        "variant": "Klk"
+      },
+      {
+        "code": "KLX",
+        "variant": "Klx"
+      },
+      {
+        "code": "KMA",
+        "variant": "Kma"
+      },
+      {
+        "code": "KMH",
+        "variant": "Kmh"
+      },
+      {
+        "code": "KMK",
+        "variant": "Kmk"
+      },
+      {
+        "code": "KMQ",
+        "variant": "Kmq"
+      },
+      {
+        "code": "KMT",
+        "variant": "Kmt"
+      },
+      {
+        "code": "KNI",
+        "variant": "Kni"
+      },
+      {
+        "code": "KNM",
+        "variant": "Knm"
+      },
+      {
+        "code": "KNS",
+        "variant": "Kns"
+      },
+      {
+        "code": "KNT",
+        "variant": "Knt"
+      },
+      {
+        "code": "KO",
+        "variant": "Ko"
+      },
+      {
+        "code": "KPA",
+        "variant": "Kpa"
+      },
+      {
+        "code": "KPH",
+        "variant": "Kph"
+      },
+      {
+        "code": "KPO",
+        "variant": "Kpo"
+      },
+      {
+        "code": "KPP",
+        "variant": "Kpp"
+      },
+      {
+        "code": "KR",
+        "variant": "Kr"
+      },
+      {
+        "code": "KSD",
+        "variant": "Ksd"
+      },
+      {
+        "code": "KSH",
+        "variant": "Ksh"
+      },
+      {
+        "code": "KT",
+        "variant": "Kt"
+      },
+      {
+        "code": "KTN",
+        "variant": "Ktn"
+      },
+      {
+        "code": "KUR",
+        "variant": "Kur"
+      },
+      {
+        "code": "KVA",
+        "variant": "Kva"
+      },
+      {
+        "code": "KVR",
+        "variant": "Kvr"
+      },
+      {
+        "code": "KVT",
+        "variant": "Kvt"
+      },
+      {
+        "code": "KW",
+        "variant": "Kw"
+      },
+      {
+        "code": "KWH",
+        "variant": "Kwh"
+      },
+      {
+        "code": "KWN",
+        "variant": "Kwn"
+      },
+      {
+        "code": "KWO",
+        "variant": "Kwo"
+      },
+      {
+        "code": "KWS",
+        "variant": "Kws"
+      },
+      {
+        "code": "KWT",
+        "variant": "Kwt"
+      },
+      {
+        "code": "KWY",
+        "variant": "Kwy"
+      },
+      {
+        "code": "KX",
+        "variant": "Kx"
+      },
+      {
+        "code": "L10",
+        "variant": "L10"
+      },
+      {
+        "code": "L11",
+        "variant": "L11"
+      },
+      {
+        "code": "L12",
+        "variant": "L12"
+      },
+      {
+        "code": "L13",
+        "variant": "L13"
+      },
+      {
+        "code": "L14",
+        "variant": "L14"
+      },
+      {
+        "code": "L15",
+        "variant": "L15"
+      },
+      {
+        "code": "L16",
+        "variant": "L16"
+      },
+      {
+        "code": "L17",
+        "variant": "L17"
+      },
+      {
+        "code": "L18",
+        "variant": "L18"
+      },
+      {
+        "code": "L19",
+        "variant": "L19"
+      },
+      {
+        "code": "L2",
+        "variant": "L2"
+      },
+      {
+        "code": "L20",
+        "variant": "L20"
+      },
+      {
+        "code": "L21",
+        "variant": "L21"
+      },
+      {
+        "code": "L23",
+        "variant": "L23"
+      },
+      {
+        "code": "L24",
+        "variant": "L24"
+      },
+      {
+        "code": "L25",
+        "variant": "L25"
+      },
+      {
+        "code": "L26",
+        "variant": "L26"
+      },
+      {
+        "code": "L27",
+        "variant": "L27"
+      },
+      {
+        "code": "L28",
+        "variant": "L28"
+      },
+      {
+        "code": "L29",
+        "variant": "L29"
+      },
+      {
+        "code": "L30",
+        "variant": "L30"
+      },
+      {
+        "code": "L31",
+        "variant": "L31"
+      },
+      {
+        "code": "L32",
+        "variant": "L32"
+      },
+      {
+        "code": "L33",
+        "variant": "L33"
+      },
+      {
+        "code": "L34",
+        "variant": "L34"
+      },
+      {
+        "code": "L35",
+        "variant": "L35"
+      },
+      {
+        "code": "L36",
+        "variant": "L36"
+      },
+      {
+        "code": "L37",
+        "variant": "L37"
+      },
+      {
+        "code": "L38",
+        "variant": "L38"
+      },
+      {
+        "code": "L39",
+        "variant": "L39"
+      },
+      {
+        "code": "L40",
+        "variant": "L40"
+      },
+      {
+        "code": "L41",
+        "variant": "L41"
+      },
+      {
+        "code": "L42",
+        "variant": "L42"
+      },
+      {
+        "code": "L43",
+        "variant": "L43"
+      },
+      {
+        "code": "L44",
+        "variant": "L44"
+      },
+      {
+        "code": "L45",
+        "variant": "L45"
+      },
+      {
+        "code": "L46",
+        "variant": "L46"
+      },
+      {
+        "code": "L47",
+        "variant": "L47"
+      },
+      {
+        "code": "L48",
+        "variant": "L48"
+      },
+      {
+        "code": "L49",
+        "variant": "L49"
+      },
+      {
+        "code": "L50",
+        "variant": "L50"
+      },
+      {
+        "code": "L51",
+        "variant": "L51"
+      },
+      {
+        "code": "L52",
+        "variant": "L52"
+      },
+      {
+        "code": "L53",
+        "variant": "L53"
+      },
+      {
+        "code": "L54",
+        "variant": "L54"
+      },
+      {
+        "code": "L55",
+        "variant": "L55"
+      },
+      {
+        "code": "L56",
+        "variant": "L56"
+      },
+      {
+        "code": "L57",
+        "variant": "L57"
+      },
+      {
+        "code": "L58",
+        "variant": "L58"
+      },
+      {
+        "code": "L59",
+        "variant": "L59"
+      },
+      {
+        "code": "L60",
+        "variant": "L60"
+      },
+      {
+        "code": "L63",
+        "variant": "L63"
+      },
+      {
+        "code": "L64",
+        "variant": "L64"
+      },
+      {
+        "code": "L65",
+        "variant": "L65"
+      },
+      {
+        "code": "L66",
+        "variant": "L66"
+      },
+      {
+        "code": "L67",
+        "variant": "L67"
+      },
+      {
+        "code": "L68",
+        "variant": "L68"
+      },
+      {
+        "code": "L69",
+        "variant": "L69"
+      },
+      {
+        "code": "L70",
+        "variant": "L70"
+      },
+      {
+        "code": "L71",
+        "variant": "L71"
+      },
+      {
+        "code": "L72",
+        "variant": "L72"
+      },
+      {
+        "code": "L73",
+        "variant": "L73"
+      },
+      {
+        "code": "L74",
+        "variant": "L74"
+      },
+      {
+        "code": "L75",
+        "variant": "L75"
+      },
+      {
+        "code": "L76",
+        "variant": "L76"
+      },
+      {
+        "code": "L77",
+        "variant": "L77"
+      },
+      {
+        "code": "L78",
+        "variant": "L78"
+      },
+      {
+        "code": "L79",
+        "variant": "L79"
+      },
+      {
+        "code": "L80",
+        "variant": "L80"
+      },
+      {
+        "code": "L81",
+        "variant": "L81"
+      },
+      {
+        "code": "L82",
+        "variant": "L82"
+      },
+      {
+        "code": "L83",
+        "variant": "L83"
+      },
+      {
+        "code": "L84",
+        "variant": "L84"
+      },
+      {
+        "code": "L85",
+        "variant": "L85"
+      },
+      {
+        "code": "L86",
+        "variant": "L86"
+      },
+      {
+        "code": "L87",
+        "variant": "L87"
+      },
+      {
+        "code": "L88",
+        "variant": "L88"
+      },
+      {
+        "code": "L89",
+        "variant": "L89"
+      },
+      {
+        "code": "L90",
+        "variant": "L90"
+      },
+      {
+        "code": "L91",
+        "variant": "L91"
+      },
+      {
+        "code": "L92",
+        "variant": "L92"
+      },
+      {
+        "code": "L93",
+        "variant": "L93"
+      },
+      {
+        "code": "L94",
+        "variant": "L94"
+      },
+      {
+        "code": "L95",
+        "variant": "L95"
+      },
+      {
+        "code": "L96",
+        "variant": "L96"
+      },
+      {
+        "code": "L98",
+        "variant": "L98"
+      },
+      {
+        "code": "L99",
+        "variant": "L99"
+      },
+      {
+        "code": "LA",
+        "variant": "La"
+      },
+      {
+        "code": "LAC",
+        "variant": "Lac"
+      },
+      {
+        "code": "LBR",
+        "variant": "Lbr"
+      },
+      {
+        "code": "LBT",
+        "variant": "Lbt"
+      },
+      {
+        "code": "LD",
+        "variant": "Ld"
+      },
+      {
+        "code": "LEF",
+        "variant": "Lef"
+      },
+      {
+        "code": "LF",
+        "variant": "Lf"
+      },
+      {
+        "code": "LH",
+        "variant": "Lh"
+      },
+      {
+        "code": "LK",
+        "variant": "Lk"
+      },
+      {
+        "code": "LM",
+        "variant": "Lm"
+      },
+      {
+        "code": "LN",
+        "variant": "Ln"
+      },
+      {
+        "code": "LO",
+        "variant": "Lo"
+      },
+      {
+        "code": "LP",
+        "variant": "Lp"
+      },
+      {
+        "code": "LPA",
+        "variant": "Lpa"
+      },
+      {
+        "code": "LR",
+        "variant": "Lr"
+      },
+      {
+        "code": "LS",
+        "variant": "Ls"
+      },
+      {
+        "code": "LTN",
+        "variant": "Ltn"
+      },
+      {
+        "code": "LTR",
+        "variant": "Ltr"
+      },
+      {
+        "code": "LUB",
+        "variant": "Lub"
+      },
+      {
+        "code": "LUM",
+        "variant": "Lum"
+      },
+      {
+        "code": "LUX",
+        "variant": "Lux"
+      },
+      {
+        "code": "LY",
+        "variant": "Ly"
+      },
+      {
+        "code": "M1",
+        "variant": "M1"
+      },
+      {
+        "code": "M10",
+        "variant": "M10"
+      },
+      {
+        "code": "M11",
+        "variant": "M11"
+      },
+      {
+        "code": "M12",
+        "variant": "M12"
+      },
+      {
+        "code": "M13",
+        "variant": "M13"
+      },
+      {
+        "code": "M14",
+        "variant": "M14"
+      },
+      {
+        "code": "M15",
+        "variant": "M15"
+      },
+      {
+        "code": "M16",
+        "variant": "M16"
+      },
+      {
+        "code": "M17",
+        "variant": "M17"
+      },
+      {
+        "code": "M18",
+        "variant": "M18"
+      },
+      {
+        "code": "M19",
+        "variant": "M19"
+      },
+      {
+        "code": "M20",
+        "variant": "M20"
+      },
+      {
+        "code": "M21",
+        "variant": "M21"
+      },
+      {
+        "code": "M22",
+        "variant": "M22"
+      },
+      {
+        "code": "M23",
+        "variant": "M23"
+      },
+      {
+        "code": "M24",
+        "variant": "M24"
+      },
+      {
+        "code": "M25",
+        "variant": "M25"
+      },
+      {
+        "code": "M26",
+        "variant": "M26"
+      },
+      {
+        "code": "M27",
+        "variant": "M27"
+      },
+      {
+        "code": "M29",
+        "variant": "M29"
+      },
+      {
+        "code": "M30",
+        "variant": "M30"
+      },
+      {
+        "code": "M31",
+        "variant": "M31"
+      },
+      {
+        "code": "M32",
+        "variant": "M32"
+      },
+      {
+        "code": "M33",
+        "variant": "M33"
+      },
+      {
+        "code": "M34",
+        "variant": "M34"
+      },
+      {
+        "code": "M35",
+        "variant": "M35"
+      },
+      {
+        "code": "M36",
+        "variant": "M36"
+      },
+      {
+        "code": "M37",
+        "variant": "M37"
+      },
+      {
+        "code": "M38",
+        "variant": "M38"
+      },
+      {
+        "code": "M39",
+        "variant": "M39"
+      },
+      {
+        "code": "M4",
+        "variant": "M4"
+      },
+      {
+        "code": "M40",
+        "variant": "M40"
+      },
+      {
+        "code": "M41",
+        "variant": "M41"
+      },
+      {
+        "code": "M42",
+        "variant": "M42"
+      },
+      {
+        "code": "M43",
+        "variant": "M43"
+      },
+      {
+        "code": "M44",
+        "variant": "M44"
+      },
+      {
+        "code": "M45",
+        "variant": "M45"
+      },
+      {
+        "code": "M46",
+        "variant": "M46"
+      },
+      {
+        "code": "M47",
+        "variant": "M47"
+      },
+      {
+        "code": "M48",
+        "variant": "M48"
+      },
+      {
+        "code": "M49",
+        "variant": "M49"
+      },
+      {
+        "code": "M5",
+        "variant": "M5"
+      },
+      {
+        "code": "M50",
+        "variant": "M50"
+      },
+      {
+        "code": "M51",
+        "variant": "M51"
+      },
+      {
+        "code": "M52",
+        "variant": "M52"
+      },
+      {
+        "code": "M53",
+        "variant": "M53"
+      },
+      {
+        "code": "M55",
+        "variant": "M55"
+      },
+      {
+        "code": "M56",
+        "variant": "M56"
+      },
+      {
+        "code": "M57",
+        "variant": "M57"
+      },
+      {
+        "code": "M58",
+        "variant": "M58"
+      },
+      {
+        "code": "M59",
+        "variant": "M59"
+      },
+      {
+        "code": "M60",
+        "variant": "M60"
+      },
+      {
+        "code": "M61",
+        "variant": "M61"
+      },
+      {
+        "code": "M62",
+        "variant": "M62"
+      },
+      {
+        "code": "M63",
+        "variant": "M63"
+      },
+      {
+        "code": "M64",
+        "variant": "M64"
+      },
+      {
+        "code": "M65",
+        "variant": "M65"
+      },
+      {
+        "code": "M66",
+        "variant": "M66"
+      },
+      {
+        "code": "M67",
+        "variant": "M67"
+      },
+      {
+        "code": "M68",
+        "variant": "M68"
+      },
+      {
+        "code": "M69",
+        "variant": "M69"
+      },
+      {
+        "code": "M7",
+        "variant": "M7"
+      },
+      {
+        "code": "M70",
+        "variant": "M70"
+      },
+      {
+        "code": "M71",
+        "variant": "M71"
+      },
+      {
+        "code": "M72",
+        "variant": "M72"
+      },
+      {
+        "code": "M73",
+        "variant": "M73"
+      },
+      {
+        "code": "M74",
+        "variant": "M74"
+      },
+      {
+        "code": "M75",
+        "variant": "M75"
+      },
+      {
+        "code": "M76",
+        "variant": "M76"
+      },
+      {
+        "code": "M77",
+        "variant": "M77"
+      },
+      {
+        "code": "M78",
+        "variant": "M78"
+      },
+      {
+        "code": "M79",
+        "variant": "M79"
+      },
+      {
+        "code": "M80",
+        "variant": "M80"
+      },
+      {
+        "code": "M81",
+        "variant": "M81"
+      },
+      {
+        "code": "M82",
+        "variant": "M82"
+      },
+      {
+        "code": "M83",
+        "variant": "M83"
+      },
+      {
+        "code": "M84",
+        "variant": "M84"
+      },
+      {
+        "code": "M85",
+        "variant": "M85"
+      },
+      {
+        "code": "M86",
+        "variant": "M86"
+      },
+      {
+        "code": "M87",
+        "variant": "M87"
+      },
+      {
+        "code": "M88",
+        "variant": "M88"
+      },
+      {
+        "code": "M89",
+        "variant": "M89"
+      },
+      {
+        "code": "M9",
+        "variant": "M9"
+      },
+      {
+        "code": "M90",
+        "variant": "M90"
+      },
+      {
+        "code": "M91",
+        "variant": "M91"
+      },
+      {
+        "code": "M92",
+        "variant": "M92"
+      },
+      {
+        "code": "M93",
+        "variant": "M93"
+      },
+      {
+        "code": "M94",
+        "variant": "M94"
+      },
+      {
+        "code": "M95",
+        "variant": "M95"
+      },
+      {
+        "code": "M96",
+        "variant": "M96"
+      },
+      {
+        "code": "M97",
+        "variant": "M97"
+      },
+      {
+        "code": "M98",
+        "variant": "M98"
+      },
+      {
+        "code": "M99",
+        "variant": "M99"
+      },
+      {
+        "code": "MAH",
+        "variant": "Mah"
+      },
+      {
+        "code": "MAL",
+        "variant": "Mal"
+      },
+      {
+        "code": "MAM",
+        "variant": "Mam"
+      },
+      {
+        "code": "MAR",
+        "variant": "Mar"
+      },
+      {
+        "code": "MAW",
+        "variant": "Maw"
+      },
+      {
+        "code": "MBE",
+        "variant": "Mbe"
+      },
+      {
+        "code": "MBF",
+        "variant": "Mbf"
+      },
+      {
+        "code": "MBR",
+        "variant": "Mbr"
+      },
+      {
+        "code": "MC",
+        "variant": "Mc"
+      },
+      {
+        "code": "MCU",
+        "variant": "Mcu"
+      },
+      {
+        "code": "MD",
+        "variant": "Md"
+      },
+      {
+        "code": "MGM",
+        "variant": "Mgm"
+      },
+      {
+        "code": "MHZ",
+        "variant": "Mhz"
+      },
+      {
+        "code": "MIK",
+        "variant": "Mik"
+      },
+      {
+        "code": "MIL",
+        "variant": "Mil"
+      },
+      {
+        "code": "MIN",
+        "variant": "Min"
+      },
+      {
+        "code": "MIO",
+        "variant": "Mio"
+      },
+      {
+        "code": "MIU",
+        "variant": "Miu"
+      },
+      {
+        "code": "MKD",
+        "variant": "Mkd"
+      },
+      {
+        "code": "MKM",
+        "variant": "Mkm"
+      },
+      {
+        "code": "MKW",
+        "variant": "Mkw"
+      },
+      {
+        "code": "MLD",
+        "variant": "Mld"
+      },
+      {
+        "code": "MLT",
+        "variant": "Mlt"
+      },
+      {
+        "code": "MMK",
+        "variant": "Mmk"
+      },
+      {
+        "code": "MMQ",
+        "variant": "Mmq"
+      },
+      {
+        "code": "MMT",
+        "variant": "Mmt"
+      },
+      {
+        "code": "MND",
+        "variant": "Mnd"
+      },
+      {
+        "code": "MNJ",
+        "variant": "Mnj"
+      },
+      {
+        "code": "MON",
+        "variant": "Mon"
+      },
+      {
+        "code": "MPA",
+        "variant": "Mpa"
+      },
+      {
+        "code": "MQD",
+        "variant": "Mqd"
+      },
+      {
+        "code": "MQH",
+        "variant": "Mqh"
+      },
+      {
+        "code": "MQM",
+        "variant": "Mqm"
+      },
+      {
+        "code": "MQS",
+        "variant": "Mqs"
+      },
+      {
+        "code": "MQW",
+        "variant": "Mqw"
+      },
+      {
+        "code": "MRD",
+        "variant": "Mrd"
+      },
+      {
+        "code": "MRM",
+        "variant": "Mrm"
+      },
+      {
+        "code": "MRW",
+        "variant": "Mrw"
+      },
+      {
+        "code": "MSK",
+        "variant": "Msk"
+      },
+      {
+        "code": "MTK",
+        "variant": "Mtk"
+      },
+      {
+        "code": "MTQ",
+        "variant": "Mtq"
+      },
+      {
+        "code": "MTR",
+        "variant": "Mtr"
+      },
+      {
+        "code": "MTS",
+        "variant": "Mts"
+      },
+      {
+        "code": "MTZ",
+        "variant": "Mtz"
+      },
+      {
+        "code": "MVA",
+        "variant": "Mva"
+      },
+      {
+        "code": "MWH",
+        "variant": "Mwh"
+      },
+      {
+        "code": "N1",
+        "variant": "N1"
+      },
+      {
+        "code": "N10",
+        "variant": "N10"
+      },
+      {
+        "code": "N11",
+        "variant": "N11"
+      },
+      {
+        "code": "N12",
+        "variant": "N12"
+      },
+      {
+        "code": "N13",
+        "variant": "N13"
+      },
+      {
+        "code": "N14",
+        "variant": "N14"
+      },
+      {
+        "code": "N15",
+        "variant": "N15"
+      },
+      {
+        "code": "N16",
+        "variant": "N16"
+      },
+      {
+        "code": "N17",
+        "variant": "N17"
+      },
+      {
+        "code": "N18",
+        "variant": "N18"
+      },
+      {
+        "code": "N19",
+        "variant": "N19"
+      },
+      {
+        "code": "N20",
+        "variant": "N20"
+      },
+      {
+        "code": "N21",
+        "variant": "N21"
+      },
+      {
+        "code": "N22",
+        "variant": "N22"
+      },
+      {
+        "code": "N23",
+        "variant": "N23"
+      },
+      {
+        "code": "N24",
+        "variant": "N24"
+      },
+      {
+        "code": "N25",
+        "variant": "N25"
+      },
+      {
+        "code": "N26",
+        "variant": "N26"
+      },
+      {
+        "code": "N27",
+        "variant": "N27"
+      },
+      {
+        "code": "N28",
+        "variant": "N28"
+      },
+      {
+        "code": "N29",
+        "variant": "N29"
+      },
+      {
+        "code": "N3",
+        "variant": "N3"
+      },
+      {
+        "code": "N30",
+        "variant": "N30"
+      },
+      {
+        "code": "N31",
+        "variant": "N31"
+      },
+      {
+        "code": "N32",
+        "variant": "N32"
+      },
+      {
+        "code": "N33",
+        "variant": "N33"
+      },
+      {
+        "code": "N34",
+        "variant": "N34"
+      },
+      {
+        "code": "N35",
+        "variant": "N35"
+      },
+      {
+        "code": "N36",
+        "variant": "N36"
+      },
+      {
+        "code": "N37",
+        "variant": "N37"
+      },
+      {
+        "code": "N38",
+        "variant": "N38"
+      },
+      {
+        "code": "N39",
+        "variant": "N39"
+      },
+      {
+        "code": "N40",
+        "variant": "N40"
+      },
+      {
+        "code": "N41",
+        "variant": "N41"
+      },
+      {
+        "code": "N42",
+        "variant": "N42"
+      },
+      {
+        "code": "N43",
+        "variant": "N43"
+      },
+      {
+        "code": "N44",
+        "variant": "N44"
+      },
+      {
+        "code": "N45",
+        "variant": "N45"
+      },
+      {
+        "code": "N46",
+        "variant": "N46"
+      },
+      {
+        "code": "N47",
+        "variant": "N47"
+      },
+      {
+        "code": "N48",
+        "variant": "N48"
+      },
+      {
+        "code": "N49",
+        "variant": "N49"
+      },
+      {
+        "code": "N50",
+        "variant": "N50"
+      },
+      {
+        "code": "N51",
+        "variant": "N51"
+      },
+      {
+        "code": "N52",
+        "variant": "N52"
+      },
+      {
+        "code": "N53",
+        "variant": "N53"
+      },
+      {
+        "code": "N54",
+        "variant": "N54"
+      },
+      {
+        "code": "N55",
+        "variant": "N55"
+      },
+      {
+        "code": "N56",
+        "variant": "N56"
+      },
+      {
+        "code": "N57",
+        "variant": "N57"
+      },
+      {
+        "code": "N58",
+        "variant": "N58"
+      },
+      {
+        "code": "N59",
+        "variant": "N59"
+      },
+      {
+        "code": "N60",
+        "variant": "N60"
+      },
+      {
+        "code": "N61",
+        "variant": "N61"
+      },
+      {
+        "code": "N62",
+        "variant": "N62"
+      },
+      {
+        "code": "N63",
+        "variant": "N63"
+      },
+      {
+        "code": "N64",
+        "variant": "N64"
+      },
+      {
+        "code": "N65",
+        "variant": "N65"
+      },
+      {
+        "code": "N66",
+        "variant": "N66"
+      },
+      {
+        "code": "N67",
+        "variant": "N67"
+      },
+      {
+        "code": "N68",
+        "variant": "N68"
+      },
+      {
+        "code": "N69",
+        "variant": "N69"
+      },
+      {
+        "code": "N70",
+        "variant": "N70"
+      },
+      {
+        "code": "N71",
+        "variant": "N71"
+      },
+      {
+        "code": "N72",
+        "variant": "N72"
+      },
+      {
+        "code": "N73",
+        "variant": "N73"
+      },
+      {
+        "code": "N74",
+        "variant": "N74"
+      },
+      {
+        "code": "N75",
+        "variant": "N75"
+      },
+      {
+        "code": "N76",
+        "variant": "N76"
+      },
+      {
+        "code": "N77",
+        "variant": "N77"
+      },
+      {
+        "code": "N78",
+        "variant": "N78"
+      },
+      {
+        "code": "N79",
+        "variant": "N79"
+      },
+      {
+        "code": "N80",
+        "variant": "N80"
+      },
+      {
+        "code": "N81",
+        "variant": "N81"
+      },
+      {
+        "code": "N82",
+        "variant": "N82"
+      },
+      {
+        "code": "N83",
+        "variant": "N83"
+      },
+      {
+        "code": "N84",
+        "variant": "N84"
+      },
+      {
+        "code": "N85",
+        "variant": "N85"
+      },
+      {
+        "code": "N86",
+        "variant": "N86"
+      },
+      {
+        "code": "N87",
+        "variant": "N87"
+      },
+      {
+        "code": "N88",
+        "variant": "N88"
+      },
+      {
+        "code": "N89",
+        "variant": "N89"
+      },
+      {
+        "code": "N90",
+        "variant": "N90"
+      },
+      {
+        "code": "N91",
+        "variant": "N91"
+      },
+      {
+        "code": "N92",
+        "variant": "N92"
+      },
+      {
+        "code": "N93",
+        "variant": "N93"
+      },
+      {
+        "code": "N94",
+        "variant": "N94"
+      },
+      {
+        "code": "N95",
+        "variant": "N95"
+      },
+      {
+        "code": "N96",
+        "variant": "N96"
+      },
+      {
+        "code": "N97",
+        "variant": "N97"
+      },
+      {
+        "code": "N98",
+        "variant": "N98"
+      },
+      {
+        "code": "N99",
+        "variant": "N99"
+      },
+      {
+        "code": "NA",
+        "variant": "Na"
+      },
+      {
+        "code": "NAR",
+        "variant": "Nar"
+      },
+      {
+        "code": "NCL",
+        "variant": "Ncl"
+      },
+      {
+        "code": "NEW",
+        "variant": "New"
+      },
+      {
+        "code": "NF",
+        "variant": "Nf"
+      },
+      {
+        "code": "NIL",
+        "variant": "Nil"
+      },
+      {
+        "code": "NIU",
+        "variant": "Niu"
+      },
+      {
+        "code": "NL",
+        "variant": "Nl"
+      },
+      {
+        "code": "NM3",
+        "variant": "Nm3"
+      },
+      {
+        "code": "NMI",
+        "variant": "Nmi"
+      },
+      {
+        "code": "NMP",
+        "variant": "Nmp"
+      },
+      {
+        "code": "NPT",
+        "variant": "Npt"
+      },
+      {
+        "code": "NT",
+        "variant": "Nt"
+      },
+      {
+        "code": "NTU",
+        "variant": "Ntu"
+      },
+      {
+        "code": "NU",
+        "variant": "Nu"
+      },
+      {
+        "code": "NX",
+        "variant": "Nx"
+      },
+      {
+        "code": "OA",
+        "variant": "Oa"
+      },
+      {
+        "code": "ODE",
+        "variant": "Ode"
+      },
+      {
+        "code": "ODG",
+        "variant": "Odg"
+      },
+      {
+        "code": "ODK",
+        "variant": "Odk"
+      },
+      {
+        "code": "ODM",
+        "variant": "Odm"
+      },
+      {
+        "code": "OHM",
+        "variant": "Ohm"
+      },
+      {
+        "code": "ON",
+        "variant": "On"
+      },
+      {
+        "code": "ONZ",
+        "variant": "Onz"
+      },
+      {
+        "code": "OPM",
+        "variant": "Opm"
+      },
+      {
+        "code": "OT",
+        "variant": "Ot"
+      },
+      {
+        "code": "OZA",
+        "variant": "Oza"
+      },
+      {
+        "code": "OZI",
+        "variant": "Ozi"
+      },
+      {
+        "code": "P1",
+        "variant": "P1"
+      },
+      {
+        "code": "P10",
+        "variant": "P10"
+      },
+      {
+        "code": "P11",
+        "variant": "P11"
+      },
+      {
+        "code": "P12",
+        "variant": "P12"
+      },
+      {
+        "code": "P13",
+        "variant": "P13"
+      },
+      {
+        "code": "P14",
+        "variant": "P14"
+      },
+      {
+        "code": "P15",
+        "variant": "P15"
+      },
+      {
+        "code": "P16",
+        "variant": "P16"
+      },
+      {
+        "code": "P17",
+        "variant": "P17"
+      },
+      {
+        "code": "P18",
+        "variant": "P18"
+      },
+      {
+        "code": "P19",
+        "variant": "P19"
+      },
+      {
+        "code": "P2",
+        "variant": "P2"
+      },
+      {
+        "code": "P20",
+        "variant": "P20"
+      },
+      {
+        "code": "P21",
+        "variant": "P21"
+      },
+      {
+        "code": "P22",
+        "variant": "P22"
+      },
+      {
+        "code": "P23",
+        "variant": "P23"
+      },
+      {
+        "code": "P24",
+        "variant": "P24"
+      },
+      {
+        "code": "P25",
+        "variant": "P25"
+      },
+      {
+        "code": "P26",
+        "variant": "P26"
+      },
+      {
+        "code": "P27",
+        "variant": "P27"
+      },
+      {
+        "code": "P28",
+        "variant": "P28"
+      },
+      {
+        "code": "P29",
+        "variant": "P29"
+      },
+      {
+        "code": "P30",
+        "variant": "P30"
+      },
+      {
+        "code": "P31",
+        "variant": "P31"
+      },
+      {
+        "code": "P32",
+        "variant": "P32"
+      },
+      {
+        "code": "P33",
+        "variant": "P33"
+      },
+      {
+        "code": "P34",
+        "variant": "P34"
+      },
+      {
+        "code": "P35",
+        "variant": "P35"
+      },
+      {
+        "code": "P36",
+        "variant": "P36"
+      },
+      {
+        "code": "P37",
+        "variant": "P37"
+      },
+      {
+        "code": "P38",
+        "variant": "P38"
+      },
+      {
+        "code": "P39",
+        "variant": "P39"
+      },
+      {
+        "code": "P40",
+        "variant": "P40"
+      },
+      {
+        "code": "P41",
+        "variant": "P41"
+      },
+      {
+        "code": "P42",
+        "variant": "P42"
+      },
+      {
+        "code": "P43",
+        "variant": "P43"
+      },
+      {
+        "code": "P44",
+        "variant": "P44"
+      },
+      {
+        "code": "P45",
+        "variant": "P45"
+      },
+      {
+        "code": "P46",
+        "variant": "P46"
+      },
+      {
+        "code": "P47",
+        "variant": "P47"
+      },
+      {
+        "code": "P48",
+        "variant": "P48"
+      },
+      {
+        "code": "P49",
+        "variant": "P49"
+      },
+      {
+        "code": "P5",
+        "variant": "P5"
+      },
+      {
+        "code": "P50",
+        "variant": "P50"
+      },
+      {
+        "code": "P51",
+        "variant": "P51"
+      },
+      {
+        "code": "P52",
+        "variant": "P52"
+      },
+      {
+        "code": "P53",
+        "variant": "P53"
+      },
+      {
+        "code": "P54",
+        "variant": "P54"
+      },
+      {
+        "code": "P55",
+        "variant": "P55"
+      },
+      {
+        "code": "P56",
+        "variant": "P56"
+      },
+      {
+        "code": "P57",
+        "variant": "P57"
+      },
+      {
+        "code": "P58",
+        "variant": "P58"
+      },
+      {
+        "code": "P59",
+        "variant": "P59"
+      },
+      {
+        "code": "P60",
+        "variant": "P60"
+      },
+      {
+        "code": "P61",
+        "variant": "P61"
+      },
+      {
+        "code": "P62",
+        "variant": "P62"
+      },
+      {
+        "code": "P63",
+        "variant": "P63"
+      },
+      {
+        "code": "P64",
+        "variant": "P64"
+      },
+      {
+        "code": "P65",
+        "variant": "P65"
+      },
+      {
+        "code": "P66",
+        "variant": "P66"
+      },
+      {
+        "code": "P67",
+        "variant": "P67"
+      },
+      {
+        "code": "P68",
+        "variant": "P68"
+      },
+      {
+        "code": "P69",
+        "variant": "P69"
+      },
+      {
+        "code": "P70",
+        "variant": "P70"
+      },
+      {
+        "code": "P71",
+        "variant": "P71"
+      },
+      {
+        "code": "P72",
+        "variant": "P72"
+      },
+      {
+        "code": "P73",
+        "variant": "P73"
+      },
+      {
+        "code": "P74",
+        "variant": "P74"
+      },
+      {
+        "code": "P75",
+        "variant": "P75"
+      },
+      {
+        "code": "P76",
+        "variant": "P76"
+      },
+      {
+        "code": "P77",
+        "variant": "P77"
+      },
+      {
+        "code": "P78",
+        "variant": "P78"
+      },
+      {
+        "code": "P79",
+        "variant": "P79"
+      },
+      {
+        "code": "P80",
+        "variant": "P80"
+      },
+      {
+        "code": "P81",
+        "variant": "P81"
+      },
+      {
+        "code": "P82",
+        "variant": "P82"
+      },
+      {
+        "code": "P83",
+        "variant": "P83"
+      },
+      {
+        "code": "P84",
+        "variant": "P84"
+      },
+      {
+        "code": "P85",
+        "variant": "P85"
+      },
+      {
+        "code": "P86",
+        "variant": "P86"
+      },
+      {
+        "code": "P87",
+        "variant": "P87"
+      },
+      {
+        "code": "P88",
+        "variant": "P88"
+      },
+      {
+        "code": "P89",
+        "variant": "P89"
+      },
+      {
+        "code": "P90",
+        "variant": "P90"
+      },
+      {
+        "code": "P91",
+        "variant": "P91"
+      },
+      {
+        "code": "P92",
+        "variant": "P92"
+      },
+      {
+        "code": "P93",
+        "variant": "P93"
+      },
+      {
+        "code": "P94",
+        "variant": "P94"
+      },
+      {
+        "code": "P95",
+        "variant": "P95"
+      },
+      {
+        "code": "P96",
+        "variant": "P96"
+      },
+      {
+        "code": "P97",
+        "variant": "P97"
+      },
+      {
+        "code": "P98",
+        "variant": "P98"
+      },
+      {
+        "code": "P99",
+        "variant": "P99"
+      },
+      {
+        "code": "PAL",
+        "variant": "Pal"
+      },
+      {
+        "code": "PD",
+        "variant": "Pd"
+      },
+      {
+        "code": "PFL",
+        "variant": "Pfl"
+      },
+      {
+        "code": "PGL",
+        "variant": "Pgl"
+      },
+      {
+        "code": "PI",
+        "variant": "Pi"
+      },
+      {
+        "code": "PLA",
+        "variant": "Pla"
+      },
+      {
+        "code": "PO",
+        "variant": "Po"
+      },
+      {
+        "code": "PQ",
+        "variant": "Pq"
+      },
+      {
+        "code": "PR",
+        "variant": "Pr"
+      },
+      {
+        "code": "PS",
+        "variant": "Ps"
+      },
+      {
+        "code": "PTD",
+        "variant": "Ptd"
+      },
+      {
+        "code": "PTI",
+        "variant": "Pti"
+      },
+      {
+        "code": "PTL",
+        "variant": "Ptl"
+      },
+      {
+        "code": "PTN",
+        "variant": "Ptn"
+      },
+      {
+        "code": "Q10",
+        "variant": "Q10"
+      },
+      {
+        "code": "Q11",
+        "variant": "Q11"
+      },
+      {
+        "code": "Q12",
+        "variant": "Q12"
+      },
+      {
+        "code": "Q13",
+        "variant": "Q13"
+      },
+      {
+        "code": "Q14",
+        "variant": "Q14"
+      },
+      {
+        "code": "Q15",
+        "variant": "Q15"
+      },
+      {
+        "code": "Q16",
+        "variant": "Q16"
+      },
+      {
+        "code": "Q17",
+        "variant": "Q17"
+      },
+      {
+        "code": "Q18",
+        "variant": "Q18"
+      },
+      {
+        "code": "Q19",
+        "variant": "Q19"
+      },
+      {
+        "code": "Q20",
+        "variant": "Q20"
+      },
+      {
+        "code": "Q21",
+        "variant": "Q21"
+      },
+      {
+        "code": "Q22",
+        "variant": "Q22"
+      },
+      {
+        "code": "Q23",
+        "variant": "Q23"
+      },
+      {
+        "code": "Q24",
+        "variant": "Q24"
+      },
+      {
+        "code": "Q25",
+        "variant": "Q25"
+      },
+      {
+        "code": "Q26",
+        "variant": "Q26"
+      },
+      {
+        "code": "Q27",
+        "variant": "Q27"
+      },
+      {
+        "code": "Q28",
+        "variant": "Q28"
+      },
+      {
+        "code": "Q29",
+        "variant": "Q29"
+      },
+      {
+        "code": "Q3",
+        "variant": "Q3"
+      },
+      {
+        "code": "Q30",
+        "variant": "Q30"
+      },
+      {
+        "code": "Q31",
+        "variant": "Q31"
+      },
+      {
+        "code": "Q32",
+        "variant": "Q32"
+      },
+      {
+        "code": "Q33",
+        "variant": "Q33"
+      },
+      {
+        "code": "Q34",
+        "variant": "Q34"
+      },
+      {
+        "code": "Q35",
+        "variant": "Q35"
+      },
+      {
+        "code": "Q36",
+        "variant": "Q36"
+      },
+      {
+        "code": "Q37",
+        "variant": "Q37"
+      },
+      {
+        "code": "Q38",
+        "variant": "Q38"
+      },
+      {
+        "code": "Q39",
+        "variant": "Q39"
+      },
+      {
+        "code": "Q40",
+        "variant": "Q40"
+      },
+      {
+        "code": "Q41",
+        "variant": "Q41"
+      },
+      {
+        "code": "Q42",
+        "variant": "Q42"
+      },
+      {
+        "code": "QA",
+        "variant": "Qa"
+      },
+      {
+        "code": "QAN",
+        "variant": "Qan"
+      },
+      {
+        "code": "QB",
+        "variant": "Qb"
+      },
+      {
+        "code": "QR",
+        "variant": "Qr"
+      },
+      {
+        "code": "QTD",
+        "variant": "Qtd"
+      },
+      {
+        "code": "QTI",
+        "variant": "Qti"
+      },
+      {
+        "code": "QTL",
+        "variant": "Qtl"
+      },
+      {
+        "code": "QTR",
+        "variant": "Qtr"
+      },
+      {
+        "code": "R1",
+        "variant": "R1"
+      },
+      {
+        "code": "R9",
+        "variant": "R9"
+      },
+      {
+        "code": "RH",
+        "variant": "Rh"
+      },
+      {
+        "code": "RM",
+        "variant": "Rm"
+      },
+      {
+        "code": "ROM",
+        "variant": "Rom"
+      },
+      {
+        "code": "RP",
+        "variant": "Rp"
+      },
+      {
+        "code": "RPM",
+        "variant": "Rpm"
+      },
+      {
+        "code": "RPS",
+        "variant": "Rps"
+      },
+      {
+        "code": "RT",
+        "variant": "Rt"
+      },
+      {
+        "code": "S3",
+        "variant": "S3"
+      },
+      {
+        "code": "S4",
+        "variant": "S4"
+      },
+      {
+        "code": "SAN",
+        "variant": "San"
+      },
+      {
+        "code": "SCO",
+        "variant": "Sco"
+      },
+      {
+        "code": "SCR",
+        "variant": "Scr"
+      },
+      {
+        "code": "SEC",
+        "variant": "Sec"
+      },
+      {
+        "code": "SET",
+        "variant": "Set"
+      },
+      {
+        "code": "SG",
+        "variant": "Sg"
+      },
+      {
+        "code": "SIE",
+        "variant": "Sie"
+      },
+      {
+        "code": "SM3",
+        "variant": "Sm3"
+      },
+      {
+        "code": "SMI",
+        "variant": "Smi"
+      },
+      {
+        "code": "SQ",
+        "variant": "Sq"
+      },
+      {
+        "code": "SQR",
+        "variant": "Sqr"
+      },
+      {
+        "code": "SR",
+        "variant": "Sr"
+      },
+      {
+        "code": "STC",
+        "variant": "Stc"
+      },
+      {
+        "code": "STI",
+        "variant": "Sti"
+      },
+      {
+        "code": "STK",
+        "variant": "Stk"
+      },
+      {
+        "code": "STL",
+        "variant": "Stl"
+      },
+      {
+        "code": "STN",
+        "variant": "Stn"
+      },
+      {
+        "code": "STW",
+        "variant": "Stw"
+      },
+      {
+        "code": "SW",
+        "variant": "Sw"
+      },
+      {
+        "code": "SX",
+        "variant": "Sx"
+      },
+      {
+        "code": "SYR",
+        "variant": "Syr"
+      },
+      {
+        "code": "T0",
+        "variant": "T0"
+      },
+      {
+        "code": "T3",
+        "variant": "T3"
+      },
+      {
+        "code": "TAH",
+        "variant": "Tah"
+      },
+      {
+        "code": "TAN",
+        "variant": "Tan"
+      },
+      {
+        "code": "TI",
+        "variant": "Ti"
+      },
+      {
+        "code": "TIC",
+        "variant": "Tic"
+      },
+      {
+        "code": "TIP",
+        "variant": "Tip"
+      },
+      {
+        "code": "TKM",
+        "variant": "Tkm"
+      },
+      {
+        "code": "TMS",
+        "variant": "Tms"
+      },
+      {
+        "code": "TNE",
+        "variant": "Tne"
+      },
+      {
+        "code": "TP",
+        "variant": "Tp"
+      },
+      {
+        "code": "TPI",
+        "variant": "Tpi"
+      },
+      {
+        "code": "TPR",
+        "variant": "Tpr"
+      },
+      {
+        "code": "TQD",
+        "variant": "Tqd"
+      },
+      {
+        "code": "TRL",
+        "variant": "Trl"
+      },
+      {
+        "code": "TST",
+        "variant": "Tst"
+      },
+      {
+        "code": "TTS",
+        "variant": "Tts"
+      },
+      {
+        "code": "U1",
+        "variant": "U1"
+      },
+      {
+        "code": "U2",
+        "variant": "U2"
+      },
+      {
+        "code": "UB",
+        "variant": "Ub"
+      },
+      {
+        "code": "UC",
+        "variant": "Uc"
+      },
+      {
+        "code": "VA",
+        "variant": "Va"
+      },
+      {
+        "code": "VLT",
+        "variant": "Vlt"
+      },
+      {
+        "code": "VP",
+        "variant": "Vp"
+      },
+      {
+        "code": "W2",
+        "variant": "W2"
+      },
+      {
+        "code": "WA",
+        "variant": "Wa"
+      },
+      {
+        "code": "WB",
+        "variant": "Wb"
+      },
+      {
+        "code": "WCD",
+        "variant": "Wcd"
+      },
+      {
+        "code": "WE",
+        "variant": "We"
+      },
+      {
+        "code": "WEB",
+        "variant": "Web"
+      },
+      {
+        "code": "WEE",
+        "variant": "Wee"
+      },
+      {
+        "code": "WG",
+        "variant": "Wg"
+      },
+      {
+        "code": "WHR",
+        "variant": "Whr"
+      },
+      {
+        "code": "WM",
+        "variant": "Wm"
+      },
+      {
+        "code": "WSD",
+        "variant": "Wsd"
+      },
+      {
+        "code": "WTT",
+        "variant": "Wtt"
+      },
+      {
+        "code": "X1",
+        "variant": "X1"
+      },
+      {
+        "code": "X1A",
+        "variant": "X1A"
+      },
+      {
+        "code": "X1B",
+        "variant": "X1B"
+      },
+      {
+        "code": "X1D",
+        "variant": "X1D"
+      },
+      {
+        "code": "X1F",
+        "variant": "X1F"
+      },
+      {
+        "code": "X1G",
+        "variant": "X1G"
+      },
+      {
+        "code": "X1W",
+        "variant": "X1W"
+      },
+      {
+        "code": "X2C",
+        "variant": "X2C"
+      },
+      {
+        "code": "X3A",
+        "variant": "X3A"
+      },
+      {
+        "code": "X3H",
+        "variant": "X3H"
+      },
+      {
+        "code": "X43",
+        "variant": "X43"
+      },
+      {
+        "code": "X44",
+        "variant": "X44"
+      },
+      {
+        "code": "X4A",
+        "variant": "X4A"
+      },
+      {
+        "code": "X4B",
+        "variant": "X4B"
+      },
+      {
+        "code": "X4C",
+        "variant": "X4C"
+      },
+      {
+        "code": "X4D",
+        "variant": "X4D"
+      },
+      {
+        "code": "X4F",
+        "variant": "X4F"
+      },
+      {
+        "code": "X4G",
+        "variant": "X4G"
+      },
+      {
+        "code": "X4H",
+        "variant": "X4H"
+      },
+      {
+        "code": "X5H",
+        "variant": "X5H"
+      },
+      {
+        "code": "X5L",
+        "variant": "X5L"
+      },
+      {
+        "code": "X5M",
+        "variant": "X5M"
+      },
+      {
+        "code": "X6H",
+        "variant": "X6H"
+      },
+      {
+        "code": "X6P",
+        "variant": "X6P"
+      },
+      {
+        "code": "X7A",
+        "variant": "X7A"
+      },
+      {
+        "code": "X7B",
+        "variant": "X7B"
+      },
+      {
+        "code": "X8A",
+        "variant": "X8A"
+      },
+      {
+        "code": "X8B",
+        "variant": "X8B"
+      },
+      {
+        "code": "X8C",
+        "variant": "X8C"
+      },
+      {
+        "code": "XAA",
+        "variant": "Xaa"
+      },
+      {
+        "code": "XAB",
+        "variant": "Xab"
+      },
+      {
+        "code": "XAC",
+        "variant": "Xac"
+      },
+      {
+        "code": "XAD",
+        "variant": "Xad"
+      },
+      {
+        "code": "XAE",
+        "variant": "Xae"
+      },
+      {
+        "code": "XAF",
+        "variant": "Xaf"
+      },
+      {
+        "code": "XAG",
+        "variant": "Xag"
+      },
+      {
+        "code": "XAH",
+        "variant": "Xah"
+      },
+      {
+        "code": "XAI",
+        "variant": "Xai"
+      },
+      {
+        "code": "XAJ",
+        "variant": "Xaj"
+      },
+      {
+        "code": "XAL",
+        "variant": "Xal"
+      },
+      {
+        "code": "XAM",
+        "variant": "Xam"
+      },
+      {
+        "code": "XAP",
+        "variant": "Xap"
+      },
+      {
+        "code": "XAT",
+        "variant": "Xat"
+      },
+      {
+        "code": "XAV",
+        "variant": "Xav"
+      },
+      {
+        "code": "XB4",
+        "variant": "Xb4"
+      },
+      {
+        "code": "XBA",
+        "variant": "Xba"
+      },
+      {
+        "code": "XBB",
+        "variant": "Xbb"
+      },
+      {
+        "code": "XBC",
+        "variant": "Xbc"
+      },
+      {
+        "code": "XBD",
+        "variant": "Xbd"
+      },
+      {
+        "code": "XBE",
+        "variant": "Xbe"
+      },
+      {
+        "code": "XBF",
+        "variant": "Xbf"
+      },
+      {
+        "code": "XBG",
+        "variant": "Xbg"
+      },
+      {
+        "code": "XBH",
+        "variant": "Xbh"
+      },
+      {
+        "code": "XBI",
+        "variant": "Xbi"
+      },
+      {
+        "code": "XBJ",
+        "variant": "Xbj"
+      },
+      {
+        "code": "XBK",
+        "variant": "Xbk"
+      },
+      {
+        "code": "XBL",
+        "variant": "Xbl"
+      },
+      {
+        "code": "XBM",
+        "variant": "Xbm"
+      },
+      {
+        "code": "XBN",
+        "variant": "Xbn"
+      },
+      {
+        "code": "XBO",
+        "variant": "Xbo"
+      },
+      {
+        "code": "XBP",
+        "variant": "Xbp"
+      },
+      {
+        "code": "XBQ",
+        "variant": "Xbq"
+      },
+      {
+        "code": "XBR",
+        "variant": "Xbr"
+      },
+      {
+        "code": "XBS",
+        "variant": "Xbs"
+      },
+      {
+        "code": "XBT",
+        "variant": "Xbt"
+      },
+      {
+        "code": "XBU",
+        "variant": "Xbu"
+      },
+      {
+        "code": "XBV",
+        "variant": "Xbv"
+      },
+      {
+        "code": "XBW",
+        "variant": "Xbw"
+      },
+      {
+        "code": "XBX",
+        "variant": "Xbx"
+      },
+      {
+        "code": "XBY",
+        "variant": "Xby"
+      },
+      {
+        "code": "XBZ",
+        "variant": "Xbz"
+      },
+      {
+        "code": "XCA",
+        "variant": "Xca"
+      },
+      {
+        "code": "XCB",
+        "variant": "Xcb"
+      },
+      {
+        "code": "XCC",
+        "variant": "Xcc"
+      },
+      {
+        "code": "XCD",
+        "variant": "Xcd"
+      },
+      {
+        "code": "XCE",
+        "variant": "Xce"
+      },
+      {
+        "code": "XCF",
+        "variant": "Xcf"
+      },
+      {
+        "code": "XCG",
+        "variant": "Xcg"
+      },
+      {
+        "code": "XCH",
+        "variant": "Xch"
+      },
+      {
+        "code": "XCI",
+        "variant": "Xci"
+      },
+      {
+        "code": "XCJ",
+        "variant": "Xcj"
+      },
+      {
+        "code": "XCK",
+        "variant": "Xck"
+      },
+      {
+        "code": "XCL",
+        "variant": "Xcl"
+      },
+      {
+        "code": "XCM",
+        "variant": "Xcm"
+      },
+      {
+        "code": "XCN",
+        "variant": "Xcn"
+      },
+      {
+        "code": "XCO",
+        "variant": "Xco"
+      },
+      {
+        "code": "XCP",
+        "variant": "Xcp"
+      },
+      {
+        "code": "XCQ",
+        "variant": "Xcq"
+      },
+      {
+        "code": "XCR",
+        "variant": "Xcr"
+      },
+      {
+        "code": "XCS",
+        "variant": "Xcs"
+      },
+      {
+        "code": "XCT",
+        "variant": "Xct"
+      },
+      {
+        "code": "XCU",
+        "variant": "Xcu"
+      },
+      {
+        "code": "XCV",
+        "variant": "Xcv"
+      },
+      {
+        "code": "XCW",
+        "variant": "Xcw"
+      },
+      {
+        "code": "XCX",
+        "variant": "Xcx"
+      },
+      {
+        "code": "XCY",
+        "variant": "Xcy"
+      },
+      {
+        "code": "XCZ",
+        "variant": "Xcz"
+      },
+      {
+        "code": "XDA",
+        "variant": "Xda"
+      },
+      {
+        "code": "XDB",
+        "variant": "Xdb"
+      },
+      {
+        "code": "XDC",
+        "variant": "Xdc"
+      },
+      {
+        "code": "XDG",
+        "variant": "Xdg"
+      },
+      {
+        "code": "XDH",
+        "variant": "Xdh"
+      },
+      {
+        "code": "XDI",
+        "variant": "Xdi"
+      },
+      {
+        "code": "XDJ",
+        "variant": "Xdj"
+      },
+      {
+        "code": "XDK",
+        "variant": "Xdk"
+      },
+      {
+        "code": "XDL",
+        "variant": "Xdl"
+      },
+      {
+        "code": "XDM",
+        "variant": "Xdm"
+      },
+      {
+        "code": "XDN",
+        "variant": "Xdn"
+      },
+      {
+        "code": "XDP",
+        "variant": "Xdp"
+      },
+      {
+        "code": "XDR",
+        "variant": "Xdr"
+      },
+      {
+        "code": "XDS",
+        "variant": "Xds"
+      },
+      {
+        "code": "XDT",
+        "variant": "Xdt"
+      },
+      {
+        "code": "XDU",
+        "variant": "Xdu"
+      },
+      {
+        "code": "XDV",
+        "variant": "Xdv"
+      },
+      {
+        "code": "XDW",
+        "variant": "Xdw"
+      },
+      {
+        "code": "XDX",
+        "variant": "Xdx"
+      },
+      {
+        "code": "XDY",
+        "variant": "Xdy"
+      },
+      {
+        "code": "XEC",
+        "variant": "Xec"
+      },
+      {
+        "code": "XED",
+        "variant": "Xed"
+      },
+      {
+        "code": "XEE",
+        "variant": "Xee"
+      },
+      {
+        "code": "XEF",
+        "variant": "Xef"
+      },
+      {
+        "code": "XEG",
+        "variant": "Xeg"
+      },
+      {
+        "code": "XEH",
+        "variant": "Xeh"
+      },
+      {
+        "code": "XEI",
+        "variant": "Xei"
+      },
+      {
+        "code": "XEN",
+        "variant": "Xen"
+      },
+      {
+        "code": "XFB",
+        "variant": "Xfb"
+      },
+      {
+        "code": "XFC",
+        "variant": "Xfc"
+      },
+      {
+        "code": "XFD",
+        "variant": "Xfd"
+      },
+      {
+        "code": "XFE",
+        "variant": "Xfe"
+      },
+      {
+        "code": "XFI",
+        "variant": "Xfi"
+      },
+      {
+        "code": "XFL",
+        "variant": "Xfl"
+      },
+      {
+        "code": "XFO",
+        "variant": "Xfo"
+      },
+      {
+        "code": "XFP",
+        "variant": "Xfp"
+      },
+      {
+        "code": "XFR",
+        "variant": "Xfr"
+      },
+      {
+        "code": "XFT",
+        "variant": "Xft"
+      },
+      {
+        "code": "XFW",
+        "variant": "Xfw"
+      },
+      {
+        "code": "XFX",
+        "variant": "Xfx"
+      },
+      {
+        "code": "XGB",
+        "variant": "Xgb"
+      },
+      {
+        "code": "XGI",
+        "variant": "Xgi"
+      },
+      {
+        "code": "XGL",
+        "variant": "Xgl"
+      },
+      {
+        "code": "XGR",
+        "variant": "Xgr"
+      },
+      {
+        "code": "XGU",
+        "variant": "Xgu"
+      },
+      {
+        "code": "XGY",
+        "variant": "Xgy"
+      },
+      {
+        "code": "XGZ",
+        "variant": "Xgz"
+      },
+      {
+        "code": "XHA",
+        "variant": "Xha"
+      },
+      {
+        "code": "XHB",
+        "variant": "Xhb"
+      },
+      {
+        "code": "XHC",
+        "variant": "Xhc"
+      },
+      {
+        "code": "XHG",
+        "variant": "Xhg"
+      },
+      {
+        "code": "XHN",
+        "variant": "Xhn"
+      },
+      {
+        "code": "XHR",
+        "variant": "Xhr"
+      },
+      {
+        "code": "XIA",
+        "variant": "Xia"
+      },
+      {
+        "code": "XIB",
+        "variant": "Xib"
+      },
+      {
+        "code": "XIC",
+        "variant": "Xic"
+      },
+      {
+        "code": "XID",
+        "variant": "Xid"
+      },
+      {
+        "code": "XIE",
+        "variant": "Xie"
+      },
+      {
+        "code": "XIF",
+        "variant": "Xif"
+      },
+      {
+        "code": "XIG",
+        "variant": "Xig"
+      },
+      {
+        "code": "XIH",
+        "variant": "Xih"
+      },
+      {
+        "code": "XIK",
+        "variant": "Xik"
+      },
+      {
+        "code": "XIL",
+        "variant": "Xil"
+      },
+      {
+        "code": "XIN",
+        "variant": "Xin"
+      },
+      {
+        "code": "XIZ",
+        "variant": "Xiz"
+      },
+      {
+        "code": "XJB",
+        "variant": "Xjb"
+      },
+      {
+        "code": "XJC",
+        "variant": "Xjc"
+      },
+      {
+        "code": "XJG",
+        "variant": "Xjg"
+      },
+      {
+        "code": "XJR",
+        "variant": "Xjr"
+      },
+      {
+        "code": "XJT",
+        "variant": "Xjt"
+      },
+      {
+        "code": "XJY",
+        "variant": "Xjy"
+      },
+      {
+        "code": "XKG",
+        "variant": "Xkg"
+      },
+      {
+        "code": "XKI",
+        "variant": "Xki"
+      },
+      {
+        "code": "XLE",
+        "variant": "Xle"
+      },
+      {
+        "code": "XLG",
+        "variant": "Xlg"
+      },
+      {
+        "code": "XLT",
+        "variant": "Xlt"
+      },
+      {
+        "code": "XLU",
+        "variant": "Xlu"
+      },
+      {
+        "code": "XLV",
+        "variant": "Xlv"
+      },
+      {
+        "code": "XLZ",
+        "variant": "Xlz"
+      },
+      {
+        "code": "XMA",
+        "variant": "Xma"
+      },
+      {
+        "code": "XMB",
+        "variant": "Xmb"
+      },
+      {
+        "code": "XMC",
+        "variant": "Xmc"
+      },
+      {
+        "code": "XME",
+        "variant": "Xme"
+      },
+      {
+        "code": "XMR",
+        "variant": "Xmr"
+      },
+      {
+        "code": "XMS",
+        "variant": "Xms"
+      },
+      {
+        "code": "XMT",
+        "variant": "Xmt"
+      },
+      {
+        "code": "XMW",
+        "variant": "Xmw"
+      },
+      {
+        "code": "XMX",
+        "variant": "Xmx"
+      },
+      {
+        "code": "XNA",
+        "variant": "Xna"
+      },
+      {
+        "code": "XNE",
+        "variant": "Xne"
+      },
+      {
+        "code": "XNF",
+        "variant": "Xnf"
+      },
+      {
+        "code": "XNG",
+        "variant": "Xng"
+      },
+      {
+        "code": "XNS",
+        "variant": "Xns"
+      },
+      {
+        "code": "XNT",
+        "variant": "Xnt"
+      },
+      {
+        "code": "XNU",
+        "variant": "Xnu"
+      },
+      {
+        "code": "XNV",
+        "variant": "Xnv"
+      },
+      {
+        "code": "XO1",
+        "variant": "Xo1"
+      },
+      {
+        "code": "XO2",
+        "variant": "Xo2"
+      },
+      {
+        "code": "XO3",
+        "variant": "Xo3"
+      },
+      {
+        "code": "XO4",
+        "variant": "Xo4"
+      },
+      {
+        "code": "XO5",
+        "variant": "Xo5"
+      },
+      {
+        "code": "XO6",
+        "variant": "Xo6"
+      },
+      {
+        "code": "XO7",
+        "variant": "Xo7"
+      },
+      {
+        "code": "XO8",
+        "variant": "Xo8"
+      },
+      {
+        "code": "XO9",
+        "variant": "Xo9"
+      },
+      {
+        "code": "XOA",
+        "variant": "Xoa"
+      },
+      {
+        "code": "XOB",
+        "variant": "Xob"
+      },
+      {
+        "code": "XOC",
+        "variant": "Xoc"
+      },
+      {
+        "code": "XOD",
+        "variant": "Xod"
+      },
+      {
+        "code": "XOE",
+        "variant": "Xoe"
+      },
+      {
+        "code": "XOF",
+        "variant": "Xof"
+      },
+      {
+        "code": "XOG",
+        "variant": "Xog"
+      },
+      {
+        "code": "XOH",
+        "variant": "Xoh"
+      },
+      {
+        "code": "XOI",
+        "variant": "Xoi"
+      },
+      {
+        "code": "XOJ",
+        "variant": "Xoj"
+      },
+      {
+        "code": "XOK",
+        "variant": "Xok"
+      },
+      {
+        "code": "XOL",
+        "variant": "Xol"
+      },
+      {
+        "code": "XOM",
+        "variant": "Xom"
+      },
+      {
+        "code": "XON",
+        "variant": "Xon"
+      },
+      {
+        "code": "XOP",
+        "variant": "Xop"
+      },
+      {
+        "code": "XOQ",
+        "variant": "Xoq"
+      },
+      {
+        "code": "XOR",
+        "variant": "Xor"
+      },
+      {
+        "code": "XOS",
+        "variant": "Xos"
+      },
+      {
+        "code": "XOT",
+        "variant": "Xot"
+      },
+      {
+        "code": "XOU",
+        "variant": "Xou"
+      },
+      {
+        "code": "XOV",
+        "variant": "Xov"
+      },
+      {
+        "code": "XOW",
+        "variant": "Xow"
+      },
+      {
+        "code": "XOX",
+        "variant": "Xox"
+      },
+      {
+        "code": "XOY",
+        "variant": "Xoy"
+      },
+      {
+        "code": "XOZ",
+        "variant": "Xoz"
+      },
+      {
+        "code": "XP1",
+        "variant": "Xp1"
+      },
+      {
+        "code": "XP2",
+        "variant": "Xp2"
+      },
+      {
+        "code": "XP3",
+        "variant": "Xp3"
+      },
+      {
+        "code": "XP4",
+        "variant": "Xp4"
+      },
+      {
+        "code": "XPA",
+        "variant": "Xpa"
+      },
+      {
+        "code": "XPB",
+        "variant": "Xpb"
+      },
+      {
+        "code": "XPC",
+        "variant": "Xpc"
+      },
+      {
+        "code": "XPD",
+        "variant": "Xpd"
+      },
+      {
+        "code": "XPE",
+        "variant": "Xpe"
+      },
+      {
+        "code": "XPF",
+        "variant": "Xpf"
+      },
+      {
+        "code": "XPG",
+        "variant": "Xpg"
+      },
+      {
+        "code": "XPH",
+        "variant": "Xph"
+      },
+      {
+        "code": "XPI",
+        "variant": "Xpi"
+      },
+      {
+        "code": "XPJ",
+        "variant": "Xpj"
+      },
+      {
+        "code": "XPK",
+        "variant": "Xpk"
+      },
+      {
+        "code": "XPL",
+        "variant": "Xpl"
+      },
+      {
+        "code": "XPN",
+        "variant": "Xpn"
+      },
+      {
+        "code": "XPO",
+        "variant": "Xpo"
+      },
+      {
+        "code": "XPP",
+        "variant": "Xpp"
+      },
+      {
+        "code": "XPR",
+        "variant": "Xpr"
+      },
+      {
+        "code": "XPT",
+        "variant": "Xpt"
+      },
+      {
+        "code": "XPU",
+        "variant": "Xpu"
+      },
+      {
+        "code": "XPV",
+        "variant": "Xpv"
+      },
+      {
+        "code": "XPX",
+        "variant": "Xpx"
+      },
+      {
+        "code": "XPY",
+        "variant": "Xpy"
+      },
+      {
+        "code": "XPZ",
+        "variant": "Xpz"
+      },
+      {
+        "code": "XQA",
+        "variant": "Xqa"
+      },
+      {
+        "code": "XQB",
+        "variant": "Xqb"
+      },
+      {
+        "code": "XQC",
+        "variant": "Xqc"
+      },
+      {
+        "code": "XQD",
+        "variant": "Xqd"
+      },
+      {
+        "code": "XQF",
+        "variant": "Xqf"
+      },
+      {
+        "code": "XQG",
+        "variant": "Xqg"
+      },
+      {
+        "code": "XQH",
+        "variant": "Xqh"
+      },
+      {
+        "code": "XQJ",
+        "variant": "Xqj"
+      },
+      {
+        "code": "XQK",
+        "variant": "Xqk"
+      },
+      {
+        "code": "XQL",
+        "variant": "Xql"
+      },
+      {
+        "code": "XQM",
+        "variant": "Xqm"
+      },
+      {
+        "code": "XQN",
+        "variant": "Xqn"
+      },
+      {
+        "code": "XQP",
+        "variant": "Xqp"
+      },
+      {
+        "code": "XQQ",
+        "variant": "Xqq"
+      },
+      {
+        "code": "XQR",
+        "variant": "Xqr"
+      },
+      {
+        "code": "XQS",
+        "variant": "Xqs"
+      },
+      {
+        "code": "XRD",
+        "variant": "Xrd"
+      },
+      {
+        "code": "XRG",
+        "variant": "Xrg"
+      },
+      {
+        "code": "XRJ",
+        "variant": "Xrj"
+      },
+      {
+        "code": "XRK",
+        "variant": "Xrk"
+      },
+      {
+        "code": "XRL",
+        "variant": "Xrl"
+      },
+      {
+        "code": "XRO",
+        "variant": "Xro"
+      },
+      {
+        "code": "XRT",
+        "variant": "Xrt"
+      },
+      {
+        "code": "XRZ",
+        "variant": "Xrz"
+      },
+      {
+        "code": "XSA",
+        "variant": "Xsa"
+      },
+      {
+        "code": "XSB",
+        "variant": "Xsb"
+      },
+      {
+        "code": "XSC",
+        "variant": "Xsc"
+      },
+      {
+        "code": "XSD",
+        "variant": "Xsd"
+      },
+      {
+        "code": "XSE",
+        "variant": "Xse"
+      },
+      {
+        "code": "XSH",
+        "variant": "Xsh"
+      },
+      {
+        "code": "XSI",
+        "variant": "Xsi"
+      },
+      {
+        "code": "XSK",
+        "variant": "Xsk"
+      },
+      {
+        "code": "XSL",
+        "variant": "Xsl"
+      },
+      {
+        "code": "XSM",
+        "variant": "Xsm"
+      },
+      {
+        "code": "XSO",
+        "variant": "Xso"
+      },
+      {
+        "code": "XSP",
+        "variant": "Xsp"
+      },
+      {
+        "code": "XSS",
+        "variant": "Xss"
+      },
+      {
+        "code": "XST",
+        "variant": "Xst"
+      },
+      {
+        "code": "XSU",
+        "variant": "Xsu"
+      },
+      {
+        "code": "XSV",
+        "variant": "Xsv"
+      },
+      {
+        "code": "XSW",
+        "variant": "Xsw"
+      },
+      {
+        "code": "XSY",
+        "variant": "Xsy"
+      },
+      {
+        "code": "XSZ",
+        "variant": "Xsz"
+      },
+      {
+        "code": "XT1",
+        "variant": "Xt1"
+      },
+      {
+        "code": "XTB",
+        "variant": "Xtb"
+      },
+      {
+        "code": "XTC",
+        "variant": "Xtc"
+      },
+      {
+        "code": "XTD",
+        "variant": "Xtd"
+      },
+      {
+        "code": "XTE",
+        "variant": "Xte"
+      },
+      {
+        "code": "XTG",
+        "variant": "Xtg"
+      },
+      {
+        "code": "XTI",
+        "variant": "Xti"
+      },
+      {
+        "code": "XTK",
+        "variant": "Xtk"
+      },
+      {
+        "code": "XTL",
+        "variant": "Xtl"
+      },
+      {
+        "code": "XTN",
+        "variant": "Xtn"
+      },
+      {
+        "code": "XTO",
+        "variant": "Xto"
+      },
+      {
+        "code": "XTR",
+        "variant": "Xtr"
+      },
+      {
+        "code": "XTS",
+        "variant": "Xts"
+      },
+      {
+        "code": "XTT",
+        "variant": "Xtt"
+      },
+      {
+        "code": "XTU",
+        "variant": "Xtu"
+      },
+      {
+        "code": "XTV",
+        "variant": "Xtv"
+      },
+      {
+        "code": "XTW",
+        "variant": "Xtw"
+      },
+      {
+        "code": "XTY",
+        "variant": "Xty"
+      },
+      {
+        "code": "XTZ",
+        "variant": "Xtz"
+      },
+      {
+        "code": "XUC",
+        "variant": "Xuc"
+      },
+      {
+        "code": "XUN",
+        "variant": "Xun"
+      },
+      {
+        "code": "XVA",
+        "variant": "Xva"
+      },
+      {
+        "code": "XVG",
+        "variant": "Xvg"
+      },
+      {
+        "code": "XVI",
+        "variant": "Xvi"
+      },
+      {
+        "code": "XVK",
+        "variant": "Xvk"
+      },
+      {
+        "code": "XVL",
+        "variant": "Xvl"
+      },
+      {
+        "code": "XVN",
+        "variant": "Xvn"
+      },
+      {
+        "code": "XVO",
+        "variant": "Xvo"
+      },
+      {
+        "code": "XVP",
+        "variant": "Xvp"
+      },
+      {
+        "code": "XVQ",
+        "variant": "Xvq"
+      },
+      {
+        "code": "XVR",
+        "variant": "Xvr"
+      },
+      {
+        "code": "XVS",
+        "variant": "Xvs"
+      },
+      {
+        "code": "XVY",
+        "variant": "Xvy"
+      },
+      {
+        "code": "XWA",
+        "variant": "Xwa"
+      },
+      {
+        "code": "XWB",
+        "variant": "Xwb"
+      },
+      {
+        "code": "XWC",
+        "variant": "Xwc"
+      },
+      {
+        "code": "XWD",
+        "variant": "Xwd"
+      },
+      {
+        "code": "XWF",
+        "variant": "Xwf"
+      },
+      {
+        "code": "XWG",
+        "variant": "Xwg"
+      },
+      {
+        "code": "XWH",
+        "variant": "Xwh"
+      },
+      {
+        "code": "XWJ",
+        "variant": "Xwj"
+      },
+      {
+        "code": "XWK",
+        "variant": "Xwk"
+      },
+      {
+        "code": "XWL",
+        "variant": "Xwl"
+      },
+      {
+        "code": "XWM",
+        "variant": "Xwm"
+      },
+      {
+        "code": "XWN",
+        "variant": "Xwn"
+      },
+      {
+        "code": "XWP",
+        "variant": "Xwp"
+      },
+      {
+        "code": "XWQ",
+        "variant": "Xwq"
+      },
+      {
+        "code": "XWR",
+        "variant": "Xwr"
+      },
+      {
+        "code": "XWS",
+        "variant": "Xws"
+      },
+      {
+        "code": "XWT",
+        "variant": "Xwt"
+      },
+      {
+        "code": "XWU",
+        "variant": "Xwu"
+      },
+      {
+        "code": "XWV",
+        "variant": "Xwv"
+      },
+      {
+        "code": "XWW",
+        "variant": "Xww"
+      },
+      {
+        "code": "XWX",
+        "variant": "Xwx"
+      },
+      {
+        "code": "XWY",
+        "variant": "Xwy"
+      },
+      {
+        "code": "XWZ",
+        "variant": "Xwz"
+      },
+      {
+        "code": "XXA",
+        "variant": "Xxa"
+      },
+      {
+        "code": "XXB",
+        "variant": "Xxb"
+      },
+      {
+        "code": "XXC",
+        "variant": "Xxc"
+      },
+      {
+        "code": "XXD",
+        "variant": "Xxd"
+      },
+      {
+        "code": "XXF",
+        "variant": "Xxf"
+      },
+      {
+        "code": "XXG",
+        "variant": "Xxg"
+      },
+      {
+        "code": "XXH",
+        "variant": "Xxh"
+      },
+      {
+        "code": "XXJ",
+        "variant": "Xxj"
+      },
+      {
+        "code": "XXK",
+        "variant": "Xxk"
+      },
+      {
+        "code": "XYA",
+        "variant": "Xya"
+      },
+      {
+        "code": "XYB",
+        "variant": "Xyb"
+      },
+      {
+        "code": "XYC",
+        "variant": "Xyc"
+      },
+      {
+        "code": "XYD",
+        "variant": "Xyd"
+      },
+      {
+        "code": "XYF",
+        "variant": "Xyf"
+      },
+      {
+        "code": "XYG",
+        "variant": "Xyg"
+      },
+      {
+        "code": "XYH",
+        "variant": "Xyh"
+      },
+      {
+        "code": "XYJ",
+        "variant": "Xyj"
+      },
+      {
+        "code": "XYK",
+        "variant": "Xyk"
+      },
+      {
+        "code": "XYL",
+        "variant": "Xyl"
+      },
+      {
+        "code": "XYM",
+        "variant": "Xym"
+      },
+      {
+        "code": "XYN",
+        "variant": "Xyn"
+      },
+      {
+        "code": "XYP",
+        "variant": "Xyp"
+      },
+      {
+        "code": "XYQ",
+        "variant": "Xyq"
+      },
+      {
+        "code": "XYR",
+        "variant": "Xyr"
+      },
+      {
+        "code": "XYS",
+        "variant": "Xys"
+      },
+      {
+        "code": "XYT",
+        "variant": "Xyt"
+      },
+      {
+        "code": "XYV",
+        "variant": "Xyv"
+      },
+      {
+        "code": "XYW",
+        "variant": "Xyw"
+      },
+      {
+        "code": "XYX",
+        "variant": "Xyx"
+      },
+      {
+        "code": "XYY",
+        "variant": "Xyy"
+      },
+      {
+        "code": "XYZ",
+        "variant": "Xyz"
+      },
+      {
+        "code": "XZA",
+        "variant": "Xza"
+      },
+      {
+        "code": "XZB",
+        "variant": "Xzb"
+      },
+      {
+        "code": "XZC",
+        "variant": "Xzc"
+      },
+      {
+        "code": "XZD",
+        "variant": "Xzd"
+      },
+      {
+        "code": "XZF",
+        "variant": "Xzf"
+      },
+      {
+        "code": "XZG",
+        "variant": "Xzg"
+      },
+      {
+        "code": "XZH",
+        "variant": "Xzh"
+      },
+      {
+        "code": "XZJ",
+        "variant": "Xzj"
+      },
+      {
+        "code": "XZK",
+        "variant": "Xzk"
+      },
+      {
+        "code": "XZL",
+        "variant": "Xzl"
+      },
+      {
+        "code": "XZM",
+        "variant": "Xzm"
+      },
+      {
+        "code": "XZN",
+        "variant": "Xzn"
+      },
+      {
+        "code": "XZP",
+        "variant": "Xzp"
+      },
+      {
+        "code": "XZQ",
+        "variant": "Xzq"
+      },
+      {
+        "code": "XZR",
+        "variant": "Xzr"
+      },
+      {
+        "code": "XZS",
+        "variant": "Xzs"
+      },
+      {
+        "code": "XZT",
+        "variant": "Xzt"
+      },
+      {
+        "code": "XZU",
+        "variant": "Xzu"
+      },
+      {
+        "code": "XZV",
+        "variant": "Xzv"
+      },
+      {
+        "code": "XZW",
+        "variant": "Xzw"
+      },
+      {
+        "code": "XZX",
+        "variant": "Xzx"
+      },
+      {
+        "code": "XZY",
+        "variant": "Xzy"
+      },
+      {
+        "code": "XZZ",
+        "variant": "Xzz"
+      },
+      {
+        "code": "YDK",
+        "variant": "Ydk"
+      },
+      {
+        "code": "YDQ",
+        "variant": "Ydq"
+      },
+      {
+        "code": "YRD",
+        "variant": "Yrd"
+      },
+      {
+        "code": "Z11",
+        "variant": "Z11"
+      },
+      {
+        "code": "Z9",
+        "variant": "Z9"
+      },
+      {
+        "code": "ZP",
+        "variant": "Zp"
+      },
+      {
+        "code": "ZZ",
+        "variant": "Zz"
+      }
+    ]
+  },
+  "packaging": {
+    "type": "PackagingType",
+    "feature": "packaging",
+    "entries": [
+      {
+        "code": "1A",
+        "variant": "Code1A"
+      },
+      {
+        "code": "1B",
+        "variant": "Code1B"
+      },
+      {
+        "code": "1D",
+        "variant": "Code1D"
+      },
+      {
+        "code": "1F",
+        "variant": "Code1F"
+      },
+      {
+        "code": "1G",
+        "variant": "Code1G"
+      },
+      {
+        "code": "1W",
+        "variant": "Code1W"
+      },
+      {
+        "code": "2C",
+        "variant": "Code2C"
+      },
+      {
+        "code": "3A",
+        "variant": "Code3A"
+      },
+      {
+        "code": "3H",
+        "variant": "Code3H"
+      },
+      {
+        "code": "43",
+        "variant": "Code43"
+      },
+      {
+        "code": "44",
+        "variant": "Code44"
+      },
+      {
+        "code": "4A",
+        "variant": "Code4A"
+      },
+      {
+        "code": "4B",
+        "variant": "Code4B"
+      },
+      {
+        "code": "4C",
+        "variant": "Code4C"
+      },
+      {
+        "code": "4D",
+        "variant": "Code4D"
+      },
+      {
+        "code": "4F",
+        "variant": "Code4F"
+      },
+      {
+        "code": "4G",
+        "variant": "Code4G"
+      },
+      {
+        "code": "4H",
+        "variant": "Code4H"
+      },
+      {
+        "code": "5H",
+        "variant": "Code5H"
+      },
+      {
+        "code": "5L",
+        "variant": "Code5L"
+      },
+      {
+        "code": "5M",
+        "variant": "Code5M"
+      },
+      {
+        "code": "6H",
+        "variant": "Code6H"
+      },
+      {
+        "code": "6P",
+        "variant": "Code6P"
+      },
+      {
+        "code": "7A",
+        "variant": "Code7A"
+      },
+      {
+        "code": "7B",
+        "variant": "Code7B"
+      },
+      {
+        "code": "8A",
+        "variant": "Code8A"
+      },
+      {
+        "code": "8B",
+        "variant": "Code8B"
+      },
+      {
+        "code": "8C",
+        "variant": "Code8C"
+      },
+      {
+        "code": "AA",
+        "variant": "Aa"
+      },
+      {
+        "code": "AB",
+        "variant": "Ab"
+      },
+      {
+        "code": "AC",
+        "variant": "Ac"
+      },
+      {
+        "code": "AD",
+        "variant": "Ad"
+      },
+      {
+        "code": "AE",
+        "variant": "Ae"
+      },
+      {
+        "code": "AF",
+        "variant": "Af"
+      },
+      {
+        "code": "AG",
+        "variant": "Ag"
+      },
+      {
+        "code": "AH",
+        "variant": "Ah"
+      },
+      {
+        "code": "AI",
+        "variant": "Ai"
+      },
+      {
+        "code": "AJ",
+        "variant": "Aj"
+      },
+      {
+        "code": "AL",
+        "variant": "Al"
+      },
+      {
+        "code": "AM",
+        "variant": "Am"
+      },
+      {
+        "code": "AP",
+        "variant": "Ap"
+      },
+      {
+        "code": "AT",
+        "variant": "At"
+      },
+      {
+        "code": "AV",
+        "variant": "Av"
+      },
+      {
+        "code": "B4",
+        "variant": "B4"
+      },
+      {
+        "code": "BA",
+        "variant": "Ba"
+      },
+      {
+        "code": "BB",
+        "variant": "Bb"
+      },
+      {
+        "code": "BC",
+        "variant": "Bc"
+      },
+      {
+        "code": "BD",
+        "variant": "Bd"
+      },
+      {
+        "code": "BE",
+        "variant": "Be"
+      },
+      {
+        "code": "BF",
+        "variant": "Bf"
+      },
+      {
+        "code": "BG",
+        "variant": "Bg"
+      },
+      {
+        "code": "BH",
+        "variant": "Bh"
+      },
+      {
+        "code": "BI",
+        "variant": "Bi"
+      },
+      {
+        "code": "BJ",
+        "variant": "Bj"
+      },
+      {
+        "code": "BK",
+        "variant": "Bk"
+      },
+      {
+        "code": "BL",
+        "variant": "Bl"
+      },
+      {
+        "code": "BM",
+        "variant": "Bm"
+      },
+      {
+        "code": "BN",
+        "variant": "Bn"
+      },
+      {
+        "code": "BO",
+        "variant": "Bo"
+      },
+      {
+        "code": "BP",
+        "variant": "Bp"
+      },
+      {
+        "code": "BQ",
+        "variant": "Bq"
+      },
+      {
+        "code": "BR",
+        "variant": "Br"
+      },
+      {
+        "code": "BS",
+        "variant": "Bs"
+      },
+      {
+        "code": "BT",
+        "variant": "Bt"
+      },
+      {
+        "code": "BU",
+        "variant": "Bu"
+      },
+      {
+        "code": "BV",
+        "variant": "Bv"
+      },
+      {
+        "code": "BW",
+        "variant": "Bw"
+      },
+      {
+        "code": "BX",
+        "variant": "Bx"
+      },
+      {
+        "code": "BY",
+        "variant": "By"
+      },
+      {
+        "code": "BZ",
+        "variant": "Bz"
+      },
+      {
+        "code": "CA",
+        "variant": "Ca"
+      },
+      {
+        "code": "CB",
+        "variant": "Cb"
+      },
+      {
+        "code": "CC",
+        "variant": "Cc"
+      },
+      {
+        "code": "CD",
+        "variant": "Cd"
+      },
+      {
+        "code": "CE",
+        "variant": "Ce"
+      },
+      {
+        "code": "CF",
+        "variant": "Cf"
+      },
+      {
+        "code": "CG",
+        "variant": "Cg"
+      },
+      {
+        "code": "CH",
+        "variant": "Ch"
+      },
+      {
+        "code": "CI",
+        "variant": "Ci"
+      },
+      {
+        "code": "CJ",
+        "variant": "Cj"
+      },
+      {
+        "code": "CK",
+        "variant": "Ck"
+      },
+      {
+        "code": "CL",
+        "variant": "Cl"
+      },
+      {
+        "code": "CM",
+        "variant": "Cm"
+      },
+      {
+        "code": "CN",
+        "variant": "Cn"
+      },
+      {
+        "code": "CO",
+        "variant": "Co"
+      },
+      {
+        "code": "CP",
+        "variant": "Cp"
+      },
+      {
+        "code": "CQ",
+        "variant": "Cq"
+      },
+      {
+        "code": "CR",
+        "variant": "Cr"
+      },
+      {
+        "code": "CS",
+        "variant": "Cs"
+      },
+      {
+        "code": "CT",
+        "variant": "Ct"
+      },
+      {
+        "code": "CU",
+        "variant": "Cu"
+      },
+      {
+        "code": "CV",
+        "variant": "Cv"
+      },
+      {
+        "code": "CW",
+        "variant": "Cw"
+      },
+      {
+        "code": "CX",
+        "variant": "Cx"
+      },
+      {
+        "code": "CY",
+        "variant": "Cy"
+      },
+      {
+        "code": "CZ",
+        "variant": "Cz"
+      },
+      {
+        "code": "DA",
+        "variant": "Da"
+      },
+      {
+        "code": "DB",
+        "variant": "Db"
+      },
+      {
+        "code": "DC",
+        "variant": "Dc"
+      },
+      {
+        "code": "DG",
+        "variant": "Dg"
+      },
+      {
+        "code": "DH",
+        "variant": "Dh"
+      },
+      {
+        "code": "DI",
+        "variant": "Di"
+      },
+      {
+        "code": "DJ",
+        "variant": "Dj"
+      },
+      {
+        "code": "DK",
+        "variant": "Dk"
+      },
+      {
+        "code": "DL",
+        "variant": "Dl"
+      },
+      {
+        "code": "DM",
+        "variant": "Dm"
+      },
+      {
+        "code": "DN",
+        "variant": "Dn"
+      },
+      {
+        "code": "DP",
+        "variant": "Dp"
+      },
+      {
+        "code": "DR",
+        "variant": "Dr"
+      },
+      {
+        "code": "DS",
+        "variant": "Ds"
+      },
+      {
+        "code": "DT",
+        "variant": "Dt"
+      },
+      {
+        "code": "DU",
+        "variant": "Du"
+      },
+      {
+        "code": "DV",
+        "variant": "Dv"
+      },
+      {
+        "code": "DW",
+        "variant": "Dw"
+      },
+      {
+        "code": "DX",
+        "variant": "Dx"
+      },
+      {
+        "code": "DY",
+        "variant": "Dy"
+      },
+      {
+        "code": "EC",
+        "variant": "Ec"
+      },
+      {
+        "code": "ED",
+        "variant": "Ed"
+      },
+      {
+        "code": "EE",
+        "variant": "Ee"
+      },
+      {
+        "code": "EF",
+        "variant": "Ef"
+      },
+      {
+        "code": "EG",
+        "variant": "Eg"
+      },
+      {
+        "code": "EH",
+        "variant": "Eh"
+      },
+      {
+        "code": "EI",
+        "variant": "Ei"
+      },
+      {
+        "code": "EN",
+        "variant": "En"
+      },
+      {
+        "code": "FB",
+        "variant": "Fb"
+      },
+      {
+        "code": "FC",
+        "variant": "Fc"
+      },
+      {
+        "code": "FD",
+        "variant": "Fd"
+      },
+      {
+        "code": "FE",
+        "variant": "Fe"
+      },
+      {
+        "code": "FI",
+        "variant": "Fi"
+      },
+      {
+        "code": "FL",
+        "variant": "Fl"
+      },
+      {
+        "code": "FO",
+        "variant": "Fo"
+      },
+      {
+        "code": "FP",
+        "variant": "Fp"
+      },
+      {
+        "code": "FR",
+        "variant": "Fr"
+      },
+      {
+        "code": "FT",
+        "variant": "Ft"
+      },
+      {
+        "code": "FW",
+        "variant": "Fw"
+      },
+      {
+        "code": "FX",
+        "variant": "Fx"
+      },
+      {
+        "code": "GB",
+        "variant": "Gb"
+      },
+      {
+        "code": "GI",
+        "variant": "Gi"
+      },
+      {
+        "code": "GL",
+        "variant": "Gl"
+      },
+      {
+        "code": "GR",
+        "variant": "Gr"
+      },
+      {
+        "code": "GU",
+        "variant": "Gu"
+      },
+      {
+        "code": "GY",
+        "variant": "Gy"
+      },
+      {
+        "code": "GZ",
+        "variant": "Gz"
+      },
+      {
+        "code": "HA",
+        "variant": "Ha"
+      },
+      {
+        "code": "HB",
+        "variant": "Hb"
+      },
+      {
+        "code": "HC",
+        "variant": "Hc"
+      },
+      {
+        "code": "HG",
+        "variant": "Hg"
+      },
+      {
+        "code": "HN",
+        "variant": "Hn"
+      },
+      {
+        "code": "HR",
+        "variant": "Hr"
+      },
+      {
+        "code": "IA",
+        "variant": "Ia"
+      },
+      {
+        "code": "IB",
+        "variant": "Ib"
+      },
+      {
+        "code": "IC",
+        "variant": "Ic"
+      },
+      {
+        "code": "ID",
+        "variant": "Id"
+      },
+      {
+        "code": "IE",
+        "variant": "Ie"
+      },
+      {
+        "code": "IF",
+        "variant": "If"
+      },
+      {
+        "code": "IG",
+        "variant": "Ig"
+      },
+      {
+        "code": "IH",
+        "variant": "Ih"
+      },
+      {
+        "code": "IK",
+        "variant": "Ik"
+      },
+      {
+        "code": "IL",
+        "variant": "Il"
+      },
+      {
+        "code": "IN",
+        "variant": "In"
+      },
+      {
+        "code": "IZ",
+        "variant": "Iz"
+      },
+      {
+        "code": "JB",
+        "variant": "Jb"
+      },
+      {
+        "code": "JC",
+        "variant": "Jc"
+      },
+      {
+        "code": "JG",
+        "variant": "Jg"
+      },
+      {
+        "code": "JR",
+        "variant": "Jr"
+      },
+      {
+        "code": "JT",
+        "variant": "Jt"
+      },
+      {
+        "code": "JY",
+        "variant": "Jy"
+      },
+      {
+        "code": "KG",
+        "variant": "Kg"
+      },
+      {
+        "code": "KI",
+        "variant": "Ki"
+      },
+      {
+        "code": "LE",
+        "variant": "Le"
+      },
+      {
+        "code": "LG",
+        "variant": "Lg"
+      },
+      {
+        "code": "LT",
+        "variant": "Lt"
+      },
+      {
+        "code": "LU",
+        "variant": "Lu"
+      },
+      {
+        "code": "LV",
+        "variant": "Lv"
+      },
+      {
+        "code": "LZ",
+        "variant": "Lz"
+      },
+      {
+        "code": "MA",
+        "variant": "Ma"
+      },
+      {
+        "code": "MB",
+        "variant": "Mb"
+      },
+      {
+        "code": "MC",
+        "variant": "Mc"
+      },
+      {
+        "code": "ME",
+        "variant": "Me"
+      },
+      {
+        "code": "MR",
+        "variant": "Mr"
+      },
+      {
+        "code": "MS",
+        "variant": "Ms"
+      },
+      {
+        "code": "MT",
+        "variant": "Mt"
+      },
+      {
+        "code": "MW",
+        "variant": "Mw"
+      },
+      {
+        "code": "MX",
+        "variant": "Mx"
+      },
+      {
+        "code": "NA",
+        "variant": "Na"
+      },
+      {
+        "code": "NE",
+        "variant": "Ne"
+      },
+      {
+        "code": "NF",
+        "variant": "Nf"
+      },
+      {
+        "code": "NG",
+        "variant": "Ng"
+      },
+      {
+        "code": "NS",
+        "variant": "Ns"
+      },
+      {
+        "code": "NT",
+        "variant": "Nt"
+      },
+      {
+        "code": "NU",
+        "variant": "Nu"
+      },
+      {
+        "code": "NV",
+        "variant": "Nv"
+      },
+      {
+        "code": "O1",
+        "variant": "O1"
+      },
+      {
+        "code": "O2",
+        "variant": "O2"
+      },
+      {
+        "code": "O3",
+        "variant": "O3"
+      },
+      {
+        "code": "O4",
+        "variant": "O4"
+      },
+      {
+        "code": "O5",
+        "variant": "O5"
+      },
+      {
+        "code": "O6",
+        "variant": "O6"
+      },
+      {
+        "code": "O7",
+        "variant": "O7"
+      },
+      {
+        "code": "O8",
+        "variant": "O8"
+      },
+      {
+        "code": "O9",
+        "variant": "O9"
+      },
+      {
+        "code": "OA",
+        "variant": "Oa"
+      },
+      {
+        "code": "OB",
+        "variant": "Ob"
+      },
+      {
+        "code": "OC",
+        "variant": "Oc"
+      },
+      {
+        "code": "OD",
+        "variant": "Od"
+      },
+      {
+        "code": "OE",
+        "variant": "Oe"
+      },
+      {
+        "code": "OF",
+        "variant": "Of"
+      },
+      {
+        "code": "OG",
+        "variant": "Og"
+      },
+      {
+        "code": "OH",
+        "variant": "Oh"
+      },
+      {
+        "code": "OI",
+        "variant": "Oi"
+      },
+      {
+        "code": "OJ",
+        "variant": "Oj"
+      },
+      {
+        "code": "OK",
+        "variant": "Ok"
+      },
+      {
+        "code": "OL",
+        "variant": "Ol"
+      },
+      {
+        "code": "OM",
+        "variant": "Om"
+      },
+      {
+        "code": "ON",
+        "variant": "On"
+      },
+      {
+        "code": "OP",
+        "variant": "Op"
+      },
+      {
+        "code": "OQ",
+        "variant": "Oq"
+      },
+      {
+        "code": "OR",
+        "variant": "Or"
+      },
+      {
+        "code": "OS",
+        "variant": "Os"
+      },
+      {
+        "code": "OT",
+        "variant": "Ot"
+      },
+      {
+        "code": "OU",
+        "variant": "Ou"
+      },
+      {
+        "code": "OV",
+        "variant": "Ov"
+      },
+      {
+        "code": "OW",
+        "variant": "Ow"
+      },
+      {
+        "code": "OX",
+        "variant": "Ox"
+      },
+      {
+        "code": "OY",
+        "variant": "Oy"
+      },
+      {
+        "code": "OZ",
+        "variant": "Oz"
+      },
+      {
+        "code": "P1",
+        "variant": "P1"
+      },
+      {
+        "code": "P2",
+        "variant": "P2"
+      },
+      {
+        "code": "P3",
+        "variant": "P3"
+      },
+      {
+        "code": "P4",
+        "variant": "P4"
+      },
+      {
+        "code": "PA",
+        "variant": "Pa"
+      },
+      {
+        "code": "PB",
+        "variant": "Pb"
+      },
+      {
+        "code": "PC",
+        "variant": "Pc"
+      },
+      {
+        "code": "PD",
+        "variant": "Pd"
+      },
+      {
+        "code": "PE",
+        "variant": "Pe"
+      },
+      {
+        "code": "PF",
+        "variant": "Pf"
+      },
+      {
+        "code": "PG",
+        "variant": "Pg"
+      },
+      {
+        "code": "PH",
+        "variant": "Ph"
+      },
+      {
+        "code": "PI",
+        "variant": "Pi"
+      },
+      {
+        "code": "PJ",
+        "variant": "Pj"
+      },
+      {
+        "code": "PK",
+        "variant": "Pk"
+      },
+      {
+        "code": "PL",
+        "variant": "Pl"
+      },
+      {
+        "code": "PN",
+        "variant": "Pn"
+      },
+      {
+        "code": "PO",
+        "variant": "Po"
+      },
+      {
+        "code": "PP",
+        "variant": "Pp"
+      },
+      {
+        "code": "PR",
+        "variant": "Pr"
+      },
+      {
+        "code": "PT",
+        "variant": "Pt"
+      },
+      {
+        "code": "PU",
+        "variant": "Pu"
+      },
+      {
+        "code": "PV",
+        "variant": "Pv"
+      },
+      {
+        "code": "PX",
+        "variant": "Px"
+      },
+      {
+        "code": "PY",
+        "variant": "Py"
+      },
+      {
+        "code": "PZ",
+        "variant": "Pz"
+      },
+      {
+        "code": "QA",
+        "variant": "Qa"
+      },
+      {
+        "code": "QB",
+        "variant": "Qb"
+      },
+      {
+        "code": "QC",
+        "variant": "Qc"
+      },
+      {
+        "code": "QD",
+        "variant": "Qd"
+      },
+      {
+        "code": "QF",
+        "variant": "Qf"
+      },
+      {
+        "code": "QG",
+        "variant": "Qg"
+      },
+      {
+        "code": "QH",
+        "variant": "Qh"
+      },
+      {
+        "code": "QJ",
+        "variant": "Qj"
+      },
+      {
+        "code": "QK",
+        "variant": "Qk"
+      },
+      {
+        "code": "QL",
+        "variant": "Ql"
+      },
+      {
+        "code": "QM",
+        "variant": "Qm"
+      },
+      {
+        "code": "QN",
+        "variant": "Qn"
+      },
+      {
+        "code": "QP",
+        "variant": "Qp"
+      },
+      {
+        "code": "QQ",
+        "variant": "Qq"
+      },
+      {
+        "code": "QR",
+        "variant": "Qr"
+      },
+      {
+        "code": "QS",
+        "variant": "Qs"
+      },
+      {
+        "code": "RD",
+        "variant": "Rd"
+      },
+      {
+        "code": "RG",
+        "variant": "Rg"
+      },
+      {
+        "code": "RJ",
+        "variant": "Rj"
+      },
+      {
+        "code": "RK",
+        "variant": "Rk"
+      },
+      {
+        "code": "RL",
+        "variant": "Rl"
+      },
+      {
+        "code": "RO",
+        "variant": "Ro"
+      },
+      {
+        "code": "RT",
+        "variant": "Rt"
+      },
+      {
+        "code": "RZ",
+        "variant": "Rz"
+      },
+      {
+        "code": "SA",
+        "variant": "Sa"
+      },
+      {
+        "code": "SB",
+        "variant": "Sb"
+      },
+      {
+        "code": "SC",
+        "variant": "Sc"
+      },
+      {
+        "code": "SD",
+        "variant": "Sd"
+      },
+      {
+        "code": "SE",
+        "variant": "Se"
+      },
+      {
+        "code": "SH",
+        "variant": "Sh"
+      },
+      {
+        "code": "SI",
+        "variant": "Si"
+      },
+      {
+        "code": "SK",
+        "variant": "Sk"
+      },
+      {
+        "code": "SL",
+        "variant": "Sl"
+      },
+      {
+        "code": "SM",
+        "variant": "Sm"
+      },
+      {
+        "code": "SO",
+        "variant": "So"
+      },
+      {
+        "code": "SP",
+        "variant": "Sp"
+      },
+      {
+        "code": "SS",
+        "variant": "Ss"
+      },
+      {
+        "code": "ST",
+        "variant": "St"
+      },
+      {
+        "code": "SU",
+        "variant": "Su"
+      },
+      {
+        "code": "SV",
+        "variant": "Sv"
+      },
+      {
+        "code": "SW",
+        "variant": "Sw"
+      },
+      {
+        "code": "SY",
+        "variant": "Sy"
+      },
+      {
+        "code": "SZ",
+        "variant": "Sz"
+      },
+      {
+        "code": "T1",
+        "variant": "T1"
+      },
+      {
+        "code": "TB",
+        "variant": "Tb"
+      },
+      {
+        "code": "TC",
+        "variant": "Tc"
+      },
+      {
+        "code": "TD",
+        "variant": "Td"
+      },
+      {
+        "code": "TE",
+        "variant": "Te"
+      },
+      {
+        "code": "TG",
+        "variant": "Tg"
+      },
+      {
+        "code": "TI",
+        "variant": "Ti"
+      },
+      {
+        "code": "TK",
+        "variant": "Tk"
+      },
+      {
+        "code": "TL",
+        "variant": "Tl"
+      },
+      {
+        "code": "TN",
+        "variant": "Tn"
+      },
+      {
+        "code": "TO",
+        "variant": "To"
+      },
+      {
+        "code": "TR",
+        "variant": "Tr"
+      },
+      {
+        "code": "TS",
+        "variant": "Ts"
+      },
+      {
+        "code": "TT",
+        "variant": "Tt"
+      },
+      {
+        "code": "TU",
+        "variant": "Tu"
+      },
+      {
+        "code": "TV",
+        "variant": "Tv"
+      },
+      {
+        "code": "TW",
+        "variant": "Tw"
+      },
+      {
+        "code": "TY",
+        "variant": "Ty"
+      },
+      {
+        "code": "TZ",
+        "variant": "Tz"
+      },
+      {
+        "code": "UC",
+        "variant": "Uc"
+      },
+      {
+        "code": "UN",
+        "variant": "Un"
+      },
+      {
+        "code": "VA",
+        "variant": "Va"
+      },
+      {
+        "code": "VG",
+        "variant": "Vg"
+      },
+      {
+        "code": "VI",
+        "variant": "Vi"
+      },
+      {
+        "code": "VK",
+        "variant": "Vk"
+      },
+      {
+        "code": "VL",
+        "variant": "Vl"
+      },
+      {
+        "code": "VN",
+        "variant": "Vn"
+      },
+      {
+        "code": "VO",
+        "variant": "Vo"
+      },
+      {
+        "code": "VP",
+        "variant": "Vp"
+      },
+      {
+        "code": "VQ",
+        "variant": "Vq"
+      },
+      {
+        "code": "VR",
+        "variant": "Vr"
+      },
+      {
+        "code": "VS",
+        "variant": "Vs"
+      },
+      {
+        "code": "VY",
+        "variant": "Vy"
+      },
+      {
+        "code": "WA",
+        "variant": "Wa"
+      },
+      {
+        "code": "WB",
+        "variant": "Wb"
+      },
+      {
+        "code": "WC",
+        "variant": "Wc"
+      },
+      {
+        "code": "WD",
+        "variant": "Wd"
+      },
+      {
+        "code": "WF",
+        "variant": "Wf"
+      },
+      {
+        "code": "WG",
+        "variant": "Wg"
+      },
+      {
+        "code": "WH",
+        "variant": "Wh"
+      },
+      {
+        "code": "WJ",
+        "variant": "Wj"
+      },
+      {
+        "code": "WK",
+        "variant": "Wk"
+      },
+      {
+        "code": "WL",
+        "variant": "Wl"
+      },
+      {
+        "code": "WM",
+        "variant": "Wm"
+      },
+      {
+        "code": "WN",
+        "variant": "Wn"
+      },
+      {
+        "code": "WP",
+        "variant": "Wp"
+      },
+      {
+        "code": "WQ",
+        "variant": "Wq"
+      },
+      {
+        "code": "WR",
+        "variant": "Wr"
+      },
+      {
+        "code": "WS",
+        "variant": "Ws"
+      },
+      {
+        "code": "WT",
+        "variant": "Wt"
+      },
+      {
+        "code": "WU",
+        "variant": "Wu"
+      },
+      {
+        "code": "WV",
+        "variant": "Wv"
+      },
+      {
+        "code": "WW",
+        "variant": "Ww"
+      },
+      {
+        "code": "WX",
+        "variant": "Wx"
+      },
+      {
+        "code": "WY",
+        "variant": "Wy"
+      },
+      {
+        "code": "WZ",
+        "variant": "Wz"
+      },
+      {
+        "code": "XA",
+        "variant": "Xa"
+      },
+      {
+        "code": "XB",
+        "variant": "Xb"
+      },
+      {
+        "code": "XC",
+        "variant": "Xc"
+      },
+      {
+        "code": "XD",
+        "variant": "Xd"
+      },
+      {
+        "code": "XF",
+        "variant": "Xf"
+      },
+      {
+        "code": "XG",
+        "variant": "Xg"
+      },
+      {
+        "code": "XH",
+        "variant": "Xh"
+      },
+      {
+        "code": "XJ",
+        "variant": "Xj"
+      },
+      {
+        "code": "XK",
+        "variant": "Xk"
+      },
+      {
+        "code": "YA",
+        "variant": "Ya"
+      },
+      {
+        "code": "YB",
+        "variant": "Yb"
+      },
+      {
+        "code": "YC",
+        "variant": "Yc"
+      },
+      {
+        "code": "YD",
+        "variant": "Yd"
+      },
+      {
+        "code": "YF",
+        "variant": "Yf"
+      },
+      {
+        "code": "YG",
+        "variant": "Yg"
+      },
+      {
+        "code": "YH",
+        "variant": "Yh"
+      },
+      {
+        "code": "YJ",
+        "variant": "Yj"
+      },
+      {
+        "code": "YK",
+        "variant": "Yk"
+      },
+      {
+        "code": "YL",
+        "variant": "Yl"
+      },
+      {
+        "code": "YM",
+        "variant": "Ym"
+      },
+      {
+        "code": "YN",
+        "variant": "Yn"
+      },
+      {
+        "code": "YP",
+        "variant": "Yp"
+      },
+      {
+        "code": "YQ",
+        "variant": "Yq"
+      },
+      {
+        "code": "YR",
+        "variant": "Yr"
+      },
+      {
+        "code": "YS",
+        "variant": "Ys"
+      },
+      {
+        "code": "YT",
+        "variant": "Yt"
+      },
+      {
+        "code": "YV",
+        "variant": "Yv"
+      },
+      {
+        "code": "YW",
+        "variant": "Yw"
+      },
+      {
+        "code": "YX",
+        "variant": "Yx"
+      },
+      {
+        "code": "YY",
+        "variant": "Yy"
+      },
+      {
+        "code": "YZ",
+        "variant": "Yz"
+      },
+      {
+        "code": "ZA",
+        "variant": "Za"
+      },
+      {
+        "code": "ZB",
+        "variant": "Zb"
+      },
+      {
+        "code": "ZC",
+        "variant": "Zc"
+      },
+      {
+        "code": "ZD",
+        "variant": "Zd"
+      },
+      {
+        "code": "ZF",
+        "variant": "Zf"
+      },
+      {
+        "code": "ZG",
+        "variant": "Zg"
+      },
+      {
+        "code": "ZH",
+        "variant": "Zh"
+      },
+      {
+        "code": "ZJ",
+        "variant": "Zj"
+      },
+      {
+        "code": "ZK",
+        "variant": "Zk"
+      },
+      {
+        "code": "ZL",
+        "variant": "Zl"
+      },
+      {
+        "code": "ZM",
+        "variant": "Zm"
+      },
+      {
+        "code": "ZN",
+        "variant": "Zn"
+      },
+      {
+        "code": "ZP",
+        "variant": "Zp"
+      },
+      {
+        "code": "ZQ",
+        "variant": "Zq"
+      },
+      {
+        "code": "ZR",
+        "variant": "Zr"
+      },
+      {
+        "code": "ZS",
+        "variant": "Zs"
+      },
+      {
+        "code": "ZT",
+        "variant": "Zt"
+      },
+      {
+        "code": "ZU",
+        "variant": "Zu"
+      },
+      {
+        "code": "ZV",
+        "variant": "Zv"
+      },
+      {
+        "code": "ZW",
+        "variant": "Zw"
+      },
+      {
+        "code": "ZX",
+        "variant": "Zx"
+      },
+      {
+        "code": "ZY",
+        "variant": "Zy"
+      },
+      {
+        "code": "ZZ",
+        "variant": "Zz"
       }
     ]
   }

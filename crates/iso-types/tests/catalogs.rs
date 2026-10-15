@@ -8,7 +8,12 @@
     feature = "15924",
     feature = "5218",
     feature = "8601",
-    feature = "units"
+    feature = "units",
+    feature = "numbering-systems",
+    feature = "216",
+    feature = "639-5",
+    feature = "trade-units",
+    feature = "packaging"
 ))]
 
 use iso_types::{EnumCount as _, IntoEnumIterator as _, IsoCode, VariantArray as _};
@@ -66,7 +71,12 @@ catalog_test!("15924", scripts, Iso15924, 34);
 catalog_test!("5218", sex_codes, Iso5218, 4);
 catalog_test!("8601", weekdays, Iso8601Weekday, 7);
 catalog_test!("8601", months, Iso8601Month, 12);
-catalog_test!("units", measurement_units, MeasurementUnit, 103);
+catalog_test!("units", measurement_units, MeasurementUnit, 148);
+catalog_test!("numbering-systems", numbering_systems, NumberingSystem, 30);
+catalog_test!("216", paper_sizes, Iso216, 22);
+catalog_test!("639-5", language_groups, Iso6395, 115);
+catalog_test!("trade-units", trade_units, TradeUnit, 2161);
+catalog_test!("packaging", packaging, PackagingType, 405);
 catalog_test!("regions", geographic_regions, GeographicRegion, 30);
 catalog_test!("time-zones", time_zones, TimeZoneId, 419);
 catalog_test!("unit-preferences", unit_usages, UnitUsage, 35);
@@ -200,6 +210,11 @@ fn fluent_catalogs_match_every_english_display_label_and_keep_owner_scoping() {
     check!("8601", Iso8601Weekday);
     check!("8601", Iso8601Month);
     check!("units", MeasurementUnit);
+    check!("numbering-systems", NumberingSystem);
+    check!("216", Iso216);
+    check!("639-5", Iso6395);
+    check!("trade-units", TradeUnit);
+    check!("packaging", PackagingType);
     check!("regions", GeographicRegion);
     check!("time-zones", TimeZoneId);
     check!("unit-preferences", UnitUsage);

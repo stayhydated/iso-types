@@ -5,6 +5,25 @@ extern crate self as iso_types;
 mod catalogs;
 mod code;
 pub use code::{IsoCode, LabelSource, ParseIsoCodeError};
+#[cfg(feature = "numbering-systems")]
+mod numbering;
+#[cfg(feature = "numbering-systems")]
+pub use numbering::{NumberingPreferences, NumberingSystemKind, numbering_preferences};
+#[cfg(feature = "639-5")]
+mod language_groups;
+#[cfg(feature = "10383")]
+mod markets;
+#[cfg(feature = "216")]
+mod paper;
+#[cfg(feature = "10383")]
+pub use markets::{
+    Iso10383, MarketRecord, MarketRegistry, MarketRegistryError, MicDate, MicKind, MicStatus,
+};
+#[cfg(feature = "13616")]
+mod iban;
+mod trade;
+#[cfg(feature = "13616")]
+pub use iban::{BbanCharacterKind, BbanComponent, Iban, IbanFormat, ParseIbanError};
 pub use strum;
 pub use strum::{EnumCount, IntoEnumIterator, VariantArray};
 // The catalog glob is empty when every catalog feature is disabled.

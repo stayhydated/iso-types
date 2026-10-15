@@ -3,7 +3,7 @@ use es_fluent_manager_dioxus::use_i18n;
 use iso_types::{IntoEnumIterator as _, Iso3166_1 as Country, MeasurementUnit as Unit, UnitUsage};
 
 use crate::{
-    components::{CatalogSelect, CountryPicker, DemoFrame},
+    components::{CatalogFact, CatalogSelect, CountryPicker, DemoFrame},
     i18n::{QuantityResult, Ui},
     site::Page,
     visuals,
@@ -54,6 +54,7 @@ pub(crate) fn Demo() -> Element {
                 img { src: result_icon, alt: "", aria_hidden: "true", width: 24, height: 24 }
                 span { "{i18n.localize_message(&Ui::Result)}: {result}" }
             }
+            dl { class: "fact-grid", CatalogFact::<iso_types::TradeUnit> { label: Ui::TradeCodes, values: from().trade_codes().to_vec() } }
             div { class: "control-grid",
                 CountryPicker { value: country }
                 CatalogSelect::<UnitUsage> { label: Ui::Usage, value: usage, values: UnitUsage::iter().collect(), on_change: move |next| usage.set(next) }

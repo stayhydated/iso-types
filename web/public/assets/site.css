@@ -325,3 +325,22 @@
   align-items: center;
   gap: 0.65rem;
 }
+
+.catalog-workbench textarea {
+  width: 100%;
+  padding: var(--control-padding-y) var(--control-padding-x);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  background: var(--field-bg);
+  font: inherit;
+  resize: vertical;
+}
+.catalog-workbench textarea:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+.example-content > section {
+  display: grid;
+  gap: 1rem;
+}

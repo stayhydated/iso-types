@@ -1,0 +1,94 @@
+{
+  "as_of": "2026-10-15",
+  "files": {
+    "numbering-locales.zip": {
+      "url": "https://unicode.org/Public/cldr/48.2/core.zip",
+      "retrieved": "2026-10-15",
+      "sha256": "4817cdcddc9d0465551b5a3e24dc5a7d3f4b6de065a807dfedef0cb7060692dc",
+      "release": "48.2",
+      "license": "Unicode-3.0",
+      "source_archive_sha256": "d2844f9dbf6124d11a7b047f5381a467902d82a673be3d658f4c0791ffa0b83b",
+      "selection": "Complete common/main XML files for current/common languages plus root; canonical member order and deterministic ZIP metadata."
+    },
+    "numberingSystems.xml": {
+      "url": "https://unicode.org/Public/cldr/48.2/core.zip",
+      "retrieved": "2026-10-15",
+      "sha256": "c5b9b208c6fe7bd3ce4e1c6cbb8f3337480aca620c9cf703ef3b6c74d4258c16",
+      "release": "48.2",
+      "license": "Unicode-3.0",
+      "member": "common/supplemental/numberingSystems.xml"
+    },
+    "language-subtag-registry.txt": {
+      "url": "https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
+      "retrieved": "2026-10-15",
+      "sha256": "755fad43283be7b41ebe3c89ad054b6eaf928f404f9c0edb74799e0eab74beb1",
+      "license": "IANA registry terms",
+      "terms": "https://www.iana.org/help/licensing-terms"
+    },
+    "unlocode-2025-1.zip": {
+      "url": "https://opensource.unicc.org/un/unece/uncefact/vocab-locode/-/jobs/artifacts/2025-1/download?job=package-release",
+      "retrieved": "2026-10-15",
+      "sha256": "ad409fc7149b10f98d61190c34d9daf78b78bb8b31464cc66de1a89d09b01b5d",
+      "release": "2025-1",
+      "license": "CC-BY-4.0",
+      "terms": "https://unlocode.unece.org/terms"
+    },
+    "language-groups.html": {
+      "url": "https://www.loc.gov/standards/iso639-5/id.php",
+      "retrieved": "2026-10-15",
+      "sha256": "e6660b899baad257d0d6145c446dff5b344c3f05bd42bdad0b6cfc70f3a64e46",
+      "authority": "Library of Congress",
+      "terms": "https://www.loc.gov/standards/iso639-5/",
+      "release": "ISO 639:2023 Set 5"
+    },
+    "ipp-registrations.xml": {
+      "url": "https://www.iana.org/assignments/ipp-registrations/ipp-registrations.xml",
+      "retrieved": "2026-10-15",
+      "sha256": "355f606eae24293bd9f7c41f237e385bba706bd41381f4912ac01a5ea895a27f",
+      "authority": "IANA / Printer Working Group",
+      "terms": "https://www.iana.org/help/licensing-terms"
+    },
+    "rec20.xlsx": {
+      "url": "https://opensource.unicc.org/api/v4/projects/un%2Funece%2Funcefact%2Fvocab-bsp/repository/blobs/b9509babe203d4dab6696f51943e9f27c40c2710/raw",
+      "retrieved": "2026-10-15",
+      "sha256": "994a85c3682e67604d42dbda3b35d672338a45b400f5397a96a4c5467ee8056d",
+      "authority": "UNECE",
+      "release": "Recommendation 20 Revision 17 (2021)",
+      "license": "CC-BY-4.0",
+      "original_url": "https://unece.org/sites/default/files/2023-10/rec20_Rev17e-2021.xlsx",
+      "git_blob": "b9509babe203d4dab6696f51943e9f27c40c2710"
+    },
+    "iban-registry.txt": {
+      "url": "https://www.swift.com/swift-resource/11971/download",
+      "retrieved": "2026-10-15",
+      "sha256": "ad13d9595a991790ad1a5a1363d574a43357c710e3bce2170f95c9bef8932df0",
+      "release": "103 (2026-09-17)",
+      "encoding": "windows-1252",
+      "authority": "Swift, ISO 13616 Registration Authority",
+      "terms": "https://www.swift.com/swift-resource/22851/download",
+      "reuse": "Registration Procedures section 5.2 grants third parties a non-exclusive royalty-free licence to use published registry information."
+    },
+    "rec21.xls": {
+      "url": "https://unece.org/sites/default/files/2021-06/rec21_Rev12e_Annex-V-VI_2021.xls",
+      "retrieved": "2026-10-15",
+      "sha256": "ea44b5c5b6c8bf2ed8499fe1c3805a180804067e19e2fbf7bb60d1e05a943ea4",
+      "release": "Recommendation 21 Revision 12 (2021)",
+      "authority": "UNECE",
+      "license": "CC-BY-4.0",
+      "terms": "https://unlocode.unece.org/terms"
+    },
+    "rec21.json": {
+      "url": "https://unece.org/sites/default/files/2021-06/rec21_Rev12e_Annex-V-VI_2021.xls",
+      "sha256": "1b5b7260d43ef9c9b37c3d169ba38a6ed01559bcafbab2ce497b45987c759dd8",
+      "derived_from": "rec21.xls",
+      "extractor": "xlrd 2.0.2",
+      "license": "CC-BY-4.0"
+    },
+    "unit-crosswalk.json": {
+      "url": "https://github.com/stayhydated/iso-types",
+      "sha256": "6df7e9dd7f94741c2533793a458ffbdec87cf6b49fa3113ab91a23f1effadcd6",
+      "authority": "iso-types maintainers",
+      "license": "MIT OR Apache-2.0"
+    }
+  }
+}

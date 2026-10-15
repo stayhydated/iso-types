@@ -67,3 +67,23 @@ pub use address_fields::AddressField;
 mod address_labels;
 #[cfg(feature = "addresses")]
 pub use address_labels::AddressFieldLabel;
+#[cfg(feature = "numbering-systems")]
+mod numbering_systems;
+#[cfg(feature = "numbering-systems")]
+pub use numbering_systems::NumberingSystem;
+#[cfg(feature = "216")]
+mod iso_216;
+#[cfg(feature = "216")]
+pub use iso_216::Iso216;
+#[cfg(feature = "639-5")]
+mod iso_639_5;
+#[cfg(feature = "639-5")]
+pub use iso_639_5::Iso6395;
+#[cfg(feature = "trade-units")]
+mod trade_units;
+#[cfg(feature = "trade-units")]
+pub use trade_units::TradeUnit;
+#[cfg(feature = "packaging")]
+mod packaging;
+#[cfg(feature = "packaging")]
+pub use packaging::PackagingType;

@@ -1,0 +1,96 @@
+The ISO source snapshots in data/iso/iso_*.json (except
+iso_finite.json), the generated ISO tables and ISO entries in the macro selection index,
+and corresponding English Fluent catalog names derive from iso-codes:
+https://salsa.debian.org/iso-codes-team/iso-codes
+
+Copyright 2016 Dr. Tobias Quathamer <toddy@debian.org>
+SPDX-License-Identifier: LGPL-2.1-or-later
+
+The source revision and SHA-256 checksums are recorded in data/iso/provenance.json.
+The original source data, editable FTL, and generator are provided in this
+repository. The LGPL license text accompanies the public Cargo packages.
+
+Original Rust implementation and generator code:
+Copyright 2026 Mark (stayhydated)
+SPDX-License-Identifier: MIT OR Apache-2.0
+
+English ICU-owned names and currency formatting metadata in data/icu/english.json
+and generated catalog tables derive from ICU4X compiled data. Provider versions and the English display locale are
+recorded in data/icu/english.json; Cargo.lock pins provider data packages and checksums.
+https://github.com/unicode-org/icu4x
+Copyright Unicode, Inc.
+SPDX-License-Identifier: Unicode-3.0
+The Unicode license text accompanies the public Cargo packages.
+
+Current-data selection uses CLDR coverage, script, validity, alias, and currency
+metadata under the Unicode license, plus current ISO 4217 code facts published
+by SIX. Retrieval dates, releases, URLs, and checksums are recorded in
+data/current/provenance.json in the repository.
+
+Common measurement-unit identifiers, categories, and English display names derive
+from CLDR validity data and the English locale. The complete pinned upstream inputs
+and checksums are provided under data/current; generated Cargo packages contain
+the selected catalog. ICU4X compiled conversion data supplies conversion factors,
+temperature offsets, and reciprocal rules when unit-conversion is enabled.
+
+Regional preferences, language/script relationships, and ranked/mixed-unit
+preferences derive from pinned CLDR supplemental data under Unicode-3.0.
+Geographic relationships use numerical classification facts from the UN
+Statistics Division M49 overview, retrieved on the date recorded in provenance:
+https://unstats.un.org/unsd/methodology/m49/overview/
+
+IANA location identifiers and country associations derive from zone.tab and
+zone1970.tab in the IANA Time Zone Database. These tables are in the public domain.
+https://www.iana.org/time-zones
+The revision and checksums are recorded in data/current/provenance.json.
+Jiff supplies transition rules through its bundled database dependency.
+
+Telephone prefixes derive from libphonenumber's PhoneNumberMetadata.xml.
+Postal schemas derive from libaddressinput metadata and RegionDataConstants.java.
+https://github.com/google/libphonenumber
+https://github.com/google/libaddressinput
+Copyright Google Inc.
+SPDX-License-Identifier: Apache-2.0
+Pinned revisions, retrieval dates, URLs, and checksums are recorded in
+data/current/provenance.json. The Apache license text accompanies the public packages.
+
+Additional pinned registry inputs and checksums are recorded in
+data/registries/provenance.json. Selected derived records are generated from:
+
+CLDR 48.2 numbering systems, English labels, and inherited locale preferences.
+Copyright Unicode, Inc. SPDX-License-Identifier: Unicode-3.0
+https://unicode.org/Public/cldr/48.2/
+
+IANA Language Subtag Registry macrolanguage relationships, and IANA IPP media
+registrations for ISO 216 A/B paper dimensions. Registry facts are public domain.
+https://www.iana.org/assignments/language-subtag-registry/
+https://www.iana.org/assignments/ipp-registrations/
+https://www.iana.org/help/licensing-terms
+
+ISO 639-5 language group codes, English labels, and hierarchy published by the
+Library of Congress, the registration authority. These published cataloging facts
+are reproduced with source attribution.
+https://www.loc.gov/standards/iso639-5/
+
+UNECE UN/LOCODE production release 2025-1, Recommendation 20 revision 17 (2021),
+and Recommendation 21 revision 12 (2021). Copyright United Nations / UNECE.
+SPDX-License-Identifier: CC-BY-4.0
+https://unlocode.unece.org/publications/
+https://unece.org/trade/uncefact/cl-recommendations
+The generated selections remove deleted/deprecated entries and excluded country
+codes; UN/LOCODE alternative listings and source metadata are preserved. Rec 21
+package counts use the Rec 20 X prefix. A project-owned explicit crosswalk links
+selected Rec 20 codes to physically equivalent CLDR identifiers. These derived
+selections and crosswalks are changes to the sources, not publisher endorsements.
+The Creative Commons Attribution 4.0 text accompanies the public Cargo packages.
+
+Registered national IBAN format information derives from the Swift IBAN Registry,
+release 103 (September 2026). The ISO 13616 registration procedures, section 5.2,
+grant third parties a non-exclusive royalty-free right to use published registry
+information. Derived tables select registered formats for current countries and
+preserve territory associations, examples, and bank/branch identifier positions.
+https://www.swift.com/standards/data-standards/iban-international-bank-account-number
+https://www.swift.com/swift-resource/22851/download
+
+ISO 10383 support imports application-supplied MIC CSV snapshots locally. MIC
+registry contents are supplied by each application under its own authorization.

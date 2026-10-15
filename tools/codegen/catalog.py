@@ -16,6 +16,7 @@ class CatalogSpec:
     source: str
     icu_names: bool = True
     label_source: str | None = None
+    description: str | None = None
 
     @property
     def feature(self) -> str:
@@ -27,7 +28,7 @@ class CatalogSpec:
     def module(self) -> str:
         if self.standard == "units":
             return "measurement_unit"
-        if self.standard in {"regions", "time-zones", "unit-preferences", "calling-codes", "address-fields", "address-labels"}:
+        if self.standard in {"regions", "time-zones", "unit-preferences", "calling-codes", "address-fields", "address-labels", "numbering-systems", "trade-units", "packaging"}:
             return self.standard.replace("-", "_")
         return "iso_" + self.standard.replace("-", "_")
 

@@ -1,10 +1,10 @@
 use dioxus::prelude::*;
 use es_fluent_manager_dioxus::use_i18n;
 use iso_types::{
-    AddressField, AddressFieldLabel, CallingCode, EnumCount as _, GeographicRegion, Iso3166_1,
-    Iso3166_2, Iso4217, Iso5218, Iso6391, Iso6392, Iso6393, Iso8601Month, Iso8601Weekday, Iso15924,
-    IsoCode, MeasurementUnit, ParseIsoCodeError, TimeZoneId, UnitUsage, VariantArray as _,
-    iso_enum,
+    AddressField, AddressFieldLabel, CallingCode, EnumCount as _, GeographicRegion, Iso216,
+    Iso3166_1, Iso3166_2, Iso4217, Iso5218, Iso6391, Iso6392, Iso6393, Iso6395, Iso8601Month,
+    Iso8601Weekday, Iso15924, IsoCode, MeasurementUnit, NumberingSystem, PackagingType,
+    ParseIsoCodeError, TimeZoneId, TradeUnit, UnitUsage, VariantArray as _, iso_enum,
 };
 use stayhydated_dioxus::select::{SearchableSelect, SelectItem};
 
@@ -34,6 +34,11 @@ enum Catalog {
     CallingCodes,
     AddressFields,
     AddressLabels,
+    Paper,
+    LanguageGroups,
+    NumberingSystems,
+    TradeUnits,
+    Packaging,
 }
 
 #[derive(Debug, Eq, PartialEq)]
@@ -75,6 +80,11 @@ impl Catalog {
             Self::CallingCodes => CallingCode::STANDARD,
             Self::AddressFields => AddressField::STANDARD,
             Self::AddressLabels => AddressFieldLabel::STANDARD,
+            Self::Packaging => PackagingType::STANDARD,
+            Self::TradeUnits => TradeUnit::STANDARD,
+            Self::NumberingSystems => NumberingSystem::STANDARD,
+            Self::LanguageGroups => Iso6395::STANDARD,
+            Self::Paper => Iso216::STANDARD,
         }
     }
     fn entries(self) -> Vec<Entry> {
@@ -96,6 +106,11 @@ impl Catalog {
             Self::CallingCodes => entries::<CallingCode>(),
             Self::AddressFields => entries::<AddressField>(),
             Self::AddressLabels => entries::<AddressFieldLabel>(),
+            Self::Packaging => entries::<PackagingType>(),
+            Self::TradeUnits => entries::<TradeUnit>(),
+            Self::NumberingSystems => entries::<NumberingSystem>(),
+            Self::LanguageGroups => entries::<Iso6395>(),
+            Self::Paper => entries::<Iso216>(),
         }
     }
     fn parse(self, input: &str) -> Result<Entry, ParseIsoCodeError> {
@@ -117,6 +132,11 @@ impl Catalog {
             Self::CallingCodes => parsed::<CallingCode>(input),
             Self::AddressFields => parsed::<AddressField>(input),
             Self::AddressLabels => parsed::<AddressFieldLabel>(input),
+            Self::Packaging => parsed::<PackagingType>(input),
+            Self::TradeUnits => parsed::<TradeUnit>(input),
+            Self::NumberingSystems => parsed::<NumberingSystem>(input),
+            Self::LanguageGroups => parsed::<Iso6395>(input),
+            Self::Paper => parsed::<Iso216>(input),
         }
     }
 }
@@ -226,7 +246,7 @@ mod tests {
     use super::*;
     #[test]
     fn every_catalog_round_trips_and_subsets_keep_runtime_relationships() {
-        assert_eq!(Catalog::VARIANTS.len(), 17);
+        assert_eq!(Catalog::VARIANTS.len(), 22);
         for catalog in Catalog::VARIANTS {
             assert_ne!(
                 visuals::standard_icon(catalog.standard()),

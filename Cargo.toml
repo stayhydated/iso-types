@@ -2,6 +2,7 @@
 members = [
   "crates/iso-types",
   "crates/iso-types-macros",
+  "crates/iso-types-locations",
   "tests/locale-consumer",
   "tools/icu-data",
   "web",
@@ -13,12 +14,13 @@ resolver = "3"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.99"
-license = "(MIT OR Apache-2.0) AND LGPL-2.1-or-later AND Unicode-3.0 AND Apache-2.0"
+license = "(MIT OR Apache-2.0) AND LGPL-2.1-or-later AND Unicode-3.0 AND Apache-2.0 AND CC-BY-4.0"
 repository = "https://github.com/stayhydated/iso-types"
 
 [workspace.dependencies]
 anyhow = "1.0"
 clap = { version = "4.6", features = ["derive"] }
+csv = "1.4"
 dioxus = { version = "0.7", default-features = false }
 es-fluent-build = "0.21.0"
 es-fluent-manager-dioxus = { version = "0.21.0", default-features = false }
@@ -27,6 +29,7 @@ stayhydated-site = { git = "https://github.com/stayhydated/shared", rev = "3136b
 stayhydated-xtask = { git = "https://github.com/stayhydated/shared", rev = "3136b369bb54312096ad83ba74735aab29109835" }
 web = { path = "web" }
 iso-types = { path = "crates/iso-types", version = "0.1.0" }
+iso-types-locations = { path = "crates/iso-types-locations", version = "0.1.0" }
 iso-types-macros = { path = "crates/iso-types-macros", version = "0.1.0" }
 es-fluent = { version = "0.21.0", default-features = false }
 es-fluent-manager-core = { version = "0.21.0" }

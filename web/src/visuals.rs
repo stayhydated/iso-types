@@ -30,15 +30,18 @@ pub(crate) fn standard_icon(standard: &str) -> Icon {
         "3166-1" | "calling-codes" => Icon::Globe,
         "3166-2" => Icon::Location,
         "4217" => Icon::Currency,
-        "639-1" | "639-2" | "639-3" => Icon::Language,
+        "639-1" | "639-2" | "639-3" | "639-5" => Icon::Language,
         "15924" => Icon::Script,
         "5218" => Icon::Person,
-        "units" | "unit-preferences" => Icon::Ruler,
+        "units" | "unit-preferences" | "trade-units" => Icon::Ruler,
         "time-zones" => Icon::Clock,
         "8601-weekday" => Icon::CalendarWeek,
         "8601-month" => Icon::CalendarMonth,
         "address-fields" | "address-labels" => Icon::Address,
         "regions" => Icon::Map,
+        "216" => Icon::Paper,
+        "numbering-systems" => Icon::Binary,
+        "packaging" => Icon::Building,
         _ => Icon::Catalog,
     }
 }
@@ -154,6 +157,7 @@ pub(crate) fn page_icon(page: Page) -> String {
         Page::TimeZones => Icon::Clock,
         Page::Phone => Icon::Phone,
         Page::Catalogs => Icon::Catalog,
+        Page::Registries => Icon::Building,
     })
 }
 

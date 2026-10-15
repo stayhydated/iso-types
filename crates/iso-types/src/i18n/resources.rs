@@ -12,6 +12,8 @@ pub(super) const ENGLISH_RESOURCES: &[&str] = &[
     include_str!("../../i18n/en/iso-types/address-fields.ftl"),
     #[cfg(feature = "addresses")]
     include_str!("../../i18n/en/iso-types/address-labels.ftl"),
+    #[cfg(feature = "216")]
+    include_str!("../../i18n/en/iso-types/216.ftl"),
 ];
 
 pub(super) fn catalog_english_name(id: &str) -> Option<&'static str> {
@@ -61,6 +63,22 @@ pub(super) fn catalog_english_name(id: &str) -> Option<&'static str> {
             .iter()
             .find(|zone| zone.message_id() == id)
             .map(|zone| zone.english_name());
+    }
+    #[cfg(feature = "numbering-systems")]
+    if let Some(code) = id.strip_prefix("iso-numbering-systems-") {
+        return Some(code.parse::<crate::NumberingSystem>().ok()?.english_name());
+    }
+    #[cfg(feature = "639-5")]
+    if let Some(code) = id.strip_prefix("iso-639-5-") {
+        return Some(code.parse::<crate::Iso6395>().ok()?.english_name());
+    }
+    #[cfg(feature = "trade-units")]
+    if let Some(code) = id.strip_prefix("iso-trade-units-") {
+        return Some(code.parse::<crate::TradeUnit>().ok()?.english_name());
+    }
+    #[cfg(feature = "packaging")]
+    if let Some(code) = id.strip_prefix("iso-packaging-") {
+        return Some(code.parse::<crate::PackagingType>().ok()?.english_name());
     }
     let _ = id;
     None

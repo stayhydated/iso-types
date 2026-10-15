@@ -11,6 +11,7 @@ dioxus = { workspace = true, features = ["launch", "lib", "router", "web"] }
 es-fluent = { workspace = true, features = ["derive"] }
 es-fluent-manager-dioxus = { workspace = true, features = ["client"] }
 iso-types = { workspace = true, features = ["full", "fluent", "locales", "unit-conversion", "time-zone-localization", "phone-numbers"] }
+iso-types-locations = { workspace = true, features = ["subdivisions"] }
 stayhydated-dioxus = { workspace = true }
 stayhydated-site = { workspace = true }
 strum = { workspace = true }

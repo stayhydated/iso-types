@@ -19,6 +19,10 @@ Python 3.10 or newer and the pinned Rust toolchain.
 | Country preferences and preferred units | `tools/codegen/preferences.py` and `unit_preferences.py`; runtime types in `src/regional.rs` and `src/unit_preferences.rs`. |
 | Language relationships | `tools/codegen/language_relations.py`; generated `src/language_relations/data.rs`; ICU directionality in `src/language_relations.rs`. |
 | Telephone and postal metadata | `tools/codegen/contacts.py`; generated tables under `src/telephone/` and `src/address/`; parser adapters and schema APIs in the parent modules. |
+| Numbering systems and defaults | `tools/codegen/numbering.py`; runtime lookup in `src/numbering.rs`. |
+| Paper, language groups, and trade catalogs | `tools/codegen/paper.py`, `language_groups.py`, and `trade.py`; generated facade metadata. |
+| IBAN and MIC | Registered IBAN generation in `tools/codegen/iban.py`; validation in `src/iban.rs`; application-supplied MIC CSV import in `src/markets.rs`. |
+| UN/LOCODE directory | `tools/codegen/locations.py`; separately packaged `crates/iso-types-locations`. |
 | Locale parsing and English names | `crates/iso-types/src/locale.rs`. |
 | English Fluent utility | `crates/iso-types/src/i18n.rs`; owned resources under `i18n/en/iso-types/`. |
 | Macro input conventions | `crates/iso-types-macros/src/enum_input.rs`. |
@@ -146,3 +150,10 @@ Shared owns the shell, components, styles, preview, and assembly. Consumer CSS
 contains the catalog workbench's controls and result layouts. Validate source and
 the assembled artifact with the shared skill's consumer audit when changing the
 site contract, and inspect direct navigation and locale changes in the browser.
+
+Additional registry inputs, checksums, source terms, releases, and retrieval dates
+live in `data/registries`. Preserve complete upstream inputs and every UN/LOCODE
+alternative listing. `tools/import_packaging.py` refreshes the full XLS snapshot
+with pinned xlrd 2.0.2; normal generation uses the Python standard library.
+MIC support reads application-supplied CSV; keep registry contents outside the
+repository. Root `LICENSE-CC-BY-4.0` covers attributed UNECE derived selections.

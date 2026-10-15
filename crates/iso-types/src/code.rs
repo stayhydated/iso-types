@@ -41,4 +41,8 @@ pub enum LabelSource {
     Fluent,
     /// English display names from the pinned CLDR locale data.
     Cldr,
+    /// English language-group names published by the Library of Congress.
+    LibraryOfCongress,
+    /// English trade-unit and package names published by UNECE.
+    Unece,
 }
