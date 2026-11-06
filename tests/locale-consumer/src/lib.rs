@@ -1,4 +1,7 @@
 //! Real consumer coverage for renamed dependencies and configured locale enums.
+#[cfg(test)]
+embedded::define_i18n_module!();
+
 #[codes::iso_locale]
 pub enum Languages {}
 
@@ -42,8 +45,8 @@ const CONFIGURED_DEFAULT_CODE: &str = Languages::EnUs.into_str();
 mod tests {
     use super::*;
     use codes::{EnumCount as _, IntoEnumIterator as _, VariantArray as _};
-    use es_fluent::FluentMessage;
     use es_fluent_manager_core::I18nModuleRegistration;
+    use localized::FluentMessage;
 
     #[test]
     fn country_and_category_filters_work_through_the_renamed_facade() {
@@ -187,7 +190,7 @@ mod tests {
 
     #[test]
     fn custom_locale_inventory_belongs_to_the_consumer_and_uses_exact_locale_keys() {
-        let info = inventory::iter::<es_fluent::registry::RegisteredFtlType>()
+        let info = inventory::iter::<localized::registry::RegisteredFtlType>()
             .find(|entry| entry.0.type_name() == "CustomLabels")
             .unwrap()
             .0;
@@ -201,6 +204,34 @@ mod tests {
         assert_eq!(key.owner(), "iso-types-locale-consumer");
         assert_eq!(key.domain(), "iso-types-locale-consumer");
         assert_eq!(key.id(), "fr-FR");
+    }
+
+    #[test]
+    fn embedded_manager_selects_enum_locales_and_renders_both_label_modes() {
+        let _ = codes::i18n::force_link();
+        let i18n = embedded::EmbeddedI18n::try_new_with_language(Languages::FrFr).unwrap();
+        // The active locale's built-in label is its autonym in both label
+        // modes; `localized-langs` only changes labels for other locales.
+        assert_eq!(i18n.localize_message(&Languages::FrFr), "français (France)");
+        // Custom labels come from the application's own FTL.
+        assert_eq!(
+            i18n.localize_message(&CustomLabels::ZhHantTw),
+            "chinois traditionnel"
+        );
+
+        i18n.select_language(Languages::ZhHantTw).unwrap();
+        assert_eq!(i18n.localize_message(&CustomLabels::FrFr), "法文");
+        assert_eq!(
+            i18n.localize_message(&Languages::ZhHantTw),
+            "繁體中文（台灣）"
+        );
+
+        // The iso-types runtime module follows selection without adding locales.
+        assert!(
+            i18n.select_language(codes::unic_langid::langid!("de"))
+                .is_err()
+        );
+        assert_eq!(i18n.localize_message(&CustomLabels::FrFr), "法文");
     }
 }
 
@@ -264,7 +295,7 @@ mod hygiene {
             codes::unic_langid::langid!("en-US")
         );
         assert_eq!(
-            es_fluent::FluentMessage::to_fluent_string_with(
+            localized::FluentMessage::to_fluent_string_with(
                 &PickerLanguages::En,
                 &mut |_, _| unreachable!("catalog labels need no lookup")
             ),

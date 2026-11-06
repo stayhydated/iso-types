@@ -1722,6 +1722,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "es-fluent-manager-embedded"
+version = "0.21.2"
+source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+dependencies = [
+ "es-fluent",
+ "es-fluent-manager-core",
+ "es-fluent-manager-macros",
+ "tracing",
+ "unic-langid",
+]
+
+[[package]]
 name = "es-fluent-manager-macros"
 version = "0.21.2"
 source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
@@ -2808,7 +2820,9 @@ name = "iso-types-locale-consumer"
 version = "0.0.0"
 dependencies = [
  "es-fluent",
+ "es-fluent-build",
  "es-fluent-manager-core",
+ "es-fluent-manager-embedded",
  "inventory",
  "iso-types",
 ]

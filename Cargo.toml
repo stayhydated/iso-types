@@ -25,6 +25,7 @@ csv = "1.4"
 dioxus = { version = "0.7", default-features = false }
 es-fluent-build = "0.21.2"
 es-fluent-manager-dioxus = { version = "0.21.2", default-features = false }
+es-fluent-manager-embedded = "0.21.2"
 stayhydated-dioxus = { git = "https://github.com/stayhydated/shared", rev = "3136b369bb54312096ad83ba74735aab29109835" }
 stayhydated-site = { git = "https://github.com/stayhydated/shared", rev = "3136b369bb54312096ad83ba74735aab29109835" }
 stayhydated-xtask = { git = "https://github.com/stayhydated/shared", rev = "3136b369bb54312096ad83ba74735aab29109835" }
@@ -72,6 +73,7 @@ es-fluent-derive = { git = "https://github.com/stayhydated/es-fluent", rev = "77
 es-fluent-derive-core = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
 es-fluent-manager-core = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
 es-fluent-manager-dioxus = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
+es-fluent-manager-embedded = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
 es-fluent-manager-macros = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
 es-fluent-shared = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
 es-fluent-toml = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }

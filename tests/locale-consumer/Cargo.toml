@@ -16,6 +16,13 @@ codes = { package = "iso-types", path = "../../crates/iso-types", features = [
   "time-zone-localization",
   "phone-numbers",
 ] }
-es-fluent = { workspace = true }
+# Renamed so tests prove generated code reaches es-fluent through iso-types.
+localized = { package = "es-fluent", version = "0.21.2", default-features = false }
 es-fluent-manager-core = { workspace = true }
 inventory = { workspace = true }
+
+[dev-dependencies]
+embedded = { package = "es-fluent-manager-embedded", version = "0.21.2" }
+
+[build-dependencies]
+es-fluent-build = { workspace = true }

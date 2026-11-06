@@ -28,7 +28,7 @@ Python 3.10 or newer and the pinned Rust toolchain.
 | Macro input conventions | `crates/iso-types-macros/src/enum_input.rs`. |
 | Catalog subset expansion | `crates/iso-types-macros/src/catalog/`: cached data, validated model, and token emission. |
 | Configured locale expansion | `crates/iso-types-macros/src/locale/`: validated model and token emission. |
-| Real consumer tests | `tests/locale-consumer`: renamed dependency, custom inventory, conversions, and macro hygiene. |
+| Real consumer tests | `tests/locale-consumer`: renamed iso-types and es-fluent dependencies, an embedded manager with application FTL, custom inventory, conversions, and macro hygiene. |
 | ICU snapshot extraction | `tools/icu-data`: pinned compiled providers. |
 | Data selection and generation | `tools/codegen`: catalogs, current policy, Rust rendering, and output verification. |
 | Interactive Dioxus examples | `web/src/examples/`; shared controls in `web/src/components.rs`; messages and assets owned by `web/`. |
@@ -96,7 +96,8 @@ routes them to the runtime module, which formats names in the selected language.
 The runtime module also answers canonical `iso-locale-*` keys with autonyms so
 macro and facade feature unification cannot drop labels. Until es-fluent
 publishes its manager and manifest APIs, the workspace patches es-fluent crates
-to a pinned git revision.
+to a pinned git revision. es-fluent does not depend on iso-types, so this
+repository owns all integration coverage between them.
 
 `relations.py` validates country ownership, closed parent references, and acyclic
 subdivision hierarchies before rendering. Country/subdivision navigation and
