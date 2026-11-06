@@ -1,7 +1,7 @@
 default:
     @just --list
 
-# Regenerate ICU snapshots, selected catalogs, locale scope, and Fluent registration.
+# Regenerate ICU snapshots, selected catalogs, and Fluent registration.
 generate:
     python3 -m tools.codegen
 

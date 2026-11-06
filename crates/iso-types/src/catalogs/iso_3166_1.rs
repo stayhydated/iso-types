@@ -305,7 +305,7 @@ pub enum Iso3166_1 {
     /// Hong Kong SAR China (`HK`).
     #[strum(to_string = "HK", serialize = "344", serialize = "HKG")]
     Hk,
-    /// Heard & McDonald Islands (`HM`).
+    /// Heard Island & McDonald Islands (`HM`).
     #[strum(to_string = "HM", serialize = "334", serialize = "HMD")]
     Hm,
     /// Honduras (`HN`).
@@ -614,7 +614,7 @@ pub enum Iso3166_1 {
     /// Singapore (`SG`).
     #[strum(to_string = "SG", serialize = "702", serialize = "SGP")]
     Sg,
-    /// St. Helena (`SH`).
+    /// St. Helena, Ascension & Tristan da Cunha (`SH`).
     #[strum(to_string = "SH", serialize = "654", serialize = "SHN")]
     Sh,
     /// Slovenia (`SI`).
@@ -665,7 +665,7 @@ pub enum Iso3166_1 {
     /// Chad (`TD`).
     #[strum(to_string = "TD", serialize = "148", serialize = "TCD")]
     Td,
-    /// French Southern Territories (`TF`).
+    /// French Southern and Antarctic Lands (`TF`).
     #[strum(to_string = "TF", serialize = "260", serialize = "ATF")]
     Tf,
     /// Togo (`TG`).
@@ -1894,7 +1894,7 @@ impl Iso3166_1 {
             "Guinea-Bissau",
             "Guyana",
             "Hong Kong SAR China",
-            "Heard & McDonald Islands",
+            "Heard Island & McDonald Islands",
             "Honduras",
             "Croatia",
             "Haiti",
@@ -1997,7 +1997,7 @@ impl Iso3166_1 {
             "Sudan",
             "Sweden",
             "Singapore",
-            "St. Helena",
+            "St. Helena, Ascension & Tristan da Cunha",
             "Slovenia",
             "Svalbard & Jan Mayen",
             "Slovakia",
@@ -2014,7 +2014,7 @@ impl Iso3166_1 {
             "Eswatini",
             "Turks & Caicos Islands",
             "Chad",
-            "French Southern Territories",
+            "French Southern and Antarctic Lands",
             "Togo",
             "Thailand",
             "Tajikistan",

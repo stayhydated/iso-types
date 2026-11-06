@@ -1,4 +1,5 @@
-//! English Fluent catalogs registered as a runtime utility module.
+//! English Fluent catalogs and locale names registered as a runtime utility module.
+use es_fluent::unic_langid::LanguageIdentifier;
 use es_fluent_manager_core::{
     FluentArgumentMap, I18nModule, I18nModuleDescriptor, I18nModuleRegistration, LocalizationError,
     Localizer, ModuleData, ModuleDomain, StaticFluentMessageKey,
@@ -29,14 +30,87 @@ impl I18nModuleDescriptor for IsoModule {
     }
 }
 impl I18nModule for IsoModule {
-    fn create_localizer(&self) -> Box<dyn Localizer> {
-        Box::new(EnglishLocalizer)
+    fn create_localizer(
+        &self,
+        lang: &LanguageIdentifier,
+    ) -> Result<Box<dyn Localizer>, LocalizationError> {
+        Ok(Box::new(IsoLocalizer::new(lang)))
     }
     fn contributes_to_language_selection(&self) -> bool {
         false
     }
 }
-struct EnglishLocalizer;
+
+/// English catalog labels and locale names.
+struct IsoLocalizer {
+    #[cfg(feature = "locales")]
+    locale_names: LocaleNames,
+}
+
+impl IsoLocalizer {
+    #[cfg_attr(not(feature = "locales"), allow(unused_variables))]
+    fn new(lang: &LanguageIdentifier) -> Self {
+        Self {
+            #[cfg(feature = "locales")]
+            locale_names: LocaleNames::new(lang),
+        }
+    }
+}
+
+/// Locale names cached per target: autonyms, or names in the selected
+/// language with `localized-langs`.
+#[cfg(feature = "locales")]
+struct LocaleNames {
+    #[cfg(feature = "localized-langs")]
+    display: LanguageIdentifier,
+    cache: std::sync::RwLock<std::collections::HashMap<String, Option<String>>>,
+}
+
+#[cfg(feature = "locales")]
+impl LocaleNames {
+    #[cfg_attr(not(feature = "localized-langs"), allow(unused_variables))]
+    fn new(display: &LanguageIdentifier) -> Self {
+        Self {
+            #[cfg(feature = "localized-langs")]
+            display: display.clone(),
+            cache: Default::default(),
+        }
+    }
+
+    fn get(&self, target: &str) -> Option<String> {
+        use std::sync::PoisonError;
+        if let Some(name) = self
+            .cache
+            .read()
+            .unwrap_or_else(PoisonError::into_inner)
+            .get(target)
+        {
+            return name.clone();
+        }
+        let name = self.format(target);
+        self.cache
+            .write()
+            .unwrap_or_else(PoisonError::into_inner)
+            .entry(target.to_owned())
+            .or_insert(name)
+            .clone()
+    }
+
+    /// Fall back to the English name when ICU lacks a component.
+    fn format(&self, target: &str) -> Option<String> {
+        let target = target.parse().ok()?;
+        // Generated keys are canonical; other spellings are not iso-types messages.
+        if crate::canonicalize_language_identifier(&target).to_string() != target.to_string() {
+            return None;
+        }
+        #[cfg(feature = "localized-langs")]
+        let name = crate::locale_display_name(&target, &self.display);
+        #[cfg(not(feature = "localized-langs"))]
+        let name = crate::locale_autonym(&target);
+        name.or_else(|_| crate::locale_english_name(&target)).ok()
+    }
+}
+
 fn bundle() -> &'static FluentBundle<FluentResource> {
     static BUNDLE: OnceLock<FluentBundle<FluentResource>> = OnceLock::new();
     BUNDLE.get_or_init(|| {
@@ -52,13 +126,8 @@ fn bundle() -> &'static FluentBundle<FluentResource> {
         bundle
     })
 }
-impl Localizer for EnglishLocalizer {
-    fn select_language(
-        &self,
-        _: &es_fluent::unic_langid::LanguageIdentifier,
-    ) -> Result<(), LocalizationError> {
-        Ok(())
-    }
+
+impl Localizer for IsoLocalizer {
     fn localize<'a>(
         &self,
         key: StaticFluentMessageKey,
@@ -69,10 +138,7 @@ impl Localizer for EnglishLocalizer {
         }
         #[cfg(feature = "locales")]
         if let Some(locale) = key.id().as_str().strip_prefix("iso-locale-") {
-            return locale
-                .parse()
-                .ok()
-                .and_then(|locale| crate::locale_english_name(&locale).ok());
+            return self.locale_names.get(locale);
         }
         if let Some(label) = catalog_english_name(key.id().as_str()) {
             return Some(label.to_owned());

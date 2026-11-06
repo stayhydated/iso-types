@@ -66,7 +66,7 @@ mod tests {
         let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
             .find(|entry| entry.data().owner == "iso-types")
             .unwrap();
-        let localizer = module.create_localizer().unwrap();
+        let localizer = module.create_localizer(&codes::langid!("en-US")).unwrap();
         assert_eq!(
             Zones::AmericaNewYork
                 .to_fluent_string_with(&mut |key, _| localizer.localize(key, None).unwrap()),
@@ -97,7 +97,7 @@ mod tests {
         let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
             .find(|entry| entry.data().owner == "iso-types")
             .unwrap();
-        let localizer = module.create_localizer().unwrap();
+        let localizer = module.create_localizer(&codes::langid!("en-US")).unwrap();
         for (message, expected) in [
             (&Payments::Usd as &dyn FluentMessage, "US dollar"),
             (&DeliveryAreas::UsCa as &dyn FluentMessage, "California"),
@@ -151,11 +151,16 @@ mod tests {
             "de".parse::<Languages>(),
             Err(codes::LocaleConversionError::Unsupported(_))
         ));
-        for code in ["iw-IL", "sh", "en-BU", "de-DE-1901", "la", "en-Goth"] {
+        // Deprecated tags canonicalize before matching configured locales.
+        for (code, canonical) in [("iw-IL", "he-IL"), ("sh", "sr-Latn"), ("en-BU", "en-MM")] {
+            assert_eq!(
+                codes::parse_language_identifier(code).unwrap().to_string(),
+                canonical
+            );
             assert!(
                 matches!(
                     code.parse::<Languages>(),
-                    Err(codes::LocaleConversionError::OutOfScope(_))
+                    Err(codes::LocaleConversionError::Unsupported(_))
                 ),
                 "{code}"
             );
@@ -169,17 +174,20 @@ mod tests {
     }
 
     #[test]
-    fn builtin_locale_fluent_and_display_agree_for_every_configured_locale() {
+    fn builtin_locale_labels_are_autonyms_and_display_is_english() {
         let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
             .find(|m| m.data().owner == "iso-types")
             .unwrap();
-        let localizer = module.create_localizer().unwrap();
-        localizer.select_language(&codes::langid!("fr-FR")).unwrap();
+        // A locale's name in its own language is its autonym in both label modes.
         for locale in Languages::VARIANTS {
+            let localizer = module.create_localizer(&(*locale).into()).unwrap();
             let actual =
                 locale.to_fluent_string_with(&mut |key, _| localizer.localize(key, None).unwrap());
-            assert_eq!(actual, locale.to_string());
+            assert_eq!(actual, locale.autonym());
         }
+        assert_eq!(Languages::FrFr.autonym(), "français (France)");
+        assert_eq!(Languages::ZhHantTw.autonym(), "繁體中文（台灣）");
+        assert_eq!(Languages::FrFr.to_string(), "French (France)");
     }
 
     #[test]
@@ -264,7 +272,7 @@ mod hygiene {
             inventory::iter::<&'static dyn es_fluent_manager_core::I18nModuleRegistration>()
                 .find(|entry| entry.data().owner == "iso-types")
                 .unwrap();
-        let localizer = module.create_localizer().unwrap();
+        let localizer = module.create_localizer(&codes::langid!("en-US")).unwrap();
         assert_eq!(
             es_fluent::FluentMessage::to_fluent_string_with(&PickerLanguages::En, &mut |key, _| {
                 localizer.localize(key, None).unwrap()

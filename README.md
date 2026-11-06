@@ -24,7 +24,8 @@ catalogs.
 The data scope is current and common: living languages with CLDR modern locale
 coverage, recommended modern scripts, current countries and subdivisions, and
 currencies in active tender circulation. Historical, deprecated, reserved, and
-uncommon entries are excluded from catalogs and locale lookup.
+uncommon entries are excluded from catalogs. Configured locale enums accept any
+canonical locale with ICU4X English names and render autonyms by default.
 
 ## Crates
 

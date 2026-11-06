@@ -19,7 +19,7 @@ pub struct NumberingPreferences {
 /// Explicit application and Unicode `nu` preferences take precedence over these defaults.
 pub fn numbering_preferences(input: &str) -> Result<NumberingPreferences, LocaleConversionError> {
     let canonical = crate::parse_language_identifier(input)?;
-    let mut id: icu_locale::LanguageIdentifier = canonical
+    let id: icu_locale::LanguageIdentifier = canonical
         .to_string()
         .parse()
         .expect("validated language identifier has ICU syntax");
@@ -29,17 +29,15 @@ pub fn numbering_preferences(input: &str) -> Result<NumberingPreferences, Locale
             .ok()
             .map(|index| data::PREFERENCES[index].1)
     };
-    if let Some(preferences) = find(&id.to_string()) {
-        return Ok(preferences);
-    }
-    icu_locale::LocaleExpander::new_extended().minimize(&mut id);
-    loop {
-        if let Some(preferences) = find(&id.to_string()) {
+    // CLDR inheritance: likely-script normalization, then explicit and truncation parents.
+    let mut chain = icu_locale::LocaleFallbacker::new()
+        .for_config(Default::default())
+        .fallback_for((&id).into());
+    while !chain.get().is_unknown() {
+        if let Some(preferences) = find(&chain.get().to_string()) {
             return Ok(preferences);
         }
-        if id.region.take().is_some() || id.script.take().is_some() {
-            continue;
-        }
-        return Err(LocaleConversionError::Unsupported(canonical));
+        chain.step();
     }
+    Err(LocaleConversionError::Unsupported(canonical))
 }

@@ -11,7 +11,8 @@ Requires Rust 1.99 or newer.
 | Feature | Default | Purpose |
 | --- | --- | --- |
 | `fluent` | No | Generate Fluent message implementations through the iso-types facade. |
-| `locales` | No | Compile the configured locale macro using es-fluent-toml. |
+| `locales` | No | Compile the configured locale macro from es-fluent's tracked build inputs. |
+| `localized-langs` | No | Route built-in locale labels through the facade's runtime module for the selected UI language. |
 
 `iso_enum` accepts `standard = "3166-1"` and an optional canonical
 `codes = ["US", "CA"]` list from the maintained catalog. ICU-owned catalogs
@@ -38,7 +39,8 @@ in const contexts. `from_repr()` accepts a zero-based declaration ordinal;
 use parsing for ISO codes and locale tags. Strum paths resolve through the
 facade, including when the dependency is renamed.
 
-Configured locales use current ICU canonical tags and must have complete ICU English
-name data. Both Fluent and ICU language-identifier conversions are generated.
+Configured locales use ICU canonical tags and must have complete ICU English
+name data. The macro emits English names and autonyms, plus Fluent and ICU
+language-identifier conversions.
 
 [facade]: https://github.com/stayhydated/iso-types/tree/master/crates/iso-types

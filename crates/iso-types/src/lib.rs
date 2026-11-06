@@ -82,7 +82,8 @@ mod locale;
 #[cfg(feature = "locales")]
 pub use locale::{
     LocaleConversionError, LocaleNameError, canonicalize_language_identifier,
-    icu_locale_english_name, locale_english_name, parse_language_identifier,
+    icu_locale_display_name, icu_locale_english_name, locale_autonym, locale_display_name,
+    locale_english_name, parse_language_identifier,
 };
 #[cfg(feature = "icu")]
 pub use {icu_calendar, icu_locale};

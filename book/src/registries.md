@@ -34,8 +34,10 @@ systems; `rules()` identifies the CLDR RBNF ruleset for algorithmic systems.
 These identifiers describe data for a formatter to consume.
 
 The input is a language identifier such as `zh-Hant-TW`. Apply an explicit user
-numbering choice separately. Malformed identifiers and components outside the
-current/common locale scope return `LocaleConversionError`.
+numbering choice separately. Lookup follows CLDR inheritance, including the
+script a region implies: `pa-PK` resolves through `pa-Arab` to `arabext`.
+Malformed identifiers and locales without CLDR numbering data return
+`LocaleConversionError`.
 
 With `216`, `Iso216::A4` has `width_mm() == 210` and `height_mm() == 297`.
 `pwg_name()` returns its dimension-bearing IANA IPP keyword. With

@@ -10,7 +10,7 @@ display share each catalog's authority. Common measurement units use CLDR
 identifiers and English display names, with optional ICU4X conversions.
 
 Requires Rust 1.99 or newer. Fluent integration uses es-fluent's 0.21 API.
-The ICU integration pins ICU4X 2.3; its locale-name APIs are upstream unstable.
+The ICU integration pins ICU4X 2.4; its locale-name APIs are upstream unstable.
 
 ## Features
 
@@ -21,6 +21,7 @@ The ICU integration pins ICU4X 2.3; its locale-name APIs are upstream unstable.
 | `icu` | Yes | ICU locale/calendar re-exports and typed ISO conversions. |
 | `locales` | No | ICU locale parsing and naming; re-export `iso_locale` and Fluent-facing `LanguageIdentifier`/`langid`. |
 | `fluent` | No | `FluentMessage` and English utility registration using ICU names or owned FTL. |
+| `localized-langs` | No | Enable `locales` and `fluent`; render `#[iso_locale]` labels in the selected UI language instead of as autonyms. |
 | `full` | No | Enable all catalogs and regional relationships, including Jiff zone rules and local MIC imports; integration adapters remain separate. |
 | `639-1` | Yes | `Iso6391`: current languages with two-letter identifiers. |
 | `639-2` | No | `Iso6392`: current languages with three-letter identifiers. |
@@ -231,23 +232,27 @@ With `locales` and `fluent`, use `#[iso_locale]` on an empty enum in a package
 with `i18n.toml` and canonical locale directories. The fallback locale becomes
 `Default`. `Languages::VARIANTS` and `Languages::iter()` list supported locales;
 `Languages::COUNT` gives their count. Variants convert into
-`LanguageIdentifier` for manager selection. `Display` and built-in Fluent
-labels remain English, including script and region qualifiers.
+`LanguageIdentifier` for manager selection. `Display` and `english_name()` are
+English, including script and region qualifiers; `autonym()` names each locale
+in itself, such as `français (France)`. Built-in Fluent labels are those
+compile-time autonyms. With `localized-langs`, the runtime module formats each
+label in the selected UI language with ICU4X, so an English UI renders
+`French (France)`.
 
 Use `#[iso_locale(custom)]` to register exact locale-tag message keys with the
 application's FTL inventory. The application then owns those Fluent labels.
 Catalog and locale macros support renamed dependencies.
 
 Configured locale directories and the fallback identifier must use ICU canonical
-tags. The macro checks current data scope and English name availability at
-compile time. Locale enums convert into both Fluent and ICU language identifiers;
-parsing normalizes current ISO forms such as `eng-US` to `en-US`.
-`locale_english_name()` returns a `Result`
-when naming arbitrary Fluent identifiers.
-
-Locale identifiers use current languages, scripts, and regions without variants.
-Deprecated aliases, bibliographic language forms, historical orthographies, and
-excluded components return `LocaleConversionError::OutOfScope`.
+tags with complete ICU English names, checked at compile time; any such locale is
+accepted, including variants such as `ca-ES-valencia`. The macro reads the package
+through es-fluent-build's tracked manifest, so compiler caches rebuild the enum
+when locales change. Locale enums convert into both Fluent and ICU language
+identifiers. Parsing canonicalizes deprecated and overlong forms before matching,
+so `iw-IL` becomes `he-IL` and `eng-US` becomes `en-US`; valid tags outside the
+configured set return `LocaleConversionError::Unsupported`.
+`locale_english_name()`, `locale_autonym()`, and `locale_display_name()`
+return a `Result` when naming arbitrary identifiers.
 
 With `numbering-systems`, `216`, `639-5`, `trade-units`, `packaging`, and `units`:
 

@@ -7,67 +7,85 @@ use crate::enum_input::facade;
 
 use super::model::Model;
 
-fn fluent(model: &Model, root: &TokenStream) -> TokenStream {
+fn custom_fluent(model: &Model, root: &TokenStream) -> TokenStream {
     let Model {
         input,
-        custom,
         variants,
         codes,
         ..
     } = model;
     let name = &input.ident;
-    if cfg!(feature = "fluent") {
-        let ids = codes
-            .iter()
-            .map(|c| {
-                if *custom {
-                    c.value()
-                } else {
-                    format!("iso-locale-{}", c.value())
-                }
-            })
-            .collect::<Vec<_>>();
-        let owner = if *custom {
-            quote!(env!("CARGO_PKG_NAME"))
-        } else {
-            quote!("iso-types")
-        };
-        let keepalive = format_ident!("__ISO_LOCALE_LINK_{name}");
-        let inventory = if *custom {
-            let mod_name = format_ident!("__iso_locale_inventory_{name}");
-            let names = variants.iter().map(ToString::to_string).collect::<Vec<_>>();
-            quote! {
-                #[doc(hidden)]
-                #[allow(non_snake_case)]
-                mod #mod_name {
-                    static VARIANTS: &[#root::__fluent::registry::FtlVariant] = &[
-                        #(#root::__fluent::registry::__macro::ftl_variant(#names, #root::__fluent::registry::__macro::static_entry_id(#ids), &[], module_path!(), line!())),*
-                    ];
-                    static TYPE_INFO: #root::__fluent::registry::FtlTypeInfo = #root::__fluent::registry::__macro::ftl_type_info(
-                        #root::__fluent::meta::TypeKind::Enum, stringify!(#name), VARIANTS,
-                        #root::__fluent::registry::__macro::ftl_scope(env!("CARGO_PKG_NAME"), None), file!(), module_path!(), None,
-                    );
-                    #root::__fluent::__inventory::submit!(#root::__fluent::registry::RegisteredFtlType(&TYPE_INFO));
-                }
+    let domain = quote!(#root::__fluent::registry::StaticFluentDomain::from_package_name(env!("CARGO_PKG_NAME")));
+    let mod_name = format_ident!("__iso_locale_inventory_{name}");
+    let names = variants.iter().map(ToString::to_string).collect::<Vec<_>>();
+    let source_file =
+        es_fluent_derive_core::macro_support::registry_source_file_tokens(name.span());
+    quote! {
+        impl #root::__fluent::FluentMessage for #name {
+            fn to_fluent_string_with(&self, lookup: &mut #root::__fluent::FluentMessageLookup<'_>) -> ::std::string::String {
+                let id = match self { #(Self::#variants => #root::__fluent::registry::__macro::static_entry_id(#codes)),* };
+                lookup(#root::__fluent::registry::__macro::static_message_key(env!("CARGO_PKG_NAME"), #domain, id), None)
             }
-        } else {
-            quote!()
-        };
-        quote! {
-            #[cfg(target_arch = "wasm32")]
-            #[doc(hidden)]
-            #[used]
-            static #keepalive: fn() -> usize = #root::i18n::force_link;
-            impl #root::__fluent::FluentMessage for #name {
-                fn to_fluent_string_with(&self, lookup: &mut #root::__fluent::FluentMessageLookup<'_>) -> ::std::string::String {
-                    let id = match self { #(Self::#variants => #root::__fluent::registry::__macro::static_entry_id(#ids)),* };
-                    lookup(#root::__fluent::registry::__macro::static_message_key(#owner, #root::__fluent::registry::__macro::static_domain(#owner), id), None)
-                }
-            }
-            #inventory
         }
-    } else {
+        #[doc(hidden)]
+        #[allow(non_snake_case)]
+        mod #mod_name {
+            static VARIANTS: &[#root::__fluent::registry::FtlVariant] = &[
+                #(#root::__fluent::registry::__macro::ftl_variant(#names, #root::__fluent::registry::__macro::static_entry_id(#codes), &[], module_path!(), line!())),*
+            ];
+            static TYPE_INFO: #root::__fluent::registry::FtlTypeInfo = #root::__fluent::registry::__macro::ftl_type_info(
+                #root::__fluent::meta::TypeKind::Enum, stringify!(#name), VARIANTS,
+                #root::__fluent::registry::__macro::ftl_scope(env!("CARGO_PKG_NAME"), None), #source_file, module_path!(), None,
+            );
+            #root::__fluent::__inventory::submit!(#root::__fluent::registry::RegisteredFtlType(&TYPE_INFO));
+        }
+    }
+}
+
+/// Built-in labels: compile-time autonyms, or ICU names in the selected UI language.
+fn builtin_fluent(model: &Model, root: &TokenStream) -> TokenStream {
+    let Model {
+        input,
+        variants,
+        codes,
+        ..
+    } = model;
+    let name = &input.ident;
+    if !cfg!(feature = "localized-langs") {
+        return quote! {
+            impl #root::__fluent::FluentMessage for #name {
+                fn to_fluent_string_with(&self, _: &mut #root::__fluent::FluentMessageLookup<'_>) -> ::std::string::String {
+                    ::std::string::ToString::to_string(self.autonym())
+                }
+            }
+        };
+    }
+    let ids = codes
+        .iter()
+        .map(|code| format!("iso-locale-{}", code.value()))
+        .collect::<Vec<_>>();
+    let keepalive = format_ident!("__ISO_LOCALE_LINK_{name}");
+    quote! {
+        #[cfg(target_arch = "wasm32")]
+        #[doc(hidden)]
+        #[used]
+        static #keepalive: fn() -> usize = #root::i18n::force_link;
+        impl #root::__fluent::FluentMessage for #name {
+            fn to_fluent_string_with(&self, lookup: &mut #root::__fluent::FluentMessageLookup<'_>) -> ::std::string::String {
+                let id = match self { #(Self::#variants => #root::__fluent::registry::__macro::static_entry_id(#ids)),* };
+                lookup(#root::__fluent::registry::__macro::static_message_key("iso-types", #root::__fluent::registry::__macro::static_domain("iso-types"), id), None)
+            }
+        }
+    }
+}
+
+fn fluent(model: &Model, root: &TokenStream) -> TokenStream {
+    if !cfg!(feature = "fluent") {
         quote!()
+    } else if model.custom {
+        custom_fluent(model, root)
+    } else {
+        builtin_fluent(model, root)
     }
 }
 
@@ -78,6 +96,7 @@ pub(super) fn emit(model: &Model) -> TokenStream {
         variants,
         codes,
         labels,
+        autonyms,
         ..
     } = model;
     let name = &input.ident;
@@ -88,6 +107,8 @@ pub(super) fn emit(model: &Model) -> TokenStream {
         impl #name {
             pub const fn code(self) -> &'static str { self.into_str() }
             pub const fn english_name(self) -> &'static str { match self { #(Self::#variants => #labels),* } }
+            /// The locale's name in itself, such as `français (France)`.
+            pub const fn autonym(self) -> &'static str { match self { #(Self::#variants => #autonyms),* } }
             fn __iso_locale_from_canonical(value: #root::LanguageIdentifier) -> ::core::result::Result<Self, #root::LocaleConversionError> {
                 match value.to_string().as_str() {
                     #(#codes => ::core::result::Result::Ok(Self::#variants),)*
@@ -119,7 +140,7 @@ pub(super) fn emit(model: &Model) -> TokenStream {
         impl ::std::convert::TryFrom<&#root::LanguageIdentifier> for #name {
             type Error = #root::LocaleConversionError;
             fn try_from(value: &#root::LanguageIdentifier) -> ::core::result::Result<Self, Self::Error> {
-                Self::__iso_locale_from_canonical(#root::canonicalize_language_identifier(value)?)
+                Self::__iso_locale_from_canonical(#root::canonicalize_language_identifier(value))
             }
         }
         impl ::std::convert::TryFrom<#root::LanguageIdentifier> for #name {

@@ -56,6 +56,8 @@ fluent = [
   "iso-types-macros?/fluent",
 ]
 icu = ["dep:icu_locale", "dep:icu_calendar"]
+# Format locale labels in the selected UI language instead of as autonyms.
+localized-langs = ["locales", "fluent", "iso-types-macros/localized-langs"]
 locales = [
   "macros",
   "icu",

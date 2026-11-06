@@ -23,8 +23,8 @@ Python 3.10 or newer and the pinned Rust toolchain.
 | Paper, language groups, and trade catalogs | `tools/codegen/paper.py`, `language_groups.py`, and `trade.py`; generated facade metadata. |
 | IBAN and MIC | Registered IBAN generation in `tools/codegen/iban.py`; validation in `src/iban.rs`; application-supplied MIC CSV import in `src/markets.rs`. |
 | UN/LOCODE directory | `tools/codegen/locations.py`; separately packaged `crates/iso-types-locations`. |
-| Locale parsing and English names | `crates/iso-types/src/locale.rs`. |
-| English Fluent utility | `crates/iso-types/src/i18n.rs`; owned resources under `i18n/en/iso-types/`. |
+| Locale parsing, canonicalization, and names | `crates/iso-types/src/locale.rs`. |
+| Fluent utility module and locale labels | `crates/iso-types/src/i18n.rs`; owned resources under `i18n/en/iso-types/`. |
 | Macro input conventions | `crates/iso-types-macros/src/enum_input.rs`. |
 | Catalog subset expansion | `crates/iso-types-macros/src/catalog/`: cached data, validated model, and token emission. |
 | Configured locale expansion | `crates/iso-types-macros/src/locale/`: validated model and token emission. |
@@ -35,8 +35,7 @@ Python 3.10 or newer and the pinned Rust toolchain.
 | GitHub Pages site and artifacts | `web/src/site.rs` and its route manifest; `xtask/` assembles shared-powered book, LLM exports, and Dioxus outputs. |
 
 Paths in a crate's row are relative to that crate where the prefix is omitted.
-Generated `src/locale/scope.rs` files carry the same selection policy into both
-public packages. The macro crate's `src/catalog/data.json` is a generated selection
+The macro crate's `src/catalog/data.json` is a generated selection
 index; labels and metadata remain owned by the facade's catalog tables.
 `src/i18n/resources.rs` is generated registration glue.
 
@@ -77,9 +76,19 @@ CLDR's grouping; ICU determines conversion compatibility.
 languages require CLDR modern locale coverage and a recommended default script.
 Scripts require CLDR regular validity and recommended identifier usage.
 Countries and subdivisions require current regular codes; currencies require
-active tender circulation and presence in SIX's current ISO 4217 list. Locale
-APIs and macros check components before and after ICU normalization and reject
-variants and excluded representations.
+active tender circulation and presence in SIX's current ISO 4217 list. The
+selection policy applies to catalogs, not application locales: `#[iso_locale]`
+accepts any ICU canonical locale with complete English names, and runtime parsing
+canonicalizes deprecated forms before matching configured locales.
+
+`#[iso_locale]` reads package inputs only through es-fluent-derive-core's
+`PackageInputs` and appends `with_build_inputs`, matching es-fluent's build
+manifest contract. Built-in labels are compile-time autonyms; `localized-langs`
+routes them to the runtime module, which formats names in the selected language.
+The runtime module also answers canonical `iso-locale-*` keys with autonyms so
+macro and facade feature unification cannot drop labels. Until es-fluent
+publishes its manager and manifest APIs, the workspace patches es-fluent crates
+to a pinned git revision.
 
 `relations.py` validates country ownership, closed parent references, and acyclic
 subdivision hierarchies before rendering. Country/subdivision navigation and

@@ -13,10 +13,11 @@ proc-macro = true
 
 [features]
 fluent = []
-locales = ["dep:es-fluent-toml", "dep:icu_locale", "dep:writeable"]
+localized-langs = []
+locales = ["dep:es-fluent-derive-core", "dep:icu_locale", "dep:writeable"]
 
 [dependencies]
-es-fluent-toml = { workspace = true, optional = true }
+es-fluent-derive-core = { workspace = true, optional = true }
 heck = { workspace = true }
 proc-macro-crate = { workspace = true }
 proc-macro2 = { workspace = true }

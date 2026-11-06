@@ -95,9 +95,6 @@ def generate(*, check: bool) -> None:
     location_root = ROOT / "crates/iso-types-locations"
     plan.add(location_root / "src/data.rs", format_rust(location_index))
     plan.add(location_root / "src/directory.tsv", location_data)
-    scope = format_rust(policy.rust_locale_policy())
-    for crate in (TYPES, MACROS):
-        plan.add(crate / "src/locale/scope.rs", scope)
     for crate in (TYPES, MACROS, location_root):
         for name in ("NOTICE", "LICENSE-APACHE", "LICENSE-MIT", "LICENSE-LGPL-2.1", "LICENSE-UNICODE", "LICENSE-CC-BY-4.0"):
             plan.add(crate / name, (ROOT / name).read_text(encoding="utf-8"))

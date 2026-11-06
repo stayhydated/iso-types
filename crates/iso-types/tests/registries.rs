@@ -35,7 +35,21 @@ fn numbering_preferences_preserve_locale_inheritance_and_algorithmic_systems() {
             }
         }
     }
-    for invalid in ["iw-IL", "la", "en-Egyp", "en-u-nu-arab", "en--US"] {
+    // Region-implied scripts select the script's numbering defaults.
+    assert_eq!(
+        numbering_preferences("pa-PK").unwrap().default,
+        System::Arabext
+    );
+    assert_eq!(
+        numbering_preferences("uz-AF").unwrap().default,
+        System::Arabext
+    );
+    assert_eq!(numbering_preferences("pa-IN").unwrap().native, System::Guru);
+    assert_eq!(
+        numbering_preferences("iw-IL").unwrap().default,
+        System::Latn
+    );
+    for invalid in ["en-u-nu-arab", "en--US", "invalid!"] {
         assert!(numbering_preferences(invalid).is_err(), "{invalid}");
     }
 }

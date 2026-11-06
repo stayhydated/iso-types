@@ -111,7 +111,7 @@ fn excluded_icu_items_have_no_fluent_label() {
     let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
         .find(|module| module.data().owner == "iso-types")
         .unwrap();
-    let localizer = module.create_localizer().unwrap();
+    let localizer = module.create_localizer(&"fr-FR".parse().unwrap()).unwrap();
     for id in [
         "iso-639-3-aaa",
         "iso-639-3-ang",
@@ -133,7 +133,7 @@ fn excluded_icu_items_have_no_fluent_label() {
 
 #[cfg(feature = "locales")]
 #[test]
-fn english_locale_names_and_aliases_follow_icu_and_missing_names_fail() {
+fn locale_names_and_canonical_aliases_follow_icu() {
     for (input, expected) in [
         ("en-US", "American English"),
         ("fr-CA", "Canadian French"),
@@ -145,41 +145,48 @@ fn english_locale_names_and_aliases_follow_icu_and_missing_names_fail() {
             expected
         );
     }
-    assert!(matches!(
-        iso_types::locale_english_name(&iso_types::langid!("aaa")),
-        Err(iso_types::LocaleNameError::OutOfScope(_))
-    ));
-    assert_eq!(
-        iso_types::parse_language_identifier("eng-US").unwrap(),
-        iso_types::langid!("en-US")
-    );
-    for code in [
-        "iw-IL",
-        "sh",
-        "tl",
-        "la",
-        "ang",
-        "en-BU",
-        "en-SU",
-        "en-Qaai",
-        "en-Goth",
-        "de-DE-1901",
-        "en-fonipa",
-        "en-XX",
-        "fre-FR",
-    ] {
+    for (input, expected) in [("mt", "Maltese"), ("lb", "Luxembourgish"), ("la", "Latin")] {
+        assert_eq!(
+            iso_types::locale_english_name(&input.parse().unwrap()).unwrap(),
+            expected
+        );
+    }
+    for code in ["aaa", "en-XX"] {
         assert!(
             matches!(
-                iso_types::parse_language_identifier(code),
-                Err(iso_types::LocaleConversionError::OutOfScope(_))
+                iso_types::locale_english_name(&code.parse().unwrap()),
+                Err(iso_types::LocaleNameError::Unavailable { .. })
             ),
             "{code}"
         );
-        assert!(
-            iso_types::locale_english_name(&code.parse().unwrap()).is_err(),
-            "{code}"
+    }
+    for (input, canonical) in [
+        ("eng-US", "en-US"),
+        ("fre-FR", "fr-FR"),
+        ("iw-IL", "he-IL"),
+        ("in", "id"),
+        ("sh", "sr-Latn"),
+        ("tl", "fil"),
+        ("en-BU", "en-MM"),
+        ("fr-fr", "fr-FR"),
+    ] {
+        assert_eq!(
+            iso_types::parse_language_identifier(input)
+                .unwrap()
+                .to_string(),
+            canonical,
+            "{input}"
         );
     }
+    assert_eq!(
+        iso_types::locale_autonym(&iso_types::langid!("fr-FR")).unwrap(),
+        "français (France)"
+    );
+    assert_eq!(
+        iso_types::locale_display_name(&iso_types::langid!("de"), &iso_types::langid!("fr"))
+            .unwrap(),
+        "allemand"
+    );
     assert!(iso_types::parse_language_identifier("invalid!").is_err());
 }
 

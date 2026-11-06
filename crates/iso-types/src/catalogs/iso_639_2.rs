@@ -89,7 +89,7 @@ pub enum Iso6392 {
     /// Persian (`fas`).
     #[strum(to_string = "fas", serialize = "fa")]
     Fas,
-    /// Akan (`fat`).
+    /// Fanti (`fat`).
     #[strum(to_string = "fat")]
     Fat,
     /// Filipino (`fil`).
@@ -569,7 +569,7 @@ impl Iso6392 {
             "Estonian",
             "Basque",
             "Persian",
-            "Akan",
+            "Fanti",
             "Filipino",
             "Finnish",
             "French",

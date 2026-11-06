@@ -23,8 +23,8 @@ anyhow = "1.0"
 clap = { version = "4.6", features = ["derive"] }
 csv = "1.4"
 dioxus = { version = "0.7", default-features = false }
-es-fluent-build = "0.21.0"
-es-fluent-manager-dioxus = { version = "0.21.0", default-features = false }
+es-fluent-build = "0.21.2"
+es-fluent-manager-dioxus = { version = "0.21.2", default-features = false }
 stayhydated-dioxus = { git = "https://github.com/stayhydated/shared", rev = "3136b369bb54312096ad83ba74735aab29109835" }
 stayhydated-site = { git = "https://github.com/stayhydated/shared", rev = "3136b369bb54312096ad83ba74735aab29109835" }
 stayhydated-xtask = { git = "https://github.com/stayhydated/shared", rev = "3136b369bb54312096ad83ba74735aab29109835" }
@@ -32,20 +32,20 @@ web = { path = "web" }
 iso-types = { path = "crates/iso-types", version = "0.1.0" }
 iso-types-locations = { path = "crates/iso-types-locations", version = "0.1.0" }
 iso-types-macros = { path = "crates/iso-types-macros", version = "0.1.0" }
-es-fluent = { version = "0.21.0", default-features = false }
-es-fluent-manager-core = { version = "0.21.0" }
-es-fluent-toml = { version = "0.21.0" }
+es-fluent = { version = "0.21.2", default-features = false }
+es-fluent-derive-core = { version = "0.21.2" }
+es-fluent-manager-core = { version = "0.21.2" }
 fluent-bundle = "0.16"
 fluent-syntax = "0.12"
 heck = "0.5"
 inventory = "0.3"
-icu_locale = { version = "=2.3.1", features = ["unstable"] }
-icu_calendar = "=2.3.0"
-icu_datetime = "=2.3.0"
-icu_experimental = "=0.6.0"
-icu_provider = "=2.3.1"
-icu_plurals = "=2.3.0"
-icu_time = "=2.3.0"
+icu_locale = { version = "=2.4.0", features = ["unstable"] }
+icu_calendar = "=2.4.0"
+icu_datetime = "=2.4.0"
+icu_experimental = "=0.7.0"
+icu_provider = "=2.4.0"
+icu_plurals = "=2.4.0"
+icu_time = "=2.4.0"
 jiff = { version = "=0.2.38", default-features = false, features = [
   "std",
   "tzdb-bundle-always",
@@ -65,3 +65,15 @@ unsafe_code = "forbid"
 
 [workspace.lints.clippy]
 all = "warn"
+
+# es-fluent's unreleased manager and build-manifest APIs; drop once they are published.
+[patch.crates-io]
+es-fluent = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
+es-fluent-build = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
+es-fluent-derive = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
+es-fluent-derive-core = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
+es-fluent-manager-core = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
+es-fluent-manager-dioxus = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
+es-fluent-manager-macros = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
+es-fluent-shared = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
+es-fluent-toml = { git = "https://github.com/stayhydated/es-fluent", rev = "77071a19c6609a1c1ef60a3de6502686a66cf384" }
