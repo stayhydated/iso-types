@@ -109,7 +109,7 @@ pub(super) fn emit(model: &Model) -> TokenStream {
             pub const fn english_name(self) -> &'static str { match self { #(Self::#variants => #labels),* } }
             /// The locale's name in itself, such as `français (France)`.
             pub const fn autonym(self) -> &'static str { match self { #(Self::#variants => #autonyms),* } }
-            fn __iso_locale_from_canonical(value: #root::LanguageIdentifier) -> ::core::result::Result<Self, #root::LocaleConversionError> {
+            fn __iso_locale_from_canonical(value: #root::unic_langid::LanguageIdentifier) -> ::core::result::Result<Self, #root::LocaleConversionError> {
                 match value.to_string().as_str() {
                     #(#codes => ::core::result::Result::Ok(Self::#variants),)*
                     _ => ::core::result::Result::Err(#root::LocaleConversionError::Unsupported(value)),
@@ -117,10 +117,10 @@ pub(super) fn emit(model: &Model) -> TokenStream {
             }
         }
         impl ::core::default::Default for #name { fn default() -> Self { Self::#fallback } }
-        impl ::core::convert::From<#name> for #root::LanguageIdentifier {
-            fn from(value: #name) -> Self { match value { #(#name::#variants => #root::langid!(#codes)),* } }
+        impl ::core::convert::From<#name> for #root::unic_langid::LanguageIdentifier {
+            fn from(value: #name) -> Self { match value { #(#name::#variants => #root::unic_langid::langid!(#codes)),* } }
         }
-        impl ::core::convert::From<&#name> for #root::LanguageIdentifier { fn from(value: &#name) -> Self { ::core::convert::From::from(*value) } }
+        impl ::core::convert::From<&#name> for #root::unic_langid::LanguageIdentifier { fn from(value: &#name) -> Self { ::core::convert::From::from(*value) } }
         impl ::core::convert::From<#name> for #root::icu_locale::LanguageIdentifier {
             fn from(value: #name) -> Self { value.code().parse().expect("validated ICU locale") }
         }
@@ -137,16 +137,16 @@ pub(super) fn emit(model: &Model) -> TokenStream {
                 <Self as ::core::convert::TryFrom<&#root::icu_locale::LanguageIdentifier>>::try_from(&value)
             }
         }
-        impl ::std::convert::TryFrom<&#root::LanguageIdentifier> for #name {
+        impl ::std::convert::TryFrom<&#root::unic_langid::LanguageIdentifier> for #name {
             type Error = #root::LocaleConversionError;
-            fn try_from(value: &#root::LanguageIdentifier) -> ::core::result::Result<Self, Self::Error> {
+            fn try_from(value: &#root::unic_langid::LanguageIdentifier) -> ::core::result::Result<Self, Self::Error> {
                 Self::__iso_locale_from_canonical(#root::canonicalize_language_identifier(value))
             }
         }
-        impl ::std::convert::TryFrom<#root::LanguageIdentifier> for #name {
+        impl ::std::convert::TryFrom<#root::unic_langid::LanguageIdentifier> for #name {
             type Error = #root::LocaleConversionError;
-            fn try_from(value: #root::LanguageIdentifier) -> ::core::result::Result<Self, Self::Error> {
-                <Self as ::core::convert::TryFrom<&#root::LanguageIdentifier>>::try_from(&value)
+            fn try_from(value: #root::unic_langid::LanguageIdentifier) -> ::core::result::Result<Self, Self::Error> {
+                <Self as ::core::convert::TryFrom<&#root::unic_langid::LanguageIdentifier>>::try_from(&value)
             }
         }
         impl ::std::str::FromStr for #name {

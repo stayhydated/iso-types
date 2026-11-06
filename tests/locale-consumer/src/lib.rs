@@ -127,15 +127,15 @@ mod tests {
             Languages::EnUs
         );
         assert_eq!(
-            codes::LanguageIdentifier::from(&Languages::ZhHantTw),
-            codes::langid!("zh-Hant-TW")
+            codes::unic_langid::LanguageIdentifier::from(&Languages::ZhHantTw),
+            codes::unic_langid::langid!("zh-Hant-TW")
         );
         assert_eq!(
-            Languages::try_from(codes::langid!("en-US")).unwrap(),
+            Languages::try_from(codes::unic_langid::langid!("en-US")).unwrap(),
             Languages::EnUs
         );
         assert_eq!(
-            Languages::try_from(&codes::langid!("fr-FR")).unwrap(),
+            Languages::try_from(&codes::unic_langid::langid!("fr-FR")).unwrap(),
             Languages::FrFr
         );
         assert!(matches!(
@@ -260,8 +260,8 @@ mod hygiene {
             ConfiguredLanguages::EnUs
         );
         assert_eq!(
-            codes::LanguageIdentifier::from(ConfiguredLanguages::EnUs),
-            codes::langid!("en-US")
+            codes::unic_langid::LanguageIdentifier::from(ConfiguredLanguages::EnUs),
+            codes::unic_langid::langid!("en-US")
         );
         assert_eq!(
             es_fluent::FluentMessage::to_fluent_string_with(

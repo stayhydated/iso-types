@@ -70,7 +70,7 @@ pub use address_labels::AddressFieldLabel;
 #[cfg(feature = "numbering-systems")]
 mod numbering_systems;
 #[cfg(feature = "numbering-systems")]
-pub use numbering_systems::NumberingSystem;
+pub use numbering_systems::NumberingSystemId;
 #[cfg(feature = "216")]
 mod iso_216;
 #[cfg(feature = "216")]

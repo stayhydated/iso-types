@@ -3,7 +3,7 @@ use es_fluent_manager_dioxus::use_i18n;
 use iso_types::{
     AddressField, AddressFieldLabel, CallingCode, EnumCount as _, GeographicRegion, Iso216,
     Iso3166_1, Iso3166_2, Iso4217, Iso5218, Iso6391, Iso6392, Iso6393, Iso6395, Iso8601Month,
-    Iso8601Weekday, Iso15924, IsoCode, MeasurementUnit, NumberingSystem, PackagingType,
+    Iso8601Weekday, Iso15924, IsoCode, MeasurementUnit, NumberingSystemId, PackagingType,
     ParseIsoCodeError, TimeZoneId, TradeUnit, UnitUsage, VariantArray as _, iso_enum,
 };
 use stayhydated_dioxus::select::{SearchableSelect, SelectItem};
@@ -82,7 +82,7 @@ impl Catalog {
             Self::AddressLabels => AddressFieldLabel::STANDARD,
             Self::Packaging => PackagingType::STANDARD,
             Self::TradeUnits => TradeUnit::STANDARD,
-            Self::NumberingSystems => NumberingSystem::STANDARD,
+            Self::NumberingSystems => NumberingSystemId::STANDARD,
             Self::LanguageGroups => Iso6395::STANDARD,
             Self::Paper => Iso216::STANDARD,
         }
@@ -108,7 +108,7 @@ impl Catalog {
             Self::AddressLabels => entries::<AddressFieldLabel>(),
             Self::Packaging => entries::<PackagingType>(),
             Self::TradeUnits => entries::<TradeUnit>(),
-            Self::NumberingSystems => entries::<NumberingSystem>(),
+            Self::NumberingSystems => entries::<NumberingSystemId>(),
             Self::LanguageGroups => entries::<Iso6395>(),
             Self::Paper => entries::<Iso216>(),
         }
@@ -134,7 +134,7 @@ impl Catalog {
             Self::AddressLabels => parsed::<AddressFieldLabel>(input),
             Self::Packaging => parsed::<PackagingType>(input),
             Self::TradeUnits => parsed::<TradeUnit>(input),
-            Self::NumberingSystems => parsed::<NumberingSystem>(input),
+            Self::NumberingSystems => parsed::<NumberingSystemId>(input),
             Self::LanguageGroups => parsed::<Iso6395>(input),
             Self::Paper => parsed::<Iso216>(input),
         }

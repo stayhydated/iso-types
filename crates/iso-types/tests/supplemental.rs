@@ -30,6 +30,28 @@ fn all_selected_zones_load_in_jiff_and_country_navigation_is_closed() {
 
 #[cfg(feature = "time-zones")]
 #[test]
+fn tz_links_parse_to_their_catalog_zone() {
+    use iso_types::{TimeZoneId, jiff::tz::TimeZone};
+    for (link, zone) in [
+        ("Asia/Calcutta", TimeZoneId::AsiaKolkata),
+        ("US/Eastern", TimeZoneId::AmericaNewYork),
+        ("Europe/Kiev", TimeZoneId::EuropeKyiv),
+        ("Zulu", TimeZoneId::EtcUtc),
+    ] {
+        assert_eq!(link.parse::<TimeZoneId>().unwrap(), zone);
+        assert_eq!(
+            TimeZoneId::try_from(&TimeZone::get(link).unwrap()).unwrap(),
+            zone
+        );
+        // Links parse, but the catalog always reports the canonical zone.
+        assert_ne!(zone.code(), link);
+    }
+    // Links to zones outside the catalog, such as Etc/GMT, stay unsupported.
+    assert!("GMT".parse::<TimeZoneId>().is_err());
+}
+
+#[cfg(feature = "time-zones")]
+#[test]
 fn jiff_exposes_explicit_resolution_of_dst_gaps_and_overlaps() {
     use iso_types::{TimeZoneId, jiff::civil::date};
     let rules = TimeZoneId::AmericaNewYork.time_zone().unwrap();
@@ -58,6 +80,11 @@ fn icu_zone_identities_and_localized_names_match_the_pinned_catalog() {
             zone.english_name()
         );
     }
+    let calcutta = iso_types::icu_time::TimeZone::from_iana_id("Asia/Calcutta");
+    assert_eq!(
+        TimeZoneId::try_from(calcutta).unwrap(),
+        TimeZoneId::AsiaKolkata
+    );
     assert_ne!(
         TimeZoneId::AmericaNewYork
             .localized_name(&locale!("fr"))

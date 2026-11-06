@@ -38,10 +38,10 @@ pub(crate) fn Demo() -> Element {
             }
             if let Ok(prefs) = numbering {
                 dl { class: "fact-grid", aria_live: "polite",
-                    CatalogFact::<iso_types::NumberingSystem> { label: Ui::DefaultNumbering, values: vec![prefs.default] }
-                    CatalogFact::<iso_types::NumberingSystem> { label: Ui::NativeNumbering, values: vec![prefs.native] }
-                    CatalogFact::<iso_types::NumberingSystem> { label: Ui::TraditionalNumbering, values: vec![prefs.traditional] }
-                    CatalogFact::<iso_types::NumberingSystem> { label: Ui::FinanceNumbering, values: vec![prefs.finance] }
+                    CatalogFact::<iso_types::NumberingSystemId> { label: Ui::DefaultNumbering, values: vec![prefs.default] }
+                    CatalogFact::<iso_types::NumberingSystemId> { label: Ui::NativeNumbering, values: vec![prefs.native] }
+                    CatalogFact::<iso_types::NumberingSystemId> { label: Ui::TraditionalNumbering, values: vec![prefs.traditional] }
+                    CatalogFact::<iso_types::NumberingSystemId> { label: Ui::FinanceNumbering, values: vec![prefs.finance] }
                 }
             } else { p { role: "status", "{i18n.localize_message(&Ui::InvalidLocale)}" } }
         }

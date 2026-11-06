@@ -188,12 +188,15 @@ fn locale_names_and_canonical_aliases_follow_icu() {
         );
     }
     assert_eq!(
-        iso_types::locale_autonym(&iso_types::langid!("fr-FR")).unwrap(),
+        iso_types::locale_autonym(&iso_types::unic_langid::langid!("fr-FR")).unwrap(),
         "français (France)"
     );
     assert_eq!(
-        iso_types::locale_display_name(&iso_types::langid!("de"), &iso_types::langid!("fr"))
-            .unwrap(),
+        iso_types::locale_display_name(
+            &iso_types::unic_langid::langid!("de"),
+            &iso_types::unic_langid::langid!("fr")
+        )
+        .unwrap(),
         "allemand"
     );
     assert!(iso_types::parse_language_identifier("invalid!").is_err());
@@ -235,4 +238,31 @@ fn catalogs_exclude_historical_rare_special_and_retired_data() {
     assert_eq!(iso_types::Iso4217::Zwg.numeric(), Some("924"));
     assert_eq!(iso_types::Iso15924::Hant.english_name(), "Traditional");
     assert!("US-TX".parse::<iso_types::Iso3166_2>().is_ok());
+}
+
+#[cfg(feature = "numbering-systems")]
+#[test]
+fn numbering_system_ids_round_trip_through_icu_nu_keywords() {
+    use iso_types::icu_locale::preferences::extensions::unicode::keywords::NumberingSystem;
+    use iso_types::{NumberingSystemId, VariantArray as _};
+    for &system in NumberingSystemId::VARIANTS {
+        let keyword = NumberingSystem::from(system);
+        assert_eq!(keyword.as_str(), system.code());
+        assert_eq!(NumberingSystemId::try_from(keyword).unwrap(), system);
+    }
+    let locale: iso_types::icu_locale::Locale = "ar-u-nu-latn".parse().unwrap();
+    let keyword = NumberingSystem::try_from(
+        locale
+            .extensions
+            .unicode
+            .keywords
+            .get(&iso_types::icu_locale::extensions::unicode::key!("nu"))
+            .unwrap()
+            .clone(),
+    )
+    .unwrap();
+    assert_eq!(
+        NumberingSystemId::try_from(keyword).unwrap(),
+        NumberingSystemId::Latn
+    );
 }

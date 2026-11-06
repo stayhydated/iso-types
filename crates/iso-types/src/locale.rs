@@ -1,6 +1,6 @@
-use crate::LanguageIdentifier;
 use icu_locale::names::{LanguageIdentifierDisplayName, LanguageIdentifierDisplayNameOptions};
 use icu_locale::{LanguageIdentifier as IcuLanguageIdentifier, Locale, LocaleCanonicalizer};
+use unic_langid::LanguageIdentifier;
 use writeable::TryWriteable;
 
 /// Parse a BCP 47 language identifier and normalize it with ICU4X's canonicalizer.

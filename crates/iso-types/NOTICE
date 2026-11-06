@@ -86,13 +86,14 @@ Geographic relationships use numerical classification facts from the UN
 Statistics Division M49 overview, retrieved on the date recorded in provenance:
 https://unstats.un.org/unsd/methodology/m49/overview/
 
-IANA location identifiers and country associations derive from zone.tab and
-zone1970.tab in the IANA Time Zone Database. These tables are in the public domain.
+IANA location identifiers, country associations, and accepted link names derive
+from zone.tab, zone1970.tab, and backward in IANA Time Zone Database release 2026e.
+These tables are in the public domain.
 https://www.iana.org/time-zones
 The revision and checksums are recorded in data/current/provenance.json.
 Jiff supplies transition rules through its bundled database dependency.
 
-Telephone prefixes derive from libphonenumber's PhoneNumberMetadata.xml.
+Telephone prefixes derive from PhoneNumberMetadata.xml in libphonenumber v9.0.33.
 Postal schemas derive from libaddressinput metadata and RegionDataConstants.java.
 https://github.com/google/libphonenumber
 https://github.com/google/libaddressinput

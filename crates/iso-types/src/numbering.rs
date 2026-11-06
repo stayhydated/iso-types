@@ -3,15 +3,15 @@
 mod data;
 pub use data::NumberingSystemKind;
 
-use crate::{LocaleConversionError, NumberingSystem};
+use crate::{LocaleConversionError, NumberingSystemId};
 
 /// CLDR defaults after locale inheritance and numbering-category fallback.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct NumberingPreferences {
-    pub default: NumberingSystem,
-    pub native: NumberingSystem,
-    pub traditional: NumberingSystem,
-    pub finance: NumberingSystem,
+    pub default: NumberingSystemId,
+    pub native: NumberingSystemId,
+    pub traditional: NumberingSystemId,
+    pub finance: NumberingSystemId,
 }
 
 /// Resolve a current/common language identifier to its CLDR numbering preferences.

@@ -70,6 +70,29 @@ impl TryFrom<icu_locale::preferences::extensions::unicode::keywords::CurrencyTyp
     }
 }
 
+#[cfg(feature = "numbering-systems")]
+impl From<crate::NumberingSystemId>
+    for icu_locale::preferences::extensions::unicode::keywords::NumberingSystem
+{
+    fn from(value: crate::NumberingSystemId) -> Self {
+        icu_locale::extensions::unicode::Value::try_from_str(value.code())
+            .ok()
+            .and_then(|value| Self::try_from(value).ok())
+            .expect("CLDR numbering system has ICU `nu` syntax")
+    }
+}
+#[cfg(feature = "numbering-systems")]
+impl TryFrom<icu_locale::preferences::extensions::unicode::keywords::NumberingSystem>
+    for crate::NumberingSystemId
+{
+    type Error = crate::ParseIsoCodeError;
+    fn try_from(
+        value: icu_locale::preferences::extensions::unicode::keywords::NumberingSystem,
+    ) -> Result<Self, Self::Error> {
+        value.as_str().parse()
+    }
+}
+
 #[cfg(feature = "8601")]
 impl From<crate::Iso8601Weekday> for icu_calendar::types::Weekday {
     fn from(value: crate::Iso8601Weekday) -> Self {

@@ -82,7 +82,7 @@ def records(data: Path, policy):
 
 def build_catalog(data, policy):
     systems, _ = records(data, policy)
-    return validate(Catalog(CatalogSpec("numbering-systems", "NumberingSystem", "code", "cldr",
+    return validate(Catalog(CatalogSpec("numbering-systems", "NumberingSystemId", "code", "cldr",
                                       icu_names=False, label_source="Cldr",
                                       description="Common CLDR numbering systems with CLDR English names."), tuple(
         Entry(code, variant_name(code), name, (), {})
@@ -92,9 +92,9 @@ def build_catalog(data, policy):
 def render(data, policy, catalog):
     systems, preferences = records(data, policy)
     kinds = {"numeric": "Numeric", "algorithmic": "Algorithmic"}
-    result = GENERATED + "use crate::{NumberingSystem, NumberingPreferences};\n"
+    result = GENERATED + "use crate::{NumberingSystemId, NumberingPreferences};\n"
     result += metadata_enum("NumberingSystemKind", kinds, "CLDR's distinction between decimal digits and rule-based numerals.")
-    result += "impl NumberingSystem {\n"
+    result += "impl NumberingSystemId {\n"
     result += value_table("kind", "NumberingSystemKind", [f"NumberingSystemKind::{kinds[systems[e.code][1]['type']]}" for e in catalog.entries])
     result += "    /// Ten decimal digits in value order; algorithmic systems use rules instead.\n"
     result += string_table("digits", [systems[e.code][1].get("digits") for e in catalog.entries], optional=True)
@@ -104,7 +104,7 @@ def render(data, policy, catalog):
     variants = {e.code: e.variant for e in catalog.entries}
     rows = []
     for locale, values in sorted(preferences.items()):
-        fields = ", ".join(f"{field}: NumberingSystem::{variants[code]}" for field, code in
+        fields = ", ".join(f"{field}: NumberingSystemId::{variants[code]}" for field, code in
                            zip(("default", "native", "traditional", "finance"), values))
         rows.append(f"({literal(locale)}, NumberingPreferences {{ {fields} }})")
     result += f"pub(super) const PREFERENCES: &[(&str, NumberingPreferences)] = &[{', '.join(rows)}];\n"

@@ -76,7 +76,7 @@ pub use iso_types_macros::iso_enum;
 #[cfg(feature = "locales")]
 pub use iso_types_macros::iso_locale;
 #[cfg(feature = "locales")]
-pub use unic_langid::{LanguageIdentifier, langid};
+pub use unic_langid;
 #[cfg(feature = "locales")]
 mod locale;
 #[cfg(feature = "locales")]

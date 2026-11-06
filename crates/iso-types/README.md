@@ -21,7 +21,7 @@ The ICU integration pins ICU4X 2.4; its locale-name APIs are upstream unstable.
 | `fmt` | Yes | English `Display` for every catalog enum. |
 | `macros` | Yes | Re-export `iso_enum`. |
 | `icu` | Yes | ICU locale/calendar re-exports and typed ISO conversions. |
-| `locales` | No | ICU locale parsing and naming; re-export `iso_locale` and Fluent-facing `LanguageIdentifier`/`langid`. |
+| `locales` | No | ICU locale parsing and naming; re-export `iso_locale` and `unic_langid`, the identifier crate Fluent managers use. |
 | `fluent` | No | `FluentMessage` for every catalog (its English name) and, with `locales`, the locale-name runtime module. |
 | `localized-langs` | No | Enable `locales` and `fluent`; render `#[iso_locale]` labels in the selected UI language instead of as autonyms. |
 | `full` | No | Enable all catalogs and regional relationships, including Jiff zone rules and local MIC imports; integration adapters remain separate. |
@@ -45,7 +45,7 @@ The ICU integration pins ICU4X 2.4; its locale-name APIs are upstream unstable.
 | `calling-codes` | No | `CallingCode`: 215 telephone prefixes, country associations, and global service prefixes; enable `3166-1`. |
 | `phone-numbers` | No | Re-export `phonenumber` and convert country identifiers for parsing and validation; enable `calling-codes`. |
 | `addresses` | No | Address templates, required fields, postal data, typed Fluent labels, and language overrides; enable `3166-1`. |
-| `numbering-systems` | No | `NumberingSystem` and inherited CLDR locale numbering preferences; enable `locales`. |
+| `numbering-systems` | No | `NumberingSystemId` and inherited CLDR locale numbering preferences; enable `locales`. |
 | `216` | No | `Iso216`: ISO A0–A10 and B0–B10 paper dimensions in millimeters. |
 | `639-5` | No | `Iso6395`: 115 language groups and their published coding hierarchy. |
 | `13616` | No | Registered `IbanFormat` metadata and validated `Iban`; enable `3166-1`. |
@@ -180,6 +180,9 @@ assert_eq!(TimeZoneId::AmericaNewYork.at(instant)?.offset().seconds(), -4 * 3600
 # Ok::<(), Box<dyn std::error::Error>>(())
 ```
 
+Parsing also accepts tz link names, such as `Asia/Calcutta` or `US/Eastern`, and
+returns the canonical zone (`Asia/Kolkata`, `America/New_York`); `code()` and
+`Display` always report the canonical name.
 `TimeZoneId::time_zone()` exposes Jiff's transition and ambiguity-resolution APIs.
 Use `to_ambiguous_zoned()` to resolve DST gaps and overlaps explicitly.
 `time-zone-localization` adds ICU identity conversions and
@@ -233,8 +236,10 @@ case-sensitive canonical codes, unique aliases, and `ParseIsoCodeError`.
 With `locales` and `fluent`, use `#[iso_locale]` on an empty enum in a package
 with `i18n.toml` and canonical locale directories. The fallback locale becomes
 `Default`. `Languages::VARIANTS` and `Languages::iter()` list supported locales;
-`Languages::COUNT` gives their count. Variants convert into
-`LanguageIdentifier` for manager selection. `Display` and `english_name()` are
+`Languages::COUNT` gives their count. Variants convert into both
+`unic_langid::LanguageIdentifier`, for manager selection, and
+`icu_locale::LanguageIdentifier`, for ICU4X formatters; both are re-exported
+under those crate paths. `Display` and `english_name()` are
 English, including script and region qualifiers; `autonym()` names each locale
 in itself, such as `français (France)`. Built-in Fluent labels are those
 compile-time autonyms. With `localized-langs`, the runtime module formats each
@@ -260,9 +265,9 @@ With `numbering-systems`, `216`, `639-5`, `trade-units`, `packaging`, and `units
 
 ```rust
 # #[cfg(all(feature = "numbering-systems", feature = "216", feature = "639-5", feature = "trade-units", feature = "packaging", feature = "units"))] {
-use iso_types::{numbering_preferences, Iso216, Iso6395, MeasurementUnit, NumberingSystem, PackagingType, TradeUnit};
+use iso_types::{numbering_preferences, Iso216, Iso6395, MeasurementUnit, NumberingSystemId, PackagingType, TradeUnit};
 
-assert_eq!(numbering_preferences("ar-MA")?.default, NumberingSystem::Latn);
+assert_eq!(numbering_preferences("ar-MA")?.default, NumberingSystemId::Latn);
 assert_eq!(Iso216::A4.width_mm(), 210);
 assert_eq!(Iso216::A4.height_mm(), 297);
 assert_eq!(Iso6395::Gmw.parent(), Some(Iso6395::Gem));

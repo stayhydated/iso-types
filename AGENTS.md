@@ -55,10 +55,13 @@ parsing after benchmarking it against binary search.
 
 Pinned ISO snapshots and their checksums live in `data/iso`. CLDR/SIX selection
 metadata, checksums, retrieval dates, and the snapshot's `as_of` date live in
-`data/current`. Its `cldr` pin records a CLDR release version, tag, and resolved
-commit; every CLDR input URL uses that commit, and generation fails unless the
-version equals the CLDR release declared by the locked ICU4X compiled-data
-crates. `data/icu/english.json` records names extracted from the locked ICU4X
+`data/current`. Its `releases` pins record the CLDR, tz, and libphonenumber
+release version, tag, and resolved commit; every input URL from those
+repositories uses its pinned commit. Generation fails unless each version equals
+the release bundled by the locked runtime crate: ICU4X compiled data for CLDR,
+`jiff-tzdb` for tz, and `phonenumber`'s build metadata for libphonenumber.
+libaddressinput has no release tags, so its input stays pinned by commit.
+`tools/codegen/releases.py` owns these checks. `data/icu/english.json` records names extracted from the locked ICU4X
 providers, including currency formatting precision and cash rounding.
 Complete upstream inputs stay at repository scope; published
 crates contain their generated tables and selection index.
@@ -106,7 +109,9 @@ data. Keep functional population estimates and source status definitions intact.
 Unit preferences preserve ranked choices, mixed components, thresholds, and
 skeletons; compound components use ICU's parser. UN M49 geography uses the
 published overview's hierarchy. IANA country associations combine the two pinned
-zone tables; Jiff's bundled database supplies transitions and DST behavior.
+zone tables, and tz `backward` links to catalog zones become parse aliases that
+resolve to the canonical zone; Jiff's bundled database supplies transitions and
+DST behavior.
 ICU4X owns time-zone mappings and localized location formatting.
 
 Telephone relationships preserve shared prefixes and global service codes.
@@ -127,10 +132,10 @@ combined code/data SPDX expression. `NOTICE` maps those licenses to their source
 Keep registry license statements and general website terms distinct in provenance.
 
 Use `python3 -m tools.codegen --import-data /path/to/iso-codes` to snapshot a new
-ISO checkout and regenerate. After an ICU4X upgrade, run
-`python3 tools/refresh_cldr.py VERSION` with the CLDR version that
-`python3 -m tools.codegen --check` reports, then regenerate; also update the
-CLDR release in `NOTICE`. Refresh SIX metadata and the `as_of` date when updating
+ISO checkout and regenerate. After an ICU4X, Jiff, or phonenumber upgrade, run
+`python3 tools/refresh_release.py {cldr,tz,libphonenumber} VERSION` with the
+version that `python3 -m tools.codegen --check` reports, then regenerate; also
+update that release in `NOTICE`. Refresh SIX metadata and the `as_of` date when updating
 the dated selection policy. Review selected-code changes with the catalog counts
 and scope tests.
 

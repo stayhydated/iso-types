@@ -32008,7 +32008,7 @@
     ]
   },
   "numbering-systems": {
-    "type": "NumberingSystem",
+    "type": "NumberingSystemId",
     "feature": "numbering-systems",
     "entries": [
       {

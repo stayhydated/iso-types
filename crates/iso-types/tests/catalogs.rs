@@ -72,7 +72,12 @@ catalog_test!("5218", sex_codes, Iso5218, 4);
 catalog_test!("8601", weekdays, Iso8601Weekday, 7);
 catalog_test!("8601", months, Iso8601Month, 12);
 catalog_test!("units", measurement_units, MeasurementUnit, 148);
-catalog_test!("numbering-systems", numbering_systems, NumberingSystem, 30);
+catalog_test!(
+    "numbering-systems",
+    numbering_systems,
+    NumberingSystemId,
+    30
+);
 catalog_test!("216", paper_sizes, Iso216, 22);
 catalog_test!("639-5", language_groups, Iso6395, 115);
 catalog_test!("trade-units", trade_units, TradeUnit, 2161);
@@ -194,7 +199,7 @@ fn fluent_catalog_labels_are_their_english_display_without_lookup() {
     check!("8601", Iso8601Weekday);
     check!("8601", Iso8601Month);
     check!("units", MeasurementUnit);
-    check!("numbering-systems", NumberingSystem);
+    check!("numbering-systems", NumberingSystemId);
     check!("216", Iso216);
     check!("639-5", Iso6395);
     check!("trade-units", TradeUnit);

@@ -10,7 +10,7 @@ demonstrates IBAN checks, location alternatives, and local MIC imports.
 | Feature | Type or function | Use |
 | --- | --- | --- |
 | `units` | `MeasurementUnit` | 148 common CLDR identifiers across 22 categories. |
-| `numbering-systems` | `NumberingSystem`, `numbering_preferences()` | Decimal digits, algorithmic rules, and inherited locale defaults. |
+| `numbering-systems` | `NumberingSystemId`, `numbering_preferences()` | Decimal digits, algorithmic rules, and inherited locale defaults. |
 | `216` | `Iso216` | ISO A0–A10 and B0–B10 portrait dimensions in millimeters. |
 | `639-5` | `Iso6395` | Published language group hierarchy. |
 | `language-relations` | Language `macrolanguage()` and `members()` | IANA membership within the selected language catalog. |
@@ -29,7 +29,7 @@ each maintained type's metadata and relationships.
 With `numbering-systems`, call `numbering_preferences("ar-MA")` to get the
 inherited CLDR default, native, traditional, and finance systems. The default for
 Morocco's Arabic locale is `latn`, while its native system is `arab`.
-`NumberingSystem::digits()` supplies ten characters in value order for numeric
+`NumberingSystemId::digits()` supplies ten characters in value order for numeric
 systems; `rules()` identifies the CLDR RBNF ruleset for algorithmic systems.
 These identifiers describe data for a formatter to consume.
 

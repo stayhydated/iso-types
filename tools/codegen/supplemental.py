@@ -44,6 +44,19 @@ def zone_records(data: Path) -> dict[str, tuple[str, ...]]:
     return {code: tuple(sorted(countries)) for code, countries in sorted(owners.items())}
 
 
+def zone_links(data: Path, zones: dict) -> dict[str, tuple[str, ...]]:
+    """tz `backward` links, such as Asia/Calcutta, keyed by their catalog target zone."""
+    links = defaultdict(set)
+    for line in (data / "current/backward").read_text(encoding="utf-8").splitlines():
+        fields = line.split("#", 1)[0].split()
+        if not fields or fields[0] != "Link":
+            continue
+        _, target, link = fields
+        if target in zones and link not in zones:
+            links[target].add(link)
+    return {target: tuple(sorted(names)) for target, names in links.items()}
+
+
 def name_requests(data: Path) -> dict:
     return {"regions": list(region_records(data)), "time_zones": list(zone_records(data))}
 
@@ -57,11 +70,12 @@ def build_supplemental(data: Path, snapshot: dict) -> tuple[Catalog, ...]:
         regions.append(Entry(code, variant_name(name), name, (),
                              {"level": record["level"]}))
     zones = []
-    for code in zone_records(data):
+    records = zone_records(data)
+    links = zone_links(data, records)
+    for code in records:
         record = snapshot["time_zones"][code]
         zones.append(Entry(code, "EtcUtc" if code == "Etc/UTC" else variant_name(code), record["name"],
-                           ("UTC",) if code == "Etc/UTC" else (),
-                           {"bcp47": record["bcp47"]}))
+                           links.get(code, ()), {"bcp47": record["bcp47"]}))
     return (
         Catalog(CatalogSpec("regions", "GeographicRegion", "code", "m49"), tuple(regions)),
         Catalog(CatalogSpec("time-zones", "TimeZoneId", "code", "iana"), tuple(zones)),

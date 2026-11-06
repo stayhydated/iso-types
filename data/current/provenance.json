@@ -1,9 +1,23 @@
 {
-  "cldr": {
-    "version": "49.0.0",
-    "tag": "release-49",
-    "revision": "96e54b273d2da4ec6fbad350ba19ff23fa24a588",
-    "retrieved": "2026-11-05"
+  "releases": {
+    "cldr": {
+      "version": "49.0.0",
+      "tag": "release-49",
+      "revision": "96e54b273d2da4ec6fbad350ba19ff23fa24a588",
+      "retrieved": "2026-11-05"
+    },
+    "tz": {
+      "version": "2026e",
+      "tag": "2026e",
+      "revision": "039ef27cc5f062a2055cb67435d6d71adbefd27d",
+      "retrieved": "2026-11-06"
+    },
+    "libphonenumber": {
+      "version": "9.0.33",
+      "tag": "v9.0.33",
+      "revision": "5178ee5b450e37a3adda9808abb09200acbae5db",
+      "retrieved": "2026-11-06"
+    }
   },
   "as_of": "2026-10-13",
   "files": {
@@ -56,16 +70,16 @@
       "sha256": "fa3b509179e5694360ccc777270ac0cae8a042fc32852f0fd2f53e594fc97444"
     },
     "zone.tab": {
-      "url": "https://raw.githubusercontent.com/eggert/tz/fbbd33b7e90c0872fe43277760f695039742baa7/zone.tab",
+      "url": "https://raw.githubusercontent.com/eggert/tz/039ef27cc5f062a2055cb67435d6d71adbefd27d/zone.tab",
       "sha256": "e2e8e31c4e10f44576c79345e76060591dbb3eef6ce14e006afc8a373caa9593"
     },
     "zone1970.tab": {
-      "url": "https://raw.githubusercontent.com/eggert/tz/fbbd33b7e90c0872fe43277760f695039742baa7/zone1970.tab",
+      "url": "https://raw.githubusercontent.com/eggert/tz/039ef27cc5f062a2055cb67435d6d71adbefd27d/zone1970.tab",
       "sha256": "5f23781702bf51408ff1581daa109ab3b9257fb433b1554e579d92172892c0cf"
     },
     "PhoneNumberMetadata.xml": {
-      "url": "https://raw.githubusercontent.com/google/libphonenumber/33be5664343676b27761213d8f5500d682568ea7/resources/PhoneNumberMetadata.xml",
-      "sha256": "9d3b07b53c7e8a437ddc316249620b51d4090987026f9e8ffb9743aab4e4d5a6"
+      "url": "https://raw.githubusercontent.com/google/libphonenumber/5178ee5b450e37a3adda9808abb09200acbae5db/resources/PhoneNumberMetadata.xml",
+      "sha256": "8235fe573e09770c6cea25b351ea5866999f147051e84c8973c07df87e17fb73"
     },
     "addresses.json": {
       "url": "https://www.gstatic.com/chrome/autofill/libaddressinput/chromium-i18n/ssl-address/data/{country}",
@@ -85,6 +99,10 @@
     "RegionDataConstants.java": {
       "url": "https://raw.githubusercontent.com/google/libaddressinput/81eb9628382b07d371d8ea0b11badf7de3857fd5/common/src/main/java/com/google/i18n/addressinput/common/RegionDataConstants.java",
       "sha256": "ae0c44ef06e64e32e5c2f74ac43e717e69256ee17bc9c6770546ef716e223416"
+    },
+    "backward": {
+      "url": "https://raw.githubusercontent.com/eggert/tz/039ef27cc5f062a2055cb67435d6d71adbefd27d/backward",
+      "sha256": "b8296b9ef1ece72d813878132c0f17e2c52b26af6004eeb9c37d049b64cd9401"
     }
   },
   "sources": [

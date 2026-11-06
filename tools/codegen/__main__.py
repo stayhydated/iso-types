@@ -11,7 +11,7 @@ from .catalog import SPECS, build_catalogs, verify_sources
 from .output import ROOT, OutputPlan
 from .rust import format_rust
 from .policy import CurrentData
-from .cldr import verify_icu_agreement
+from . import releases
 from .relations import build_relations
 from .units import build_units
 from .supplemental import name_requests, build_supplemental
@@ -54,7 +54,7 @@ def generate(*, check: bool) -> None:
     verify_sources(DATA)
     registries.verify_sources(DATA)
     policy = CurrentData(DATA)
-    verify_icu_agreement(ROOT, policy.cldr)
+    releases.verify_agreement(policy.releases, releases.locked_packages(ROOT))
     command = ["cargo", "run", "--quiet", "-p", "iso-types-icu-data", "--locked", "--", "--stdout"]
     extracted = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True,
                                input=json.dumps(name_requests(DATA)))

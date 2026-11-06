@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-from . import cldr
+from . import releases
 from .rust import literal
 
 
@@ -60,7 +60,7 @@ class CurrentData:
         for name, source in self.provenance["files"].items():
             if hashlib.sha256((self.path / name).read_bytes()).hexdigest() != source["sha256"]:
                 raise ValueError(f"current-data source checksum mismatch: {name}")
-        self.cldr = cldr.verify_pin(self.provenance)
+        self.releases = releases.verify_pins(self.provenance)
         self.as_of = self.provenance["as_of"]
         date.fromisoformat(self.as_of)
         metadata = ET.parse(self.path / "supplementalMetadata.xml")

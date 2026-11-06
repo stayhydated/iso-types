@@ -2,7 +2,7 @@
 #[test]
 fn numbering_preferences_preserve_locale_inheritance_and_algorithmic_systems() {
     use iso_types::{
-        NumberingSystem as System, NumberingSystemKind as Kind, VariantArray as _,
+        NumberingSystemId as System, NumberingSystemKind as Kind, VariantArray as _,
         numbering_preferences,
     };
     assert_eq!(
@@ -132,7 +132,7 @@ fn registry_catalog_subsets_use_the_facade_labels() {
     assert_eq!(Paper::VARIANTS, &[Paper::A4, Paper::A3]);
     assert_eq!(
         Digits::Arab.catalog_value(),
-        iso_types::NumberingSystem::Arab
+        iso_types::NumberingSystemId::Arab
     );
     assert_eq!(
         Groups::Gem.catalog_value().parent(),

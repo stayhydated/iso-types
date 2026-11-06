@@ -19,7 +19,7 @@
 )]
 #[strum(const_into_str, parse_err_ty = crate::ParseIsoCodeError, parse_err_fn = Self::parse_error)]
 #[repr(u16)]
-pub enum NumberingSystem {
+pub enum NumberingSystemId {
     /// Arabic-Indic Digits (`arab`).
     #[strum(to_string = "arab")]
     Arab,
@@ -112,7 +112,7 @@ pub enum NumberingSystem {
     Thai,
 }
 
-impl NumberingSystem {
+impl NumberingSystemId {
     pub const STANDARD: &'static str = "numbering-systems";
     pub const LABEL_SOURCE: crate::LabelSource = crate::LabelSource::Cldr;
     pub const fn code(self) -> &'static str {
@@ -161,7 +161,7 @@ impl NumberingSystem {
     }
 }
 
-impl crate::IsoCode for NumberingSystem {
+impl crate::IsoCode for NumberingSystemId {
     const STANDARD: &'static str = Self::STANDARD;
     const LABEL_SOURCE: crate::LabelSource = Self::LABEL_SOURCE;
     fn code(self) -> &'static str {
@@ -173,14 +173,14 @@ impl crate::IsoCode for NumberingSystem {
 }
 
 #[cfg(feature = "fmt")]
-impl std::fmt::Display for NumberingSystem {
+impl std::fmt::Display for NumberingSystemId {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.write_str(self.english_name())
     }
 }
 
 #[cfg(feature = "fluent")]
-impl es_fluent::FluentMessage for NumberingSystem {
+impl es_fluent::FluentMessage for NumberingSystemId {
     /// Labels have one authority, so the English name needs no manager lookup.
     fn to_fluent_string_with(&self, _: &mut es_fluent::FluentMessageLookup<'_>) -> String {
         self.english_name().to_owned()
