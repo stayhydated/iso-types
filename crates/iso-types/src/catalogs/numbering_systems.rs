@@ -159,41 +159,6 @@ impl NumberingSystem {
         ];
         VALUES[self as usize]
     }
-    pub const fn message_id(self) -> &'static str {
-        const VALUES: &[&str] = &[
-            "iso-numbering-systems-arab",
-            "iso-numbering-systems-arabext",
-            "iso-numbering-systems-armn",
-            "iso-numbering-systems-beng",
-            "iso-numbering-systems-deva",
-            "iso-numbering-systems-ethi",
-            "iso-numbering-systems-geor",
-            "iso-numbering-systems-grek",
-            "iso-numbering-systems-gujr",
-            "iso-numbering-systems-guru",
-            "iso-numbering-systems-hanidec",
-            "iso-numbering-systems-hans",
-            "iso-numbering-systems-hansfin",
-            "iso-numbering-systems-hant",
-            "iso-numbering-systems-hantfin",
-            "iso-numbering-systems-hebr",
-            "iso-numbering-systems-java",
-            "iso-numbering-systems-jpan",
-            "iso-numbering-systems-jpanfin",
-            "iso-numbering-systems-khmr",
-            "iso-numbering-systems-knda",
-            "iso-numbering-systems-laoo",
-            "iso-numbering-systems-latn",
-            "iso-numbering-systems-mlym",
-            "iso-numbering-systems-mymr",
-            "iso-numbering-systems-orya",
-            "iso-numbering-systems-taml",
-            "iso-numbering-systems-tamldec",
-            "iso-numbering-systems-telu",
-            "iso-numbering-systems-thai",
-        ];
-        VALUES[self as usize]
-    }
 }
 
 impl crate::IsoCode for NumberingSystem {
@@ -216,18 +181,8 @@ impl std::fmt::Display for NumberingSystem {
 
 #[cfg(feature = "fluent")]
 impl es_fluent::FluentMessage for NumberingSystem {
-    fn to_fluent_string_with(&self, localize: &mut es_fluent::FluentMessageLookup<'_>) -> String {
-        localize(self.fluent_key(), None)
-    }
-}
-
-#[cfg(feature = "fluent")]
-impl NumberingSystem {
-    pub const fn fluent_key(self) -> es_fluent::registry::StaticFluentMessageKey {
-        es_fluent::registry::__macro::static_message_key(
-            "iso-types",
-            es_fluent::registry::__macro::static_domain("iso-types"),
-            es_fluent::registry::__macro::static_entry_id(self.message_id()),
-        )
+    /// Labels have one authority, so the English name needs no manager lookup.
+    fn to_fluent_string_with(&self, _: &mut es_fluent::FluentMessageLookup<'_>) -> String {
+        self.english_name().to_owned()
     }
 }

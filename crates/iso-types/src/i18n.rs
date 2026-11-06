@@ -1,14 +1,9 @@
-//! English Fluent catalogs and locale names registered as a runtime utility module.
+//! Locale names for `#[iso_locale]` labels, registered as a runtime utility module.
 use es_fluent::unic_langid::LanguageIdentifier;
 use es_fluent_manager_core::{
     FluentArgumentMap, I18nModule, I18nModuleDescriptor, I18nModuleRegistration, LocalizationError,
     Localizer, ModuleData, ModuleDomain, StaticFluentMessageKey,
 };
-use fluent_bundle::{FluentResource, concurrent::FluentBundle};
-use std::sync::OnceLock;
-
-mod resources;
-use resources::{ENGLISH_RESOURCES, catalog_english_name};
 
 static DATA: ModuleData = ModuleData {
     name: "iso-types",
@@ -41,17 +36,14 @@ impl I18nModule for IsoModule {
     }
 }
 
-/// English catalog labels and locale names.
+/// Locale names for `iso-locale-*` keys.
 struct IsoLocalizer {
-    #[cfg(feature = "locales")]
     locale_names: LocaleNames,
 }
 
 impl IsoLocalizer {
-    #[cfg_attr(not(feature = "locales"), allow(unused_variables))]
     fn new(lang: &LanguageIdentifier) -> Self {
         Self {
-            #[cfg(feature = "locales")]
             locale_names: LocaleNames::new(lang),
         }
     }
@@ -59,14 +51,12 @@ impl IsoLocalizer {
 
 /// Locale names cached per target: autonyms, or names in the selected
 /// language with `localized-langs`.
-#[cfg(feature = "locales")]
 struct LocaleNames {
     #[cfg(feature = "localized-langs")]
     display: LanguageIdentifier,
     cache: std::sync::RwLock<std::collections::HashMap<String, Option<String>>>,
 }
 
-#[cfg(feature = "locales")]
 impl LocaleNames {
     #[cfg_attr(not(feature = "localized-langs"), allow(unused_variables))]
     fn new(display: &LanguageIdentifier) -> Self {
@@ -111,22 +101,6 @@ impl LocaleNames {
     }
 }
 
-fn bundle() -> &'static FluentBundle<FluentResource> {
-    static BUNDLE: OnceLock<FluentBundle<FluentResource>> = OnceLock::new();
-    BUNDLE.get_or_init(|| {
-        let mut bundle = FluentBundle::new_concurrent(vec!["en".parse().expect("English locale")]);
-        bundle.set_use_isolating(false);
-        for source in ENGLISH_RESOURCES {
-            let resource =
-                FluentResource::try_new((*source).to_owned()).expect("validated ISO English FTL");
-            bundle
-                .add_resource(resource)
-                .expect("unique ISO catalog message IDs");
-        }
-        bundle
-    })
-}
-
 impl Localizer for IsoLocalizer {
     fn localize<'a>(
         &self,
@@ -136,22 +110,12 @@ impl Localizer for IsoLocalizer {
         if key.owner() != DATA.owner || !DATA.owns_domain(key.domain()) {
             return None;
         }
-        #[cfg(feature = "locales")]
-        if let Some(locale) = key.id().as_str().strip_prefix("iso-locale-") {
-            return self.locale_names.get(locale);
-        }
-        if let Some(label) = catalog_english_name(key.id().as_str()) {
-            return Some(label.to_owned());
-        }
-        let bundle = bundle();
-        let pattern = bundle.get_message(key.id().as_str())?.value()?;
-        let mut errors = Vec::new();
-        let text = bundle.format_pattern(pattern, None, &mut errors);
-        errors.is_empty().then(|| text.into_owned())
+        let locale = key.id().as_str().strip_prefix("iso-locale-")?;
+        self.locale_names.get(locale)
     }
 }
 
-/// Keep the catalog's inventory registration linked in optimized applications.
+/// Keep the locale-name module's inventory registration linked in optimized applications.
 #[inline(never)]
 pub fn force_link() -> usize {
     let module: &'static dyn I18nModuleRegistration = &MODULE;

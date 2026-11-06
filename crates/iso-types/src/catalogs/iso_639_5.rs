@@ -499,126 +499,6 @@ impl Iso6395 {
         ];
         VALUES[self as usize]
     }
-    pub const fn message_id(self) -> &'static str {
-        const VALUES: &[&str] = &[
-            "iso-639-5-aav",
-            "iso-639-5-afa",
-            "iso-639-5-alg",
-            "iso-639-5-alv",
-            "iso-639-5-apa",
-            "iso-639-5-aqa",
-            "iso-639-5-aql",
-            "iso-639-5-art",
-            "iso-639-5-ath",
-            "iso-639-5-auf",
-            "iso-639-5-aus",
-            "iso-639-5-awd",
-            "iso-639-5-azc",
-            "iso-639-5-bad",
-            "iso-639-5-bai",
-            "iso-639-5-bat",
-            "iso-639-5-ber",
-            "iso-639-5-bih",
-            "iso-639-5-bnt",
-            "iso-639-5-btk",
-            "iso-639-5-cai",
-            "iso-639-5-cau",
-            "iso-639-5-cba",
-            "iso-639-5-ccn",
-            "iso-639-5-ccs",
-            "iso-639-5-cdc",
-            "iso-639-5-cdd",
-            "iso-639-5-cel",
-            "iso-639-5-cmc",
-            "iso-639-5-cpe",
-            "iso-639-5-cpf",
-            "iso-639-5-cpp",
-            "iso-639-5-crp",
-            "iso-639-5-csu",
-            "iso-639-5-cus",
-            "iso-639-5-day",
-            "iso-639-5-dmn",
-            "iso-639-5-dra",
-            "iso-639-5-egx",
-            "iso-639-5-esx",
-            "iso-639-5-euq",
-            "iso-639-5-fiu",
-            "iso-639-5-fox",
-            "iso-639-5-gem",
-            "iso-639-5-gme",
-            "iso-639-5-gmq",
-            "iso-639-5-gmw",
-            "iso-639-5-grk",
-            "iso-639-5-hmx",
-            "iso-639-5-hok",
-            "iso-639-5-hyx",
-            "iso-639-5-iir",
-            "iso-639-5-ijo",
-            "iso-639-5-inc",
-            "iso-639-5-ine",
-            "iso-639-5-ira",
-            "iso-639-5-iro",
-            "iso-639-5-itc",
-            "iso-639-5-jpx",
-            "iso-639-5-kar",
-            "iso-639-5-kdo",
-            "iso-639-5-khi",
-            "iso-639-5-kro",
-            "iso-639-5-map",
-            "iso-639-5-mkh",
-            "iso-639-5-mno",
-            "iso-639-5-mun",
-            "iso-639-5-myn",
-            "iso-639-5-nah",
-            "iso-639-5-nai",
-            "iso-639-5-ngf",
-            "iso-639-5-nic",
-            "iso-639-5-nub",
-            "iso-639-5-omq",
-            "iso-639-5-omv",
-            "iso-639-5-oto",
-            "iso-639-5-paa",
-            "iso-639-5-phi",
-            "iso-639-5-plf",
-            "iso-639-5-poz",
-            "iso-639-5-pqe",
-            "iso-639-5-pqw",
-            "iso-639-5-pra",
-            "iso-639-5-qwe",
-            "iso-639-5-roa",
-            "iso-639-5-sai",
-            "iso-639-5-sal",
-            "iso-639-5-sdv",
-            "iso-639-5-sem",
-            "iso-639-5-sgn",
-            "iso-639-5-sio",
-            "iso-639-5-sit",
-            "iso-639-5-sla",
-            "iso-639-5-smi",
-            "iso-639-5-son",
-            "iso-639-5-sqj",
-            "iso-639-5-ssa",
-            "iso-639-5-syd",
-            "iso-639-5-tai",
-            "iso-639-5-tbq",
-            "iso-639-5-trk",
-            "iso-639-5-tup",
-            "iso-639-5-tut",
-            "iso-639-5-tuw",
-            "iso-639-5-urj",
-            "iso-639-5-wak",
-            "iso-639-5-wen",
-            "iso-639-5-xgn",
-            "iso-639-5-xnd",
-            "iso-639-5-ypk",
-            "iso-639-5-zhx",
-            "iso-639-5-zle",
-            "iso-639-5-zls",
-            "iso-639-5-zlw",
-            "iso-639-5-znd",
-        ];
-        VALUES[self as usize]
-    }
 }
 
 impl crate::IsoCode for Iso6395 {
@@ -641,18 +521,8 @@ impl std::fmt::Display for Iso6395 {
 
 #[cfg(feature = "fluent")]
 impl es_fluent::FluentMessage for Iso6395 {
-    fn to_fluent_string_with(&self, localize: &mut es_fluent::FluentMessageLookup<'_>) -> String {
-        localize(self.fluent_key(), None)
-    }
-}
-
-#[cfg(feature = "fluent")]
-impl Iso6395 {
-    pub const fn fluent_key(self) -> es_fluent::registry::StaticFluentMessageKey {
-        es_fluent::registry::__macro::static_message_key(
-            "iso-types",
-            es_fluent::registry::__macro::static_domain("iso-types"),
-            es_fluent::registry::__macro::static_entry_id(self.message_id()),
-        )
+    /// Labels have one authority, so the English name needs no manager lookup.
+    fn to_fluent_string_with(&self, _: &mut es_fluent::FluentMessageLookup<'_>) -> String {
+        self.english_name().to_owned()
     }
 }

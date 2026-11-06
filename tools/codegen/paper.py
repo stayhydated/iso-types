@@ -30,9 +30,9 @@ def records(data):
 
 
 def build_catalog(data):
-    return validate(Catalog(CatalogSpec("216", "Iso216", "code", "iana", icu_names=False,
+    return validate(Catalog(CatalogSpec("216", "Iso216", "code", "iana", icu_names=False, label_source="Code",
         description="ISO 216 A/B paper sizes; dimensions follow the pinned IANA IPP media registry."), tuple(
-        Entry(code, code, f"{code} paper", f"iso-216-{code}", (), {})
+        Entry(code, code, code, (), {})
         for code in sorted(records(data)))))
 
 

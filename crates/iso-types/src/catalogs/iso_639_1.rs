@@ -38,9 +38,6 @@ pub enum Iso6391 {
     /// Azerbaijani (`az`).
     #[strum(to_string = "az", serialize = "aze")]
     Az,
-    /// Bashkir (`ba`).
-    #[strum(to_string = "ba", serialize = "bak")]
-    Ba,
     /// Belarusian (`be`).
     #[strum(to_string = "be", serialize = "bel")]
     Be,
@@ -221,9 +218,6 @@ pub enum Iso6391 {
     /// Quechua (`qu`).
     #[strum(to_string = "qu", serialize = "que")]
     Qu,
-    /// Romansh (`rm`).
-    #[strum(to_string = "rm", serialize = "roh")]
-    Rm,
     /// Romanian (`ro`).
     #[strum(to_string = "ro", serialize = "ron")]
     Ro,
@@ -266,9 +260,6 @@ pub enum Iso6391 {
     /// Thai (`th`).
     #[strum(to_string = "th", serialize = "tha")]
     Th,
-    /// Tigrinya (`ti`).
-    #[strum(to_string = "ti", serialize = "tir")]
-    Ti,
     /// Turkmen (`tk`).
     #[strum(to_string = "tk", serialize = "tuk")]
     Tk,
@@ -321,7 +312,6 @@ impl Iso6391 {
             Some("ara"),
             Some("asm"),
             Some("aze"),
-            Some("bak"),
             Some("bel"),
             Some("bul"),
             Some("ben"),
@@ -382,7 +372,6 @@ impl Iso6391 {
             Some("pus"),
             Some("por"),
             Some("que"),
-            Some("roh"),
             Some("ron"),
             Some("rus"),
             Some("snd"),
@@ -397,7 +386,6 @@ impl Iso6391 {
             Some("tam"),
             Some("tel"),
             Some("tha"),
-            Some("tir"),
             Some("tuk"),
             Some("tur"),
             Some("twi"),
@@ -421,10 +409,7 @@ impl Iso6391 {
             None,
             None,
             None,
-            None,
             Some("Bangla"),
-            None,
-            None,
             None,
             None,
             None,
@@ -517,7 +502,6 @@ impl Iso6391 {
             "Arabic",
             "Assamese",
             "Azerbaijani",
-            "Bashkir",
             "Belarusian",
             "Bulgarian",
             "Bangla",
@@ -578,7 +562,6 @@ impl Iso6391 {
             "Pashto",
             "Portuguese",
             "Quechua",
-            "Romansh",
             "Romanian",
             "Russian",
             "Sindhi",
@@ -593,7 +576,6 @@ impl Iso6391 {
             "Tamil",
             "Telugu",
             "Thai",
-            "Tigrinya",
             "Turkmen",
             "Turkish",
             "Akan",
@@ -604,104 +586,6 @@ impl Iso6391 {
             "Yoruba",
             "Chinese",
             "Zulu",
-        ];
-        VALUES[self as usize]
-    }
-    pub const fn message_id(self) -> &'static str {
-        const VALUES: &[&str] = &[
-            "iso-639-1-af",
-            "iso-639-1-ak",
-            "iso-639-1-am",
-            "iso-639-1-ar",
-            "iso-639-1-as",
-            "iso-639-1-az",
-            "iso-639-1-ba",
-            "iso-639-1-be",
-            "iso-639-1-bg",
-            "iso-639-1-bn",
-            "iso-639-1-bs",
-            "iso-639-1-ca",
-            "iso-639-1-cs",
-            "iso-639-1-cv",
-            "iso-639-1-cy",
-            "iso-639-1-da",
-            "iso-639-1-de",
-            "iso-639-1-el",
-            "iso-639-1-en",
-            "iso-639-1-es",
-            "iso-639-1-et",
-            "iso-639-1-eu",
-            "iso-639-1-fa",
-            "iso-639-1-fi",
-            "iso-639-1-fr",
-            "iso-639-1-ga",
-            "iso-639-1-gd",
-            "iso-639-1-gl",
-            "iso-639-1-gu",
-            "iso-639-1-ha",
-            "iso-639-1-he",
-            "iso-639-1-hi",
-            "iso-639-1-hr",
-            "iso-639-1-hu",
-            "iso-639-1-hy",
-            "iso-639-1-id",
-            "iso-639-1-ig",
-            "iso-639-1-is",
-            "iso-639-1-it",
-            "iso-639-1-ja",
-            "iso-639-1-jv",
-            "iso-639-1-ka",
-            "iso-639-1-kk",
-            "iso-639-1-km",
-            "iso-639-1-kn",
-            "iso-639-1-ko",
-            "iso-639-1-ky",
-            "iso-639-1-lo",
-            "iso-639-1-lt",
-            "iso-639-1-lv",
-            "iso-639-1-mk",
-            "iso-639-1-ml",
-            "iso-639-1-mn",
-            "iso-639-1-mr",
-            "iso-639-1-ms",
-            "iso-639-1-my",
-            "iso-639-1-nb",
-            "iso-639-1-ne",
-            "iso-639-1-nl",
-            "iso-639-1-nn",
-            "iso-639-1-no",
-            "iso-639-1-or",
-            "iso-639-1-pa",
-            "iso-639-1-pl",
-            "iso-639-1-ps",
-            "iso-639-1-pt",
-            "iso-639-1-qu",
-            "iso-639-1-rm",
-            "iso-639-1-ro",
-            "iso-639-1-ru",
-            "iso-639-1-sd",
-            "iso-639-1-si",
-            "iso-639-1-sk",
-            "iso-639-1-sl",
-            "iso-639-1-so",
-            "iso-639-1-sq",
-            "iso-639-1-sr",
-            "iso-639-1-sv",
-            "iso-639-1-sw",
-            "iso-639-1-ta",
-            "iso-639-1-te",
-            "iso-639-1-th",
-            "iso-639-1-ti",
-            "iso-639-1-tk",
-            "iso-639-1-tr",
-            "iso-639-1-tw",
-            "iso-639-1-uk",
-            "iso-639-1-ur",
-            "iso-639-1-uz",
-            "iso-639-1-vi",
-            "iso-639-1-yo",
-            "iso-639-1-zh",
-            "iso-639-1-zu",
         ];
         VALUES[self as usize]
     }
@@ -727,18 +611,8 @@ impl std::fmt::Display for Iso6391 {
 
 #[cfg(feature = "fluent")]
 impl es_fluent::FluentMessage for Iso6391 {
-    fn to_fluent_string_with(&self, localize: &mut es_fluent::FluentMessageLookup<'_>) -> String {
-        localize(self.fluent_key(), None)
-    }
-}
-
-#[cfg(feature = "fluent")]
-impl Iso6391 {
-    pub const fn fluent_key(self) -> es_fluent::registry::StaticFluentMessageKey {
-        es_fluent::registry::__macro::static_message_key(
-            "iso-types",
-            es_fluent::registry::__macro::static_domain("iso-types"),
-            es_fluent::registry::__macro::static_entry_id(self.message_id()),
-        )
+    /// Labels have one authority, so the English name needs no manager lookup.
+    fn to_fluent_string_with(&self, _: &mut es_fluent::FluentMessageLookup<'_>) -> String {
+        self.english_name().to_owned()
     }
 }

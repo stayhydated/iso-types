@@ -63,13 +63,9 @@ mod tests {
         assert_eq!(TemperatureUsages::COUNT, 2);
         assert_eq!(PhonePrefixes::C1.catalog_value().number(), 1);
         assert_eq!(Zones::AmericaNewYork.catalog_value().bcp47(), Some("usnyc"));
-        let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
-            .find(|entry| entry.data().owner == "iso-types")
-            .unwrap();
-        let localizer = module.create_localizer(&codes::langid!("en-US")).unwrap();
         assert_eq!(
             Zones::AmericaNewYork
-                .to_fluent_string_with(&mut |key, _| localizer.localize(key, None).unwrap()),
+                .to_fluent_string_with(&mut |_, _| unreachable!("catalog labels need no lookup")),
             Zones::AmericaNewYork.english_name()
         );
     }
@@ -94,18 +90,17 @@ mod tests {
             .convert(1.0, codes::MeasurementUnit::Meter)
             .unwrap();
         assert!((meters - 0.3048).abs() < 1e-12);
-        let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
-            .find(|entry| entry.data().owner == "iso-types")
-            .unwrap();
-        let localizer = module.create_localizer(&codes::langid!("en-US")).unwrap();
         for (message, expected) in [
             (&Payments::Usd as &dyn FluentMessage, "US dollar"),
             (&DeliveryAreas::UsCa as &dyn FluentMessage, "California"),
             (&Distances::Meter as &dyn FluentMessage, "meters"),
         ] {
-            let actual =
-                message.to_fluent_string_with(&mut |key, _| localizer.localize(key, None).unwrap());
-            assert_eq!(actual, expected);
+            assert_eq!(
+                message.to_fluent_string_with(&mut |_, _| unreachable!(
+                    "catalog labels need no lookup"
+                )),
+                expected
+            );
         }
     }
 
@@ -165,7 +160,7 @@ mod tests {
                 "{code}"
             );
         }
-        assert_eq!(AllLanguages::VARIANTS.len(), 93);
+        assert_eq!(AllLanguages::VARIANTS.len(), 90);
         assert_eq!("eng".parse::<AllLanguages>().unwrap(), AllLanguages::En);
         assert_eq!(
             Languages::ZhHantTw.to_string(),
@@ -268,15 +263,11 @@ mod hygiene {
             codes::LanguageIdentifier::from(ConfiguredLanguages::EnUs),
             codes::langid!("en-US")
         );
-        let module =
-            inventory::iter::<&'static dyn es_fluent_manager_core::I18nModuleRegistration>()
-                .find(|entry| entry.data().owner == "iso-types")
-                .unwrap();
-        let localizer = module.create_localizer(&codes::langid!("en-US")).unwrap();
         assert_eq!(
-            es_fluent::FluentMessage::to_fluent_string_with(&PickerLanguages::En, &mut |key, _| {
-                localizer.localize(key, None).unwrap()
-            }),
+            es_fluent::FluentMessage::to_fluent_string_with(
+                &PickerLanguages::En,
+                &mut |_, _| unreachable!("catalog labels need no lookup")
+            ),
             "English"
         );
     }

@@ -1,56 +1,59 @@
 {
-  "source": "https://github.com/unicode-org/cldr",
-  "release": "48.2",
-  "revision": "11299982335beb974c1c63c45265184e759c0f41",
+  "cldr": {
+    "version": "49.0.0",
+    "tag": "release-49",
+    "revision": "96e54b273d2da4ec6fbad350ba19ff23fa24a588",
+    "retrieved": "2026-11-05"
+  },
   "as_of": "2026-10-13",
   "files": {
     "coverageLevels.txt": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/properties/coverageLevels.txt",
-      "sha256": "219b247b1c5471802f8ce3fc8449031d2943a77c076270425ed074505cd06f23"
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/properties/coverageLevels.txt",
+      "sha256": "73c6f3e924d948c3191742c17c1ead2341ae51ba83976fb68c3fb1b605033bb8"
     },
     "scriptMetadata.txt": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/properties/scriptMetadata.txt",
-      "sha256": "50a0499acddd7a5ce935e8d77b59ab789f91b16c15b95b00236d90137fe662a4"
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/properties/scriptMetadata.txt",
+      "sha256": "bb9e789af929c5db67ffcd3e47e3a58f6187686fe4c72fb8203cbe7098715a56"
     },
     "region.xml": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/validity/region.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/validity/region.xml",
       "sha256": "e751e0eedd46b52c38f3cdb72b0fab61ac8b48e052e8b28ba74b6ac26c4c8cb1"
     },
     "script.xml": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/validity/script.xml",
-      "sha256": "30f7f5f64be0df200bdfe42f7ce103a045ab661490885a7f060f31d4199be948"
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/validity/script.xml",
+      "sha256": "95849ee6e55d1ece9159883d9eeecd19e92fcede397d9cc1111112e09177c539"
     },
     "subdivision.xml": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/validity/subdivision.xml",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/validity/subdivision.xml",
       "sha256": "93b12c9d55938266c96d44a7ccbb66800afeef4f9dd48b0dc16edfab89833d95"
     },
     "supplementalMetadata.xml": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/supplemental/supplementalMetadata.xml",
-      "sha256": "36e807ce72b15304dd993f132216f408351be1c4376edaa2fe9e9547e2efcac1"
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/supplemental/supplementalMetadata.xml",
+      "sha256": "b06614fc2c9aab3b9a9f7e8bf9328f4f7a95d89b2d2dbb300d0caff0f885c164"
     },
     "supplementalData.xml": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/supplemental/supplementalData.xml",
-      "sha256": "cd2af39aef82fdbfba4d591c87548203350538ad2318486d104b3b38b8d62f1a"
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/supplemental/supplementalData.xml",
+      "sha256": "745150ec1408d50e1a272b65654a5dd645f3e60f5cc2898b576f725b28538d1a"
     },
     "likelySubtags.xml": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/supplemental/likelySubtags.xml",
-      "sha256": "b0049bc6420715b1e3010f43d95745dca227c5aa60357d1d89a1bdcb06287312"
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/supplemental/likelySubtags.xml",
+      "sha256": "114019e183cffd98262c8c137d40d215124f80d9ba474a594d6ffa1b551b0a96"
     },
     "current_currencies.json": {
       "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
       "sha256": "f2357f818b1af2d112d11dd14c77b948a7909d8319ec90ceb6e260303d2a3fd4"
     },
     "unit.xml": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/validity/unit.xml",
-      "sha256": "6c233cc5f6f43ca21345fff38ffde5e49eb8e96c9b7f6796ab7b195f55303861"
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/validity/unit.xml",
+      "sha256": "360cf3222b01cb9f9aca19ea05fe24ddef583c374fa030ac63873f948b8d1995"
     },
     "units-en.xml": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/main/en.xml",
-      "sha256": "67607f4c9cf57157e70564987d8ae92a9ddcd73c00a2f1cd6abf79524a969cbd"
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/main/en.xml",
+      "sha256": "f8cbf26964d0e349fc96d9e5a56292edcbaab25c8e64177ca4f111773dfb79cf"
     },
     "unitPreferences.xml": {
-      "url": "https://raw.githubusercontent.com/unicode-org/cldr/11299982335beb974c1c63c45265184e759c0f41/common/supplemental/units.xml",
-      "sha256": "6ef31425565e76c456295ca9d2b140fed9da27bc67712228f0079dedbdf94614"
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/96e54b273d2da4ec6fbad350ba19ff23fa24a588/common/supplemental/units.xml",
+      "sha256": "fa3b509179e5694360ccc777270ac0cae8a042fc32852f0fd2f53e594fc97444"
     },
     "zone.tab": {
       "url": "https://raw.githubusercontent.com/eggert/tz/fbbd33b7e90c0872fe43277760f695039742baa7/zone.tab",

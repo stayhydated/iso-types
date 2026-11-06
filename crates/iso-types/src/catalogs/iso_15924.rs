@@ -214,45 +214,6 @@ impl Iso15924 {
         ];
         VALUES[self as usize]
     }
-    pub const fn message_id(self) -> &'static str {
-        const VALUES: &[&str] = &[
-            "iso-15924-Arab",
-            "iso-15924-Armn",
-            "iso-15924-Beng",
-            "iso-15924-Cyrl",
-            "iso-15924-Deva",
-            "iso-15924-Ethi",
-            "iso-15924-Geor",
-            "iso-15924-Grek",
-            "iso-15924-Gujr",
-            "iso-15924-Guru",
-            "iso-15924-Hanb",
-            "iso-15924-Hang",
-            "iso-15924-Hani",
-            "iso-15924-Hans",
-            "iso-15924-Hant",
-            "iso-15924-Hebr",
-            "iso-15924-Hira",
-            "iso-15924-Jamo",
-            "iso-15924-Jpan",
-            "iso-15924-Kana",
-            "iso-15924-Khmr",
-            "iso-15924-Knda",
-            "iso-15924-Kore",
-            "iso-15924-Laoo",
-            "iso-15924-Latn",
-            "iso-15924-Mlym",
-            "iso-15924-Mymr",
-            "iso-15924-Orya",
-            "iso-15924-Sinh",
-            "iso-15924-Taml",
-            "iso-15924-Telu",
-            "iso-15924-Thaa",
-            "iso-15924-Thai",
-            "iso-15924-Tibt",
-        ];
-        VALUES[self as usize]
-    }
 }
 
 impl crate::IsoCode for Iso15924 {
@@ -275,18 +236,8 @@ impl std::fmt::Display for Iso15924 {
 
 #[cfg(feature = "fluent")]
 impl es_fluent::FluentMessage for Iso15924 {
-    fn to_fluent_string_with(&self, localize: &mut es_fluent::FluentMessageLookup<'_>) -> String {
-        localize(self.fluent_key(), None)
-    }
-}
-
-#[cfg(feature = "fluent")]
-impl Iso15924 {
-    pub const fn fluent_key(self) -> es_fluent::registry::StaticFluentMessageKey {
-        es_fluent::registry::__macro::static_message_key(
-            "iso-types",
-            es_fluent::registry::__macro::static_domain("iso-types"),
-            es_fluent::registry::__macro::static_entry_id(self.message_id()),
-        )
+    /// Labels have one authority, so the English name needs no manager lookup.
+    fn to_fluent_string_with(&self, _: &mut es_fluent::FluentMessageLookup<'_>) -> String {
+        self.english_name().to_owned()
     }
 }

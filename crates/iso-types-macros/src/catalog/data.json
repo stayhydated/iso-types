@@ -28,10 +28,6 @@
         "variant": "Az"
       },
       {
-        "code": "ba",
-        "variant": "Ba"
-      },
-      {
         "code": "be",
         "variant": "Be"
       },
@@ -272,10 +268,6 @@
         "variant": "Qu"
       },
       {
-        "code": "rm",
-        "variant": "Rm"
-      },
-      {
         "code": "ro",
         "variant": "Ro"
       },
@@ -330,10 +322,6 @@
       {
         "code": "th",
         "variant": "Th"
-      },
-      {
-        "code": "ti",
-        "variant": "Ti"
       },
       {
         "code": "tk",
@@ -406,10 +394,6 @@
         "variant": "Aze"
       },
       {
-        "code": "bak",
-        "variant": "Bak"
-      },
-      {
         "code": "bel",
         "variant": "Bel"
       },
@@ -472,10 +456,6 @@
       {
         "code": "fas",
         "variant": "Fas"
-      },
-      {
-        "code": "fat",
-        "variant": "Fat"
       },
       {
         "code": "fil",
@@ -666,20 +646,12 @@
         "variant": "Que"
       },
       {
-        "code": "roh",
-        "variant": "Roh"
-      },
-      {
         "code": "ron",
         "variant": "Ron"
       },
       {
         "code": "rus",
         "variant": "Rus"
-      },
-      {
-        "code": "shn",
-        "variant": "Shn"
       },
       {
         "code": "sin",
@@ -736,10 +708,6 @@
       {
         "code": "tha",
         "variant": "Tha"
-      },
-      {
-        "code": "tir",
-        "variant": "Tir"
       },
       {
         "code": "tuk",
@@ -824,10 +792,6 @@
         "variant": "Azj"
       },
       {
-        "code": "bak",
-        "variant": "Bak"
-      },
-      {
         "code": "bel",
         "variant": "Bel"
       },
@@ -898,10 +862,6 @@
       {
         "code": "fas",
         "variant": "Fas"
-      },
-      {
-        "code": "fat",
-        "variant": "Fat"
       },
       {
         "code": "fil",
@@ -1136,20 +1096,12 @@
         "variant": "Quz"
       },
       {
-        "code": "roh",
-        "variant": "Roh"
-      },
-      {
         "code": "ron",
         "variant": "Ron"
       },
       {
         "code": "rus",
         "variant": "Rus"
-      },
-      {
-        "code": "shn",
-        "variant": "Shn"
       },
       {
         "code": "sin",
@@ -1214,10 +1166,6 @@
       {
         "code": "tha",
         "variant": "Tha"
-      },
-      {
-        "code": "tir",
-        "variant": "Tir"
       },
       {
         "code": "tuk",

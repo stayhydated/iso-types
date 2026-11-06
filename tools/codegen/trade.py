@@ -88,7 +88,7 @@ def build_catalogs(data):
         result.append(validate(Catalog(CatalogSpec(standard, name, "code", "unece", icu_names=False,
             label_source="Unece", description=description), tuple(
             Entry(code, ("Code" if code[0].isdigit() else "") + code.title(), row["name"],
-                  f"iso-{standard}-{code}", (), {k: v for k, v in row.items() if k != "name"})
+                  (), {k: v for k, v in row.items() if k != "name"})
             for code, row in sorted(records.items())))))
     return tuple(result)
 

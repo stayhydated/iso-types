@@ -40,12 +40,12 @@ def phone_rows(data):
 
 def build_catalogs(data):
     prefixes = sorted({"+" + row.get("countryCode") for row in phone_rows(data)})
-    calling = Catalog(CatalogSpec("calling-codes", "CallingCode", "code", "libphonenumber", False), tuple(
-        Entry(code, "C"+code[1:], f"Calling code {code}", "iso-calling-codes-"+code[1:], (), {}) for code in prefixes))
-    fields = Catalog(CatalogSpec("address-fields", "AddressField", "code", "libaddressinput", False), tuple(
-        Entry(code, variant, name, f"iso-address-fields-{code}", (), {}) for code,(variant,name) in sorted(FIELDS.items())))
-    labels = Catalog(CatalogSpec("address-labels", "AddressFieldLabel", "code", "owned", False), tuple(
-        Entry(code, variant_name(code), name, "iso-address-labels-"+code.replace("_","-"), (), {}) for code,name in sorted(LABELS.items())))
+    calling = Catalog(CatalogSpec("calling-codes", "CallingCode", "code", "libphonenumber", False, label_source="Code"), tuple(
+        Entry(code, "C"+code[1:], code, (), {}) for code in prefixes))
+    fields = Catalog(CatalogSpec("address-fields", "AddressField", "code", "libaddressinput", False, label_source="Package"), tuple(
+        Entry(code, variant, name, (), {}) for code,(variant,name) in sorted(FIELDS.items())))
+    labels = Catalog(CatalogSpec("address-labels", "AddressFieldLabel", "code", "owned", False, label_source="Package"), tuple(
+        Entry(code, variant_name(code), name, (), {}) for code,name in sorted(LABELS.items())))
     return calling, fields, labels
 
 

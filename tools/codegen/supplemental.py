@@ -54,13 +54,13 @@ def build_supplemental(data: Path, snapshot: dict) -> tuple[Catalog, ...]:
         name = snapshot["regions"].get(code)
         if not name:
             raise ValueError(f"ICU region name is unavailable: {code}")
-        regions.append(Entry(code, variant_name(name), name, f"iso-regions-{code}", (),
+        regions.append(Entry(code, variant_name(name), name, (),
                              {"level": record["level"]}))
     zones = []
     for code in zone_records(data):
         record = snapshot["time_zones"][code]
         zones.append(Entry(code, "EtcUtc" if code == "Etc/UTC" else variant_name(code), record["name"],
-                           "iso-time-zones-" + code.replace("/", "-").replace("_", "-"), ("UTC",) if code == "Etc/UTC" else (),
+                           ("UTC",) if code == "Etc/UTC" else (),
                            {"bcp47": record["bcp47"]}))
     return (
         Catalog(CatalogSpec("regions", "GeographicRegion", "code", "m49"), tuple(regions)),

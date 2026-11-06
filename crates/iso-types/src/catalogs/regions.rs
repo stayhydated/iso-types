@@ -190,41 +190,6 @@ impl GeographicRegion {
         ];
         VALUES[self as usize]
     }
-    pub const fn message_id(self) -> &'static str {
-        const VALUES: &[&str] = &[
-            "iso-regions-001",
-            "iso-regions-002",
-            "iso-regions-005",
-            "iso-regions-009",
-            "iso-regions-011",
-            "iso-regions-013",
-            "iso-regions-014",
-            "iso-regions-015",
-            "iso-regions-017",
-            "iso-regions-018",
-            "iso-regions-019",
-            "iso-regions-021",
-            "iso-regions-029",
-            "iso-regions-030",
-            "iso-regions-034",
-            "iso-regions-035",
-            "iso-regions-039",
-            "iso-regions-053",
-            "iso-regions-054",
-            "iso-regions-057",
-            "iso-regions-061",
-            "iso-regions-142",
-            "iso-regions-143",
-            "iso-regions-145",
-            "iso-regions-150",
-            "iso-regions-151",
-            "iso-regions-154",
-            "iso-regions-155",
-            "iso-regions-202",
-            "iso-regions-419",
-        ];
-        VALUES[self as usize]
-    }
     pub const fn level(self) -> GeographicRegionLevel {
         const VALUES: &[GeographicRegionLevel] = &[
             GeographicRegionLevel::Global,
@@ -282,18 +247,8 @@ impl std::fmt::Display for GeographicRegion {
 
 #[cfg(feature = "fluent")]
 impl es_fluent::FluentMessage for GeographicRegion {
-    fn to_fluent_string_with(&self, localize: &mut es_fluent::FluentMessageLookup<'_>) -> String {
-        localize(self.fluent_key(), None)
-    }
-}
-
-#[cfg(feature = "fluent")]
-impl GeographicRegion {
-    pub const fn fluent_key(self) -> es_fluent::registry::StaticFluentMessageKey {
-        es_fluent::registry::__macro::static_message_key(
-            "iso-types",
-            es_fluent::registry::__macro::static_domain("iso-types"),
-            es_fluent::registry::__macro::static_entry_id(self.message_id()),
-        )
+    /// Labels have one authority, so the English name needs no manager lookup.
+    fn to_fluent_string_with(&self, _: &mut es_fluent::FluentMessageLookup<'_>) -> String {
+        self.english_name().to_owned()
     }
 }

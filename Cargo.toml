@@ -35,8 +35,6 @@ iso-types-macros = { path = "crates/iso-types-macros", version = "0.1.0" }
 es-fluent = { version = "0.21.2", default-features = false }
 es-fluent-derive-core = { version = "0.21.2" }
 es-fluent-manager-core = { version = "0.21.2" }
-fluent-bundle = "0.16"
-fluent-syntax = "0.12"
 heck = "0.5"
 inventory = "0.3"
 icu_locale = { version = "=2.4.0", features = ["unstable"] }

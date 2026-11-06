@@ -2774,8 +2774,6 @@ dependencies = [
  "csv",
  "es-fluent",
  "es-fluent-manager-core",
- "fluent-bundle",
- "fluent-syntax",
  "icu_calendar",
  "icu_datetime",
  "icu_experimental",

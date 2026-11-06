@@ -104,31 +104,40 @@ fn items_without_icu_names_are_excluded_from_public_catalogs() {
     );
 }
 
-#[cfg(feature = "fluent")]
+#[cfg(all(feature = "fluent", feature = "locales"))]
 #[test]
-fn excluded_icu_items_have_no_fluent_label() {
+fn locale_module_serves_only_owned_canonical_locale_keys() {
     use es_fluent_manager_core::I18nModuleRegistration;
     let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
         .find(|module| module.data().owner == "iso-types")
         .unwrap();
+    assert!(!module.contributes_to_language_selection());
     let localizer = module.create_localizer(&"fr-FR".parse().unwrap()).unwrap();
-    for id in [
-        "iso-639-3-aaa",
-        "iso-639-3-ang",
-        "iso-15924-Egyp",
-        "iso-4217-XTS",
-        "iso-3166-2-FR-NC",
-        "iso-3166-3-CSHH",
-        "iso-639-5-zzz",
-        "iso-locale-iw-IL",
-    ] {
-        let key = es_fluent::registry::__macro::static_message_key(
-            "iso-types",
+    let key = |owner, id| {
+        es_fluent::registry::__macro::static_message_key(
+            owner,
             es_fluent::registry::__macro::static_domain("iso-types"),
             es_fluent::registry::__macro::static_entry_id(id),
+        )
+    };
+    // The selected language names itself identically with or without `localized-langs`.
+    assert_eq!(
+        localizer
+            .localize(key("iso-types", "iso-locale-fr-FR"), None)
+            .as_deref(),
+        Some("français (France)")
+    );
+    for id in ["iso-locale-iw-IL", "iso-639-1-en", "iso-3166-1-US"] {
+        assert!(
+            localizer.localize(key("iso-types", id), None).is_none(),
+            "{id}"
         );
-        assert!(localizer.localize(key, None).is_none());
     }
+    assert!(
+        localizer
+            .localize(key("other-owner", "iso-locale-fr-FR"), None)
+            .is_none()
+    );
 }
 
 #[cfg(feature = "locales")]

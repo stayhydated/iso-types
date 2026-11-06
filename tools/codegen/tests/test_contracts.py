@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from tools.codegen.catalog import Catalog, CatalogSpec, Entry, read_ftl
+from tools.codegen.catalog import Catalog, CatalogSpec, Entry
 from tools.codegen.output import ROOT, OutputPlan
 from tools.codegen.policy import CurrentData, expand_range
 from tools.codegen.rust import literal
@@ -67,7 +67,7 @@ class SelectionTests(unittest.TestCase):
 class RelationshipTests(unittest.TestCase):
     @staticmethod
     def entry(code, **metadata):
-        return Entry(code, code.replace("-", ""), code, code, (), metadata)
+        return Entry(code, code.replace("-", ""), code, (), metadata)
 
     def catalogs(self, subdivisions):
         return (
@@ -107,7 +107,7 @@ class SupplementalTests(unittest.TestCase):
         data = ROOT / "data"
         policy = CurrentData(data)
         snapshot = json.loads((data / "icu/english.json").read_text())
-        catalogs = build_catalogs(data, ROOT / "crates/iso-types/i18n/en/iso-types", policy, snapshot["catalogs"])
+        catalogs = build_catalogs(data, policy, snapshot["catalogs"])
         countries = next(c for c in catalogs if c.spec.standard == "3166-1")
         preferences = dict(zip((e.code for e in countries.entries), regional_rows(data, countries)))
         self.assertEqual(preferences["US"]["firstDay"], "sun")
@@ -121,7 +121,7 @@ class SupplementalTests(unittest.TestCase):
         self.assertIn("US", zones["America/New_York"])
         self.assertEqual(zones["Etc/UTC"], ())
         for catalog in build_supplemental(data, snapshot):
-            for field in ("code", "variant", "message_id"):
+            for field in ("code", "variant"):
                 self.assertEqual(len(catalog.entries), len({getattr(e, field) for e in catalog.entries}))
 
     def test_address_template_literals_and_new_landmark_fields_are_preserved(self):
@@ -185,16 +185,6 @@ class OutputTests(unittest.TestCase):
         self.assertEqual(literal("日本語\x01\x7f"), '"日本語\\u{1}\\u{7f}"')
         with self.assertRaises(ValueError):
             literal("\ud800")
-
-    def test_owned_ftl_requires_unique_literal_messages(self):
-        with tempfile.TemporaryDirectory() as temporary:
-            path = Path(temporary) / "catalog.ftl"
-            path.write_text("## Names\n\nkey = Authoritative name\n", encoding="utf-8")
-            self.assertEqual(read_ftl(path), {"key": "Authoritative name"})
-            for source in ("key = One\nkey = Two\n", "key = { $name }\n", "invalid\n"):
-                path.write_text(source, encoding="utf-8")
-                with self.subTest(source=source), self.assertRaises(ValueError):
-                    read_ftl(path)
 
 
 if __name__ == "__main__":

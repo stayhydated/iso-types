@@ -47,9 +47,6 @@ pub enum Iso6393 {
     /// Azerbaijani (`azj`).
     #[strum(to_string = "azj")]
     Azj,
-    /// Bashkir (`bak`).
-    #[strum(to_string = "bak", serialize = "ba")]
-    Bak,
     /// Belarusian (`bel`).
     #[strum(to_string = "bel", serialize = "be")]
     Bel,
@@ -104,9 +101,6 @@ pub enum Iso6393 {
     /// Persian (`fas`).
     #[strum(to_string = "fas", serialize = "fa")]
     Fas,
-    /// Fanti (`fat`).
-    #[strum(to_string = "fat")]
-    Fat,
     /// Filipino (`fil`).
     #[strum(to_string = "fil")]
     Fil,
@@ -281,18 +275,12 @@ pub enum Iso6393 {
     /// Quechua (`quz`).
     #[strum(to_string = "quz")]
     Quz,
-    /// Romansh (`roh`).
-    #[strum(to_string = "roh", serialize = "rm")]
-    Roh,
     /// Romanian (`ron`).
     #[strum(to_string = "ron", serialize = "ro")]
     Ron,
     /// Russian (`rus`).
     #[strum(to_string = "rus", serialize = "ru")]
     Rus,
-    /// Shan (`shn`).
-    #[strum(to_string = "shn")]
-    Shn,
     /// Sinhala (`sin`).
     #[strum(to_string = "sin", serialize = "si")]
     Sin,
@@ -341,9 +329,6 @@ pub enum Iso6393 {
     /// Thai (`tha`).
     #[strum(to_string = "tha", serialize = "th")]
     Tha,
-    /// Tigrinya (`tir`).
-    #[strum(to_string = "tir", serialize = "ti")]
-    Tir,
     /// Turkmen (`tuk`).
     #[strum(to_string = "tuk", serialize = "tk")]
     Tuk,
@@ -408,7 +393,6 @@ impl Iso6393 {
             Some("as"),
             Some("az"),
             None,
-            Some("ba"),
             Some("be"),
             Some("bn"),
             Some("bs"),
@@ -427,7 +411,6 @@ impl Iso6393 {
             Some("et"),
             Some("eu"),
             Some("fa"),
-            None,
             None,
             Some("fi"),
             Some("fr"),
@@ -486,10 +469,8 @@ impl Iso6393 {
             Some("ps"),
             Some("qu"),
             None,
-            Some("rm"),
             Some("ro"),
             Some("ru"),
-            None,
             Some("si"),
             Some("sk"),
             Some("sl"),
@@ -506,7 +487,6 @@ impl Iso6393 {
             Some("te"),
             Some("tl"),
             Some("th"),
-            Some("ti"),
             Some("tk"),
             Some("tr"),
             Some("tw"),
@@ -535,12 +515,7 @@ impl Iso6393 {
             None,
             None,
             None,
-            None,
             Some("Bangla"),
-            None,
-            None,
-            None,
-            None,
             None,
             None,
             None,
@@ -675,11 +650,9 @@ impl Iso6393 {
             Some("I"),
             Some("I"),
             Some("I"),
-            Some("I"),
             Some("M"),
             Some("I"),
             Some("M"),
-            Some("I"),
             Some("I"),
             Some("I"),
             Some("I"),
@@ -746,12 +719,9 @@ impl Iso6393 {
             Some("I"),
             Some("I"),
             Some("I"),
-            Some("I"),
-            Some("I"),
             Some("M"),
             Some("I"),
             Some("M"),
-            Some("I"),
             Some("I"),
             Some("I"),
             Some("I"),
@@ -893,11 +863,6 @@ impl Iso6393 {
             Some("L"),
             Some("L"),
             Some("L"),
-            Some("L"),
-            Some("L"),
-            Some("L"),
-            Some("L"),
-            Some("L"),
         ];
         VALUES[self as usize]
     }
@@ -912,7 +877,6 @@ impl Iso6393 {
             "Assamese",
             "Azerbaijani",
             "Azerbaijani",
-            "Bashkir",
             "Belarusian",
             "Bangla",
             "Bosnian",
@@ -931,7 +895,6 @@ impl Iso6393 {
             "Estonian",
             "Basque",
             "Persian",
-            "Fanti",
             "Filipino",
             "Finnish",
             "French",
@@ -990,10 +953,8 @@ impl Iso6393 {
             "Pashto",
             "Quechua",
             "Quechua",
-            "Romansh",
             "Romanian",
             "Russian",
-            "Shan",
             "Sinhala",
             "Slovak",
             "Slovenian",
@@ -1010,7 +971,6 @@ impl Iso6393 {
             "Telugu",
             "Filipino",
             "Thai",
-            "Tigrinya",
             "Turkmen",
             "Turkish",
             "Akan",
@@ -1024,132 +984,6 @@ impl Iso6393 {
             "Chinese",
             "Malay",
             "Zulu",
-        ];
-        VALUES[self as usize]
-    }
-    pub const fn message_id(self) -> &'static str {
-        const VALUES: &[&str] = &[
-            "iso-639-3-afr",
-            "iso-639-3-aka",
-            "iso-639-3-als",
-            "iso-639-3-amh",
-            "iso-639-3-ara",
-            "iso-639-3-arb",
-            "iso-639-3-asm",
-            "iso-639-3-aze",
-            "iso-639-3-azj",
-            "iso-639-3-bak",
-            "iso-639-3-bel",
-            "iso-639-3-ben",
-            "iso-639-3-bos",
-            "iso-639-3-bul",
-            "iso-639-3-cat",
-            "iso-639-3-ces",
-            "iso-639-3-chv",
-            "iso-639-3-cmn",
-            "iso-639-3-cym",
-            "iso-639-3-dan",
-            "iso-639-3-deu",
-            "iso-639-3-dsb",
-            "iso-639-3-ekk",
-            "iso-639-3-ell",
-            "iso-639-3-eng",
-            "iso-639-3-est",
-            "iso-639-3-eus",
-            "iso-639-3-fas",
-            "iso-639-3-fat",
-            "iso-639-3-fil",
-            "iso-639-3-fin",
-            "iso-639-3-fra",
-            "iso-639-3-gla",
-            "iso-639-3-gle",
-            "iso-639-3-glg",
-            "iso-639-3-gom",
-            "iso-639-3-guj",
-            "iso-639-3-hau",
-            "iso-639-3-hbs",
-            "iso-639-3-heb",
-            "iso-639-3-hin",
-            "iso-639-3-hrv",
-            "iso-639-3-hsb",
-            "iso-639-3-hun",
-            "iso-639-3-hye",
-            "iso-639-3-ibo",
-            "iso-639-3-ind",
-            "iso-639-3-isl",
-            "iso-639-3-ita",
-            "iso-639-3-jav",
-            "iso-639-3-jpn",
-            "iso-639-3-kan",
-            "iso-639-3-kat",
-            "iso-639-3-kaz",
-            "iso-639-3-khk",
-            "iso-639-3-khm",
-            "iso-639-3-kir",
-            "iso-639-3-kok",
-            "iso-639-3-kor",
-            "iso-639-3-lao",
-            "iso-639-3-lav",
-            "iso-639-3-lit",
-            "iso-639-3-lvs",
-            "iso-639-3-mal",
-            "iso-639-3-mar",
-            "iso-639-3-mkd",
-            "iso-639-3-mon",
-            "iso-639-3-msa",
-            "iso-639-3-mya",
-            "iso-639-3-nep",
-            "iso-639-3-nld",
-            "iso-639-3-nno",
-            "iso-639-3-nob",
-            "iso-639-3-nor",
-            "iso-639-3-npi",
-            "iso-639-3-ori",
-            "iso-639-3-ory",
-            "iso-639-3-pan",
-            "iso-639-3-pbu",
-            "iso-639-3-pcm",
-            "iso-639-3-pes",
-            "iso-639-3-pol",
-            "iso-639-3-por",
-            "iso-639-3-prs",
-            "iso-639-3-pus",
-            "iso-639-3-que",
-            "iso-639-3-quz",
-            "iso-639-3-roh",
-            "iso-639-3-ron",
-            "iso-639-3-rus",
-            "iso-639-3-shn",
-            "iso-639-3-sin",
-            "iso-639-3-slk",
-            "iso-639-3-slv",
-            "iso-639-3-snd",
-            "iso-639-3-som",
-            "iso-639-3-spa",
-            "iso-639-3-sqi",
-            "iso-639-3-srp",
-            "iso-639-3-swa",
-            "iso-639-3-swc",
-            "iso-639-3-swe",
-            "iso-639-3-swh",
-            "iso-639-3-tam",
-            "iso-639-3-tel",
-            "iso-639-3-tgl",
-            "iso-639-3-tha",
-            "iso-639-3-tir",
-            "iso-639-3-tuk",
-            "iso-639-3-tur",
-            "iso-639-3-twi",
-            "iso-639-3-ukr",
-            "iso-639-3-urd",
-            "iso-639-3-uzb",
-            "iso-639-3-uzn",
-            "iso-639-3-vie",
-            "iso-639-3-yor",
-            "iso-639-3-yue",
-            "iso-639-3-zho",
-            "iso-639-3-zsm",
-            "iso-639-3-zul",
         ];
         VALUES[self as usize]
     }
@@ -1175,18 +1009,8 @@ impl std::fmt::Display for Iso6393 {
 
 #[cfg(feature = "fluent")]
 impl es_fluent::FluentMessage for Iso6393 {
-    fn to_fluent_string_with(&self, localize: &mut es_fluent::FluentMessageLookup<'_>) -> String {
-        localize(self.fluent_key(), None)
-    }
-}
-
-#[cfg(feature = "fluent")]
-impl Iso6393 {
-    pub const fn fluent_key(self) -> es_fluent::registry::StaticFluentMessageKey {
-        es_fluent::registry::__macro::static_message_key(
-            "iso-types",
-            es_fluent::registry::__macro::static_domain("iso-types"),
-            es_fluent::registry::__macro::static_entry_id(self.message_id()),
-        )
+    /// Labels have one authority, so the English name needs no manager lookup.
+    fn to_fluent_string_with(&self, _: &mut es_fluent::FluentMessageLookup<'_>) -> String {
+        self.english_name().to_owned()
     }
 }

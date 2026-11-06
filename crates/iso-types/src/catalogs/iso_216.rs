@@ -20,77 +20,77 @@
 #[strum(const_into_str, parse_err_ty = crate::ParseIsoCodeError, parse_err_fn = Self::parse_error)]
 #[repr(u16)]
 pub enum Iso216 {
-    /// A0 paper (`A0`).
+    /// A0 (`A0`).
     #[strum(to_string = "A0")]
     A0,
-    /// A1 paper (`A1`).
+    /// A1 (`A1`).
     #[strum(to_string = "A1")]
     A1,
-    /// A10 paper (`A10`).
+    /// A10 (`A10`).
     #[strum(to_string = "A10")]
     A10,
-    /// A2 paper (`A2`).
+    /// A2 (`A2`).
     #[strum(to_string = "A2")]
     A2,
-    /// A3 paper (`A3`).
+    /// A3 (`A3`).
     #[strum(to_string = "A3")]
     A3,
-    /// A4 paper (`A4`).
+    /// A4 (`A4`).
     #[strum(to_string = "A4")]
     A4,
-    /// A5 paper (`A5`).
+    /// A5 (`A5`).
     #[strum(to_string = "A5")]
     A5,
-    /// A6 paper (`A6`).
+    /// A6 (`A6`).
     #[strum(to_string = "A6")]
     A6,
-    /// A7 paper (`A7`).
+    /// A7 (`A7`).
     #[strum(to_string = "A7")]
     A7,
-    /// A8 paper (`A8`).
+    /// A8 (`A8`).
     #[strum(to_string = "A8")]
     A8,
-    /// A9 paper (`A9`).
+    /// A9 (`A9`).
     #[strum(to_string = "A9")]
     A9,
-    /// B0 paper (`B0`).
+    /// B0 (`B0`).
     #[strum(to_string = "B0")]
     B0,
-    /// B1 paper (`B1`).
+    /// B1 (`B1`).
     #[strum(to_string = "B1")]
     B1,
-    /// B10 paper (`B10`).
+    /// B10 (`B10`).
     #[strum(to_string = "B10")]
     B10,
-    /// B2 paper (`B2`).
+    /// B2 (`B2`).
     #[strum(to_string = "B2")]
     B2,
-    /// B3 paper (`B3`).
+    /// B3 (`B3`).
     #[strum(to_string = "B3")]
     B3,
-    /// B4 paper (`B4`).
+    /// B4 (`B4`).
     #[strum(to_string = "B4")]
     B4,
-    /// B5 paper (`B5`).
+    /// B5 (`B5`).
     #[strum(to_string = "B5")]
     B5,
-    /// B6 paper (`B6`).
+    /// B6 (`B6`).
     #[strum(to_string = "B6")]
     B6,
-    /// B7 paper (`B7`).
+    /// B7 (`B7`).
     #[strum(to_string = "B7")]
     B7,
-    /// B8 paper (`B8`).
+    /// B8 (`B8`).
     #[strum(to_string = "B8")]
     B8,
-    /// B9 paper (`B9`).
+    /// B9 (`B9`).
     #[strum(to_string = "B9")]
     B9,
 }
 
 impl Iso216 {
     pub const STANDARD: &'static str = "216";
-    pub const LABEL_SOURCE: crate::LabelSource = crate::LabelSource::Fluent;
+    pub const LABEL_SOURCE: crate::LabelSource = crate::LabelSource::Code;
     pub const fn code(self) -> &'static str {
         self.into_str()
     }
@@ -102,55 +102,8 @@ impl Iso216 {
     }
     pub const fn english_name(self) -> &'static str {
         const VALUES: &[&str] = &[
-            "A0 paper",
-            "A1 paper",
-            "A10 paper",
-            "A2 paper",
-            "A3 paper",
-            "A4 paper",
-            "A5 paper",
-            "A6 paper",
-            "A7 paper",
-            "A8 paper",
-            "A9 paper",
-            "B0 paper",
-            "B1 paper",
-            "B10 paper",
-            "B2 paper",
-            "B3 paper",
-            "B4 paper",
-            "B5 paper",
-            "B6 paper",
-            "B7 paper",
-            "B8 paper",
-            "B9 paper",
-        ];
-        VALUES[self as usize]
-    }
-    pub const fn message_id(self) -> &'static str {
-        const VALUES: &[&str] = &[
-            "iso-216-A0",
-            "iso-216-A1",
-            "iso-216-A10",
-            "iso-216-A2",
-            "iso-216-A3",
-            "iso-216-A4",
-            "iso-216-A5",
-            "iso-216-A6",
-            "iso-216-A7",
-            "iso-216-A8",
-            "iso-216-A9",
-            "iso-216-B0",
-            "iso-216-B1",
-            "iso-216-B10",
-            "iso-216-B2",
-            "iso-216-B3",
-            "iso-216-B4",
-            "iso-216-B5",
-            "iso-216-B6",
-            "iso-216-B7",
-            "iso-216-B8",
-            "iso-216-B9",
+            "A0", "A1", "A10", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "B0", "B1", "B10",
+            "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9",
         ];
         VALUES[self as usize]
     }
@@ -176,18 +129,8 @@ impl std::fmt::Display for Iso216 {
 
 #[cfg(feature = "fluent")]
 impl es_fluent::FluentMessage for Iso216 {
-    fn to_fluent_string_with(&self, localize: &mut es_fluent::FluentMessageLookup<'_>) -> String {
-        localize(self.fluent_key(), None)
-    }
-}
-
-#[cfg(feature = "fluent")]
-impl Iso216 {
-    pub const fn fluent_key(self) -> es_fluent::registry::StaticFluentMessageKey {
-        es_fluent::registry::__macro::static_message_key(
-            "iso-types",
-            es_fluent::registry::__macro::static_domain("iso-types"),
-            es_fluent::registry::__macro::static_entry_id(self.message_id()),
-        )
+    /// Labels have one authority, so the English name needs no manager lookup.
+    fn to_fluent_string_with(&self, _: &mut es_fluent::FluentMessageLookup<'_>) -> String {
+        self.english_name().to_owned()
     }
 }

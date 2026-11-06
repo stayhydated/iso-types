@@ -34,7 +34,7 @@ class CatalogSpec:
 
     @property
     def authority(self) -> str:
-        return self.label_source or ("Icu4x" if self.icu_names else "Fluent")
+        return self.label_source or ("Icu4x" if self.icu_names else "Iso")
 
 
 SPECS = (
@@ -59,7 +59,6 @@ class Entry:
     code: str
     variant: str
     name: str
-    message_id: str
     aliases: tuple[str, ...]
     metadata: dict[str, str]
 
@@ -81,24 +80,7 @@ def verify_sources(data: Path) -> None:
             raise ValueError(f"ISO source checksum mismatch: {name}")
 
 
-def read_ftl(path: Path) -> dict[str, str]:
-    """The owned catalog format is a set of single-line literal messages."""
-    if not path.is_file():
-        return {}
-    result = {}
-    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-        if not line or line.startswith("#"):
-            continue
-        key, separator, value = line.partition(" = ")
-        if not separator or not value or any(char in value for char in "{}\r\n"):
-            raise ValueError(f"{path}:{number}: expected a literal single-line Fluent message")
-        if key in result:
-            raise ValueError(f"{path}:{number}: duplicate Fluent message {key}")
-        result[key] = value
-    return result
-
-
-def build_catalogs(data: Path, ftl: Path, policy: CurrentData, icu: dict) -> tuple[Catalog, ...]:
+def build_catalogs(data: Path, policy: CurrentData, icu: dict) -> tuple[Catalog, ...]:
     if set(icu) != {spec.standard for spec in SPECS if spec.icu_names}:
         raise ValueError("ICU catalog ownership differs from the extractor")
     sources = {
@@ -121,15 +103,12 @@ def build_catalogs(data: Path, ftl: Path, policy: CurrentData, icu: dict) -> tup
                        if icu[spec.standard][record[spec.code_key]] is not None]
         records = [record for record in records
                    if policy.includes(spec.standard, record, spec.code_key)]
-        labels = {} if spec.icu_names else read_ftl(ftl / f"{spec.standard}.ftl")
         selected = []
         for record in records:
             code = record[spec.code_key]
-            message_id = f"iso-{spec.standard}-{code}"
-            name = (icu[spec.standard][code] if spec.icu_names
-                    else labels.get(message_id, record["name"]))
+            name = icu[spec.standard][code] if spec.icu_names else record["name"]
             if not name or any(char in name for char in "{}\r\n"):
-                raise ValueError(f"invalid English label: {message_id}")
+                raise ValueError(f"invalid English label: {spec.standard} {code}")
             variant = record.get("variant") or "".join(
                 part[0].upper() + part[1:].lower() for part in code.split("-")
             )
@@ -137,7 +116,7 @@ def build_catalogs(data: Path, ftl: Path, policy: CurrentData, icu: dict) -> tup
                             if key in record and record[key] != code)
             metadata = {key: record[key] for key in sorted(METADATA - {spec.code_key})
                         if key in record}
-            selected.append(Entry(code, variant, name, message_id, aliases, metadata))
+            selected.append(Entry(code, variant, name, aliases, metadata))
         if not selected:
             raise ValueError(f"empty selected catalog: {spec.standard}")
         for field in ("code", "variant"):

@@ -60,7 +60,7 @@ def records(data):
 def build_catalog(data):
     return validate(Catalog(CatalogSpec("639-5", "Iso6395", "code", "loc", icu_names=False,
         label_source="LibraryOfCongress", description="ISO 639 Set 5 language groups; English names and coding hierarchy are owned by the Library of Congress."), tuple(
-        Entry(code, code.title(), name, f"iso-639-5-{code}", (), {})
+        Entry(code, code.title(), name, (), {})
         for code, (name, _) in sorted(records(data).items()))))
 
 

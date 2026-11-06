@@ -61,9 +61,9 @@ macro_rules! catalog_test {
         }
     };
 }
-catalog_test!("639-1", languages_1, Iso6391, 93);
-catalog_test!("639-2", languages_2, Iso6392, 100);
-catalog_test!("639-3", languages_3, Iso6393, 121);
+catalog_test!("639-1", languages_1, Iso6391, 90);
+catalog_test!("639-2", languages_2, Iso6392, 95);
+catalog_test!("639-3", languages_3, Iso6393, 116);
 catalog_test!("3166-1", countries, Iso3166_1, 249);
 catalog_test!("3166-2", subdivisions, Iso3166_2, 5027);
 catalog_test!("4217", currencies, Iso4217, 153);
@@ -168,31 +168,16 @@ fn declared_subset_preserves_selection_and_rejects_other_valid_codes() {
 
 #[cfg(feature = "fluent")]
 #[test]
-fn fluent_catalogs_match_every_english_display_label_and_keep_owner_scoping() {
+fn fluent_catalog_labels_are_their_english_display_without_lookup() {
     use es_fluent::FluentMessage;
-    use es_fluent_manager_core::I18nModuleRegistration;
-    let registration = inventory::iter::<&'static dyn I18nModuleRegistration>()
-        .find(|m| m.data().owner == "iso-types")
-        .unwrap();
-    assert!(!registration.contributes_to_language_selection());
-    let localizer = registration
-        .create_localizer(&"fr-FR".parse().unwrap())
-        .unwrap();
     macro_rules! check {
         ($feature:literal, $kind:ident) => {
             #[cfg(feature = $feature)]
             for value in iso_types::$kind::VARIANTS {
-                assert_eq!(
-                    localizer.localize(value.fluent_key(), None).as_deref(),
-                    Some(value.english_name()),
-                    "{}",
-                    value.code()
-                );
-                let label = value.english_name();
-                let actual = value.to_fluent_string_with(&mut |key, _args| {
-                    localizer.localize(key, None).unwrap()
+                let actual = value.to_fluent_string_with(&mut |_, _| {
+                    unreachable!("catalog labels need no lookup")
                 });
-                assert_eq!(actual, label, "{}", value.code());
+                assert_eq!(actual, value.english_name(), "{}", value.code());
                 #[cfg(feature = "fmt")]
                 assert_eq!(actual, value.to_string());
             }
@@ -220,10 +205,4 @@ fn fluent_catalogs_match_every_english_display_label_and_keep_owner_scoping() {
     check!("calling-codes", CallingCode);
     check!("addresses", AddressField);
     check!("addresses", AddressFieldLabel);
-    let foreign = es_fluent::registry::__macro::static_message_key(
-        "other-owner",
-        es_fluent::registry::__macro::static_domain("iso-types"),
-        es_fluent::registry::__macro::static_entry_id("iso-639-1-en"),
-    );
-    assert!(localizer.localize(foreign, None).is_none());
 }

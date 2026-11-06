@@ -560,24 +560,6 @@ pub(super) const PREFERENCES: &[(&str, NumberingPreferences)] = &[
         },
     ),
     (
-        "ba",
-        NumberingPreferences {
-            default: NumberingSystem::Latn,
-            native: NumberingSystem::Latn,
-            traditional: NumberingSystem::Latn,
-            finance: NumberingSystem::Latn,
-        },
-    ),
-    (
-        "ba-RU",
-        NumberingPreferences {
-            default: NumberingSystem::Latn,
-            native: NumberingSystem::Latn,
-            traditional: NumberingSystem::Latn,
-            finance: NumberingSystem::Latn,
-        },
-    ),
-    (
         "be",
         NumberingPreferences {
             default: NumberingSystem::Latn,
@@ -4142,24 +4124,6 @@ pub(super) const PREFERENCES: &[(&str, NumberingPreferences)] = &[
         },
     ),
     (
-        "rm",
-        NumberingPreferences {
-            default: NumberingSystem::Latn,
-            native: NumberingSystem::Latn,
-            traditional: NumberingSystem::Latn,
-            finance: NumberingSystem::Latn,
-        },
-    ),
-    (
-        "rm-CH",
-        NumberingPreferences {
-            default: NumberingSystem::Latn,
-            native: NumberingSystem::Latn,
-            traditional: NumberingSystem::Latn,
-            finance: NumberingSystem::Latn,
-        },
-    ),
-    (
         "ro",
         NumberingPreferences {
             default: NumberingSystem::Latn,
@@ -4287,33 +4251,6 @@ pub(super) const PREFERENCES: &[(&str, NumberingPreferences)] = &[
     ),
     (
         "sd-Deva-IN",
-        NumberingPreferences {
-            default: NumberingSystem::Latn,
-            native: NumberingSystem::Latn,
-            traditional: NumberingSystem::Latn,
-            finance: NumberingSystem::Latn,
-        },
-    ),
-    (
-        "shn",
-        NumberingPreferences {
-            default: NumberingSystem::Latn,
-            native: NumberingSystem::Latn,
-            traditional: NumberingSystem::Latn,
-            finance: NumberingSystem::Latn,
-        },
-    ),
-    (
-        "shn-MM",
-        NumberingPreferences {
-            default: NumberingSystem::Latn,
-            native: NumberingSystem::Latn,
-            traditional: NumberingSystem::Latn,
-            finance: NumberingSystem::Latn,
-        },
-    ),
-    (
-        "shn-TH",
         NumberingPreferences {
             default: NumberingSystem::Latn,
             native: NumberingSystem::Latn,
@@ -4714,33 +4651,6 @@ pub(super) const PREFERENCES: &[(&str, NumberingPreferences)] = &[
             default: NumberingSystem::Latn,
             native: NumberingSystem::Thai,
             traditional: NumberingSystem::Thai,
-            finance: NumberingSystem::Latn,
-        },
-    ),
-    (
-        "ti",
-        NumberingPreferences {
-            default: NumberingSystem::Latn,
-            native: NumberingSystem::Latn,
-            traditional: NumberingSystem::Ethi,
-            finance: NumberingSystem::Latn,
-        },
-    ),
-    (
-        "ti-ER",
-        NumberingPreferences {
-            default: NumberingSystem::Latn,
-            native: NumberingSystem::Latn,
-            traditional: NumberingSystem::Ethi,
-            finance: NumberingSystem::Latn,
-        },
-    ),
-    (
-        "ti-ET",
-        NumberingPreferences {
-            default: NumberingSystem::Latn,
-            native: NumberingSystem::Latn,
-            traditional: NumberingSystem::Ethi,
             finance: NumberingSystem::Latn,
         },
     ),

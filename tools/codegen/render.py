@@ -1,4 +1,4 @@
-"""Render Rust, macro selection data, and owned Fluent resources."""
+"""Render Rust catalogs and macro selection data."""
 
 from collections import defaultdict
 import json
@@ -79,8 +79,7 @@ def catalog_rust(catalog: Catalog, currency_fractions: dict) -> str:
             continue
         method = "kind" if field == "type" else field
         methods.append(string_table(method, [entry.metadata.get(field) for entry in entries], optional=True))
-    for method, field in (("english_name", "name"), ("message_id", "message_id")):
-        methods.append(string_table(method, [getattr(entry, field) for entry in entries]))
+    methods.append(string_table("english_name", [entry.name for entry in entries]))
     candidates = defaultdict(set)
     for entry in entries:
         for alias in entry.aliases:
@@ -113,11 +112,11 @@ def catalog_rust(catalog: Catalog, currency_fractions: dict) -> str:
         methods.append(value_table("level", "GeographicRegionLevel", [f"GeographicRegionLevel::{levels[entry.metadata['level']]}" for entry in entries]))
     if spec.standard == "unit-preferences":
         methods.append(value_table("category", "crate::UnitCategory", [f"crate::UnitCategory::{variant_name(entry.metadata['category'])}" for entry in entries]))
-    description = spec.description or ("Telephone calling prefixes from libphonenumber; English labels are owned by the package Fluent resource."
+    description = spec.description or ("Telephone calling prefixes from libphonenumber; the language-neutral prefix is the label."
                    if spec.standard == "calling-codes" else
-                   "Postal address metadata identifiers; English labels are owned by the package Fluent resource."
+                   "Postal address metadata identifiers; English labels are owned by iso-types."
                    if spec.standard.startswith("address-") else
-                   "Common CLDR unit usages; English labels are owned by the package Fluent resource."
+                   "Common CLDR unit usages; English labels are owned by iso-types."
                    if spec.standard == "unit-preferences" else
                    "UN M49 geographic region identifiers; English names are extracted from ICU4X."
                    if spec.standard == "regions" else
@@ -162,19 +161,9 @@ impl std::fmt::Display for {name} {{
 
 #[cfg(feature = "fluent")]
 impl es_fluent::FluentMessage for {name} {{
-    fn to_fluent_string_with(&self, localize: &mut es_fluent::FluentMessageLookup<'_>) -> String {{
-        localize(self.fluent_key(), None)
-    }}
-}}
-
-#[cfg(feature = "fluent")]
-impl {name} {{
-    pub const fn fluent_key(self) -> es_fluent::registry::StaticFluentMessageKey {{
-        es_fluent::registry::__macro::static_message_key(
-            "iso-types",
-            es_fluent::registry::__macro::static_domain("iso-types"),
-            es_fluent::registry::__macro::static_entry_id(self.message_id()),
-        )
+    /// Labels have one authority, so the English name needs no manager lookup.
+    fn to_fluent_string_with(&self, _: &mut es_fluent::FluentMessageLookup<'_>) -> String {{
+        self.english_name().to_owned()
     }}
 }}
 """
@@ -205,44 +194,6 @@ def macro_data(catalogs: tuple[Catalog, ...]) -> str:
         for catalog in catalogs
     }
     return json.dumps(data, ensure_ascii=False, indent=2) + "\n"
-
-
-def fluent_resource(catalog: Catalog) -> str:
-    return f"## {catalog.spec.standard} catalog\n\n" + "".join(
-        f"{entry.message_id} = {entry.name}\n" for entry in catalog.entries
-    )
-
-
-def fluent_registration(catalogs: tuple[Catalog, ...]) -> str:
-    resources = "".join(
-        f'    #[cfg(feature = "{catalog.spec.feature}")]\n'
-        f'    include_str!("../../i18n/en/iso-types/{catalog.spec.standard}.ftl"),\n'
-        for catalog in catalogs if catalog.spec.authority == "Fluent"
-    )
-    lookups = ""
-    for catalog in catalogs:
-        if catalog.spec.authority == "Fluent":
-            continue
-        lookups += f'    #[cfg(feature = "{catalog.spec.feature}")]\n'
-        if catalog.spec.standard == "time-zones":
-            lookups += f'''    if id.starts_with("iso-time-zones-") {{
-        return <crate::TimeZoneId as strum::VariantArray>::VARIANTS.iter()
-            .find(|zone| zone.message_id() == id).map(|zone| zone.english_name());
-    }}
-'''
-        else:
-            lookups += f'''    if let Some(code) = id.strip_prefix("iso-{catalog.spec.standard}-") {{
-        return Some(code.parse::<crate::{catalog.spec.type_name}>().ok()?.english_name());
-    }}
-'''
-    return GENERATED + f"""pub(super) const ENGLISH_RESOURCES: &[&str] = &[
-{resources}];
-
-pub(super) fn catalog_english_name(id: &str) -> Option<&'static str> {{
-{lookups}    let _ = id;
-    None
-}}
-"""
 
 
 def geography(model: Relations) -> str:

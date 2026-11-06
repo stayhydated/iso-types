@@ -37,8 +37,12 @@ pub trait IsoCode:
 pub enum LabelSource {
     /// Names extracted from pinned ICU4X compiled providers.
     Icu4x,
-    /// Names owned by the package's English Fluent resource.
-    Fluent,
+    /// English names published with the ISO standard's pinned iso-codes snapshot.
+    Iso,
+    /// English labels authored by iso-types for registry identifiers.
+    Package,
+    /// Language-neutral codes, such as `+1` or `A4`, that serve as their own labels.
+    Code,
     /// English display names from the pinned CLDR locale data.
     Cldr,
     /// English language-group names published by the Library of Congress.

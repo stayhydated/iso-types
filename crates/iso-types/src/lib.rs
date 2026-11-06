@@ -87,7 +87,7 @@ pub use locale::{
 };
 #[cfg(feature = "icu")]
 pub use {icu_calendar, icu_locale};
-#[cfg(feature = "fluent")]
+#[cfg(all(feature = "fluent", feature = "locales"))]
 pub mod i18n;
 #[cfg(feature = "icu")]
 mod icu;

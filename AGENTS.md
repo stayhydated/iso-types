@@ -24,7 +24,7 @@ Python 3.10 or newer and the pinned Rust toolchain.
 | IBAN and MIC | Registered IBAN generation in `tools/codegen/iban.py`; validation in `src/iban.rs`; application-supplied MIC CSV import in `src/markets.rs`. |
 | UN/LOCODE directory | `tools/codegen/locations.py`; separately packaged `crates/iso-types-locations`. |
 | Locale parsing, canonicalization, and names | `crates/iso-types/src/locale.rs`. |
-| Fluent utility module and locale labels | `crates/iso-types/src/i18n.rs`; owned resources under `i18n/en/iso-types/`. |
+| Locale-name runtime module | `crates/iso-types/src/i18n.rs`. |
 | Macro input conventions | `crates/iso-types-macros/src/enum_input.rs`. |
 | Catalog subset expansion | `crates/iso-types-macros/src/catalog/`: cached data, validated model, and token emission. |
 | Configured locale expansion | `crates/iso-types-macros/src/locale/`: validated model and token emission. |
@@ -37,7 +37,6 @@ Python 3.10 or newer and the pinned Rust toolchain.
 Paths in a crate's row are relative to that crate where the prefix is omitted.
 The macro crate's `src/catalog/data.json` is a generated selection
 index; labels and metadata remain owned by the facade's catalog tables.
-`src/i18n/resources.rs` is generated registration glue.
 
 Catalog filters are validated against the generated selection index: `country`
 for subdivisions, and `category` for units and unit preferences. Filters intersect
@@ -56,16 +55,22 @@ parsing after benchmarking it against binary search.
 
 Pinned ISO snapshots and their checksums live in `data/iso`. CLDR/SIX selection
 metadata, checksums, retrieval dates, and the snapshot's `as_of` date live in
-`data/current`. `data/icu/english.json` records names extracted from the locked
-ICU4X providers, including currency formatting precision and cash rounding.
+`data/current`. Its `cldr` pin records a CLDR release version, tag, and resolved
+commit; every CLDR input URL uses that commit, and generation fails unless the
+version equals the CLDR release declared by the locked ICU4X compiled-data
+crates. `data/icu/english.json` records names extracted from the locked ICU4X
+providers, including currency formatting precision and cash rounding.
 Complete upstream inputs stay at repository scope; published
 crates contain their generated tables and selection index.
 
 ICU4X owns English names for languages, countries, scripts, currencies, months,
 and weekdays. Exclude codes whose ICU English name is absent; do not substitute
-ISO labels or codes. Current subdivisions and sex-code labels are owned by the
-single-line literal English FTL resources. Duplicate FTL keys and dynamic values
-are errors. Fluent lookup and `Display` share the same label authority.
+ISO labels or codes. Current subdivisions and sex-code labels come from the
+pinned ISO snapshot's English names; registry identifiers authored here use
+`LabelSource::Package`, and calling codes and ISO 216 sizes use their
+language-neutral codes (`LabelSource::Code`). Catalog `FluentMessage`, `Display`,
+and `english_name()` render the same string without a manager lookup or embedded
+FTL; the runtime module serves only `iso-locale-*` names.
 Measurement-unit display names come directly from pinned CLDR English data.
 `units.py` selects common regular CLDR core identifiers and requires every name.
 The `units` feature supplies the catalog; `unit-conversion` delegates conversion
@@ -122,9 +127,12 @@ combined code/data SPDX expression. `NOTICE` maps those licenses to their source
 Keep registry license statements and general website terms distinct in provenance.
 
 Use `python3 -m tools.codegen --import-data /path/to/iso-codes` to snapshot a new
-ISO checkout and regenerate. Refresh CLDR/SIX metadata and its provenance when
-updating the dated selection policy. Review selected-code changes with the
-catalog counts and scope tests.
+ISO checkout and regenerate. After an ICU4X upgrade, run
+`python3 tools/refresh_cldr.py VERSION` with the CLDR version that
+`python3 -m tools.codegen --check` reports, then regenerate; also update the
+CLDR release in `NOTICE`. Refresh SIX metadata and the `as_of` date when updating
+the dated selection policy. Review selected-code changes with the catalog counts
+and scope tests.
 
 Use the narrowest relevant validation while editing:
 

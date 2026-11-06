@@ -45,6 +45,6 @@ def build_units(data: Path, policy: CurrentData) -> Catalog:
         name = names.get(long_id)
         if not name:
             raise ValueError(f"CLDR English unit name is unavailable: {code}")
-        entries.append(Entry(code, variant_name(code), name, f"iso-units-{code}", (),
+        entries.append(Entry(code, variant_name(code), name, (),
                              {"category": long_id.partition("-")[0]}))
     return Catalog(CatalogSpec("units", "MeasurementUnit", "code", "units", icu_names=False, label_source="Cldr"), tuple(entries))

@@ -51,7 +51,6 @@ macros = ["dep:iso-types-macros"]
 fluent = [
   "dep:es-fluent",
   "dep:es-fluent-manager-core",
-  "dep:fluent-bundle",
   "dep:inventory",
   "iso-types-macros?/fluent",
 ]
@@ -106,7 +105,6 @@ csv = { workspace = true, optional = true }
 iso-types-macros = { workspace = true, optional = true }
 es-fluent = { workspace = true, optional = true }
 es-fluent-manager-core = { workspace = true, optional = true }
-fluent-bundle = { workspace = true, optional = true }
 inventory = { workspace = true, optional = true }
 unic-langid = { workspace = true, optional = true }
 icu_locale = { workspace = true, optional = true }
@@ -119,8 +117,6 @@ icu_datetime = { workspace = true, optional = true }
 jiff = { workspace = true, optional = true }
 phonenumber = { workspace = true, optional = true }
 
-[dev-dependencies]
-fluent-syntax = { workspace = true }
 
 [lints]
 workspace = true

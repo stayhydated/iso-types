@@ -18,8 +18,8 @@ area, with reactive English/French messages through es-fluent-manager-dioxus.
 ICU4X owns language, country, script, currency, month, weekday, and composite
 locale names. ICU-owned catalogs include assigned codes with an ICU4X English
 name. Every included variant has English `Display`; codes without ICU names are
-excluded. Current subdivisions and sex codes use authoritative English Fluent
-catalogs.
+excluded. Current subdivisions and sex codes use the English names published
+with the ISO snapshot.
 
 The data scope is current and common: living languages with CLDR modern locale
 coverage, recommended modern scripts, current countries and subdivisions, and

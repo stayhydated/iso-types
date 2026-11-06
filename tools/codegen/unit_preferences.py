@@ -33,11 +33,11 @@ def build_usage_catalog(data):
         category, usage = group.get("category"), group.get("usage")
         code = f"{category}-{usage}"
         name = f"{USAGE_NAMES[usage]} {category}"
-        entries.append(Entry(code, variant_name(code), name, f"iso-unit-preferences-{code}", (),
+        entries.append(Entry(code, variant_name(code), name, (),
                              {"category": category, "usage": usage}))
     if len({e.code for e in entries}) != len(entries):
         raise ValueError("duplicate CLDR unit usage")
-    return Catalog(CatalogSpec("unit-preferences", "UnitUsage", "code", "cldr", False), tuple(sorted(entries, key=lambda e:e.code)))
+    return Catalog(CatalogSpec("unit-preferences", "UnitUsage", "code", "cldr", False, label_source="Package"), tuple(sorted(entries, key=lambda e:e.code)))
 
 
 def preference_rows(group):

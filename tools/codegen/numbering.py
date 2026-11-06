@@ -85,7 +85,7 @@ def build_catalog(data, policy):
     return validate(Catalog(CatalogSpec("numbering-systems", "NumberingSystem", "code", "cldr",
                                       icu_names=False, label_source="Cldr",
                                       description="Common CLDR numbering systems with CLDR English names."), tuple(
-        Entry(code, variant_name(code), name, f"iso-numbering-systems-{code}", (), {})
+        Entry(code, variant_name(code), name, (), {})
         for code, (name, _) in sorted(systems.items()))))
 
 

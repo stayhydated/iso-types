@@ -5,9 +5,11 @@ subsets, and configured locale enums. Every catalog supplies constant enumeratio
 iteration, variant counts, canonical `code()`,
 `english_name()`, parsing, and applicable metadata. ICU4X owns English names for
 languages, countries, scripts, currencies, months, weekdays, and locales.
-Current subdivisions and sex codes use English FTL. Fluent output and English
-display share each catalog's authority. Common measurement units use CLDR
-identifiers and English display names, with optional ICU4X conversions.
+Current subdivisions and sex codes use the English names published with the
+ISO snapshot; calling codes and paper sizes are their own language-neutral
+labels. Fluent output and English display are the same `english_name()`.
+Common measurement units use CLDR identifiers and English display names, with
+optional ICU4X conversions.
 
 Requires Rust 1.99 or newer. Fluent integration uses es-fluent's 0.21 API.
 The ICU integration pins ICU4X 2.4; its locale-name APIs are upstream unstable.
@@ -20,7 +22,7 @@ The ICU integration pins ICU4X 2.4; its locale-name APIs are upstream unstable.
 | `macros` | Yes | Re-export `iso_enum`. |
 | `icu` | Yes | ICU locale/calendar re-exports and typed ISO conversions. |
 | `locales` | No | ICU locale parsing and naming; re-export `iso_locale` and Fluent-facing `LanguageIdentifier`/`langid`. |
-| `fluent` | No | `FluentMessage` and English utility registration using ICU names or owned FTL. |
+| `fluent` | No | `FluentMessage` for every catalog (its English name) and, with `locales`, the locale-name runtime module. |
 | `localized-langs` | No | Enable `locales` and `fluent`; render `#[iso_locale]` labels in the selected UI language instead of as autonyms. |
 | `full` | No | Enable all catalogs and regional relationships, including Jiff zone rules and local MIC imports; integration adapters remain separate. |
 | `639-1` | Yes | `Iso6391`: current languages with two-letter identifiers. |
@@ -65,9 +67,9 @@ the active tender interval and the current ISO 4217 list. Selection sources are
 pinned to a dated snapshot and checked during generation.
 
 `english_name()` returns `&'static str`. ICU-owned catalogs include only codes
-with an authoritative English name. Excluded codes return `ParseIsoCodeError`
-and remain absent from Fluent lookup. `Display` and declared subsets always have
-an English label.
+with an authoritative English name. Excluded codes return `ParseIsoCodeError`.
+`Display`, `FluentMessage`, and declared subsets always render the English label
+without a manager lookup. `LABEL_SOURCE` names each catalog's label authority.
 
 ## Example
 
@@ -207,7 +209,7 @@ global services. With `phone-numbers`, convert a country to
 
 `address_metadata()` provides native/Latin templates, required fields, and postal
 data. `fields` preserves native field order; `uses_postal_code()` reports usage.
-`field_label()` returns a typed Fluent label such as State, Province, or Eircode.
+`field_label()` returns a typed label such as State, Province, or Eircode.
 `label_override(field, language)` retrieves exact upstream language overrides and
 structured field labels. Postal patterns use Java-compatible regular expressions.
 

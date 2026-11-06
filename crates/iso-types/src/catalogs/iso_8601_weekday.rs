@@ -67,18 +67,6 @@ impl Iso8601Weekday {
         ];
         VALUES[self as usize]
     }
-    pub const fn message_id(self) -> &'static str {
-        const VALUES: &[&str] = &[
-            "iso-8601-weekday-1",
-            "iso-8601-weekday-2",
-            "iso-8601-weekday-3",
-            "iso-8601-weekday-4",
-            "iso-8601-weekday-5",
-            "iso-8601-weekday-6",
-            "iso-8601-weekday-7",
-        ];
-        VALUES[self as usize]
-    }
 }
 
 impl crate::IsoCode for Iso8601Weekday {
@@ -101,18 +89,8 @@ impl std::fmt::Display for Iso8601Weekday {
 
 #[cfg(feature = "fluent")]
 impl es_fluent::FluentMessage for Iso8601Weekday {
-    fn to_fluent_string_with(&self, localize: &mut es_fluent::FluentMessageLookup<'_>) -> String {
-        localize(self.fluent_key(), None)
-    }
-}
-
-#[cfg(feature = "fluent")]
-impl Iso8601Weekday {
-    pub const fn fluent_key(self) -> es_fluent::registry::StaticFluentMessageKey {
-        es_fluent::registry::__macro::static_message_key(
-            "iso-types",
-            es_fluent::registry::__macro::static_domain("iso-types"),
-            es_fluent::registry::__macro::static_entry_id(self.message_id()),
-        )
+    /// Labels have one authority, so the English name needs no manager lookup.
+    fn to_fluent_string_with(&self, _: &mut es_fluent::FluentMessageLookup<'_>) -> String {
+        self.english_name().to_owned()
     }
 }

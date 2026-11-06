@@ -1,4 +1,4 @@
-"""Generate typed catalogs from pinned ISO/CLDR inputs, ICU4X names, and English FTL."""
+"""Generate typed catalogs from pinned ISO/CLDR inputs and ICU4X names."""
 
 import argparse
 import hashlib
@@ -11,6 +11,7 @@ from .catalog import SPECS, build_catalogs, verify_sources
 from .output import ROOT, OutputPlan
 from .rust import format_rust
 from .policy import CurrentData
+from .cldr import verify_icu_agreement
 from .relations import build_relations
 from .units import build_units
 from .supplemental import name_requests, build_supplemental
@@ -25,7 +26,6 @@ from . import numbering, registries, paper, language_groups, locations, trade, i
 DATA = ROOT / "data"
 TYPES = ROOT / "crates/iso-types"
 MACROS = ROOT / "crates/iso-types-macros"
-FTL = TYPES / "i18n/en/iso-types"
 
 
 def import_iso(checkout: Path) -> None:
@@ -54,11 +54,12 @@ def generate(*, check: bool) -> None:
     verify_sources(DATA)
     registries.verify_sources(DATA)
     policy = CurrentData(DATA)
+    verify_icu_agreement(ROOT, policy.cldr)
     command = ["cargo", "run", "--quiet", "-p", "iso-types-icu-data", "--locked", "--", "--stdout"]
     extracted = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True,
                                input=json.dumps(name_requests(DATA)))
     snapshot = json.loads(extracted.stdout)
-    catalogs = build_catalogs(DATA, FTL, policy, snapshot["catalogs"])
+    catalogs = build_catalogs(DATA, policy, snapshot["catalogs"])
     relations = build_relations(catalogs, policy)
     catalogs += (build_units(DATA, policy),)
     catalogs += build_supplemental(DATA, snapshot)
@@ -75,10 +76,7 @@ def generate(*, check: bool) -> None:
     plan.add(TYPES / "src/catalogs.rs", format_rust(render.catalog_modules(catalogs)))
     for catalog in catalogs:
         plan.add(TYPES / "src/catalogs" / f"{catalog.spec.module}.rs", format_rust(render.catalog_rust(catalog, snapshot["currency_fractions"])))
-        if catalog.spec.authority == "Fluent":
-            plan.add(FTL / f"{catalog.spec.standard}.ftl", render.fluent_resource(catalog))
     plan.add(MACROS / "src/catalog/data.json", render.macro_data(catalogs))
-    plan.add(TYPES / "src/i18n/resources.rs", format_rust(render.fluent_registration(catalogs)))
     plan.add(TYPES / "src/geography.rs", format_rust(render.geography(relations)))
     plan.add(TYPES / "src/supplemental.rs", format_rust(render_supplemental.render(DATA, catalogs)))
     plan.add(TYPES / "src/regional/data.rs", format_rust(render_regional(DATA, relations.countries)))

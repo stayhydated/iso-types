@@ -22,7 +22,7 @@ def validate(catalog: Catalog) -> Catalog:
     entries = catalog.entries
     if not entries or tuple(sorted(entries, key=lambda e: e.code)) != entries:
         raise ValueError(f"empty or unsorted registry catalog: {catalog.spec.standard}")
-    for field in ("code", "variant", "message_id"):
+    for field in ("code", "variant"):
         if len({getattr(entry, field) for entry in entries}) != len(entries):
             raise ValueError(f"duplicate {field}: {catalog.spec.standard}")
     for entry in entries:

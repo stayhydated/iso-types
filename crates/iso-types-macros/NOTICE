@@ -18,9 +18,9 @@ SPDX expression covering original code and data. In that expression, OR offers
 a choice for the original code; AND preserves the additional data licenses.
 The source attributions below identify the materials covered by each license.
 
-iso-types contains the selected catalogs, English Fluent resources, and regional
-metadata. iso-types-macros contains the catalog selection index and locale scope
-derived from the same inputs. iso-types-locations contains the selected UNECE
+iso-types contains the selected catalogs, English labels, and regional
+metadata. iso-types-macros contains the catalog selection index derived from
+the same inputs. iso-types-locations contains the selected UNECE
 directory and uses iso-types for country and subdivision types.
 
 The unpublished iso-types-locale-consumer, iso-types-icu-data, web, and xtask
@@ -57,7 +57,7 @@ Copyright 2016 Dr. Tobias Quathamer <toddy@debian.org>
 SPDX-License-Identifier: LGPL-2.1-or-later
 
 The source revision and SHA-256 checksums are recorded in data/iso/provenance.json.
-The original source data, editable FTL, and generator are provided in this
+The original source data and generator are provided in this
 repository. The LGPL license text accompanies the public Cargo packages.
 
 English ICU-owned names and currency formatting metadata in data/icu/english.json
@@ -104,9 +104,9 @@ data/current/provenance.json. The Apache license text accompanies the public pac
 Additional pinned registry inputs and checksums are recorded in
 data/registries/provenance.json. Selected derived records are generated from:
 
-CLDR 48.2 numbering systems, English labels, and inherited locale preferences.
+CLDR 49 numbering systems, English labels, and inherited locale preferences.
 Copyright Unicode, Inc. SPDX-License-Identifier: Unicode-3.0
-https://unicode.org/Public/cldr/48.2/
+https://unicode.org/Public/cldr/49/
 
 IANA Language Subtag Registry macrolanguage relationships, and IANA IPP media
 registrations for ISO 216 A/B paper dimensions. Registry facts are public domain.
