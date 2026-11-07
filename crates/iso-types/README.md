@@ -11,7 +11,7 @@ labels. Fluent output and English display are the same `english_name()`.
 Common measurement units use CLDR identifiers and English display names, with
 optional ICU4X conversions.
 
-Requires Rust 1.99 or newer. Fluent integration uses es-fluent's 0.21 API.
+Requires Rust 1.99 or newer. Fluent integration uses es-fluent's 0.22 API.
 The ICU integration pins ICU4X 2.4; its locale-name APIs are upstream unstable.
 
 ## Features

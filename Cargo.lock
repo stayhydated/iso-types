@@ -1626,8 +1626,8 @@ dependencies = [
 
 [[package]]
 name = "es-fluent"
-version = "0.21.2"
-source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+version = "0.22.0"
+source = "git+https://github.com/stayhydated/es-fluent?rev=4f57e4b395c821311953f1f45cc9bc649d73915b#4f57e4b395c821311953f1f45cc9bc649d73915b"
 dependencies = [
  "es-fluent-derive",
  "es-fluent-manager-core",
@@ -1639,8 +1639,8 @@ dependencies = [
 
 [[package]]
 name = "es-fluent-build"
-version = "0.21.2"
-source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+version = "0.22.0"
+source = "git+https://github.com/stayhydated/es-fluent?rev=4f57e4b395c821311953f1f45cc9bc649d73915b#4f57e4b395c821311953f1f45cc9bc649d73915b"
 dependencies = [
  "blake3",
  "es-fluent-shared",
@@ -1651,8 +1651,8 @@ dependencies = [
 
 [[package]]
 name = "es-fluent-derive"
-version = "0.21.2"
-source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+version = "0.22.0"
+source = "git+https://github.com/stayhydated/es-fluent?rev=4f57e4b395c821311953f1f45cc9bc649d73915b#4f57e4b395c821311953f1f45cc9bc649d73915b"
 dependencies = [
  "darling 0.24.1",
  "es-fluent-derive-core",
@@ -1664,8 +1664,8 @@ dependencies = [
 
 [[package]]
 name = "es-fluent-derive-core"
-version = "0.21.2"
-source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+version = "0.22.0"
+source = "git+https://github.com/stayhydated/es-fluent?rev=4f57e4b395c821311953f1f45cc9bc649d73915b#4f57e4b395c821311953f1f45cc9bc649d73915b"
 dependencies = [
  "bon",
  "darling 0.24.1",
@@ -1685,8 +1685,8 @@ dependencies = [
 
 [[package]]
 name = "es-fluent-manager-core"
-version = "0.21.2"
-source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+version = "0.22.0"
+source = "git+https://github.com/stayhydated/es-fluent?rev=4f57e4b395c821311953f1f45cc9bc649d73915b#4f57e4b395c821311953f1f45cc9bc649d73915b"
 dependencies = [
  "es-fluent-shared",
  "fluent-bundle",
@@ -1700,8 +1700,8 @@ dependencies = [
 
 [[package]]
 name = "es-fluent-manager-dioxus"
-version = "0.21.2"
-source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+version = "0.22.0"
+source = "git+https://github.com/stayhydated/es-fluent?rev=4f57e4b395c821311953f1f45cc9bc649d73915b#4f57e4b395c821311953f1f45cc9bc649d73915b"
 dependencies = [
  "dioxus",
  "dioxus-core",
@@ -1723,8 +1723,8 @@ dependencies = [
 
 [[package]]
 name = "es-fluent-manager-embedded"
-version = "0.21.2"
-source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+version = "0.22.0"
+source = "git+https://github.com/stayhydated/es-fluent?rev=4f57e4b395c821311953f1f45cc9bc649d73915b#4f57e4b395c821311953f1f45cc9bc649d73915b"
 dependencies = [
  "es-fluent",
  "es-fluent-manager-core",
@@ -1735,8 +1735,8 @@ dependencies = [
 
 [[package]]
 name = "es-fluent-manager-macros"
-version = "0.21.2"
-source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+version = "0.22.0"
+source = "git+https://github.com/stayhydated/es-fluent?rev=4f57e4b395c821311953f1f45cc9bc649d73915b#4f57e4b395c821311953f1f45cc9bc649d73915b"
 dependencies = [
  "es-fluent-derive-core",
  "es-fluent-shared",
@@ -1750,8 +1750,8 @@ dependencies = [
 
 [[package]]
 name = "es-fluent-shared"
-version = "0.21.2"
-source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+version = "0.22.0"
+source = "git+https://github.com/stayhydated/es-fluent?rev=4f57e4b395c821311953f1f45cc9bc649d73915b#4f57e4b395c821311953f1f45cc9bc649d73915b"
 dependencies = [
  "anyhow",
  "camino",
@@ -1773,8 +1773,8 @@ dependencies = [
 
 [[package]]
 name = "es-fluent-toml"
-version = "0.21.2"
-source = "git+https://github.com/stayhydated/es-fluent?rev=77071a19c6609a1c1ef60a3de6502686a66cf384#77071a19c6609a1c1ef60a3de6502686a66cf384"
+version = "0.22.0"
+source = "git+https://github.com/stayhydated/es-fluent?rev=4f57e4b395c821311953f1f45cc9bc649d73915b#4f57e4b395c821311953f1f45cc9bc649d73915b"
 dependencies = [
  "bon",
  "es-fluent-shared",

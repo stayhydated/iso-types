@@ -10,7 +10,7 @@ to generate a language picker from
 an es-fluent package's configured locales.
 
 The public packages require Rust 1.99 or newer. Fluent integration uses the
-es-fluent 0.21 API.
+es-fluent 0.22 API.
 
 [Interactive Dioxus examples][examples] cover every catalog and regional data
 area, with reactive English/French messages through es-fluent-manager-dioxus.
