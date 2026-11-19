@@ -21,7 +21,11 @@
 #[repr(u16)]
 pub enum TimeZoneId {
     /// Côte d’Ivoire Time (`Africa/Abidjan`).
-    #[strum(to_string = "Africa/Abidjan")]
+    #[strum(
+        to_string = "Africa/Abidjan",
+        serialize = "Africa/Timbuktu",
+        serialize = "Iceland"
+    )]
     AfricaAbidjan,
     /// Ghana Time (`Africa/Accra`).
     #[strum(to_string = "Africa/Accra")]
@@ -57,7 +61,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Africa/Bujumbura")]
     AfricaBujumbura,
     /// Egypt Time (`Africa/Cairo`).
-    #[strum(to_string = "Africa/Cairo")]
+    #[strum(to_string = "Africa/Cairo", serialize = "Egypt")]
     AfricaCairo,
     /// Morocco Time (`Africa/Casablanca`).
     #[strum(to_string = "Africa/Casablanca")]
@@ -147,7 +151,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Africa/Monrovia")]
     AfricaMonrovia,
     /// Kenya Time (`Africa/Nairobi`).
-    #[strum(to_string = "Africa/Nairobi")]
+    #[strum(to_string = "Africa/Nairobi", serialize = "Africa/Asmera")]
     AfricaNairobi,
     /// Chad Time (`Africa/Ndjamena`).
     #[strum(to_string = "Africa/Ndjamena")]
@@ -168,7 +172,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Africa/Sao_Tome")]
     AfricaSaoTome,
     /// Libya Time (`Africa/Tripoli`).
-    #[strum(to_string = "Africa/Tripoli")]
+    #[strum(to_string = "Africa/Tripoli", serialize = "Libya")]
     AfricaTripoli,
     /// Tunisia Time (`Africa/Tunis`).
     #[strum(to_string = "Africa/Tunis")]
@@ -177,10 +181,14 @@ pub enum TimeZoneId {
     #[strum(to_string = "Africa/Windhoek")]
     AfricaWindhoek,
     /// Adak Time (`America/Adak`).
-    #[strum(to_string = "America/Adak")]
+    #[strum(
+        to_string = "America/Adak",
+        serialize = "America/Atka",
+        serialize = "US/Aleutian"
+    )]
     AmericaAdak,
     /// Anchorage Time (`America/Anchorage`).
-    #[strum(to_string = "America/Anchorage")]
+    #[strum(to_string = "America/Anchorage", serialize = "US/Alaska")]
     AmericaAnchorage,
     /// Anguilla Time (`America/Anguilla`).
     #[strum(to_string = "America/Anguilla")]
@@ -192,22 +200,33 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Araguaina")]
     AmericaAraguaina,
     /// Buenos Aires Time (`America/Argentina/Buenos_Aires`).
-    #[strum(to_string = "America/Argentina/Buenos_Aires")]
+    #[strum(
+        to_string = "America/Argentina/Buenos_Aires",
+        serialize = "America/Buenos_Aires"
+    )]
     AmericaArgentinaBuenosAires,
     /// Catamarca Time (`America/Argentina/Catamarca`).
-    #[strum(to_string = "America/Argentina/Catamarca")]
+    #[strum(
+        to_string = "America/Argentina/Catamarca",
+        serialize = "America/Argentina/ComodRivadavia",
+        serialize = "America/Catamarca"
+    )]
     AmericaArgentinaCatamarca,
     /// Córdoba Time (`America/Argentina/Cordoba`).
-    #[strum(to_string = "America/Argentina/Cordoba")]
+    #[strum(
+        to_string = "America/Argentina/Cordoba",
+        serialize = "America/Cordoba",
+        serialize = "America/Rosario"
+    )]
     AmericaArgentinaCordoba,
     /// Jujuy Time (`America/Argentina/Jujuy`).
-    #[strum(to_string = "America/Argentina/Jujuy")]
+    #[strum(to_string = "America/Argentina/Jujuy", serialize = "America/Jujuy")]
     AmericaArgentinaJujuy,
     /// La Rioja Time (`America/Argentina/La_Rioja`).
     #[strum(to_string = "America/Argentina/La_Rioja")]
     AmericaArgentinaLaRioja,
     /// Mendoza Time (`America/Argentina/Mendoza`).
-    #[strum(to_string = "America/Argentina/Mendoza")]
+    #[strum(to_string = "America/Argentina/Mendoza", serialize = "America/Mendoza")]
     AmericaArgentinaMendoza,
     /// Río Gallegos Time (`America/Argentina/Rio_Gallegos`).
     #[strum(to_string = "America/Argentina/Rio_Gallegos")]
@@ -282,7 +301,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Cayman")]
     AmericaCayman,
     /// Chicago Time (`America/Chicago`).
-    #[strum(to_string = "America/Chicago")]
+    #[strum(to_string = "America/Chicago", serialize = "US/Central")]
     AmericaChicago,
     /// Chihuahua Time (`America/Chihuahua`).
     #[strum(to_string = "America/Chihuahua")]
@@ -315,16 +334,25 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Dawson_Creek")]
     AmericaDawsonCreek,
     /// Denver Time (`America/Denver`).
-    #[strum(to_string = "America/Denver")]
+    #[strum(
+        to_string = "America/Denver",
+        serialize = "America/Shiprock",
+        serialize = "Navajo",
+        serialize = "US/Mountain"
+    )]
     AmericaDenver,
     /// Detroit Time (`America/Detroit`).
-    #[strum(to_string = "America/Detroit")]
+    #[strum(to_string = "America/Detroit", serialize = "US/Michigan")]
     AmericaDetroit,
     /// Dominica Time (`America/Dominica`).
     #[strum(to_string = "America/Dominica")]
     AmericaDominica,
     /// Edmonton Time (`America/Edmonton`).
-    #[strum(to_string = "America/Edmonton")]
+    #[strum(
+        to_string = "America/Edmonton",
+        serialize = "America/Yellowknife",
+        serialize = "Canada/Mountain"
+    )]
     AmericaEdmonton,
     /// Eirunepé Time (`America/Eirunepe`).
     #[strum(to_string = "America/Eirunepe")]
@@ -363,19 +391,28 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Guyana")]
     AmericaGuyana,
     /// Halifax Time (`America/Halifax`).
-    #[strum(to_string = "America/Halifax")]
+    #[strum(to_string = "America/Halifax", serialize = "Canada/Atlantic")]
     AmericaHalifax,
     /// Cuba Time (`America/Havana`).
-    #[strum(to_string = "America/Havana")]
+    #[strum(to_string = "America/Havana", serialize = "Cuba")]
     AmericaHavana,
     /// Hermosillo Time (`America/Hermosillo`).
     #[strum(to_string = "America/Hermosillo")]
     AmericaHermosillo,
     /// Indianapolis Time (`America/Indiana/Indianapolis`).
-    #[strum(to_string = "America/Indiana/Indianapolis")]
+    #[strum(
+        to_string = "America/Indiana/Indianapolis",
+        serialize = "America/Fort_Wayne",
+        serialize = "America/Indianapolis",
+        serialize = "US/East-Indiana"
+    )]
     AmericaIndianaIndianapolis,
     /// Knox, Indiana Time (`America/Indiana/Knox`).
-    #[strum(to_string = "America/Indiana/Knox")]
+    #[strum(
+        to_string = "America/Indiana/Knox",
+        serialize = "America/Knox_IN",
+        serialize = "US/Indiana-Starke"
+    )]
     AmericaIndianaKnox,
     /// Marengo, Indiana Time (`America/Indiana/Marengo`).
     #[strum(to_string = "America/Indiana/Marengo")]
@@ -399,16 +436,19 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Inuvik")]
     AmericaInuvik,
     /// Iqaluit Time (`America/Iqaluit`).
-    #[strum(to_string = "America/Iqaluit")]
+    #[strum(to_string = "America/Iqaluit", serialize = "America/Pangnirtung")]
     AmericaIqaluit,
     /// Jamaica Time (`America/Jamaica`).
-    #[strum(to_string = "America/Jamaica")]
+    #[strum(to_string = "America/Jamaica", serialize = "Jamaica")]
     AmericaJamaica,
     /// Juneau Time (`America/Juneau`).
     #[strum(to_string = "America/Juneau")]
     AmericaJuneau,
     /// Louisville Time (`America/Kentucky/Louisville`).
-    #[strum(to_string = "America/Kentucky/Louisville")]
+    #[strum(
+        to_string = "America/Kentucky/Louisville",
+        serialize = "America/Louisville"
+    )]
     AmericaKentuckyLouisville,
     /// Monticello, Kentucky Time (`America/Kentucky/Monticello`).
     #[strum(to_string = "America/Kentucky/Monticello")]
@@ -423,7 +463,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Lima")]
     AmericaLima,
     /// Los Angeles Time (`America/Los_Angeles`).
-    #[strum(to_string = "America/Los_Angeles")]
+    #[strum(to_string = "America/Los_Angeles", serialize = "US/Pacific")]
     AmericaLosAngeles,
     /// Sint Maarten Time (`America/Lower_Princes`).
     #[strum(to_string = "America/Lower_Princes")]
@@ -435,7 +475,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Managua")]
     AmericaManagua,
     /// Manaus Time (`America/Manaus`).
-    #[strum(to_string = "America/Manaus")]
+    #[strum(to_string = "America/Manaus", serialize = "Brazil/West")]
     AmericaManaus,
     /// St. Martin Time (`America/Marigot`).
     #[strum(to_string = "America/Marigot")]
@@ -447,7 +487,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Matamoros")]
     AmericaMatamoros,
     /// Mazatlán Time (`America/Mazatlan`).
-    #[strum(to_string = "America/Mazatlan")]
+    #[strum(to_string = "America/Mazatlan", serialize = "Mexico/BajaSur")]
     AmericaMazatlan,
     /// Menominee Time (`America/Menominee`).
     #[strum(to_string = "America/Menominee")]
@@ -459,7 +499,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Metlakatla")]
     AmericaMetlakatla,
     /// Mexico City Time (`America/Mexico_City`).
-    #[strum(to_string = "America/Mexico_City")]
+    #[strum(to_string = "America/Mexico_City", serialize = "Mexico/General")]
     AmericaMexicoCity,
     /// St. Pierre & Miquelon Time (`America/Miquelon`).
     #[strum(to_string = "America/Miquelon")]
@@ -480,13 +520,13 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Nassau")]
     AmericaNassau,
     /// New York Time (`America/New_York`).
-    #[strum(to_string = "America/New_York")]
+    #[strum(to_string = "America/New_York", serialize = "US/Eastern")]
     AmericaNewYork,
     /// Nome Time (`America/Nome`).
     #[strum(to_string = "America/Nome")]
     AmericaNome,
     /// Fernando de Noronha Time (`America/Noronha`).
-    #[strum(to_string = "America/Noronha")]
+    #[strum(to_string = "America/Noronha", serialize = "Brazil/DeNoronha")]
     AmericaNoronha,
     /// Beulah, North Dakota Time (`America/North_Dakota/Beulah`).
     #[strum(to_string = "America/North_Dakota/Beulah")]
@@ -498,19 +538,27 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/North_Dakota/New_Salem")]
     AmericaNorthDakotaNewSalem,
     /// Nuuk Time (`America/Nuuk`).
-    #[strum(to_string = "America/Nuuk")]
+    #[strum(to_string = "America/Nuuk", serialize = "America/Godthab")]
     AmericaNuuk,
     /// Ojinaga Time (`America/Ojinaga`).
     #[strum(to_string = "America/Ojinaga")]
     AmericaOjinaga,
     /// Panama Time (`America/Panama`).
-    #[strum(to_string = "America/Panama")]
+    #[strum(
+        to_string = "America/Panama",
+        serialize = "America/Coral_Harbour",
+        serialize = "EST"
+    )]
     AmericaPanama,
     /// Suriname Time (`America/Paramaribo`).
     #[strum(to_string = "America/Paramaribo")]
     AmericaParamaribo,
     /// Phoenix Time (`America/Phoenix`).
-    #[strum(to_string = "America/Phoenix")]
+    #[strum(
+        to_string = "America/Phoenix",
+        serialize = "MST",
+        serialize = "US/Arizona"
+    )]
     AmericaPhoenix,
     /// Haiti Time (`America/Port-au-Prince`).
     #[strum(to_string = "America/Port-au-Prince")]
@@ -522,7 +570,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Porto_Velho")]
     AmericaPortoVelho,
     /// Puerto Rico Time (`America/Puerto_Rico`).
-    #[strum(to_string = "America/Puerto_Rico")]
+    #[strum(to_string = "America/Puerto_Rico", serialize = "America/Virgin")]
     AmericaPuertoRico,
     /// Punta Arenas Time (`America/Punta_Arenas`).
     #[strum(to_string = "America/Punta_Arenas")]
@@ -534,25 +582,29 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Recife")]
     AmericaRecife,
     /// Regina Time (`America/Regina`).
-    #[strum(to_string = "America/Regina")]
+    #[strum(to_string = "America/Regina", serialize = "Canada/Saskatchewan")]
     AmericaRegina,
     /// Resolute Time (`America/Resolute`).
     #[strum(to_string = "America/Resolute")]
     AmericaResolute,
     /// Rio Branco Time (`America/Rio_Branco`).
-    #[strum(to_string = "America/Rio_Branco")]
+    #[strum(
+        to_string = "America/Rio_Branco",
+        serialize = "America/Porto_Acre",
+        serialize = "Brazil/Acre"
+    )]
     AmericaRioBranco,
     /// Santarém Time (`America/Santarem`).
     #[strum(to_string = "America/Santarem")]
     AmericaSantarem,
     /// Chile Time (`America/Santiago`).
-    #[strum(to_string = "America/Santiago")]
+    #[strum(to_string = "America/Santiago", serialize = "Chile/Continental")]
     AmericaSantiago,
     /// Dominican Republic Time (`America/Santo_Domingo`).
     #[strum(to_string = "America/Santo_Domingo")]
     AmericaSantoDomingo,
     /// São Paulo Time (`America/Sao_Paulo`).
-    #[strum(to_string = "America/Sao_Paulo")]
+    #[strum(to_string = "America/Sao_Paulo", serialize = "Brazil/East")]
     AmericaSaoPaulo,
     /// Ittoqqortoormiit Time (`America/Scoresbysund`).
     #[strum(to_string = "America/Scoresbysund")]
@@ -564,7 +616,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/St_Barthelemy")]
     AmericaStBarthelemy,
     /// St. John’s Time (`America/St_Johns`).
-    #[strum(to_string = "America/St_Johns")]
+    #[strum(to_string = "America/St_Johns", serialize = "Canada/Newfoundland")]
     AmericaStJohns,
     /// St. Kitts & Nevis Time (`America/St_Kitts`).
     #[strum(to_string = "America/St_Kitts")]
@@ -588,22 +640,37 @@ pub enum TimeZoneId {
     #[strum(to_string = "America/Thule")]
     AmericaThule,
     /// Tijuana Time (`America/Tijuana`).
-    #[strum(to_string = "America/Tijuana")]
+    #[strum(
+        to_string = "America/Tijuana",
+        serialize = "America/Ensenada",
+        serialize = "America/Santa_Isabel",
+        serialize = "Mexico/BajaNorte"
+    )]
     AmericaTijuana,
     /// Toronto Time (`America/Toronto`).
-    #[strum(to_string = "America/Toronto")]
+    #[strum(
+        to_string = "America/Toronto",
+        serialize = "America/Montreal",
+        serialize = "America/Nipigon",
+        serialize = "America/Thunder_Bay",
+        serialize = "Canada/Eastern"
+    )]
     AmericaToronto,
     /// British Virgin Islands Time (`America/Tortola`).
     #[strum(to_string = "America/Tortola")]
     AmericaTortola,
     /// Vancouver Time (`America/Vancouver`).
-    #[strum(to_string = "America/Vancouver")]
+    #[strum(to_string = "America/Vancouver", serialize = "Canada/Pacific")]
     AmericaVancouver,
     /// Whitehorse Time (`America/Whitehorse`).
-    #[strum(to_string = "America/Whitehorse")]
+    #[strum(to_string = "America/Whitehorse", serialize = "Canada/Yukon")]
     AmericaWhitehorse,
     /// Winnipeg Time (`America/Winnipeg`).
-    #[strum(to_string = "America/Winnipeg")]
+    #[strum(
+        to_string = "America/Winnipeg",
+        serialize = "America/Rainy_River",
+        serialize = "Canada/Central"
+    )]
     AmericaWinnipeg,
     /// Yakutat Time (`America/Yakutat`).
     #[strum(to_string = "America/Yakutat")]
@@ -663,7 +730,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Asia/Aqtobe")]
     AsiaAqtobe,
     /// Turkmenistan Time (`Asia/Ashgabat`).
-    #[strum(to_string = "Asia/Ashgabat")]
+    #[strum(to_string = "Asia/Ashgabat", serialize = "Asia/Ashkhabad")]
     AsiaAshgabat,
     /// Atyrau Time (`Asia/Atyrau`).
     #[strum(to_string = "Asia/Atyrau")]
@@ -702,7 +769,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Asia/Damascus")]
     AsiaDamascus,
     /// Bangladesh Time (`Asia/Dhaka`).
-    #[strum(to_string = "Asia/Dhaka")]
+    #[strum(to_string = "Asia/Dhaka", serialize = "Asia/Dacca")]
     AsiaDhaka,
     /// Timor-Leste Time (`Asia/Dili`).
     #[strum(to_string = "Asia/Dili")]
@@ -723,10 +790,10 @@ pub enum TimeZoneId {
     #[strum(to_string = "Asia/Hebron")]
     AsiaHebron,
     /// Vietnam Time (`Asia/Ho_Chi_Minh`).
-    #[strum(to_string = "Asia/Ho_Chi_Minh")]
+    #[strum(to_string = "Asia/Ho_Chi_Minh", serialize = "Asia/Saigon")]
     AsiaHoChiMinh,
     /// Hong Kong Time (`Asia/Hong_Kong`).
-    #[strum(to_string = "Asia/Hong_Kong")]
+    #[strum(to_string = "Asia/Hong_Kong", serialize = "Hongkong")]
     AsiaHongKong,
     /// Khovd Time (`Asia/Hovd`).
     #[strum(to_string = "Asia/Hovd")]
@@ -741,7 +808,11 @@ pub enum TimeZoneId {
     #[strum(to_string = "Asia/Jayapura")]
     AsiaJayapura,
     /// Israel Time (`Asia/Jerusalem`).
-    #[strum(to_string = "Asia/Jerusalem")]
+    #[strum(
+        to_string = "Asia/Jerusalem",
+        serialize = "Asia/Tel_Aviv",
+        serialize = "Israel"
+    )]
     AsiaJerusalem,
     /// Afghanistan Time (`Asia/Kabul`).
     #[strum(to_string = "Asia/Kabul")]
@@ -753,13 +824,13 @@ pub enum TimeZoneId {
     #[strum(to_string = "Asia/Karachi")]
     AsiaKarachi,
     /// Nepal Time (`Asia/Kathmandu`).
-    #[strum(to_string = "Asia/Kathmandu")]
+    #[strum(to_string = "Asia/Kathmandu", serialize = "Asia/Katmandu")]
     AsiaKathmandu,
     /// Khandyga Time (`Asia/Khandyga`).
     #[strum(to_string = "Asia/Khandyga")]
     AsiaKhandyga,
     /// India Time (`Asia/Kolkata`).
-    #[strum(to_string = "Asia/Kolkata")]
+    #[strum(to_string = "Asia/Kolkata", serialize = "Asia/Calcutta")]
     AsiaKolkata,
     /// Krasnoyarsk Time (`Asia/Krasnoyarsk`).
     #[strum(to_string = "Asia/Krasnoyarsk")]
@@ -774,13 +845,13 @@ pub enum TimeZoneId {
     #[strum(to_string = "Asia/Kuwait")]
     AsiaKuwait,
     /// Macao Time (`Asia/Macau`).
-    #[strum(to_string = "Asia/Macau")]
+    #[strum(to_string = "Asia/Macau", serialize = "Asia/Macao")]
     AsiaMacau,
     /// Magadan Time (`Asia/Magadan`).
     #[strum(to_string = "Asia/Magadan")]
     AsiaMagadan,
     /// Makassar Time (`Asia/Makassar`).
-    #[strum(to_string = "Asia/Makassar")]
+    #[strum(to_string = "Asia/Makassar", serialize = "Asia/Ujung_Pandang")]
     AsiaMakassar,
     /// Philippines Time (`Asia/Manila`).
     #[strum(to_string = "Asia/Manila")]
@@ -789,7 +860,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Asia/Muscat")]
     AsiaMuscat,
     /// Nicosia Time (`Asia/Nicosia`).
-    #[strum(to_string = "Asia/Nicosia")]
+    #[strum(to_string = "Asia/Nicosia", serialize = "Europe/Nicosia")]
     AsiaNicosia,
     /// Novokuznetsk Time (`Asia/Novokuznetsk`).
     #[strum(to_string = "Asia/Novokuznetsk")]
@@ -831,19 +902,25 @@ pub enum TimeZoneId {
     #[strum(to_string = "Asia/Samarkand")]
     AsiaSamarkand,
     /// South Korea Time (`Asia/Seoul`).
-    #[strum(to_string = "Asia/Seoul")]
+    #[strum(to_string = "Asia/Seoul", serialize = "ROK")]
     AsiaSeoul,
     /// China Time (`Asia/Shanghai`).
-    #[strum(to_string = "Asia/Shanghai")]
+    #[strum(
+        to_string = "Asia/Shanghai",
+        serialize = "Asia/Chongqing",
+        serialize = "Asia/Chungking",
+        serialize = "Asia/Harbin",
+        serialize = "PRC"
+    )]
     AsiaShanghai,
     /// Singapore Time (`Asia/Singapore`).
-    #[strum(to_string = "Asia/Singapore")]
+    #[strum(to_string = "Asia/Singapore", serialize = "Singapore")]
     AsiaSingapore,
     /// Srednekolymsk Time (`Asia/Srednekolymsk`).
     #[strum(to_string = "Asia/Srednekolymsk")]
     AsiaSrednekolymsk,
     /// Taiwan Time (`Asia/Taipei`).
-    #[strum(to_string = "Asia/Taipei")]
+    #[strum(to_string = "Asia/Taipei", serialize = "ROC")]
     AsiaTaipei,
     /// Uzbekistan Time (`Asia/Tashkent`).
     #[strum(to_string = "Asia/Tashkent")]
@@ -852,22 +929,26 @@ pub enum TimeZoneId {
     #[strum(to_string = "Asia/Tbilisi")]
     AsiaTbilisi,
     /// Iran Time (`Asia/Tehran`).
-    #[strum(to_string = "Asia/Tehran")]
+    #[strum(to_string = "Asia/Tehran", serialize = "Iran")]
     AsiaTehran,
     /// Bhutan Time (`Asia/Thimphu`).
-    #[strum(to_string = "Asia/Thimphu")]
+    #[strum(to_string = "Asia/Thimphu", serialize = "Asia/Thimbu")]
     AsiaThimphu,
     /// Japan Time (`Asia/Tokyo`).
-    #[strum(to_string = "Asia/Tokyo")]
+    #[strum(to_string = "Asia/Tokyo", serialize = "Japan")]
     AsiaTokyo,
     /// Tomsk Time (`Asia/Tomsk`).
     #[strum(to_string = "Asia/Tomsk")]
     AsiaTomsk,
     /// Ulaanbaatar Time (`Asia/Ulaanbaatar`).
-    #[strum(to_string = "Asia/Ulaanbaatar")]
+    #[strum(
+        to_string = "Asia/Ulaanbaatar",
+        serialize = "Asia/Choibalsan",
+        serialize = "Asia/Ulan_Bator"
+    )]
     AsiaUlaanbaatar,
     /// Ürümqi Time (`Asia/Urumqi`).
-    #[strum(to_string = "Asia/Urumqi")]
+    #[strum(to_string = "Asia/Urumqi", serialize = "Asia/Kashgar")]
     AsiaUrumqi,
     /// Ust-Nera Time (`Asia/Ust-Nera`).
     #[strum(to_string = "Asia/Ust-Nera")]
@@ -882,7 +963,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Asia/Yakutsk")]
     AsiaYakutsk,
     /// Myanmar Time (`Asia/Yangon`).
-    #[strum(to_string = "Asia/Yangon")]
+    #[strum(to_string = "Asia/Yangon", serialize = "Asia/Rangoon")]
     AsiaYangon,
     /// Yekaterinburg Time (`Asia/Yekaterinburg`).
     #[strum(to_string = "Asia/Yekaterinburg")]
@@ -903,7 +984,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Atlantic/Cape_Verde")]
     AtlanticCapeVerde,
     /// Faroe Islands Time (`Atlantic/Faroe`).
-    #[strum(to_string = "Atlantic/Faroe")]
+    #[strum(to_string = "Atlantic/Faroe", serialize = "Atlantic/Faeroe")]
     AtlanticFaroe,
     /// Madeira Time (`Atlantic/Madeira`).
     #[strum(to_string = "Atlantic/Madeira")]
@@ -921,40 +1002,61 @@ pub enum TimeZoneId {
     #[strum(to_string = "Atlantic/Stanley")]
     AtlanticStanley,
     /// Adelaide Time (`Australia/Adelaide`).
-    #[strum(to_string = "Australia/Adelaide")]
+    #[strum(to_string = "Australia/Adelaide", serialize = "Australia/South")]
     AustraliaAdelaide,
     /// Brisbane Time (`Australia/Brisbane`).
-    #[strum(to_string = "Australia/Brisbane")]
+    #[strum(to_string = "Australia/Brisbane", serialize = "Australia/Queensland")]
     AustraliaBrisbane,
     /// Broken Hill Time (`Australia/Broken_Hill`).
-    #[strum(to_string = "Australia/Broken_Hill")]
+    #[strum(
+        to_string = "Australia/Broken_Hill",
+        serialize = "Australia/Yancowinna"
+    )]
     AustraliaBrokenHill,
     /// Darwin Time (`Australia/Darwin`).
-    #[strum(to_string = "Australia/Darwin")]
+    #[strum(to_string = "Australia/Darwin", serialize = "Australia/North")]
     AustraliaDarwin,
     /// Eucla Time (`Australia/Eucla`).
     #[strum(to_string = "Australia/Eucla")]
     AustraliaEucla,
     /// Hobart Time (`Australia/Hobart`).
-    #[strum(to_string = "Australia/Hobart")]
+    #[strum(
+        to_string = "Australia/Hobart",
+        serialize = "Australia/Currie",
+        serialize = "Australia/Tasmania"
+    )]
     AustraliaHobart,
     /// Lindeman Time (`Australia/Lindeman`).
     #[strum(to_string = "Australia/Lindeman")]
     AustraliaLindeman,
     /// Lord Howe Island Time (`Australia/Lord_Howe`).
-    #[strum(to_string = "Australia/Lord_Howe")]
+    #[strum(to_string = "Australia/Lord_Howe", serialize = "Australia/LHI")]
     AustraliaLordHowe,
     /// Melbourne Time (`Australia/Melbourne`).
-    #[strum(to_string = "Australia/Melbourne")]
+    #[strum(to_string = "Australia/Melbourne", serialize = "Australia/Victoria")]
     AustraliaMelbourne,
     /// Perth Time (`Australia/Perth`).
-    #[strum(to_string = "Australia/Perth")]
+    #[strum(to_string = "Australia/Perth", serialize = "Australia/West")]
     AustraliaPerth,
     /// Sydney Time (`Australia/Sydney`).
-    #[strum(to_string = "Australia/Sydney")]
+    #[strum(
+        to_string = "Australia/Sydney",
+        serialize = "Australia/ACT",
+        serialize = "Australia/Canberra",
+        serialize = "Australia/NSW"
+    )]
     AustraliaSydney,
     /// GMT+00:00 (`Etc/UTC`).
-    #[strum(to_string = "Etc/UTC", serialize = "UTC")]
+    #[strum(
+        to_string = "Etc/UTC",
+        serialize = "Etc/UCT",
+        serialize = "Etc/Universal",
+        serialize = "Etc/Zulu",
+        serialize = "UCT",
+        serialize = "UTC",
+        serialize = "Universal",
+        serialize = "Zulu"
+    )]
     EtcUtc,
     /// Netherlands Time (`Europe/Amsterdam`).
     #[strum(to_string = "Europe/Amsterdam")]
@@ -966,19 +1068,19 @@ pub enum TimeZoneId {
     #[strum(to_string = "Europe/Astrakhan")]
     EuropeAstrakhan,
     /// Greece Time (`Europe/Athens`).
-    #[strum(to_string = "Europe/Athens")]
+    #[strum(to_string = "Europe/Athens", serialize = "EET")]
     EuropeAthens,
     /// Serbia Time (`Europe/Belgrade`).
     #[strum(to_string = "Europe/Belgrade")]
     EuropeBelgrade,
     /// Germany Time (`Europe/Berlin`).
-    #[strum(to_string = "Europe/Berlin")]
+    #[strum(to_string = "Europe/Berlin", serialize = "Atlantic/Jan_Mayen")]
     EuropeBerlin,
     /// Slovakia Time (`Europe/Bratislava`).
     #[strum(to_string = "Europe/Bratislava")]
     EuropeBratislava,
     /// Belgium Time (`Europe/Brussels`).
-    #[strum(to_string = "Europe/Brussels")]
+    #[strum(to_string = "Europe/Brussels", serialize = "CET", serialize = "MET")]
     EuropeBrussels,
     /// Romania Time (`Europe/Bucharest`).
     #[strum(to_string = "Europe/Bucharest")]
@@ -990,13 +1092,13 @@ pub enum TimeZoneId {
     #[strum(to_string = "Europe/Busingen")]
     EuropeBusingen,
     /// Moldova Time (`Europe/Chisinau`).
-    #[strum(to_string = "Europe/Chisinau")]
+    #[strum(to_string = "Europe/Chisinau", serialize = "Europe/Tiraspol")]
     EuropeChisinau,
     /// Denmark Time (`Europe/Copenhagen`).
     #[strum(to_string = "Europe/Copenhagen")]
     EuropeCopenhagen,
     /// Ireland Time (`Europe/Dublin`).
-    #[strum(to_string = "Europe/Dublin")]
+    #[strum(to_string = "Europe/Dublin", serialize = "Eire")]
     EuropeDublin,
     /// Gibraltar Time (`Europe/Gibraltar`).
     #[strum(to_string = "Europe/Gibraltar")]
@@ -1011,7 +1113,11 @@ pub enum TimeZoneId {
     #[strum(to_string = "Europe/Isle_of_Man")]
     EuropeIsleOfMan,
     /// Türkiye Time (`Europe/Istanbul`).
-    #[strum(to_string = "Europe/Istanbul")]
+    #[strum(
+        to_string = "Europe/Istanbul",
+        serialize = "Asia/Istanbul",
+        serialize = "Turkey"
+    )]
     EuropeIstanbul,
     /// Jersey Time (`Europe/Jersey`).
     #[strum(to_string = "Europe/Jersey")]
@@ -1023,16 +1129,26 @@ pub enum TimeZoneId {
     #[strum(to_string = "Europe/Kirov")]
     EuropeKirov,
     /// Kyiv Time (`Europe/Kyiv`).
-    #[strum(to_string = "Europe/Kyiv")]
+    #[strum(
+        to_string = "Europe/Kyiv",
+        serialize = "Europe/Kiev",
+        serialize = "Europe/Uzhgorod",
+        serialize = "Europe/Zaporozhye"
+    )]
     EuropeKyiv,
     /// Portugal Time (`Europe/Lisbon`).
-    #[strum(to_string = "Europe/Lisbon")]
+    #[strum(to_string = "Europe/Lisbon", serialize = "Portugal", serialize = "WET")]
     EuropeLisbon,
     /// Slovenia Time (`Europe/Ljubljana`).
     #[strum(to_string = "Europe/Ljubljana")]
     EuropeLjubljana,
     /// UK Time (`Europe/London`).
-    #[strum(to_string = "Europe/London")]
+    #[strum(
+        to_string = "Europe/London",
+        serialize = "Europe/Belfast",
+        serialize = "GB",
+        serialize = "GB-Eire"
+    )]
     EuropeLondon,
     /// Luxembourg Time (`Europe/Luxembourg`).
     #[strum(to_string = "Europe/Luxembourg")]
@@ -1053,7 +1169,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Europe/Monaco")]
     EuropeMonaco,
     /// Moscow Time (`Europe/Moscow`).
-    #[strum(to_string = "Europe/Moscow")]
+    #[strum(to_string = "Europe/Moscow", serialize = "W-SU")]
     EuropeMoscow,
     /// Norway Time (`Europe/Oslo`).
     #[strum(to_string = "Europe/Oslo")]
@@ -1122,7 +1238,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Europe/Volgograd")]
     EuropeVolgograd,
     /// Poland Time (`Europe/Warsaw`).
-    #[strum(to_string = "Europe/Warsaw")]
+    #[strum(to_string = "Europe/Warsaw", serialize = "Poland")]
     EuropeWarsaw,
     /// Croatia Time (`Europe/Zagreb`).
     #[strum(to_string = "Europe/Zagreb")]
@@ -1167,19 +1283,23 @@ pub enum TimeZoneId {
     #[strum(to_string = "Pacific/Apia")]
     PacificApia,
     /// New Zealand Time (`Pacific/Auckland`).
-    #[strum(to_string = "Pacific/Auckland")]
+    #[strum(
+        to_string = "Pacific/Auckland",
+        serialize = "Antarctica/South_Pole",
+        serialize = "NZ"
+    )]
     PacificAuckland,
     /// Bougainville Time (`Pacific/Bougainville`).
     #[strum(to_string = "Pacific/Bougainville")]
     PacificBougainville,
     /// Chatham Islands Time (`Pacific/Chatham`).
-    #[strum(to_string = "Pacific/Chatham")]
+    #[strum(to_string = "Pacific/Chatham", serialize = "NZ-CHAT")]
     PacificChatham,
     /// Chuuk Time (`Pacific/Chuuk`).
     #[strum(to_string = "Pacific/Chuuk")]
     PacificChuuk,
     /// Easter Island Time (`Pacific/Easter`).
-    #[strum(to_string = "Pacific/Easter")]
+    #[strum(to_string = "Pacific/Easter", serialize = "Chile/EasterIsland")]
     PacificEaster,
     /// Vanuatu Time (`Pacific/Efate`).
     #[strum(to_string = "Pacific/Efate")]
@@ -1200,16 +1320,21 @@ pub enum TimeZoneId {
     #[strum(to_string = "Pacific/Gambier")]
     PacificGambier,
     /// Solomon Islands Time (`Pacific/Guadalcanal`).
-    #[strum(to_string = "Pacific/Guadalcanal")]
+    #[strum(to_string = "Pacific/Guadalcanal", serialize = "Pacific/Ponape")]
     PacificGuadalcanal,
     /// Guam Time (`Pacific/Guam`).
     #[strum(to_string = "Pacific/Guam")]
     PacificGuam,
     /// Honolulu Time (`Pacific/Honolulu`).
-    #[strum(to_string = "Pacific/Honolulu")]
+    #[strum(
+        to_string = "Pacific/Honolulu",
+        serialize = "HST",
+        serialize = "Pacific/Johnston",
+        serialize = "US/Hawaii"
+    )]
     PacificHonolulu,
     /// Canton Island Time (`Pacific/Kanton`).
-    #[strum(to_string = "Pacific/Kanton")]
+    #[strum(to_string = "Pacific/Kanton", serialize = "Pacific/Enderbury")]
     PacificKanton,
     /// Kiritimati Time (`Pacific/Kiritimati`).
     #[strum(to_string = "Pacific/Kiritimati")]
@@ -1218,7 +1343,7 @@ pub enum TimeZoneId {
     #[strum(to_string = "Pacific/Kosrae")]
     PacificKosrae,
     /// Kwajalein Atoll Time (`Pacific/Kwajalein`).
-    #[strum(to_string = "Pacific/Kwajalein")]
+    #[strum(to_string = "Pacific/Kwajalein", serialize = "Kwajalein")]
     PacificKwajalein,
     /// Marshall Islands Time (`Pacific/Majuro`).
     #[strum(to_string = "Pacific/Majuro")]
@@ -1242,7 +1367,11 @@ pub enum TimeZoneId {
     #[strum(to_string = "Pacific/Noumea")]
     PacificNoumea,
     /// American Samoa Time (`Pacific/Pago_Pago`).
-    #[strum(to_string = "Pacific/Pago_Pago")]
+    #[strum(
+        to_string = "Pacific/Pago_Pago",
+        serialize = "Pacific/Samoa",
+        serialize = "US/Samoa"
+    )]
     PacificPagoPago,
     /// Palau Time (`Pacific/Palau`).
     #[strum(to_string = "Pacific/Palau")]
@@ -1254,7 +1383,11 @@ pub enum TimeZoneId {
     #[strum(to_string = "Pacific/Pohnpei")]
     PacificPohnpei,
     /// Port Moresby Time (`Pacific/Port_Moresby`).
-    #[strum(to_string = "Pacific/Port_Moresby")]
+    #[strum(
+        to_string = "Pacific/Port_Moresby",
+        serialize = "Pacific/Truk",
+        serialize = "Pacific/Yap"
+    )]
     PacificPortMoresby,
     /// Cook Islands Time (`Pacific/Rarotonga`).
     #[strum(to_string = "Pacific/Rarotonga")]

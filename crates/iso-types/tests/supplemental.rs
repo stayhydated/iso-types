@@ -30,6 +30,23 @@ fn all_selected_zones_load_in_jiff_and_country_navigation_is_closed() {
 
 #[cfg(feature = "time-zones")]
 #[test]
+fn backward_zone_links_resolve_to_catalog_codes() {
+    use iso_types::{TimeZoneId, jiff::tz::TimeZone};
+    for (alias, canonical) in [
+        ("Asia/Calcutta", "Asia/Kolkata"),
+        ("US/Eastern", "America/New_York"),
+    ] {
+        let zone = alias.parse::<TimeZoneId>().unwrap();
+        assert_eq!(zone.code(), canonical);
+        assert_eq!(
+            TimeZoneId::try_from(&TimeZone::get(alias).unwrap()).unwrap(),
+            zone
+        );
+    }
+}
+
+#[cfg(feature = "time-zones")]
+#[test]
 fn jiff_exposes_explicit_resolution_of_dst_gaps_and_overlaps() {
     use iso_types::{TimeZoneId, jiff::civil::date};
     let rules = TimeZoneId::AmericaNewYork.time_zone().unwrap();

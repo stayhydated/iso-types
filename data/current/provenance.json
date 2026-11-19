@@ -82,6 +82,10 @@
     "RegionDataConstants.java": {
       "url": "https://raw.githubusercontent.com/google/libaddressinput/81eb9628382b07d371d8ea0b11badf7de3857fd5/common/src/main/java/com/google/i18n/addressinput/common/RegionDataConstants.java",
       "sha256": "ae0c44ef06e64e32e5c2f74ac43e717e69256ee17bc9c6770546ef716e223416"
+    },
+    "backward": {
+      "url": "https://raw.githubusercontent.com/eggert/tz/fbbd33b7e90c0872fe43277760f695039742baa7/backward",
+      "sha256": "b8296b9ef1ece72d813878132c0f17e2c52b26af6004eeb9c37d049b64cd9401"
     }
   },
   "sources": [
