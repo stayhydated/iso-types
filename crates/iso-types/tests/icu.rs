@@ -111,7 +111,7 @@ fn excluded_icu_items_have_no_fluent_label() {
     let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
         .find(|module| module.data().owner == "iso-types")
         .unwrap();
-    let localizer = module.create_localizer().unwrap();
+    let localizer = module.create_localizer(&"en".parse().unwrap()).unwrap();
     for id in [
         "iso-639-3-aaa",
         "iso-639-3-ang",

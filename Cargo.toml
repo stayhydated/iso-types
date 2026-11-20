@@ -18,19 +18,20 @@ repository = "https://github.com/stayhydated/iso-types"
 iso-types = { path = "crates/iso-types", version = "0.1.0" }
 iso-types-macros = { path = "crates/iso-types-macros", version = "0.1.0" }
 es-fluent = { version = "0.21.0", default-features = false }
+es-fluent-build = { version = "0.21.0" }
+es-fluent-derive-core = { version = "0.21.0" }
 es-fluent-manager-core = { version = "0.21.0" }
-es-fluent-toml = { version = "0.21.0" }
 fluent-bundle = "0.16"
 fluent-syntax = "0.12"
 heck = "0.5"
 inventory = "0.3"
 icu_locale = { version = "=2.4.0", features = ["unstable"] }
 icu_calendar = "=2.4.0"
-icu_datetime = "=2.3.0"
-icu_experimental = "=0.6.0"
+icu_datetime = "=2.4.0"
+icu_experimental = "=0.7.0"
 icu_provider = "=2.4.0"
-icu_plurals = "=2.3.0"
-icu_time = "=2.3.0"
+icu_plurals = "=2.4.0"
+icu_time = "=2.4.0"
 jiff = { version = "=0.2.38", default-features = false, features = [
   "std",
   "tzdb-bundle-always",
@@ -50,3 +51,12 @@ unsafe_code = "forbid"
 
 [workspace.lints.clippy]
 all = "warn"
+
+# This integration branch uses the unpublished es-fluent manager and build
+# manifest APIs. Consuming workspaces supply their own equivalent patches.
+[patch.crates-io]
+es-fluent = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }
+es-fluent-build = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }
+es-fluent-derive-core = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }
+es-fluent-manager-core = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }
+es-fluent-toml = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }

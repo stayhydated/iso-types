@@ -22,6 +22,14 @@ jobs:
       - run: cargo test -p iso-types --locked
       - run: cargo test -p iso-types --no-default-features --locked
       - run: cargo test --workspace --all-features --locked
+      - name: Set up compiler cache
+        uses: mozilla-actions/sccache-action@v0.0.11
+        with:
+          version: "v0.16.0"
+      - name: Check locale-only builds through sccache
+        run: python3 tools/check_locale_tracking.py --sccache
+        env:
+          SCCACHE_GHA_ENABLED: "true"
       - run: python3 tools/check_features.py --wasm
       - run: cargo clippy --workspace --all-features --all-targets --locked -- -D warnings
       - run: RUSTDOCFLAGS="-D warnings" cargo doc --workspace --all-features --no-deps --locked
