@@ -177,6 +177,8 @@ assert_eq!(TimeZoneId::AmericaNewYork.at(instant)?.offset().seconds(), -4 * 3600
 # Ok::<(), Box<dyn std::error::Error>>(())
 ```
 
+IANA backward names such as `Asia/Calcutta` parse to their catalog target;
+`code()` still returns the canonical catalog name.
 `TimeZoneId::time_zone()` exposes Jiff's transition and ambiguity-resolution APIs.
 Use `to_ambiguous_zoned()` to resolve DST gaps and overlaps explicitly.
 `time-zone-localization` adds ICU identity conversions and
