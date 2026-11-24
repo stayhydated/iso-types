@@ -22,3 +22,6 @@ inventory = { workspace = true }
 
 [build-dependencies]
 es-fluent-build = { workspace = true }
+
+[lints]
+workspace = true

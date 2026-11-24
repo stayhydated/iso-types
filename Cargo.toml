@@ -11,7 +11,7 @@ members = [
 resolver = "3"
 
 [workspace.package]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.99"
 # Original code; public crates declare the additional bundled-data licenses.
@@ -23,18 +23,18 @@ anyhow = "1.0.105"
 clap = { version = "4.6.9", features = ["derive"] }
 csv = "1.4"
 dioxus = { version = "0.7", default-features = false }
-es-fluent-build = "0.21.0"
-es-fluent-manager-dioxus = { version = "0.21.0", default-features = false }
-stayhydated-dioxus = { git = "https://github.com/stayhydated/shared", rev = "80f892468145d54e0d89bb71e14a81f71a156fdb" }
-stayhydated-site = { git = "https://github.com/stayhydated/shared", rev = "80f892468145d54e0d89bb71e14a81f71a156fdb" }
-stayhydated-xtask = { git = "https://github.com/stayhydated/shared", rev = "80f892468145d54e0d89bb71e14a81f71a156fdb" }
+es-fluent-build = "0.22.0"
+es-fluent-manager-dioxus = { version = "0.22.0", default-features = false }
+stayhydated-dioxus = { git = "https://github.com/stayhydated/shared", rev = "c6c6f2298fab7681ee4200343d881fdbd614259a" }
+stayhydated-site = { git = "https://github.com/stayhydated/shared", rev = "c6c6f2298fab7681ee4200343d881fdbd614259a" }
+stayhydated-xtask = { git = "https://github.com/stayhydated/shared", rev = "c6c6f2298fab7681ee4200343d881fdbd614259a" }
 web = { path = "web" }
-iso-types = { path = "crates/iso-types", version = "0.1.0" }
-iso-types-locations = { path = "crates/iso-types-locations", version = "0.1.0" }
-iso-types-macros = { path = "crates/iso-types-macros", version = "0.1.0" }
-es-fluent = { version = "0.21.0", default-features = false }
-es-fluent-derive-core = { version = "0.21.0" }
-es-fluent-manager-core = { version = "0.21.0" }
+iso-types = { path = "crates/iso-types", version = "0.1.1" }
+iso-types-locations = { path = "crates/iso-types-locations", version = "0.1.1" }
+iso-types-macros = { path = "crates/iso-types-macros", version = "0.1.1" }
+es-fluent = { version = "0.22.0", default-features = false }
+es-fluent-derive-core = { version = "0.22.0" }
+es-fluent-manager-core = { version = "0.22.0" }
 fluent-bundle = "0.16"
 fluent-syntax = "0.12"
 heck = "0.5"
@@ -46,7 +46,7 @@ icu_experimental = "=0.7.0"
 icu_provider = "=2.4.0"
 icu_plurals = "=2.4.0"
 icu_time = "=2.4.0"
-jiff = { version = "=0.2.38", default-features = false, features = [
+jiff = { version = "=0.2.46", default-features = false, features = [
   "std",
   "tzdb-bundle-always",
 ] }
@@ -65,13 +65,3 @@ unsafe_code = "forbid"
 
 [workspace.lints.clippy]
 all = "warn"
-
-# This integration branch uses the unpublished es-fluent manager and build
-# manifest APIs. Consuming workspaces supply their own equivalent patches.
-[patch.crates-io]
-es-fluent = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }
-es-fluent-build = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }
-es-fluent-derive-core = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }
-es-fluent-manager-core = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }
-es-fluent-toml = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }
-es-fluent-manager-dioxus = { git = "https://github.com/stayhydated/es-fluent", rev = "8ff7e6852ba08081dce125656a32ee42125d5804" }
