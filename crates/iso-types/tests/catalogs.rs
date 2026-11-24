@@ -175,9 +175,8 @@ fn fluent_catalogs_match_every_english_display_label_and_keep_owner_scoping() {
         .find(|m| m.data().owner == "iso-types")
         .unwrap();
     assert!(!registration.contributes_to_language_selection());
-    let localizer = registration.create_localizer().unwrap();
-    localizer
-        .select_language(&"fr-FR".parse().unwrap())
+    let localizer = registration
+        .create_localizer(&"fr-FR".parse().unwrap())
         .unwrap();
     macro_rules! check {
         ($feature:literal, $kind:ident) => {

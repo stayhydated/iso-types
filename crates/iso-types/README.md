@@ -236,6 +236,11 @@ with `i18n.toml` and canonical locale directories. The fallback locale becomes
 `LanguageIdentifier` for manager selection. `Display` and built-in Fluent
 labels remain English, including script and region qualifiers.
 
+Call `es_fluent_build::track_i18n_assets()` from the package's `build.rs`, with
+`es-fluent-build` in its build dependencies. The macro uses that build manifest
+and tracks its content hash so locale-directory and fallback edits rebuild the
+enum even when a compiler cache is enabled.
+
 Use `#[iso_locale(custom)]` to register exact locale-tag message keys with the
 application's FTL inventory. The application then owns those Fluent labels.
 Catalog and locale macros support renamed dependencies.

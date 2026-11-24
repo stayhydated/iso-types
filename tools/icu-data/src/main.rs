@@ -226,7 +226,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let result = json!({
         "source": "https://github.com/unicode-org/icu4x",
         "display_locale": "en",
-        "versions": { "icu_locale": "2.3.1", "icu_datetime": "2.3.0", "icu_experimental": "0.6.0", "icu_time": "2.3.0" },
+        "versions": { "icu_locale": "2.4.0", "icu_datetime": "2.4.0", "icu_experimental": "0.7.0", "icu_time": "2.4.0" },
         "catalogs": catalogs,
         "currency_fractions": currency_fractions,
         "regions": region_names,

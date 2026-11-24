@@ -66,7 +66,7 @@ mod tests {
         let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
             .find(|entry| entry.data().owner == "iso-types")
             .unwrap();
-        let localizer = module.create_localizer().unwrap();
+        let localizer = module.create_localizer(&codes::langid!("en")).unwrap();
         assert_eq!(
             Zones::AmericaNewYork
                 .to_fluent_string_with(&mut |key, _| localizer.localize(key, None).unwrap()),
@@ -97,7 +97,7 @@ mod tests {
         let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
             .find(|entry| entry.data().owner == "iso-types")
             .unwrap();
-        let localizer = module.create_localizer().unwrap();
+        let localizer = module.create_localizer(&codes::langid!("en")).unwrap();
         for (message, expected) in [
             (&Payments::Usd as &dyn FluentMessage, "US dollar"),
             (&DeliveryAreas::UsCa as &dyn FluentMessage, "California"),
@@ -173,8 +173,7 @@ mod tests {
         let module = inventory::iter::<&'static dyn I18nModuleRegistration>()
             .find(|m| m.data().owner == "iso-types")
             .unwrap();
-        let localizer = module.create_localizer().unwrap();
-        localizer.select_language(&codes::langid!("fr-FR")).unwrap();
+        let localizer = module.create_localizer(&codes::langid!("fr-FR")).unwrap();
         for locale in Languages::VARIANTS {
             let actual =
                 locale.to_fluent_string_with(&mut |key, _| localizer.localize(key, None).unwrap());
@@ -264,7 +263,7 @@ mod hygiene {
             inventory::iter::<&'static dyn es_fluent_manager_core::I18nModuleRegistration>()
                 .find(|entry| entry.data().owner == "iso-types")
                 .unwrap();
-        let localizer = module.create_localizer().unwrap();
+        let localizer = module.create_localizer(&codes::langid!("en")).unwrap();
         assert_eq!(
             es_fluent::FluentMessage::to_fluent_string_with(&PickerLanguages::En, &mut |key, _| {
                 localizer.localize(key, None).unwrap()

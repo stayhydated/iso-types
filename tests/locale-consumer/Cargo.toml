@@ -19,3 +19,6 @@ codes = { package = "iso-types", path = "../../crates/iso-types", features = [
 es-fluent = { workspace = true }
 es-fluent-manager-core = { workspace = true }
 inventory = { workspace = true }
+
+[build-dependencies]
+es-fluent-build = { workspace = true }

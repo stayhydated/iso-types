@@ -29,8 +29,11 @@ impl I18nModuleDescriptor for IsoModule {
     }
 }
 impl I18nModule for IsoModule {
-    fn create_localizer(&self) -> Box<dyn Localizer> {
-        Box::new(EnglishLocalizer)
+    fn create_localizer(
+        &self,
+        _: &es_fluent::unic_langid::LanguageIdentifier,
+    ) -> Result<Box<dyn Localizer>, LocalizationError> {
+        Ok(Box::new(EnglishLocalizer))
     }
     fn contributes_to_language_selection(&self) -> bool {
         false
@@ -53,12 +56,6 @@ fn bundle() -> &'static FluentBundle<FluentResource> {
     })
 }
 impl Localizer for EnglishLocalizer {
-    fn select_language(
-        &self,
-        _: &es_fluent::unic_langid::LanguageIdentifier,
-    ) -> Result<(), LocalizationError> {
-        Ok(())
-    }
     fn localize<'a>(
         &self,
         key: StaticFluentMessageKey,
