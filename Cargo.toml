@@ -23,8 +23,8 @@ anyhow = "1.0.105"
 clap = { version = "4.6.9", features = ["derive"] }
 csv = "1.4"
 dioxus = { version = "0.7", default-features = false }
-es-fluent-build = "0.21.0"
-es-fluent-manager-dioxus = { version = "0.21.0", default-features = false }
+es-fluent-build = ">=0.21.2, <0.23"
+es-fluent-manager-dioxus = { version = ">=0.21.2, <0.23", default-features = false }
 stayhydated-dioxus = { git = "https://github.com/stayhydated/shared", rev = "80f892468145d54e0d89bb71e14a81f71a156fdb" }
 stayhydated-site = { git = "https://github.com/stayhydated/shared", rev = "80f892468145d54e0d89bb71e14a81f71a156fdb" }
 stayhydated-xtask = { git = "https://github.com/stayhydated/shared", rev = "80f892468145d54e0d89bb71e14a81f71a156fdb" }
@@ -32,9 +32,9 @@ web = { path = "web" }
 iso-types = { path = "crates/iso-types", version = "0.1.0" }
 iso-types-locations = { path = "crates/iso-types-locations", version = "0.1.0" }
 iso-types-macros = { path = "crates/iso-types-macros", version = "0.1.0" }
-es-fluent = { version = "0.21.0", default-features = false }
-es-fluent-derive-core = { version = "0.21.0" }
-es-fluent-manager-core = { version = "0.21.0" }
+es-fluent = { version = ">=0.21.2, <0.23", default-features = false }
+es-fluent-derive-core = { version = ">=0.21.2, <0.23" }
+es-fluent-manager-core = { version = ">=0.21.2, <0.23" }
 fluent-bundle = "0.16"
 fluent-syntax = "0.12"
 heck = "0.5"
