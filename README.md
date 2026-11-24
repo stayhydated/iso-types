@@ -9,8 +9,27 @@ declare an application-specific subset with `#[iso_enum]`. Use `#[iso_locale]`
 to generate a language picker from
 an es-fluent package's configured locales.
 
-The public packages require Rust 1.99 or newer. Fluent integration uses the
-es-fluent 0.21 API.
+Both public packages require Rust 1.99 or newer.
+
+## es-fluent integration branch
+
+This companion for [es-fluent PR #246](https://github.com/stayhydated/es-fluent/pull/246)
+uses unreleased manager and build-manifest APIs. It is not a standalone ISO
+release against the published es-fluent `0.21` API. The workspace's
+`[patch.crates-io]` entries pin those contracts to es-fluent revision
+`8ff7e6852ba08081dce125656a32ee42125d5804` so its tests exercise the same integration.
+Consuming workspaces must supply equivalent patches, using their matching
+es-fluent checkout or that exact revision; dependency-level patches do not propagate.
+Keep the ISO revision and es-fluent source overrides together until compatible
+versions are released.
+
+Configured locale macros use the manifest written by
+`es_fluent_build::track_i18n_assets()` and record its hash in compiler dep-info.
+`just locale-tracking` verifies fallback changes and locale additions, renames,
+and removals in a consumer that has no other es-fluent macros. CI also runs
+`python3 tools/check_locale_tracking.py --sccache` to cover cached builds.
+
+## Data and labels
 
 [Interactive Dioxus examples][examples] cover every catalog and regional data
 area, with reactive English/French messages through es-fluent-manager-dioxus.

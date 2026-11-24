@@ -11,7 +11,7 @@ Requires Rust 1.99 or newer.
 | Feature | Default | Purpose |
 | --- | --- | --- |
 | `fluent` | No | Generate Fluent message implementations through the iso-types facade. |
-| `locales` | No | Compile the configured locale macro using es-fluent-toml. |
+| `locales` | No | Compile the configured locale macro using es-fluent's package inputs. |
 
 `iso_enum` accepts `standard = "3166-1"` and an optional canonical
 `codes = ["US", "CA"]` list from the maintained catalog. ICU-owned catalogs
@@ -19,6 +19,12 @@ include only current, common codes with an ICU English name. `iso_locale` reads
 the invoking package's
 `i18n.toml`; its optional `custom` mode assigns label ownership to that package.
 Both require an empty enum without generics.
+
+When the invoking package uses `es-fluent-build`, `iso_locale` reads its build
+manifest and records the manifest's content hash in rustc's dependencies.
+Locale-directory and fallback edits then invalidate compiler caches, including
+for libraries that use no other es-fluent macros. Without a build manifest, the
+macro reads the configuration and locale directories directly.
 
 Use `standard = "4217"` for currency subsets, `"3166-2"` for delivery areas,
 and `"units"` for common CLDR measurement units. `catalog_value()` exposes

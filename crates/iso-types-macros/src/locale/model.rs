@@ -89,10 +89,13 @@ impl Model {
         };
         let mut input: ItemEnum = syn::parse2(item)?;
         prepare(&mut input)?;
-        let config = es_fluent_toml::I18nConfig::read_from_manifest_dir()
+        let inputs = es_fluent_derive_core::macro_support::PackageInputs::current()
             .map_err(|error| syn::Error::new_spanned(&input.ident, error))?;
-        let locales = config
-            .available_languages()
+        let config = inputs
+            .config()
+            .map_err(|error| syn::Error::new_spanned(&input.ident, error))?;
+        let locales = inputs
+            .languages(&config)
             .map_err(|error| syn::Error::new_spanned(&input.ident, error))?;
         let fallback = config
             .fallback_language_identifier()

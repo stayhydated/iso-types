@@ -33,6 +33,10 @@ clippy:
 test-features:
     python3 tools/check_features.py
 
+# Check fallback and locale edits without changing a consumer's Rust source.
+locale-tracking:
+    python3 tools/check_locale_tracking.py
+
 docs:
     RUSTDOCFLAGS="-D warnings" cargo doc --workspace --all-features --no-deps --locked
 
@@ -41,7 +45,7 @@ package:
     cargo publish --workspace --dry-run --allow-dirty --locked
 
 # Run the complete repository verification sequence.
-verify: codegen-test generate-check format-check test test-features clippy docs
+verify: codegen-test generate-check format-check test locale-tracking test-features clippy docs
 
 # Assemble the book, Markdown exports, and Dioxus examples for GitHub Pages.
 web-build:

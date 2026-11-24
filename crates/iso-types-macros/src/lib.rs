@@ -17,7 +17,8 @@ pub fn iso_enum(attr: TokenStream, item: TokenStream) -> TokenStream {
 #[cfg(feature = "locales")]
 #[proc_macro_attribute]
 pub fn iso_locale(attr: TokenStream, item: TokenStream) -> TokenStream {
-    locale::expand(attr.into(), item.into())
-        .unwrap_or_else(|error| error.to_compile_error())
-        .into()
+    es_fluent_derive_core::macro_support::with_build_inputs(
+        locale::expand(attr.into(), item.into()).unwrap_or_else(|error| error.to_compile_error()),
+    )
+    .into()
 }
