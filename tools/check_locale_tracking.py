@@ -15,35 +15,25 @@ HASH_ENV = "ES_FLUENT_BUILD_MANIFEST_HASH"
 CARGO = os.environ.get("CARGO", "cargo")
 
 
-def fluent_packages():
+def fluent_build_version():
     metadata = json.loads(subprocess.check_output(
         [CARGO, "metadata", "--format-version=1", "--locked"], cwd=ROOT, text=True,
     ))
     packages = {}
-    sources = set()
+    crates_io = "registry+https://github.com/rust-lang/crates.io-index"
     for package in metadata["packages"]:
         name = package["name"]
         if not name.startswith("es-fluent"):
             continue
         if name in packages:
             raise RuntimeError(f"multiple {name} packages in the integration dependency graph")
-        packages[name] = str(Path(package["manifest_path"]).parent)
-        source = package["source"] or ""
-        if source.startswith("git+"):
-            sources.add(source.removeprefix("git+").split("?")[0].split("#")[0])
-    return packages, sources
+        if package["source"] != crates_io:
+            raise RuntimeError(f"{name} must come from crates.io for registry consumer coverage")
+        packages[name] = package["version"]
+    return packages["es-fluent-build"]
 
 
-def write_fixture(directory, packages, sources):
-    # Root patch tables do not propagate into a separate consumer workspace.
-    # Reuse the exact resolved sources, including the unpublished manager API.
-    patches = "".join(
-        f"\n[patch.{json.dumps(source)}]\n" + "".join(
-            f"{name} = {{ path = {json.dumps(path)} }}\n"
-            for name, path in sorted(packages.items())
-        )
-        for source in ["crates-io", *sorted(sources)]
-    )
+def write_fixture(directory, build_version):
     (directory / "Cargo.toml").write_text(f"""[package]
 name = "iso-types-locale-tracking"
 version = "0.0.0"
@@ -56,8 +46,8 @@ publish = false
 iso-types = {{ path = {json.dumps(str(ROOT / 'crates/iso-types'))}, default-features = false, features = ["locales"] }}
 
 [build-dependencies]
-es-fluent-build = {{ path = {json.dumps(packages['es-fluent-build'])} }}
-{patches}""")
+es-fluent-build = {json.dumps("=" + build_version)}
+""")
     shutil.copyfile(ROOT / "Cargo.lock", directory / "Cargo.lock")
     (directory / "build.rs").write_text(
         "fn main() { es_fluent_build::track_i18n_assets(); }\n"
@@ -138,12 +128,12 @@ def main():
         env["RUSTC_WRAPPER"] = wrapper
     # sccache cannot cache incrementally compiled Rust crates.
     env["CARGO_INCREMENTAL"] = "0"
-    packages, sources = fluent_packages()
+    build_version = fluent_build_version()
     (ROOT / "target").mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="locale-tracking-", dir=ROOT / "target") as temporary:
         directory = Path(temporary)
         env["CARGO_TARGET_DIR"] = str(directory / "target")
-        write_fixture(directory, packages, sources)
+        write_fixture(directory, build_version)
         previous = check_snapshot(directory, env, "en,fr-FR;en", locked=False)
 
         set_fallback(directory, "fr-FR")

@@ -9,8 +9,8 @@ Current subdivisions and sex codes use English FTL. Fluent output and English
 display share each catalog's authority. Common measurement units use CLDR
 identifiers and English display names, with optional ICU4X conversions.
 
-Requires Rust 1.99 or newer. Fluent integration uses es-fluent's 0.21 API.
-The ICU integration pins ICU4X 2.3; its locale-name APIs are upstream unstable.
+Requires Rust 1.99 or newer. Fluent integration uses es-fluent's 0.22 API.
+The ICU integration pins ICU4X 2.4; its locale-name APIs are upstream unstable.
 
 ## Features
 
